@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenko AI — Sua Jornada pela Saúde Natural</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --primary:#006B5B;--primary-dark:#004d40;--secondary:#D4AF37;
+  --accent:#8B0000;--light:#F7FAF9;--dark:#2F2F2F;--gray:#666;
+  --success:#4CAF50;--warning:#FF9800;--error:#F44336;--white:#fff;
+  --shadow:0 4px 20px rgba(0,0,0,.08);--radius:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
+body{color:var(--dark);line-height:1.6;background:#eef2f1;min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-family:inherit;}
+.container{width:92%;max-width:1100px;margin:0 auto;padding:0 16px;}
+
+/* ===== CHECKOUT ===== */
+#checkout{position:fixed;inset:0;background:linear-gradient(135deg,#004d40 0%,#006B5B 100%);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .4s,visibility .4s;}
+#checkout.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+.checkout-box{background:white;border-radius:20px;padding:40px;max-width:500px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);}
+.checkout-box h2{color:var(--primary);margin-bottom:10px;font-size:1.8rem;}
+.checkout-box p{color:var(--gray);margin-bottom:25px;}
+.price-badge{font-size:2.5rem;color:var(--primary);font-weight:800;margin:15px 0;}
+.price-badge span{font-size:1rem;color:var(--gray);font-weight:400;}
+.form-group{margin-bottom:15px;text-align:left;}
+.form-group label{display:block;margin-bottom:5px;font-weight:600;color:var(--dark);font-size:.9rem;}
+.form-group input,.form-group select{width:100%;padding:12px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;transition:border-color .3s;}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--primary);}
+.btn-checkout{width:100%;padding:16px;background:var(--secondary);color:var(--dark);border:none;border-radius:10px;font-size:1.1rem;font-weight:700;transition:all .3s;}
+.btn-checkout:hover{background:#c49b2c;transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,175,55,.3);}
+
+/* ===== ONBOARDING ===== */
+#onboarding{position:fixed;inset:0;background:white;z-index:9998;display:flex;align-items:center;justify-content:center;transition:opacity .4s,visibility .4s;}
+#onboarding.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+.onboard-box{max-width:600px;width:90%;text-align:center;}
+.onboard-box h2{color:var(--primary);margin-bottom:8px;font-size:1.6rem;}
+.onboard-box .sub{color:var(--gray);margin-bottom:30px;}
+.step-indicator{display:flex;justify-content:center;gap:8px;margin-bottom:25px;}
+.step-dot{width:12px;height:12px;border-radius:50%;background:#ddd;transition:all .3s;}
+.step-dot.active{background:var(--primary);transform:scale(1.2);}
+.step-dot.done{background:var(--success);}
+.onboard-form{display:none;text-align:left;}
+.onboard-form.active{display:block;animation:fadeIn .4s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px;}
+@media(max-width:600px){.form-row{grid-template-columns:1fr;}}
+
+/* ===== APP HEADER ===== */
+.app-header{background:var(--primary);color:white;padding:12px 0;position:sticky;top:0;z-index:100;}
+.header-inner{display:flex;justify-content:space-between;align-items:center;}
+.app-logo{display:flex;align-items:center;gap:8px;font-size:1.3rem;font-weight:700;}
+.app-logo i{color:var(--secondary);font-size:1.5rem;}
+.header-actions{display:flex;gap:12px;align-items:center;}
+.header-actions button{background:rgba(255,255,255,.15);border:none;color:white;padding:8px 14px;border-radius:8px;font-size:.85rem;transition:background .3s;}
+.header-actions button:hover{background:rgba(255,255,255,.25);}
+.badge-count{background:var(--accent);color:white;font-size:.7rem;padding:2px 6px;border-radius:10px;margin-left:4px;}
+
+/* ===== NAV ===== */
+.app-nav{background:white;border-bottom:1px solid #e8e8e8;position:sticky;top:52px;z-index:99;}
+.nav-inner{display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.nav-inner button{background:none;border:none;padding:14px 20px;font-size:.9rem;font-weight:600;color:var(--gray);white-space:nowrap;border-bottom:3px solid transparent;transition:all .3s;}
+.nav-inner button:hover{color:var(--primary);}
+.nav-inner button.active{color:var(--primary);border-bottom-color:var(--primary);}
+
+/* ===== PAGES ===== */
+.page{padding:30px 0 100px;display:none;}
+.page.active{display:block;animation:fadeIn .4s;}
+
+/* Stats */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-bottom:25px;}
+.stat-card{background:white;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);display:flex;align-items:center;gap:15px;}
+.stat-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:white;}
+.stat-icon.green{background:var(--primary);}.stat-icon.gold{background:var(--secondary);}.stat-icon.red{background:var(--accent);}.stat-icon.blue{background:#2196F3;}
+.stat-content h3{font-size:1.5rem;color:var(--primary);line-height:1.2;}
+.stat-content p{font-size:.85rem;color:var(--gray);}
+
+/* Cards */
+.card{background:white;border-radius:var(--radius);padding:25px;box-shadow:var(--shadow);margin-bottom:20px;}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;flex-wrap:wrap;gap:10px;}
+.card-title{font-size:1.2rem;color:var(--primary);font-weight:700;}
+
+/* Progress */
+.progress-bar-bg{height:12px;background:#e8e8e8;border-radius:6px;overflow:hidden;margin:10px 0;}
+.progress-bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:width .6s ease;}
+.progress-label{display:flex;justify-content:space-between;font-size:.85rem;color:var(--gray);}
+
+/* Daily Plan */
+.plan-day{display:flex;align-items:center;gap:12px;padding:14px;background:var(--light);border-radius:10px;margin-bottom:10px;transition:background .3s;}
+.plan-day:hover{background:#e8f5f3;}
+.plan-day .day-num{width:36px;height:36px;background:var(--primary);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;}
+.plan-day .day-info{flex:1;}.plan-day .day-info h4{font-size:.95rem;margin-bottom:2px;}
+.plan-day .day-info p{font-size:.8rem;color:var(--gray);}
+.plan-day.done{opacity:.6;}.plan-day.done .day-info h4{text-decoration:line-through;}
+.check-btn{width:32px;height:32px;border-radius:50%;border:2px solid #ddd;background:white;display:flex;align-items:center;justify-content:center;transition:all .3s;color:transparent;}
+.check-btn:hover{border-color:var(--primary);color:var(--primary);}
+.plan-day.done .check-btn{background:var(--success);border-color:var(--success);color:white;}
+
+/* Food Diary */
+.food-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--light);border-radius:10px;margin-bottom:8px;}
+.food-item .food-main{display:flex;align-items:center;gap:12px;}
+.food-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.1rem;}
+.food-icon.breakfast{background:#FF9800;}.food-icon.lunch{background:#4CAF50;}.food-icon.dinner{background:#2196F3;}.food-icon.snack{background:#9C27B0;}
+.food-meta{font-size:.8rem;color:var(--gray);}
+.food-cal{font-weight:700;color:var(--primary);font-size:.9rem;}
+.delete-food{background:none;border:none;color:#ccc;font-size:1.1rem;transition:color .3s;}
+.delete-food:hover{color:var(--error);}
+
+/* Exercises */
+.ex-card{background:white;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-bottom:15px;}
+.ex-header{padding:18px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;display:flex;justify-content:space-between;align-items:center;}
+.ex-header h4{font-size:1.05rem;}
+.ex-header span{font-size:.85rem;opacity:.85;}
+.ex-body{padding:18px;}.ex-body p{color:var(--gray);font-size:.9rem;margin-bottom:12px;}
+.ex-meta{display:flex;gap:15px;font-size:.8rem;color:var(--gray);margin-bottom:12px;}
+.ex-meta i{margin-right:4px;color:var(--primary);}
+
+/* Chat */
+.chat-toggle{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:var(--primary);color:white;border:none;border-radius:50%;font-size:1.5rem;box-shadow:0 4px 20px rgba(0,107,91,.4);z-index:999;transition:transform .3s;}
+.chat-toggle:hover{transform:scale(1.1);}
+.chat-box{position:fixed;bottom:96px;right:24px;width:360px;max-width:90vw;height:480px;background:white;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.2);z-index:999;display:flex;flex-direction:column;transform:scale(0);transform-origin:bottom right;transition:transform .3s ease;}
+.chat-box.open{transform:scale(1);}
+.chat-header{background:var(--primary);color:white;padding:16px;border-radius:16px 16px 0 0;display:flex;justify-content:space-between;align-items:center;}
+.chat-header h4{margin:0;font-size:1rem;}
+.chat-close{background:none;border:none;color:white;font-size:1.2rem;}
+.chat-messages{flex:1;padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;}
+.chat-msg{max-width:80%;padding:10px 14px;border-radius:12px;font-size:.9rem;line-height:1.4;}
+.chat-msg.ai{background:var(--light);align-self:flex-start;border-bottom-left-radius:4px;}
+.chat-msg.user{background:var(--primary);color:white;align-self:flex-end;border-bottom-right-radius:4px;}
+.chat-input-area{display:flex;padding:10px;border-top:1px solid #eee;gap:8px;}
+.chat-input-area input{flex:1;padding:10px;border:1px solid #ddd;border-radius:20px;font-size:.9rem;}
+.chat-input-area button{background:var(--primary);color:white;border:none;width:40px;height:40px;border-radius:50%;font-size:1rem;}
+
+/* Achievements */
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--light);padding:6px 12px;border-radius:20px;font-size:.8rem;margin:4px;}
+.badge i{color:var(--secondary);}
+.badge.locked{opacity:.4;}.badge.locked i{color:#ccc;}
+
+/* Timeline */
+.timeline{position:relative;padding-left:24px;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#e0e0e0;}
+.timeline-item{position:relative;margin-bottom:20px;}
+.timeline-item::before{content:'';position:absolute;left:-20px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--primary);}
+.timeline-date{font-size:.8rem;color:var(--gray);margin-bottom:4px;}
+.timeline-content{background:var(--light);padding:12px;border-radius:8px;}
+.timeline-content h5{font-size:.95rem;color:var(--primary);margin-bottom:4px;}
+.timeline-content p{font-size:.85rem;color:var(--gray);}
+
+/* Newsletter */
+.newsletter-box{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border-radius:var(--radius);padding:30px;text-align:center;}
+.newsletter-box h3{margin-bottom:8px;}
+.newsletter-box p{opacity:.9;margin-bottom:20px;font-size:.9rem;}
+.newsletter-form{display:flex;gap:8px;max-width:400px;margin:0 auto;}
+.newsletter-form input{flex:1;padding:12px;border:none;border-radius:8px;font-size:.9rem;}
+.newsletter-form button{padding:12px 24px;background:var(--secondary);color:var(--dark);border:none;border-radius:8px;font-weight:700;transition:background .3s;}
+.newsletter-form button:hover{background:#c49b2c;}
+
+/* Buttons */
+.btn{padding:10px 20px;border:none;border-radius:8px;font-weight:600;font-size:.9rem;transition:all .3s;display:inline-flex;align-items:center;gap:6px;}
+.btn-primary{background:var(--primary);color:white;}.btn-primary:hover{background:var(--primary-dark);}
+.btn-outline{background:transparent;border:2px solid var(--primary);color:var(--primary);}.btn-outline:hover{background:var(--primary);color:white;}
+.btn-sm{padding:6px 12px;font-size:.8rem;}
+.btn-block{width:100%;justify-content:center;}
+.btn:disabled{opacity:.5;cursor:not-allowed;}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--dark);color:white;padding:12px 24px;border-radius:10px;font-size:.9rem;z-index:10000;opacity:0;transition:opacity .3s;pointer-events:none;}
+.toast.show{opacity:1;}
+
+/* Utility */
+.text-center{text-align:center;}.mt-20{margin-top:20px;}.mb-20{margin-bottom:20px;}
+.flex{display:flex;gap:10px;flex-wrap:wrap;}.tag{background:var(--light);padding:4px 10px;border-radius:20px;font-size:.8rem;color:var(--primary);font-weight:600;}
+.hidden{display:none!important;}
+
+/* Responsive */
+@media(max-width:600px){
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .chat-box{width:95vw;right:2.5vw;bottom:88px;height:400px;}
+  .form-row{grid-template-columns:1fr;}
+  .nav-inner button{padding:12px 14px;font-size:.8rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== CHECKOUT ===== -->
+<div id="checkout">
+  <div class="checkout-box">
+    <h2><i class="fas fa-leaf"></i> Kenko AI</h2>
+    <p>Complete sua assinatura e comece agora sua jornada</p>
+    <div class="price-badge">R$ 47<span>/mês</span></div>
+    <p style="font-size:.85rem;color:var(--gray);margin-bottom:20px;">7 dias grátis • Cancelamento quando quiser • Acesso imediato</p>
+    <div class="form-group">
+      <label>Nome completo</label>
+      <input type="text" id="co-name" placeholder="Seu nome">
+    </div>
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="email" id="co-email" placeholder="seu@email.com">
+    </div>
+    <div class="form-group">
+      <label>Condição principal</label>
+      <select id="co-condition">
+        <option>Osteoartrose</option>
+        <option>Artrite reumatoide</option>
+        <option>Fibromialgia</option>
+        <option>Gota</option>
+        <option>Outro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Cartão de crédito</label>
+      <input type="text" id="co-card" placeholder="XXXX XXXX XXXX XXXX">
+    </div>
+    <button class="btn-checkout" onclick="completePurchase()">
+      <i class="fas fa-lock"></i> Assinar agora — R$47/mês
+    </button>
+    <p style="font-size:.75rem;color:var(--gray);margin-top:15px;">Pagamento seguro • Dados criptografados</p>
+  </div>
+</div>
+
+<!-- ===== ONBOARDING ===== -->
+<div id="onboarding">
+  <div class="onboard-box">
+    <h2>Bem-vindo ao Kenko AI <i class="fas fa-leaf"></i></h2>
+    <p class="sub">Vamos personalizar sua jornada em 3 passos</p>
+    <div class="step-indicator">
+      <div class="step-dot active" data-step="1"></div>
+      <div class="step-dot" data-step="2"></div>
+      <div class="step-dot" data-step="3"></div>
+    </div>
+
+    <div class="onboard-form active" data-form="1">
+      <div class="form-group">
+        <label>Seu nome</label>
+        <input type="text" id="ob-name" placeholder="Ex: Maria Silva">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Idade</label>
+          <input type="number" id="ob-age" placeholder="Ex: 45">
+        </div>
+        <div class="form-group">
+          <label>Peso (kg)</label>
+          <input type="number" id="ob-weight" placeholder="Ex: 72">
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="nextOnboard(2)">Continuar <i class="fas fa-arrow-right"></i></button>
+    </div>
+
+    <div class="onboard-form" data-form="2">
+      <div class="form-group">
+        <label>Qual tipo de artrite?</label>
+        <select id="ob-type" style="width:100%;padding:12px;border:2px solid #e0e0e0;border-radius:8px;">
+          <option>Osteoartrose</option>
+          <option>Artrite reumatoide</option>
+          <option>Fibromialgia</option>
+          <option>Gota</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Áreas com dor</label>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
+          <label style="background:var(--light);padding:8px 14px;border-radius:20px;font-size:.85rem;cursor:pointer;display:flex;align-items:center;gap:6px;">
+            <input type="checkbox" class="area-check"> Joelhos
+          </label>
+          <label style="background:var(--light);padding:8px 14px;border-radius:20px;font-size:.85rem;cursor:pointer;display:flex;align-items:center;gap:6px;">
+            <input type="checkbox" class="area-check"> Mãos
+          </label>
+          <label style="background:var(--light);padding:8px 14px;border-radius:20px;font-size:.85rem;cursor:pointer;display:flex;align-items:center;gap:6px;">
+            <input type="checkbox" class="area-check"> Costas
+          </label>
+          <label style="background:var(--light);padding:8px 14px;border-radius:20px;font-size:.85rem;cursor:pointer;display:flex;align-items:center;gap:6px;">
+            <input type="checkbox" class="area-check"> Quadril
+          </label>
+          <label style="background:var(--light);padding:8px 14px;border-radius:20px;font-size:.85rem;cursor:pointer;display:flex;align-items:center;gap:6px;">
+            <input type="checkbox" class="area-check"> Punhos
+          </label>
+        </div>
+      </div>
+      <div class="flex">
+        <button class="btn btn-outline" onclick="prevOnboard(1)"><i class="fas fa-arrow-left"></i> Voltar</button>
+        <button class="btn btn-primary" onclick="nextOnboard(3)">Continuar <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <div class="onboard-form" data-form="3">
+      <div class="form-group">
+        <label>Meta principal</label>
+        <select id="ob-goal" style="width:100%;padding:12px;border:2px solid #e0e0e0;border-radius:8px;">
+          <option>Reduzir dor articular</option>
+          <option>Perder peso</option>
+          <option>Melhorar flexibilidade</option>
+          <option>Aumentar energia</option>
+          <option>Eliminar inflamação</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Nível de atividade atual</label>
+        <select id="ob-activity" style="width:100%;padding:12px;border:2px solid #e0e0e0;border-radius:8px;">
+          <option>Sedentário</option>
+          <option>Levemente ativo</option>
+          <option>Moderadamente ativo</option>
+          <option>Ativo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Restrições alimentares</label>
+        <input type="text" id="ob-diet" placeholder="Ex: Lactose, glúten, nada">
+      </div>
+      <div class="flex">
+        <button class="btn btn-outline" onclick="prevOnboard(2)"><i class="fas fa-arrow-left"></i> Voltar</button>
+        <button class="btn btn-primary" onclick="finishOnboard()">Ver meu plano <i class="fas fa-check"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div id="app" class="hidden">
+  <header class="app-header">
+    <div class="container header-inner">
+      <div class="app-logo"><i class="fas fa-leaf"></i> Kenko AI</div>
+      <div class="header-actions">
+        <button onclick="toggleChat()"><i class="fas fa-comment-dots"></i> Sensei</button>
+        <button onclick="showToast('Configurações em breve')"><i class="fas fa-cog"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="app-nav">
+    <div class="container nav-inner">
+      <button class="active" data-page="dashboard" onclick="switchPage('dashboard',this)"><i class="fas fa-home"></i> Início</button>
+      <button data-page="plan" onclick="switchPage('plan',this)"><i class="fas fa-calendar-alt"></i> Plano</button>
+      <button data-page="food" onclick="switchPage('food',this)"><i class="fas fa-utensils"></i> Alimentação</button>
+      <button data-page="exercises" onclick="switchPage('exercises',this)"><i class="fas fa-running"></i> Exercícios</button>
+      <button data-page="progress" onclick="switchPage('progress',this)"><i class="fas fa-chart-line"></i> Progresso</button>
+      <button data-page="community" onclick="switchPage('community',this)"><i class="fas fa-users"></i> Comunidade</button>
+    </div>
+  </nav>
+
+  <!-- DASHBOARD -->
+  <div id="page-dashboard" class="page active">
+    <div class="container">
+      <div class="card" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border-radius:16px;margin-bottom:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+          <div>
+            <p style="opacity:.85;font-size:.9rem;">Olá, <strong id="dash-name">Usuário</strong> 👋</p>
+            <h2 style="font-size:1.4rem;margin-top:4px;">Dia <span id="dash-day">1</span> de 21 — Vamos lá!</h2>
+          </div>
+          <div style="text-align:right;">
+            <p style="font-size:.85rem;opacity:.85;">Inflamação</p>
+            <p style="font-size:1.8rem;font-weight:800;" id="dash-inflammation">68%</p>
+          </div>
+        </div>
+        <div class="progress-bar-bg" style="margin-top:12px;">
+          <div class="progress-bar-fill" id="dash-progress-bar" style="width:5%"></div>
+        </div>
+        <p style="font-size:.8rem;opacity:.85;margin-top:6px;">5% completo — 16 dias restantes</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-heartbeat"></i></div>
+          <div class="stat-content"><h3 id="stat-pain">6</h3><p>Nível de dor</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon gold"><i class="fas fa-fire"></i></div>
+          <div class="stat-content"><h3 id="stat-energy">6</h3><p>Energia (1-10)</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-droplet"></i></div>
+          <div class="stat-content"><h3 id="stat-water">0</h3><p>Copos de água</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fas fa-weight"></i></div>
+          <div class="stat-content"><h3 id="stat-weight">-</h3><p>Peso (kg)</p></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title"><i class="fas fa-tasks"></i> Tarefas de Hoje</span>
+          <span class="tag" id="task-count">0/3 concluídas</span>
+        </div>
+        <div id="today-tasks"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title"><i class="fas fa-trophy"></i> Conquistas</span>
+        </div>
+        <div id="badges-container" class="flex" style="flex-wrap:wrap;"></div>
+      </div>
+
+      <div class="card newsletter-box">
+        <h3><i class="fas fa-envelope"></i> Kenko Tsūshin</h3>
+        <p>Receba toda semana dicas exclusivas da ciência japonesa</p>
+        <div class="newsletter-form">
+          <input type="email" id="newsletter-email" placeholder="seu@email.com">
+          <button onclick="subscribeNewsletter()">Inscrever</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN -->
+  <div id="page-plan" class="page">
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title"><i class="fas fa-calendar-check"></i> Plano de 21 Dias</span>
+          <span class="tag">Dia <span id="plan-day">1</span>/21</span>
+        </div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="plan-progress" style="width:5%"></div></div>
+        <div class="progress-label"><span>Progresso</span><span id="plan-percent">5%</span></div>
+      </div>
+      <div id="plan-list"></div>
+    </div>
+  </div>
+
+  <!-- FOOD -->
+  <div id="page-food" class="page">
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title"><i class="fas fa-utensils"></i> Diário Alimentar</span>
+          <button class="btn btn-primary btn-sm" onclick="openFoodModal()"><i class="fas fa-plus"></i> Adicionar</button>
+        </div>
+        <div id="food-list"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title"><i class="fas fa-chart-pie"></i> Resumo do Dia</span></div>
+        <div id="food-summary" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCISES -->
+  <div id="page-exercises" class="page">
+    <div class="container">
+      <div id="exercise-list"></div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div id="page-progress" class="page">
+    <div class="container">
+      <div class="card">
+        <div class="card-header"><span class="card-title"><i class="fas fa-chart-line"></i> Inflamação ao longo do tempo</span></div>
+        <div class="chart-bar" id="chart-inflammation" style="height:200px;align-items:flex-end;justify-content:space-around;"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title"><i class="fas fa-brain"></i> Dor articular (0-10)</span></div>
+        <div class="chart-bar" id="chart-pain" style="height:200px;align-items:flex-end;justify-content:space-around;"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title"><i class="fas fa-history"></i> Linha do tempo</span></div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMUNITY -->
+  <div id="page-community" class="page">
+    <div class="container">
+      <div class="card">
+        <div class="card-header"><span class="card-title"><i class="fas fa-comments"></i> Fórum da Comunidade</span></div>
+        <div id="community-posts"></div>
+      </div>
+      <div class="card newsletter-box">
+        <h3><i class="fas fa-pen"></i> Compartilhe sua experiência</h3>
+        <textarea id="community-input" style="width:100%;padding:12px;border-radius:8px;border:1px solid #ddd;height:80px;margin-bottom:10px;" placeholder="O que você aprendeu esta semana?"></textarea>
+        <button class="btn btn-primary" onclick="addPost()">Publicar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAT WIDGET -->
+<button class="chat-toggle" onclick="toggleChat()"><i class="fas fa-robot"></i></button>
+<div class="chat-box" id="chat-box">
+  <div class="chat-header">
+    <h4><i class="fas fa-robot"></i> Sensei Kenko</h4>
+    <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="chat-msg ai">Olá! 👋 Sou o Sensei Kenko, seu especialista em saúde natural inspirado no Japão. Como posso ajudá-lo(a) hoje?</div>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" id="chat-input" placeholder="Digite sua mensagem..." onkeydown="if(event.key==='Enter')sendChat()">
+    <button onclick="sendChat()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- FOOD MODAL -->
+<div id="food-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9997;display:none;align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:16px;padding:30px;max-width:450px;width:90%;">
+    <h3 style="color:var(--primary);margin-bottom:20px;">Adicionar Refeição</h3>
+    <div class="form-group"><label>Tipo</label>
+      <select id="food-type" style="width:100%;padding:10px;border:2px solid #e0e0e0;border-radius:8px;">
+        <option value="cafe">Café da Manhã</option><option value="almoco">Almoço</option>
+        <option value="jantar">Jantar</option><option value="lanche">Lanche</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Alimento</label><input type="text" id="food-name" placeholder="Ex: Salmão grelhado"></div>
+    <div class="form-group"><label>Quantidade</label><input type="text" id="food-qty" placeholder="Ex: 150g"></div>
+    <div class="form-group"><label>Calorias (aprox.)</label><input type="number" id="food-cal" placeholder="Ex: 350"></div>
+    <div class="flex" style="justify-content:flex-end;gap:10px;margin-top:15px;">
+      <button class="btn btn-outline" onclick="closeFoodModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveFood()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ========== DATA ==========
+const weekDays = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+const InflammationHistory=[72,70,68,70,65,63,68];
+const PainHistory=[7,6,6,5,5,4,4];
+const Exercises=[
+  {name:'Rajio Taiso',desc:'Sequência de alongamento articular usada em escolas japonesas desde 1928. Melhora circulação e flexibilidade.',duration:'15 min',diff:'Fácil',icon:'fa-running'},
+  {name:'Tai Chi Suave',desc:'Movimentos fluidos comprovados para reduzir dor e melhorar equilíbrio em arthrites.',duration:'20 min',diff:'Médio',icon:'fa-yin-yang'},
+  {name:'Caminhada Hinoki',desc:'Caminhada em superfície natural (grama/terra) reduz impacto articular em 30%.',duration:'30 min',diff:'Fácil',icon:'fa-hiking'},
+  {name:'Alongamento Articular',desc:'Movimentos específicos para joelhos, mãos e coluna. Sequência de 10 min.',duration:'10 min',diff:'Fácil',icon:'fa-stretch'},
+  {name:'Respiração Zen (Zazen)',desc:'Técnica de respiração abdominal para reduzir cortisol e inflamação.',duration:'10 min',diff:'Fácil',icon:'fa-wind'},
+  {name:'Banho de Floresta',desc:'Shinrin-yoku: imersão em natureza comprovada para baixar marcadores inflamatórios.',duration:'45 min',diff:'Fácil',icon:'fa-tree'}
+];
+const MealNames={cafe:'Café da Manhã',almoco:'Almoço',jantar:'Jantar',lanche:'Lanche'};
+const MealIcons={cafe:'☕',almoco:'🍱',jantar:'🍽️',lanche:'🍎'};
+const DailyTasks=[
+  {id:'t1',text:'Beber 2L de água',icon:'fa-droplet',done:false},
+  {id:'t2',text:'Exercício de 15 min',icon:'fa-running',done:false},
+  {id:'t3',text:'Evitar alimentos processados',icon:'fa-ban',done:false},
+  {id:'t4',text:'Tomar chá verde',icon:'fa-mug-hot',done:false},
+  {id:'t5',text:'Registrar alimentação',icon:'fa-clipboard-list',done:false}
+];
+const Achievements=[
+  {id:'a1',name:'Primeiro Dia',icon:'fa-flag',desc:'Completar o dia 1'},
+  {id:'a2',name:'Fogo Baixo',icon:'fa-fire-slash',desc:'Inflamação abaixo de 50%'},
+  {id:'a3',name:'Hidratado',icon:'fa-tint',desc:'7 dias bebendo 2L+'},
+  {id:'a4',name:'Disciplina',icon:'fa-medal',desc:'10 dias consecutivos'},
+  {id:'a5',name:'Mestre Zen',icon:'fa-spa',desc:'Completar 21 dias'}
+];
+const CommunityPosts=[
+  {user:'Maria C.',date:'Hoje',text:'Dia 8 — Minha rigidez matinal diminuiu 40%! Estou amando o matcha.'},
+  {user:'Carlos M.',date:'Ontem',text:'A caminhada Hinoki mudou minha vida. Menos dor nos joelhos.'},
+  {user:'Ana P.',date:'2 dias',text:'Eliminar glúten fez diferença enorme. Recomendo a todos.'}
+];
+
+// ========== STATE ==========
+let appState={
+  name:'Usuário',day:1,totalDays:21,
+  inflammation:68,pain:6,energy:6,water:0,weight:null,
+  food:[],completedTasks:[],exercisesDone:[],
+  inflammationHist:[72,70,68,70,65,63,68],
+  painHist:[7,6,6,5,5,4,4]
+};
+
+// ========== CHECKOUT ==========
+function completePurchase(){
+  const name=document.getElementById('co-name').value.trim();
+  const email=document.getElementById('co-email').value.trim();
+  if(!name||!email){showToast('Preencha nome e e-mail');return}
+  appState.name=name;
+  document.getElementById('checkout').classList.add('hidden');
+  document.getElementById('onboarding').classList.remove('hidden');
+  showToast('Pagamento simulado aprovado ✅');
+}
+
+// ========== ONBOARDING ==========
+let currentStep=1;
+function nextOnboard(s){
+  if(s===2&&!document.getElementById('ob-name').value){showToast('Digite seu nome');return}
+  document.querySelector(`.onboard-form[data-form="${currentStep}"]`).classList.remove('active');
+  document.querySelector(`.step-dot[data-step="${currentStep}"]`).classList.remove('active');
+  document.querySelector(`.step-dot[data-step="${currentStep}"]`).classList.add('done');
+  currentStep=s;
+  document.querySelector(`.onboard-form[data-form="${s}"]`).classList.add('active');
+  document.querySelector(`.step-dot[data-step="${s}"]`).classList.add('active');
+}
+function prevOnboard(s){
+  document.querySelector(`.onboard-form[data-form="${currentStep}"]`).classList.remove('active');
+  document.querySelector(`.step-dot[data-step="${currentStep}"]`).classList.remove('active');
+  currentStep=s;
+  document.querySelector(`.onboard-form[data-form="${s}"]`).classList.add('active');
+  document.querySelector(`.step-dot[data-step="${s}"]`).classList.add('active');
+}
+function finishOnboard(){
+  appState.name=document.getElementById('ob-name').value||appState.name;
+  const areas=[...document.querySelectorAll('.area-check:checked')].map(c=>c.parentElement.textContent.trim());
+  document.getElementById('onboarding').classList.add('hidden');
+  document.getElementById('app').classList.remove('hidden');
+  initApp();
+  showToast(`Bem-vindo, ${appState.name}! Seu plano começou 🌿`);
+}
+
+// ========== INIT ==========
+function initApp(){
+  document.getElementById('dash-name').textContent=appState.name;
+  updateDashboard();
+  renderPlan();renderFood();renderExercises();renderProgress();renderTimeline();renderBadges();renderCommunity();
+}
+
+function updateDashboard(){
+  document.getElementById('dash-day').textContent=appState.day;
+  document.getElementById('dash-inflammation').textContent=appState.inflammation+'%';
+  document.getElementById('stat-pain').textContent=appState.pain;
+  document.getElementById('stat-energy').textContent=appState.energy;
+  document.getElementById('stat-water').textContent=appState.water;
+  document.getElementById('stat-weight').textContent=appState.weight||'-';
+  const pct=Math.round((appState.day/appState.totalDays)*100);
+  document.getElementById('dash-progress-bar').style.width=pct+'%';
+  document.getElementById('plan-day').textContent=appState.day;
+  document.getElementById('plan-percent').textContent=pct+'%';
+  document.getElementById('plan-progress').style.width=pct+'%';
+  // tasks
+  const tc=document.getElementById('task-count');
+  const done=DailyTasks.filter(t=>appState.completedTasks.includes(t.id)).length;
+  tc.textContent=`${done}/${DailyTasks.length} concluídas`;
+  renderTodayTasks();
+}
+
+function renderTodayTasks(){
+  const el=document.getElementById('today-tasks');el.innerHTML='';
+  DailyTasks.forEach(t=>{
+    const done=appState.completedTasks.includes(t.id);
+    const div=document.createElement('div');div.className='plan-day'+(done?' done':'');
+    div.innerHTML=`<div class="day-num"><i class="fas ${t.icon}"></i></div><div class="day-info"><h4>${t.text}</h4></div><button class="check-btn" onclick="toggleTask('${t.id}')"><i class="fas fa-check"></i></button>`;
+    el.appendChild(div);
+  });
+}
+
+function toggleTask(id){
+  if(appState.completedTasks.includes(id)){
+    appState.completedTasks=appState.completedTasks.filter(x=>x!==id);
+  } else {
+    appState.completedTasks.push(id);
+    showToast('Tarefa concluída! 🎉');
+  }
+  updateDashboard();checkAchievements();
+}
+
+// ========== PLAN ==========
+function renderPlan(){
+  const el=document.getElementById('plan-list');el.innerHTML='';
+  const tips=[
+    'Chá matcha 3x ao dia + elimine açúcar refinado',
+    'Salmão grelhado com quinoa e vegetais',
+    'Rajio Taiso 15min + caminhada 20min',
+    'Banho de floresta ou shinrin-yoku 30min',
+    'Sopa de misso com tofu e algas wakame',
+    'Alongamento articular 10min + respiração zen',
+    'Peixe pequeno (sardinha) rico em ômega-3',
+    'Caminhada Hinoki + alongamento',
+    'Elimine glúten e laticínios por hoje',
+    'Tai Chi suave 20min + hidratação',
+    'Salada de edamame + gengibre ralado',
+    'Exercício: 30min caminhada leve',
+    'Chá bancha após cada refeição',
+    'Meditação 10min + alongamento',
+    'Refeição: peixe grelhado + vegetais',
+    'Avaliação semanal de progresso',
+    'Cozinhe com azeite extra virgem',
+    'Exercício: Rajio Taiso + caminhada',
+    'Sopa de miso + tofu + cogumelos',
+    'Dia de manutenção: keep the habits',
+    'Celebre! Você completou 21 dias 🎊'
+  ];
+  for(let i=1;i<=21;i++){
+    const done=i<=appState.day;
+    const div=document.createElement('div');div.className='plan-day'+(done?' done':'');
+    div.innerHTML=`<div class="day-num">${i}</div><div class="day-info"><h4>${done?'✅ '+tips[i-1]:'Dia '+i+' — desbloqueia amanhã'}</h4><p>${done?'Clique para marcar':''}</p></div>${done?'<button class="btn btn-sm btn-primary" onclick="advanceDay()">Próximo dia →</button>':''}`;
+    el.appendChild(div);
+  }
+}
+function advanceDay(){
+  if(appState.day<21){appState.day++;updateDashboard();renderPlan();showToast(`Dia ${appState.day} liberado! 🌅`)}
+  else showToast('Parabéns! Você completou o plano de 21 dias 🎊');
+}
+
+// ========== FOOD ==========
+function renderFood(){
+  const el=document.getElementById('food-list');el.innerHTML='';
+  if(!appState.food.length){el.innerHTML='<p style="color:var(--gray);text-align:center;padding:20px;">Nenhuma refeição registrada hoje</p>';return}
+  appState.food.forEach((f,i)=>{
+    const div=document.createElement('div');div.className='food-item';
+    div.innerHTML=`<div class="food-main"><div class="food-icon ${f.type}">${MealIcons[f.type]}</div><div><strong>${f.name}</strong><div class="food-meta">${f.qty} • ${MealNames[f.type]}</div></div></div>${f.cal?`<span class="food-cal">${f.cal} kcal</span>`:''}<button class="delete-food" onclick="removeFood(${i})"><i class="fas fa-trash"></i></button>`;
+    el.appendChild(div);
+  });
+  // summary
+  const sum=document.getElementById('food-summary');
+  const totalCal=appState.food.reduce((s,f)=>s+(parseInt(f.cal)||0),0);
+  sum.innerHTML=`<div class="stat-card" style="flex-direction:column;text-align:center;"><h3>${appState.food.length}</h3><p>Refeições</p></div><div class="stat-card" style="flex-direction:column;text-align:center;"><h3>${totalCal}</h3><p>Calorias</p></div><div class="stat-card" style="flex-direction:column;text-align:center;"><h3>${appState.water}</h3><p>Copos água</p></div>`;
+}
+function saveFood(){
+  const type=document.getElementById('food-type').value;
+  const name=document.getElementById('food-name').value.trim();
+  const qty=document.getElementById('food-qty').value.trim();
+  const cal=document.getElementById('food-cal').value;
+  if(!name||!qty){showToast('Preencha alimento e quantidade');return}
+  appState.food.push({type,name,qty,cal});
+  closeFoodModal();renderFood();showToast('Refeição registrada 🍱');
+}
+function removeFood(i){appState.food.splice(i,1);renderFood()}
+function openFoodModal(){document.getElementById('food-modal').style.display='flex'}
+function closeFoodModal(){document.getElementById('food-modal').style.display='none'}
+
+// ========== EXERCISES ==========
+function renderExercises(){
+  const el=document.getElementById('exercise-list');el.innerHTML='';
+  Exercises.forEach((ex,i)=>{
+    const done=appState.exercisesDone.includes(i);
+    const div=document.createElement('div');div.className='ex-card';
+    div.innerHTML=`<div class="ex-header"><h4><i class="fas ${ex.icon}"></i> ${ex.name}</h4><span>${ex.duration}</span></div><div class="ex-body"><p>${ex.desc}</p><div class="ex-meta"><span><i class="fas fa-clock"></i> ${ex.duration}</span><span><i class="fas fa-signal"></i> ${ex.diff}</span></div><button class="btn btn-primary btn-block" onclick="toggleExercise(${i})">${done?'✅ Concluído':'▶ Iniciar'}</button></div>`;
+    el.appendChild(div);
+  });
+}
+function toggleExercise(i){
+  if(appState.exercisesDone.includes(i)){appState.exercisesDone=appState.exercisesDone.filter(x=>x!==i)}
+  else{appState.exercisesDone.push(i);showToast('Exercício concluído! 💪')}
+  renderExercises();checkAchievements();
+}
+
+// ========== PROGRESS ==========
+function renderProgress(){
+  const c1=document.getElementById('chart-inflammation');c1.innerHTML='';
+  const maxI=Math.max(...appState.inflammationHist);
+  appState.inflammationHist.forEach((v,i)=>{
+    const h=(v/maxI)*180;
+    c1.innerHTML+=`<div style="text-align:center;"><div style="height:${h}px;width:30px;background:var(--primary);border-radius:4px 4px 0 0;margin:0 auto;position:relative;"><span style="position:absolute;top:-18px;left:0;width:100%;text-align:center;font-size:.7rem;font-weight:700;">${v}%</span></div><div style="font-size:.7rem;color:var(--gray);margin-top:4px">${weekDays[i]}</div></div>`;
+  });
+  const c2=document.getElementById('chart-pain');c2.innerHTML='';
+  appState.painHist.forEach((v,i)=>{
+    const h=(v/10)*180;
+    c2.innerHTML+=`<div style="text-align:center;"><div style="height:${h}px;width:30px;background:var(--accent);border-radius:4px 4px 0 0;margin:0 auto;position:relative;"><span style="position:absolute;top:-18px;left:0;width:100%;text-align:center;font-size:.7rem;font-weight:700;">${v}</span></div><div style="font-size:.7rem;color:var(--gray);margin-top:4px">${weekDays[i]}</div></div>`;
+  });
+}
+function renderTimeline(){
+  const el=document.getElementById('timeline');el.innerHTML='';
+  const events=[
+    {date:'Início',title:'Jornada iniciada',desc:'Primeiro dia do plano Kenko AI'},
+    {date:'Dia 7',title:'Primeira semana',desc:'Adaptação à dieta e exercícios'},
+    {date:'Dia 14',title:'Metade do caminho',desc:'Redução visível de inflamação'},
+    {date:'Dia 21',title:'Plano completo!',desc:'Avaliação final e novo ciclo'}
+  ];
+  events.forEach(e=>{
+    el.innerHTML+=`<div class="timeline-item"><div class="timeline-date">${e.date}</div><div class="timeline-content"><h5>${e.title}</h5><p>${e.desc}</p></div></div>`;
+  });
+}
+
+// ========== BADGES ==========
+function renderBadges(){
+  const el=document.getElementById('badges-container');el.innerHTML='';
+  Achievements.forEach(a=>{
+    const unlocked=a.id==='a1'||(appState.day>=7&&a.id==='a3')||(appState.day>=10&&a.id==='a4')||(appState.day>=21&&a.id==='a5')||(appState.inflammation<50&&a.id==='a2');
+    el.innerHTML+=`<div class="badge ${unlocked?'':'locked'}"><i class="fas ${a.icon}"></i> ${a.name}</div>`;
+  });
+}
+function checkAchievements(){renderBadges();showToast('Nova conquista desbloqueada 🏆')}
+
+// ========== COMMUNITY ==========
+function renderCommunity(){
+  const el=document.getElementById('community-posts');el.innerHTML='';
+  CommunityPosts.forEach(p=>{
+    el.innerHTML+=`<div class="plan-day"><div class="day-info"><h4>${p.user} <span style="font-weight:400;color:var(--gray);font-size:.8rem">• ${p.date}</span></h4><p>${p.text}</p></div></div>`;
+  });
+}
+function addPost(){
+  const input=document.getElementById('community-input');
+  if(!input.value.trim()){showToast('Escreva algo antes de publicar');return}
+  CommunityPosts.unshift({user:appState.name,date:'Hoje',text:input.value.trim()});
+  input.value='';renderCommunity();showToast('Publicado! ✅');
+}
+
+// ========== CHAT ==========
+let chatOpen=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chat-box').classList.toggle('open',chatOpen);
+}
+const aiResponses={
+  'ola':'Olá! 👋 Como está sua dor hoje?','dor':'Tente chá de gengibre + repouso. Se persistir, consulte seu médico.','inflamação':'Ômega-3 e matcha são seus aliados. Consuma 2x ao dia.','exercicio':'Rajio Taiso de 15min pela manhã faz milagres. Experimente!','comer':'Prefira peixe pequeno, vegetais verde-escuros e evite glúten se sensível.',' sono':'Durma 7-8h. Chá de camomila antes de dormir ajuda.','obrigado':'De nada! Estou aqui sempre. 🍵','default':'Boa pergunta! No Japão, usamos uma abordagem holistic — me conte mais sobre seu sintoma que eu ajudo.'
+};
+function sendChat(){
+  const input=document.getElementById('chat-input');const msg=input.value.trim().toLowerCase();
+  if(!msg)return;
+  addMsg(msg,'user');
+  const keys=Object.keys(aiResponses);
+  let resp=aiResponses['default'];
+  for(const k of keys){if(msg.includes(k)){resp=aiResponses[k];break}}
+  setTimeout(()=>addMsg(resp,'ai'),600);
+  input.value='';
+}
+function addMsg(text,type){
+  const el=document.getElementById('chat-messages');
+  const div=document.createElement('div');div.className=`chat-msg ${type}`;div.textContent=text;el.appendChild(div);
+  el.scrollTop=el.scrollHeight;
+}
+
+// ========== NEWSLETTER ==========
+function subscribeNewsletter(){
+  const email=document.getElementById('newsletter-email').value.trim();
+  if(!email){showToast('Digite seu e-mail');return}
+  showToast('Inscrito! Confirme seu e-mail 📧');
+}
+
+// ========== NAV ==========
+function switchPage(page,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  document.querySelectorAll('.nav-inner button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ========== TOAST ==========
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ========== WATER BUTTON ==========
+document.addEventListener('click',e=>{
+  if(e.target.closest('[data-water]')){
+    appState.water++;document.getElementById('stat-water').textContent=appState.water;
+    showToast('+1 copo de água 💧');
+  }
+});
+
+// close modal on outside click
+document.getElementById('food-modal').addEventListener('click',function(e){if(e.target===this)closeFoodModal()});
+</script>
+</body>
+</html>
