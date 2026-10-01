@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenko AI - O Especialista Digital em Saúde Natural Inspirado no Japão</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #006B5B; /* Verde japonês */
+            --secondary: #D4AF37; /* Dourado */
+            --accent: #8B0000; /* Vermelho escuro */
+            --light: #F5F5F5;
+            --dark: #2F2F2F;
+            --gray: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            padding-top: 150px;
+            padding-bottom: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 50px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Why Japan Section */
+        .why-japan {
+            background: white;
+        }
+        
+        .japan-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        
+        .stat-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .stat-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background: var(--light);
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            padding: 30px;
+            margin: 0 15px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .step h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Features */
+        .features {
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: var(--light);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .author-info h4 {
+            color: var(--primary);
+        }
+        
+        /* Pricing */
+        .pricing {
+            background: white;
+        }
+        
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: var(--light);
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+        
+        .pricing-card.featured::before {
+            content: "Mais Popular";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--dark);
+            margin: 20px 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-features i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        /* FAQ */
+        .faq {
+            background: var(--light);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 200px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, #004d40 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <h1>Kenko AI</h1>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#por-que-japao">Por que o Japão?</a></li>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#planos">Planos</a></li>
+                <li><a href="#perguntas">Perguntas</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Descubra a Sabedoria Japonesa para Combater a Artrite e a Inflamação</h1>
+                    <p>O Kenko AI é o primeiro especialista digital em saúde natural inspirado nas práticas milenares do Japão, validadas pela ciência moderna. Reduza a dor, elimine a inflamação e recupere sua qualidade de vida com um plano personalizado pela IA.</p>
+                    <div class="hero-buttons">
+                        <a href="#planos" class="btn">Comece Agora</a>
+                        <a href="#como-funciona" class="btn btn-secondary">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- Placeholder para imagem -->
+                    <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #006B5B 0%, #004d40 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                        <i class="fas fa-leaf" style="font-size: 5rem; margin-right: 20px;"></i>
+                        Kenko AI
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Japan Section -->
+    <section id="por-que-japao" class="why-japan">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por que o Japão é a Referência Mundial em Saúde Articular?</h2>
+                <p>O Japão não é apenas um país com baixa taxa de artrite - é o laboratório vivo mais estudado do mundo para prevenção e reversão natural de doenças inflamatórias.</p>
+            </div>
+            
+            <div class="japan-stats">
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>0,5%</h3>
+                    <p>Taxa de artrite reumatoide no Japão (vs. 1,2% nos EUA e 0,8% globalmente)</p>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-fish"></i>
+                    <h3>3x</h3>
+                    <p>Mais ômega-3 por porção em peixes pequenos como sardinha e anchovinha</p>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>78,2</h3>
+                    <p>Anos de expectativa de vida saudável articular (lidera o mundo)</p>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>12.000+</h3>
+                    <p>Estudos científicos ligando hábitos japoneses à redução de marcadores inflamatórios</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="como-funciona" class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Como o Kenko AI Funciona</h2>
+                <p>Em apenas 3 passos, nossa IA especialista criará um plano personalizado com base nas sabedorias japonesas validadas pela ciência.</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Diagnóstico Personalizado</h3>
+                    <p>Complete nosso questionário de 15 minutos ou faça upload de fotos das suas refeições. Nossa IA analisa seus hábitos, sintomas e metas para criar um perfil único.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Plano de 21 Dias do Kenko</h3>
+                    <p>Receba um plano diário personalizado que combina dietas anti-inflamatórias inspiradas no Washoku, exercícios suaves como o Rajio Taiso e práticas de mindfulness.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Acompanhamento Contínuo</h3>
+                    <p>Nossa IA Sensei Kenko ajusta seu plano semanalmente com base no seu progresso, sintomas e feedback, garantindo resultados duradouros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="recursos" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recursos Exclusivos do Kenko AI</h2>
+                <p>Tudo o que você precisa para uma vida livre da dor e inflamação, com a sabedoria milenar do Japão no seu bolso.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>IA Sensei Kenko</h3>
+                    <p>Um especialista digital treinado em dados médicos japoneses que personaliza seu plano e responde suas dúvidas 24/7.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Plano Alimentar Washoku</h3>
+                    <p>Receitas e guias de alimentos baseados na dieta tradicional japonesa, rica em ômega-3, polifenóis e fibras.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-running"></i>
+                    <h3>Exercícios Articulares</h3>
+                    <p>Série de movimentos suaves inspirados no Rajio Taiso e no Taichi, projetados para melhorar a flexibilidade sem sobrecarregar as juntas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Tracking de Inflamação</h3>
+                    <p>Acompanhe seus níveis de inflamação through diário de sintomas e receba alertas preditivos de crises.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Kenko Tsūshin</h3>
+                    <p>Newsletter semanal com o melhor da pesquisa japonesa em saúde natural, receitas e histórias de sucesso.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidade Dojo Kenko</h3>
+                    <p>Conecte-se com outros usuários, compartilhe experiências e participe de desafios mensais baseados no calendário sazonal japonês.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="depoimentos" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Depoimentos de Usuários</h2>
+                <p>Milhares de pessoas já recuperaram sua qualidade de vida com o Kenko AI.</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Após 10 anos de dor nas costas e joelhos, o Kenko AI foi o primeiro programa que realmente entendeu minha condição. A abordagem japonesa fez toda a diferença. Hoje eu caminho sem dor!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <h4>Maria Costa</h4>
+                            <p>52 anos, artrite reumatoide</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "O plano de 21 dias foi transformador. A IA sensei me guiou passo a passo com uma sensibilidade que só pode vir do respeito às tradições japonesas. Recomendo de olhos fechados!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JS</div>
+                        <div class="author-info">
+                            <h4>João Silva</h4>
+                            <p>48 anos, osteoartrose</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Como alguém que já testou de tudo, fico impressionado com a precisão do Kenko AI. As recomendações de alimentos e exercícios são baseadas em pesquisas reais do Japão, não em modas."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AL</div>
+                        <div class="author-info">
+                            <h4>Ana Lima</h4>
+                            <p>55 anos, fibromialgia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="planos" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Escolha seu Plano</h2>
+                <p>Planos flexíveis para cada necessidade. Comece gratuitamente e evolua conforme seus resultados.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Grátis</h3>
+                    <div class="price">R$ 0<span>/mês</span></div>
+                    <p>Para experimentar a plataforma</p>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Diagnóstico básico</li>
+                        <li><i class="fas fa-check"></i> Plano de 7 dias limitado</li>
+                        <li><i class="fas fa-check"></i> Acesso a receitas básicas</li>
+                        <li><i class="fas fa-times"></i> IA Sensei Ilimitada</li>
+                        <li><i class="fas fa-times"></i> Newsletter semanal</li>
+                    </ul>
+                    
+                    <a href="#" class="btn btn-secondary">Começar</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>Premium</h3>
+                    <div class="price">R$ 47<span>/mês</span></div>
+                    <p>O mais popular para resultados rápidos</p>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Plano completo de 21 dias</li>
+                        <li><i class="fas fa-check"></i> IA Sensei Ilimitada</li>
+                        <li><i class="fas fa-check"></i> Newsletter Kenko Tsūshin</li>
+                        <li><i class="fas fa-check"></i> Acesso à comunidade Dojo Kenko</li>
+                        <li><i class="fas fa-check"></i> Relatórios de progresso</li>
+                        <li><i class="fas fa-check"></i> Suporte prioritário</li>
+                    </ul>
+                    
+                    <a href="#" class="btn">Experimente Grátis por 7 Dias</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Empresarial</h3>
+                    <div class="price">R$ 97<span>/mês</span></div>
+                    <p>Para empresas e clínicas</p>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Tudo do plano Premium</li>
+                        <li><i class="fas fa-check"></i> Dashboard para profissionais</li>
+                        <li><i class="fas fa-check"></i> Integração com clínicas</li>
+                        <li><i class="fas fa-check"></i> White label disponível</li>
+                        <li><i class="fas fa-check"></i> Treinamento para equipes</li>
+                        <li><i class="fas fa-check"></i> API para integração</li>
+                    </ul>
+                    
+                    <a href="#" class="btn btn-secondary">Contate-nos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="perguntas" class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tire suas dúvidas sobre o Kenko AI e a abordagem japonesa.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>O Kenko AI substitui a consulta médica?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não, o Kenko AI é um complemento e não substitui o acompanhamento médico. Nossa plataforma é voltada para prevenção e manage</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como a IA é treinada com dados japoneses?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nossa IA é treinada com estudos científicos publicados por universidades japonesas como Kyoto, Tóquio e Osaka, além de dados do Ministério da Saúde do Japão sobre dietas e práticas de saúde.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Funciona para qualquer tipo de artrite?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, a abordagem anti-inflamatória do Kenko AI é eficaz para os 100 tipos de artrite, incluindo osteoartrose, artrite reumatoide, gota e fibromialgia. A IA personaliza o plano conforme seu diagnóstico específico.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quanto tempo leva para ver resultados?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Muitos usuários relatam melhora nos primeiros 7 dias, especialmente na rigidez matinal. O plano completo de 21 dias é projetado para resultados duradouros, mas cada corpo reage diferente.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Preciso mudar completamente minha alimentação?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não pedimos mudanças drásticas. A IA sensei sugere ajustes progressivos baseados na cultura alimentar japonesa, adaptados ao seu paladar e hábitos atuais. O foco é em adicionar alimentos anti-inflamatórios, não em eliminar grupos alimentícios inteiros.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para Recuperar sua Vida?</h2>
+            <p>Junte-se a milhares de pessoas que já transformaram sua saúde com a sabedoria japonesa. Comece agora e receba acesso antecipado à nossa IA Sensei.</p>
+            <a href="#planos" class="btn">Comece Agora</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Kenko AI</h3>
+                    <p>O especialista digital em saúde natural inspirado nas tradições milenares do Japão, validadas pela ciência moderna.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Produtos</h3>
+                    <ul>
+                        <li><a href="#como-funciona">Como Funciona</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#planos">Planos</a></li>
+                        <li><a href="#">Kenko Tsūshin</a></li>
+                        <li><a href="#">Dojo Kenko</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Empresa</h3>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Equipe</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Privacidade</a></li>
+                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#">Acessibilidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Kenko AI. Todos os direitos reservados. Desenvolvido com sabedoria japonesa e tecnologia moderna.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+                
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(faqItem => {
+                    if (faqItem !== item) {
+                        faqItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-menu').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
