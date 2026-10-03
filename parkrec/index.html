@@ -1,225 +1,205 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Viva Parkinson 360: 12 hábitos, uma rotina diária e o protocolo em saúde no seu celular. Menos tempo pesquisando, mais vida vivendo.">
+<meta name="description" content="Viva Parkinson 360: 12 hábitos, una rutina diaria y el protocolo en salud en tu celular. Menos tiempo buscando, más vida viviendo.">
 <meta name="theme-color" content="#173e45">
-<title>Viva Parkinson 360 — A rotina diária que faltava para você viver bem</title>
+<title>Viva Parkinson 360 — La rutina diaria que te faltaba para vivir bien</title>
 <style>
 /* ===== CORES & VARIÁVEIS ===== */
 :root {
-  --ink: #173e45;          /* Verde escuro (texto principal) */
-  --muted: #40585b;        /* Verde médio suave (parágrafos) */
-  --bg: #faf8f3;           /* Fundo bege/off-white */
-  --green: #32675b;        /* Verde da marca */
-  --green-light: #e4f1cf;  /* Verde claro de destaque */
-  --orange: #d67d47;       /* Laranja queimado (CTAs secundários/destaques) */
-  --orange-light: #fff1e4; /* Fundo para seções de destaque */
-  --line: #dce4dd;         /* Linhas divisórias */
+  --ink: #173e45;
+  --muted: #40585b;
+  --bg: #faf8f3;
+  --green: #32675b;
+  --green-light: #e4f1cf;
+  --orange: #d67d47;
+  --orange-light: #fff1e4;
+  --line: #dce4dd;
   --white: #ffffff;
-  --shadow-sm: 0 4px 12px rgba(23, 62, 69, 0.06);
-  --shadow-md: 0 12px 32px rgba(23, 62, 69, 0.10);
-  --shadow-lg: 0 20px 50px rgba(23, 62, 69, 0.14);
+  --shadow-sm: 0 4px 12px rgba(23,62,69,0.06);
+  --shadow-md: 0 12px 32px rgba(23,62,69,0.10);
+  --shadow-lg: 0 20px 50px rgba(23,62,69,0.14);
   --radius: 16px;
   --font-main: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 /* ===== RESET BÁSICO ===== */
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-main); line-height: 1.6; }
-a { color: inherit; text-decoration: none; }
-button, input { font: inherit; }
-a, button, summary { touch-action: manipulation; }
-a:focus-visible, button:focus-visible { outline: 3px solid #bd651e; outline-offset: 5px; }
-ul { list-style: none; padding: 0; margin: 0; }
-img { max-width: 100%; display: block; }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-main);line-height:1.6}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+a,button,summary{touch-action:manipulation}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #bd651e;outline-offset:5px}
+ul{margin:0;padding:0;list-style:none}
+img{max-width:100%;display:block}
 
 /* ===== UTILITÁRIOS ===== */
-.wrap { width: min(1120px, 100% - 40px); margin: auto; }
-.skip { position: absolute; top: -100px; }
-.skip:focus { top: 0; background: white; z-index: 100; padding: 10px; }
-section { padding: 70px 0; }
-.text-center { text-align: center; }
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+.skip{position:absolute;top:-100px}
+.skip:focus{top:0;background:white;z-index:100;padding:10px}
+section{padding:70px 0}
+.text-center{text-align:center}
 
 /* ===== TIPOGRAFIA ===== */
-.eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; color: var(--green); }
-.dark .eyebrow { color: var(--orange); }
-h1, h2, h3, h4 { line-height: 1.12; letter-spacing: -0.035em; margin: 0 0 16px; }
-h1 { font-size: clamp(38px, 6vw, 62px); font-weight: 800; color: var(--ink); }
-h2 { font-size: clamp(28px, 4.5vw, 40px); font-weight: 800; color: var(--ink); }
-h3 { font-size: 22px; font-weight: 700; color: var(--ink); }
-p { margin: 0 0 16px; color: var(--muted); font-size: 17px; }
-.lead { font-size: clamp(17px, 2.5vw, 21px); color: var(--muted); font-weight: 500; margin-bottom: 24px; }
-.fine { font-size: 13px; color: var(--muted); opacity: 0.9; }
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:var(--green);margin-bottom:10px}
+h1,h2,h3,h4{line-height:1.12;letter-spacing:-.035em;margin:0 0 16px;font-weight:800}
+h1{font-size:clamp(38px,6vw,62px);color:var(--ink)}
+h2{font-size:clamp(28px,4.5vw,40px);color:var(--ink)}
+h3{font-size:22px;color:var(--ink)}
+p{margin:0 0 16px;color:var(--muted);font-size:17px}
+.lead{font-size:clamp(17px,2.5vw,21px);color:var(--muted);font-weight:500;margin-bottom:24px}
+.fine{font-size:13px;color:var(--muted);opacity:0.85;margin-top:12px}
 
 /* ===== BOTÕES ===== */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--green); color: white; padding: 16px 28px; border-radius: 12px; text-decoration: none; border: 0; font-weight: 700; font-size: 17px; cursor: pointer; transition: all 0.2s ease; box-shadow: var(--shadow-sm); white-space: nowrap; }
-.btn:hover { background: #234f45; transform: translateY(-1px); box-shadow: var(--shadow-md); }
-.btn:active { transform: translateY(0); }
-.btn.secondary { background: transparent; color: var(--ink); border: 1px solid var(--line); }
-.btn.secondary:hover { border-color: var(--green); background: var(--green-light); }
-.btn.orange { background: var(--orange); }
-.btn.orange:hover { background: #b86535; }
-.btn.smaller { font-size: 15px; padding: 12px 22px; }
-.btn.full { width: 100%; }
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--green);color:white;padding:16px 28px;border-radius:12px;border:0;font-weight:700;font-size:17px;cursor:pointer;transition:all .2s ease;box-shadow:var(--shadow-sm);white-space:nowrap}
+.btn:hover{background:#234f45;transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn:active{transform:translateY(0)}
+.btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.secondary:hover{border-color:var(--green);background:var(--green-light)}
+.btn.orange{background:var(--orange)}
+.btn.orange:hover{background:#b86535}
+.btn.smaller{font-size:15px;padding:12px 22px}
+.btn.full{width:100%}
 
 /* ===== HEADER ===== */
-header { background: rgba(250, 248, 243, 0.92); position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
-nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 76px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; text-decoration: none; }
-.mark { display: grid; place-items: center; width: 40px; height: 40px; background: var(--green); color: var(--green-light); border-radius: 50%; font-size: 22px; }
-.brand small { display: block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; margin-top: 4px; opacity: 0.85; }
-.links { display: flex; align-items: center; gap: 24px; }
-.links a { font-size: 15px; font-weight: 600; color: var(--ink); }
-.links a:hover { color: var(--green); }
-.links .btn.smaller { padding: 10px 18px; }
+header{background:rgba(250,248,243,.92);position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+.mark{display:grid;place-items:center;width:40px;height:40px;background:var(--green);color:var(--green-light);border-radius:50%;font-size:22px}
+.brand small{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;margin-top:4px;opacity:.85}
+.links{display:flex;align-items:center;gap:24px}
+.links a{font-size:15px;font-weight:600;color:var(--ink)}
+.links a:hover{color:var(--green)}
+.links .btn.smaller{padding:10px 18px}
 
 /* ===== HERO ===== */
-.hero { display: grid; grid-template-columns: 1.15fr 1fr; gap: 60px; align-items: center; padding: 80px 0 60px; }
-.pill { display: inline-block; background: var(--green-light); border: 1px solid #ccdcb7; padding: 6px 14px; border-radius: 30px; font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 18px; }
-.actions { display: flex; gap: 14px; flex-wrap: wrap; margin: 30px 0 16px; }
-.trust-bar { display: flex; align-items: center; gap: 16px; font-size: 13px; font-weight: 600; color: var(--muted); flex-wrap: wrap; }
-.trust-bar span { display: flex; align-items: center; gap: 6px; }
-.trust-bar span:before { content: ""; width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
-.fine-note { margin-top: 12px; font-size: 13px; color: var(--muted); }
-.disclaimer { font-size: 12px; color: var(--muted); opacity: 0.85; margin-top: 8px; }
+.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:center;padding:80px 0 60px}
+.pill{display:inline-block;background:var(--green-light);border:1px solid #ccdcb7;padding:6px 14px;border-radius:30px;font-size:13px;font-weight:700;color:var(--green);margin-bottom:18px}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin:30px 0 16px}
+.trust-bar{display:flex;align-items:center;gap:16px;font-size:13px;font-weight:600;color:var(--muted);flex-wrap:wrap}
+.trust-bar span{display:flex;align-items:center;gap:6px}
+.trust-bar span:before{content:"";width:8px;height:8px;background:var(--green);border-radius:50%}
 
-/* ===== VISUAL ===== */
-.visual { background: var(--green-light); border-radius: 140px 140px 30px 30px; position: relative; padding: 30px; min-height: 560px; display: flex; align-items: center; justify-content: center; }
-.visual svg { width: 100%; height: auto; max-height: 500px; }
-.floating { position: absolute; background: white; padding: 16px 22px; border-radius: 16px; box-shadow: var(--shadow-md); font-size: 14px; bottom: 30px; left: 25px; right: 25px; }
-.floating strong { display: block; font-size: 16px; color: var(--ink); margin-bottom: 4px; }
+/* Visualización de la marca */
+.visual{background:var(--green-light);border-radius:140px 140px 30px 30px;position:relative;padding:30px;min-height:560px;display:flex;align-items:center;justify-content:center}
+.visual svg{width:100%;height:auto;max-height:500px}
+.floating{position:absolute;background:white;padding:16px 22px;border-radius:16px;box-shadow:var(--shadow-md);font-size:14px;bottom:30px;left:25px;right:25px}
+.floating strong{display:block;font-size:16px;color:var(--ink);margin-bottom:4px}
 
 /* ===== STRIP ===== */
-.strip { background: white; border-block: 1px solid var(--line); }
-.strip .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 26px 0; text-align: center; }
-.strip strong { display: block; font-size: 19px; color: var(--ink); }
-.strip p { font-size: 13px; margin: 0; }
+.strip{background:white;border-block:1px solid var(--line)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:26px 0;text-align:center}
+.strip strong{display:block;font-size:19px;color:var(--ink)}
+.strip p{font-size:13px;margin:0}
 
-/* ===== GRID & CARDS ===== */
-section { padding: 80px 0; }
-.section-top { max-width: 660px; margin-bottom: 40px; }
-.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.card { background: white; border: 1px solid var(--line); padding: 26px; border-radius: var(--radius); transition: all 0.25s ease; position: relative; overflow: hidden; }
-.card:hover { border-color: var(--green); transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.num { font-size: 12px; display: inline-block; border-radius: 50%; padding: 7px 11px; background: var(--green-light); font-weight: 800; color: var(--green); margin-bottom: 12px; }
-.card h3 { font-size: 18px; margin-bottom: 10px; }
-.card p { font-size: 15px; }
-.micro-action { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 13px; color: var(--orange); font-weight: 600; }
-.micro-action span { color: var(--orange); }
+/* ===== CARDS E GRIDS ===== */
+.section-top{max-width:660px;margin:0 auto 40px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:white;border:1px solid var(--line);padding:26px;border-radius:var(--radius);transition:all .25s ease;position:relative;overflow:hidden}
+.card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.num{font-size:12px;display:inline-block;border-radius:50%;padding:7px 11px;background:var(--green-light);font-weight:800;color:var(--green);margin-bottom:12px}
+.card h3{font-size:18px;margin-bottom:10px}
+.card p{font-size:15px}
+.micro-action{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-size:13px;color:var(--orange);font-weight:600}
+.micro-action span{color:var(--orange)}
 
-/* ===== DARK SECTION ===== */
-.dark { background: var(--ink); color: white; }
-.dark p { color: #d3e1df; }
-.dark .eyebrow { color: var(--orange); }
-.dark .card { background: #234a50; border-color: #3a5d61; }
-.dark .num { background: var(--orange); color: var(--ink); }
-.dark h2, .dark h3, .dark strong, .dark li { color: white; }
+/* ===== SEÇÃO ESCURA ===== */
+.dark{background:var(--ink);color:white}
+.dark p{color:#d3e1df}
+.dark .eyebrow{color:var(--orange)}
+.dark .card{background:#234a50;border-color:#3a5d61}
+.dark .num{background:var(--orange);color:var(--ink)}
+.dark h2,.dark h3,.dark strong,.dark li{color:white}
 
 /* ===== DEMO ===== */
-.demo { background: white; border: 1px solid var(--line); border-radius: 28px; padding: 32px; box-shadow: var(--shadow-lg); }
-.demohead { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 14px; }
-.progress { height: 10px; background: #e6ece6; border-radius: 8px; overflow: hidden; margin: 22px 0; }
-.progress span { display: block; height: 100%; width: 0%; background: var(--green); transition: width 0.4s ease; }
-.task { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
-.task:last-child { border-bottom: 0; }
-.task input { width: 20px; height: 20px; accent-color: var(--green); margin-top: 3px; }
-.task strong { display: block; line-height: 1.4; color: var(--ink); }
-.task small { color: var(--muted); font-size: 14px; }
-.note { border-left: 4px solid var(--orange); padding-left: 18px; font-size: 14px; color: var(--muted); margin: 24px 0; }
-
-/* ===== CALLOUT ===== */
-.callout { background: var(--green-light); padding: 20px; border-radius: 14px; font-size: 14px; color: var(--green); margin-top: 24px; font-weight: 600; }
+.demo{background:white;border:1px solid var(--line);border-radius:28px;padding:32px;box-shadow:var(--shadow-lg)}
+.demohead{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}
+.progress{height:10px;background:#e6ece6;border-radius:8px;overflow:hidden;margin:22px 0}
+.progress span{display:block;height:100%;width:0;background:var(--green);transition:width .4s ease}
+.task{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.task:last-child{border-bottom:0}
+.task input{width:20px;height:20px;accent-color:var(--green);margin-top:3px}
+.task strong{display:block;line-height:1.4;color:var(--ink)}
+.task small{color:var(--muted);font-size:14px}
+.note{border-left:4px solid var(--orange);padding-left:18px;font-size:14px;color:var(--muted);margin:24px 0}
 
 /* ===== LISTAS ===== */
-.list { list-style: none; padding: 0; }
-.list li { padding: 14px 0; border-bottom: 1px solid var(--line); display: flex; gap: 14px; align-items: flex-start; }
-.list li:before { content: "✓"; color: var(--green); font-weight: 900; margin-top: 2px; flex-shrink: 0; }
-.list li:last-child { border-bottom: 0; }
+.list{list-style:none;padding:0}
+.list li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:flex-start}
+.list li:last-child{border-bottom:0}
+.list li:before{content:"✓";color:var(--green);font-weight:900;margin-top:2px;flex-shrink:0}
 
 /* ===== SOURCE ===== */
-.source { display: inline-block; margin-top: 16px; color: var(--green); font-size: 14px; font-weight: 650; text-decoration: underline; text-underline-offset: 4px; }
+.source{display:inline-block;margin-top:16px;color:var(--green);font-size:14px;font-weight:650;text-decoration:underline;text-underline-offset:4px}
 
-/* ===== NEWSLETTER PREVIEW ===== */
-.newsletter { background: #edf1e7; border-radius: 26px; padding: 40px; }
-.paper { background: white; border: 1px solid var(--line); padding: 32px; border-radius: 18px; }
-.paper hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
-.source { color: var(--green); font-size: 14px; text-decoration: underline; text-underline-offset: 4px; font-weight: 650; }
+/* ===== PRÉVIA DE BOLETIM ===== */
+.newsletter{background:#edf1e7;border-radius:26px;padding:40px}
+.paper{background:white;border:1px solid var(--line);padding:32px;border-radius:18px}
+.paper hr{border:0;border-top:1px solid var(--line);margin:22px 0}
+.source{color:var(--green);font-size:14px;text-decoration:underline;text-underline-offset:4px;font-weight:650}
 
-/* ===== PRICE BOX ===== */
-.pricebox { background: white; border: 2px solid var(--green); padding: 50px; border-radius: 30px; max-width: 700px; margin: 40px auto 20px; box-shadow: var(--shadow-lg); position: relative; }
-.price { font-size: clamp(56px, 9vw, 80px); font-weight: 900; letter-spacing: -3px; line-height: 1.1; color: var(--ink); }
-.price small { display: block; font-size: 19px; letter-spacing: 0; font-weight: 500; color: var(--muted); margin-top: -8px; }
-.strike { text-decoration: line-through; color: var(--muted); font-size: 20px; margin-left: 10px; }
-.price-note { margin-bottom: 10px; font-weight: 600; color: var(--green); }
-.guarantee { background: var(--orange-light); border: 1px solid #efd3b8; padding: 20px; border-radius: 16px; margin: 30px 0; }
-.guarantee strong { color: var(--orange); display: block; margin-bottom: 4px; }
-.plan-switch { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 28px; }
-.plan-switch span { font-size: 15px; font-weight: 600; }
-.switcher { position: relative; display: inline-flex; background: var(--line); padding: 4px; border-radius: 30px; cursor: pointer; }
-.switcher div { padding: 8px 20px; border-radius: 26px; font-size: 14px; font-weight: 700; transition: all 0.25s ease; }
-.switcher div.active { background: var(--green); color: white; }
-.plan-badge { position: absolute; top: -14px; right: 50%; transform: translateX(10%); background: var(--orange); color: var(--ink); padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 800; box-shadow: var(--shadow-sm); }
+/* ===== CAIXA DE PREÇO ===== */
+.pricebox{background:white;border:2px solid var(--green);padding:50px;border-radius:30px;max-width:700px;margin:40px auto 20px;box-shadow:var(--shadow-lg);position:relative}
+.price{font-size:clamp(56px,9vw,80px);font-weight:900;letter-spacing:-3px;line-height:1.1;color:var(--ink)}
+.price small{display:block;font-size:19px;letter-spacing:0;font-weight:500;color:var(--muted);margin-top:-8px}
+.strike{text-decoration:line-through;color:var(--muted);font-size:20px;margin-left:10px}
+.price-note{margin-bottom:10px;font-weight:600;color:var(--green)}
+.guarantee{background:var(--orange-light);border:1px solid #efd3b8;padding:20px;border-radius:16px;margin:30px 0}
+.guarantee strong{color:var(--orange);display:block;margin-bottom:4px}
+.plan-switch{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:28px}
+.switcher{position:relative;display:inline-flex;background:var(--line);padding:4px;border-radius:30px;cursor:pointer}
+.switcher div{padding:8px 20px;border-radius:26px;font-size:14px;font-weight:700;transition:all .25s ease}
+.switcher div.active{background:var(--green);color:white}
+.plan-badge{position:absolute;top:-14px;right:50%;transform:translateX(10%);background:var(--orange);color:var(--ink);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:800;box-shadow:var(--shadow-sm)}
 
 /* ===== FAQ ===== */
-.faq { max-width: 800px; margin: auto; }
-details { border-bottom: 1px solid var(--line); padding: 20px 0; }
-summary { font-weight: 800; cursor: pointer; font-size: 17px; color: var(--ink); list-style: none; position: relative; padding-right: 30px; }
-summary::-webkit-details-marker { display: none; }
-summary:after { content: "+"; position: absolute; right: 0; font-size: 22px; color: var(--green); }
-details[open] summary:after { content: "−"; }
-details p { margin: 14px 0 0; color: var(--muted); }
+.faq{max-width:800px;margin:auto}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{font-weight:800;cursor:pointer;font-size:17px;color:var(--ink);list-style:none;position:relative;padding-right:30px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";position:absolute;right:0;font-size:22px;color:var(--green)}
+details[open] summary:after{content:"−";}
 
 /* ===== FOOTER ===== */
-.footer { background: white; padding: 50px 0; border-top: 1px solid var(--line); font-size: 14px; }
-.footer .wrap { display: flex; justify-content: space-between; gap: 40px; }
-.footer p { font-size: 14px; margin-bottom: 10px; }
-.footer .brand { margin-bottom: 16px; }
+.footer{background:white;padding:50px 0;border-top:1px solid var(--line);font-size:14px}
+.footer .wrap{display:flex;justify-content:space-between;gap:40px}
+.footer p{font-size:14px;margin-bottom:10px}
 
 /* ===== RESPONSIVO ===== */
-@media (max-width: 800px) {
-  .hero, .two { grid-template-columns: 1fr; gap: 40px; }
-  .hero { padding: 50px 0; }
-  .hero .lead { font-size: 17px; }
-  .visual { min-height: 320px; max-width: 420px; width: 100%; margin: 0 auto; padding: 20px; }
-  .visual svg { max-height: 280px; }
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .strip .wrap { grid-template-columns: 1fr; gap: 16px; padding: 20px 0; border-left: 0; border-right: 0; }
-  .strip strong { font-size: 16px; }
-  .strip p { font-size: 13px; }
-  .links a:not(.btn) { display: none; }
-  section { padding: 50px 0; }
-  .footer .wrap { flex-direction: column; gap: 30px; }
-  .pricebox { padding: 36px 26px; }
-  .plan-badge { display: none; }
-  .trust-bar { justify-content: center; }
+@media (max-width:800px){
+.hero, .two{grid-template-columns:1fr;gap:40px}
+.hero{padding:50px 0}
+.hero .lead{font-size:17px}
+.visual{min-height:320px;max-width:420px;width:100%;margin:auto;padding:20px}
+.visual svg{max-height:280px}
+.grid{grid-template-columns:repeat(2,1fr)}
+.strip .wrap{grid-template-columns:1fr;gap:16px;padding:20px 0}
+.links a:not(.btn){display:none}
+section{padding:50px 0}
+.footer .wrap{flex-direction:column;gap:30px}
+.pricebox{padding:36px 26px}
+.trust-bar{justify-content:center}
 }
-@media (max-width: 480px) {
-  .grid { grid-template-columns: 1fr; }
-  .wrap { width: calc(100% - 32px); }
-  .brand { font-size: 16px; }
-  .price { font-size: 42px; }
-  .price small { font-size: 15px; }
-  .actions { flex-direction: column; }
-  .btn { width: 100%; }
-  .strip .wrap { grid-template-columns: 1fr; }
-  .links .btn { font-size: 13px; padding: 11px 16px; }
-  .visual { min-height: 280px; padding: 16px; }
-  .floating { bottom: 14px; left: 14px; right: 14px; padding: 14px 18px; font-size: 13px; }
-  .floating strong { font-size: 15px; }
-  .list li { flex-direction: column; gap: 8px; }
-  .list li:before { margin-top: -2px; }
+@media (max-width:480px){
+.grid{grid-template-columns:1fr}
+.wrap{width:calc(100% - 32px)}
+.brand{font-size:16px}
+.price{font-size:42px}
+.price small{font-size:15px}
+.actions{flex-direction:column}
+.btn{width:100%}
+.strip .wrap{grid-template-columns:1fr}
 }
 
-/* ===== STICKY CTA MOBILE ===== */
-@media (max-width: 800px) {
-  .sticky-mobile { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 14px 20px; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 40; display: flex; justify-content: center; gap: 12px; border-top: 1px solid var(--line); }
-  .sticky-mobile .btn { padding: 13px 20px; font-size: 15px; white-space: nowrap; }
-}
+/* ===== CTA FIXO NO MOBILE ===== */
+.sticky-mobile{position:fixed;bottom:0;left:0;right:0;background:white;padding:14px 20px;box-shadow:0 -4px 20px rgba(0,0,0,.08);z-index:40;display:flex;justify-content:center;gap:12px;border-top:1px solid var(--line)}
+.sticky-mobile .btn{padding:13px 20px;font-size:15px}
 </style>
 </head>
+
 <body>
 
 <a class="skip" href="#contenido">Ir al contenido</a>
@@ -230,13 +210,13 @@ details p { margin: 14px 0 0; color: var(--muted); }
     <a class="brand" href="#">
       <span class="mark" aria-hidden="true">V</span>
       <span>Viva Parkinson 360
-        <small>UM PASSO DE CADA VEZ</small>
+        <small>UN PASO A LA VEZ</small>
       </span>
     </a>
     <div class="links">
-      <a href="#funciona">Como funciona</a>
-      <a href="#o-que-esta-incluso">O que está incluso</a>
-      <a href="#plan" class="btn smaller">Começar por US$ 9,99</a>
+      <a href="#funciona">Cómo funciona</a>
+      <a href="#lo-que-incluye">Lo que incluye</a>
+      <a href="#" class="btn smaller">Empezar por $9.99</a>
     </div>
   </nav>
 </header>
@@ -246,25 +226,25 @@ details p { margin: 14px 0 0; color: var(--muted); }
   <!-- ===== HERO ===== -->
   <div class="wrap hero">
     <div>
-      <span class="pill">Para você. Para quem te acompanha.</span>
-      <h1>Recupere 5 horas da sua semana que se perdem buscando informação sobre Parkinson.</h1>
-      <p class="lead">Uma rotina diária organizada, explicação do que cada médico diz em português claro e um guia prático para a sua próxima consulta — tudo num só lugar.</p>
+      <span class="pill">Para ti. Para quien te acompaña.</span>
+      <h1>Recupera 5 horas de tu semana que se pierden buscando información sobre Parkinson.</h1>
+      <p class="lead">Una rutina diaria organizada, explicación de lo que dice cada médico en español claro y un plan para tu próxima consulta: todo en un mismo lugar.</p>
       <div class="actions">
-        <a id="cta-hero" class="btn" href="#">Começar minha semana por R$ 1,90 →</a>
-        <a href="#funciona" class="btn secondary">Ver como funciona</a>
+        <a id="cta-hero" class="btn" href="#">Empezar hoy por $9.99 →</a>
+        <a href="#funciona" class="btn secondary">Ver cómo funciona</a>
       </div>
       <div class="trust-bar">
-        <span>13 receitas</span>
+        <span>13 recetas</span>
         <span>12 hábitos</span>
-        <span>Conteúdo em português</span>
-        <span>Cancela quando quiser</span>
+        <span>100% en español</span>
+        <span>Cancela cuando quieras</span>
       </div>
-      <p class="fine-note">Boletim semanal + revisão mensal incluso desde o primeiro dia.</p>
-      <p class="disclaimer">Conteúdo educativo. Não substitui a orientação do seu médico ou neurologista.</p>
+      <p class="fine">Boletín semanal + revisión mensual incluso desde el primer día.</p>
+      <p class="fine-note">Contenido educativo. No sustituye la atención médica.</p>
     </div>
     <div class="visual">
-      <!-- SVG: Ilustração abstrata de apoio (homem, mulher, cuidador) -->
-      <svg viewBox="0 0 500 460" role="img" aria-label="Ilustração de apoio entre pessoas">
+      <!-- SVG: Ilustración de apoyo abstracta -->
+      <svg viewBox="0 0 500 460" role="img" aria-label="Ilustración de una persona con Parkinson, cuidador y apoyo">
         <circle cx="260" cy="180" r="145" fill="#d4e2bc"/>
         <path d="M20 390 Q250 280 480 390V460H20Z" fill="#bed1af"/>
         <g>
@@ -295,8 +275,8 @@ details p { margin: 14px 0 0; color: var(--muted); }
         </g>
       </svg>
       <div class="floating">
-        <strong>Seu bem-estar é um trabalho em equipe.</strong>
-        Pessoas com Parkinson, família e cuidadores juntos no mesmo planejamento.
+        <strong>Tu bienestar también es un trabajo en equipo.</strong>
+        Personas con Parkinson, familia y cuidadores juntos en el mismo plan.
       </div>
     </div>
   </div>
@@ -304,311 +284,311 @@ details p { margin: 14px 0 0; color: var(--muted); }
   <!-- ===== STRIP ===== -->
   <div class="strip">
     <div class="wrap">
-      <div><strong>12 hábitos</strong><p>Rotina simples e adaptável</p></div>
-      <div><strong>13 receitas</strong><p>Prontas em menos de 15 min</p></div>
-      <div><strong>US$ 9,99 /mês</strong><p>Cancela quando quiser</p></div>
-      <div><strong>100% em português</strong><p>Explicado sem "mediquês"</p></div>
+      <div><strong>12 hábitos</strong><p>Práctica organizada y adaptable</p></div>
+      <div><strong>13 recetas</strong><p>Listas, listas y listas de supermercado</p></div>
+      <div><strong>$9.99/mes</strong><p>Cancela cuando quieras</p></div>
+      <div><strong>100% en español</strong><p>Explicado sin "mediquês"</p></div>
     </div>
   </div>
 
-  <!-- ===== O QUE ESTÁ INCLUSO (12 HÁBITOS COM MICROAÇÕES) ===== -->
-  <section id="o-que-esta-incluso">
+  <!-- ===== LO QUE INCLUYE (12 HÁBITOS CON MICROACCIONES) ===== -->
+  <section id="lo-que-incluye">
     <div class="wrap">
       <div class="section-top">
-        <span class="eyebrow">O que você recebe hoje</span>
-        <h2>Menos caos no seu dia. Mais clareza para cada decisão.</h2>
-        <p>Nenhum diagnóstico define toda a sua vida. Reunimos em 12 hábitos o que você precisa organizar todos os dias, com ações que cabem em 5 minutos.</p>
+        <span class="eyebrow">Lo que recibes hoy</span>
+        <h2>Menos caos en tu día a día. Más claridad en cada decisión.</h2>
+        <p>Ningún diagnóstico define toda tu vida. Reunimos en 12 hábitos lo que necesitas organizar todos los días, con acciones que caben en 5 minutos.</p>
       </div>
       <div class="grid">
         <article class="card">
-          <span class="num">MOVIMENTO</span>
-          <h3>Rotina matinal de 5 minutos</h3>
-          <p>Ativa o corpo sem sobrecarregar. O suficiente para soltar a rigidez do sono.</p>
-          <div class="micro-action">Hoje: <span>Ande ao ritmo de um metrônomo 10% mais rápido por 2 minutos.</span></div>
+          <span class="num">MOVIMIENTO</span>
+          <h3>Práctica matinal de 5 minutos</h3>
+          <p>Activa el cuerpo sin sobrecarga. Es suficiente para liberar la rigidez del sueño.</p>
+          <div class="micro-action">Hoy: <span>Camina al ritmo de un metrónomo 10% más rápido por 2 minutos.</span></div>
         </article>
         <article class="card">
-          <span class="num">FORÇA</span>
-          <h3>Exercícios com seu fisioterapeuta</h3>
-          <p>Pasos claros para fortalecer e reduzir o risco de quedas em casa.</p>
-          <div class="micro-action">Hoje: <span>Levante da cadeira 3 vezes sem usar os braços.</span></div>
+          <span class="num">FUERZA</span>
+          <h3>Ejercicios con tu fisioterapeuta</h3>
+          <p>Pasos claros para fortalecer y reducir el riesgo de caídas en casa.</p>
+          <div class="micro-action">Hoy: <span>Levántate de la silla 3 veces sin usar los brazos.</span></div>
         </article>
         <article class="card">
-          <span class="num">EQUILÍBRIO</span>
-          <h3>Segurança em primeiro lugar</h3>
-          <p>Apoio para quem está em casa e na rua, sem medo do próximo passo.</p>
-          <div class="micro-action">Hoje: <span>Em pé perto de um móvel firme, fique 10s sobre uma perna.</span></div>
+          <span class="num">EQUILIBRIO</span>
+          <h3>Seguridad en primer lugar</h3>
+          <p>Apoio para quien está en casa y en la calle, sin miedo del siguiente paso.</p>
+          <div class="micro-action">Hoy: <span>De pie cerca de un mueble firme, queda 10 segundos sobre una pierna.</span></div>
         </article>
         <article class="card">
-          <span class="num">ALIMENTAÇÃO</span>
-          <h3>Sem "proibidos" genéricos</h3>
-          <p>Como organizar a dieta sem virar escravo de regras que não se aplicam a você.</p>
-          <div class="micro-action">Hoje: <span>Substitua um lanche processado por uma fruta + castanhas.</span></div>
+          <span class="num">ALIMENTACIÓN</span>
+          <h3>Sin alimentos "prohibidos" genéricos</h3>
+          <p>Cómo organizar la dieta sin volverte esclavo de reglas que no se aplican a ti.</p>
+          <div class="micro-action">Hoy: <span>Cambia un bocadillo procesado por una fruta más una castaña.</span></div>
         </article>
         <article class="card">
           <span class="num">DOPAMINA</span>
-          <h3>Os 10 superalimentos</h3>
-          <p>O que a ciência aponta para apoiar a química do cérebro, com receitas práticas.</p>
-          <div class="micro-action">Hoje: <span>Adicione chia ou linhaça no iogurte da manhã.</span></div>
+          <h3>Los 10 superalimentos</h3>
+          <p>Lo que la ciencia apunta para apoyar la química del cerebro, con recetas prácticas.</p>
+          <div class="micro-action">Hoy: <span>Añade chía o lino en el yogur de la mañana.</span></div>
         </article>
         <article class="card">
-          <span class="num">CONSUMO PROTEICO</span>
-          <h3>Timing que protege a medicação</h3>
-          <p>Quando separar proteínas da Levodopa para o remédio funcionar melhor.</p>
-          <div class="micro-action">Hoje: <span>Leve sua pergunta sobre timing para a próxima consulta.</span></div>
+          <span class="num">PROTEÍNA</span>
+          <h3>Timing que protege tu medicación</h3>
+          <p>Cuando separar proteínas de la Levodopa hace que el remedio funcione mejor.</p>
+          <div class="micro-action">Hoy: <span>Lleva tu pregunta sobre timing para la próxima consulta.</span></div>
         </article>
         <article class="card">
-          <span class="num">SUSO</span>
-          <h3>Routine para descansar de verdade</h3>
-          <p>Como fechar o dia com mais tranquilidade e acordar menos cansado.</p>
-          <div class="micro-action">Hoje: <span>Desligue telas 30 min antes de dormir.</span></div>
+          <span class="num">SUEÑO</span>
+          <h3>Routine para descansar de verdad</h3>
+          <p>Cómo cerrar el día con más tranquilidad y despertarte menos cansado.</p>
+          <div class="micro-action">Hoy: <span>Apaga pantallas 30 minutos antes de dormir.</span></div>
         </article>
         <article class="card">
-          <span class="num">BEM-ESTAR EMOCIONAL</span>
-          <h3>Ânimo sem pressão</h3>
-          <p>Metas pequenas que geram movimento sem culpa quando o dia não rende.</p>
-          <div class="micro-action">Hoje: <span>Anote 1 coisa boa, mesmo pequena, de hoje.</span></div>
+          <span class="num">BIEN-ESTAR EMOCIONAL</span>
+          <h3>Ánimo sin presión</h3>
+          <p>Metas pequeñas que generan movimiento sin culpa cuando el día no rinde.</p>
+          <div class="micro-action">Hoy: <span>Anota una cosa buena, aunque sea pequeña, de hoy.</span></div>
         </article>
         <article class="card">
-          <span class="num">VOZ & COMUNICAÇÃO</span>
-          <h3>Falar com confiança</h3>
-          <p>Recursos para se comunicar melhor com a família e com seu médico.</p>
-          <div class="micro-action">Hoje: <span>Fale um pouco mais alto e devagar por 1 minuto.</span></div>
+          <span class="num">VOZ Y COMUNICACIÓN</span>
+          <h3>Habler con confianza</h3>
+          <p>Recursos para comunicarte mejor con tu familia y con tu médico.</p>
+          <div class="micro-action">Hoy: <span>Habla un poco más alto y despacio por 1 minuto.</span></div>
         </article>
         <article class="card">
           <span class="num">CONSULTA</span>
-          <h3>Não chegue sem perguntas</h3>
-          <p>Organize o que importa antes de cada visita ao especialista.</p>
-          <div class="micro-action">Hoje: <span>Escreva 3 perguntas na nota do celular.</span></div>
+          <h3>No llegues sin preguntas</h3>
+          <p>Organiza lo importante antes de cada visita al especialista.</p>
+          <div class="micro-action">Hoy: <span>Escribe 3 preguntas en la nota del celular.</span></div>
         </article>
         <article class="card">
-          <span class="num">FAMÍLIA</span>
-          <h3>O cuidador também importa</h3>
-          <p>Como dividir tarefas e evitar o esgotamento de quem acompanha.</p>
-          <div class="micro-action">Hoje: <span>Pedire ajuda concreta a 1 pessoa esta semana.</span></div>
+          <span class="num">FAMILIA</span>
+          <h3>El cuidador también importa</h3>
+          <p>Cómo repartir tareas y evitar el agotamiento de quien acompaña.</p>
+          <div class="micro-action">Hoy: <span>Pide ayuda concreta a 1 persona esta semana.</span></div>
         </article>
         <article class="card">
-          <span class="num">APRENDIZADO</span>
-          <h3>Ciência em português</h3>
-          <p>O que as fontes internacionais dizem, explicado em linguagem simples.</p>
-          <div class="micro-action">Hoje: <span>Ler o resumo semanal do boletim (3 min).</span></div>
+          <span class="num">APRENDIZAJE</span>
+          <h3>Ciencia en español</h3>
+          <p>Lo que las fuentes internacionales dicen, explicado en lenguaje simple.</p>
+          <div class="micro-action">Hoy: <span>Lee el resumen semanal del boletín (3 minutos).</span></div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ===== COMO FUNCIONA (DEMO INTERATIVA) ===== -->
+  <!-- ===== CÓMO FUNCIONA (DEMO INTERACTIVA) ===== -->
   <section id="funciona" style="background: white;">
     <div class="wrap two">
       <div>
-        <span class="eyebrow">Assim funciona no dia a dia</span>
-        <h2>Você entra. Vê o seu dia. Dá um passo.</h2>
+        <span class="eyebrow">Así funciona en el día a día</span>
+        <h2>Entras. Ves tu día. Das un paso.</h2>
         <ol style="margin-left: 4px;">
-          <li style="padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 16px;"><strong>Revisa sua rotina.</strong> Escolha uma atividade que faça sentido para o seu dia.</li>
-          <li style="padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 16px;"><strong>Veja instruções curtas.</strong> Sem videos de 20 minutos. O essencial.</li>
-          <li style="padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 16px;"><strong>Marca o que fez.</strong> Reconheça o seu esforço, sem comparação.</li>
-          <li style="padding: 8px 0; font-size: 16px;"><strong>Leva perguntas prontos para a consulta.</strong> Seu profissional ajusta o cuidado.</li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 16px;"><strong>Revisa tu rutina.</strong> Escoge una actividad que tenga sentido para tu día.</li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 16px;"><strong>Encuentra instrucciones breves.</strong> Sin vídeos de 20 minutos. Solo lo esencial.</li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 16px;"><strong>Marca lo que hiciste.</strong> Reconoce tu esfuerzo, sin compararte.</li>
+          <li style="padding: 8px 0; font-size: 16px;"><strong>Lleva preguntas listas para la consulta.</strong> Tu profesional ajusta el cuidado.</li>
         </ol>
-        <div class="note">Cada microação abaixo vem do Protocolo em Saúde. São sugestões educativas, não um plano clínico pessoal.</div>
+        <div class="note">Cada microacción de abajo viene del Protocolo en Salud. Son sugerencias educativas, no un plan clínico personal.</div>
       </div>
       <div class="demo">
         <div class="demohead">
           <div>
-            <span class="eyebrow">Dia 1 — Demonstração</span>
-            <h3>Vamos passo a passo.</h3>
+            <span class="eyebrow">Día 1 — Demostración</span>
+            <h3>Vamos paso a paso.</h3>
           </div>
-          <span class="pill">Seu dia</span>
+          <span class="pill">Tu día</span>
         </div>
-        <p>Escolha uma pequena ação para hoje:</p>
-        <div class="progress" role="progressbar" aria-label="Atividades demonstrativas" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0">
+        <p>Elige una pequeña acción para hoy:</p>
+        <div class="progress" role="progressbar" aria-label="Actividades de demostración" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0">
           <span id="bar"></span>
         </div>
-        <label class="task"><input type="checkbox" class="demo-task"><span><strong>Organizar a consulta</strong><small>Use o modelo de 3 perguntas do Protocolo.</small></span></label>
-        <label class="task"><input type="checkbox" class="demo-task"><span><strong>Planejar o café da manhã</strong><small>Com chia ou linhaça, uma das fontes de dopamina.</small></span></label>
-        <label class="task"><input type="checkbox" class="demo-task"><span><strong>Conectar com alguém</strong><small>Avise a pessoa de confiança como você está hoje.</small></span></label>
-        <div class="callout" id="demo-message" aria-live="polite">0 de 3 ações. Hoje você pode começar com uma.</div>
-        <p class="fine" style="margin-top: 20px;">O conteúdo real é muito maior: 13 receitas, 12 hábitos, boletim semanal.</p>
+        <label class="task"><input type="checkbox" class="demo-task"><span><strong>Organizar la consulta</strong><small>Usa el modelo de 3 preguntas del Protocolo.</small></span></label>
+        <label class="task"><input type="checkbox" class="demo-task"><span><strong>Planear el desayuno</strong><small>Con chía o linaza, una de las fuentes de dopamina.</small></span></label>
+        <label class="task"><input type="checkbox" class="demo-task"><span><strong>Conectar con alguien</strong><small>Avise a la persona de confianza cómo está hoy.</small></span></label>
+        <div class="callout" id="demo-message" aria-live="polite">0 de 3 acciones. Hoy puedes empezar con una.</div>
+        <p class="fine" style="margin-top: 20px;">El contenido real es mucho mayor: 13 recetas, 12 hábitos, boletín semanal.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== SEÇÃO CUIDADOR ===== -->
+  <!-- ===== SECCIÓN CUIDADOR ===== -->
   <section class="dark">
     <div class="wrap">
       <div class="two">
         <div>
-          <span class="eyebrow">Para a família e o cuidador</span>
-          <h2>Você também está nessa.<br>Coma na mesma mesa, descanse em silêncio.</h2>
-          <p>Cuidar de quem tem Parkinson é um trabalho em tempo integral — e muitas vezes, sem treinamento. A Viva 360 traz o lado de fora da doença.</p>
+          <span class="eyebrow">Para la familia y el cuidador</span>
+          <h2>Tú también estás en esto.<br>Come en la misma mesa, descanse en silencio.</h2>
+          <p>Cuidar a una persona con Parkinson es un trabajo a tiempo completo, y a menudo, sin formación. Viva 360 trae el lado fuera de la enfermedad.</p>
           <ul class="list" style="margin-top: 24px;">
-            <li><strong>Sinais de exaustão.</strong> O que observar em você antes que vire doença.</li>
-            <li><strong>Como delegar.</strong> Quem mais pode entrar nessa rotina, sem sobrecarregar você.</li>
-            <li><strong>Descomplicando o medicamento.</strong> Entenda o que cada remédio faz e os efeitos colaterais para comunicar ao médico.</li>
-            <li><strong>Respiro.</strong> Estratégias de 5 minutos para o seu próprio sistema nervoso.</li>
+            <li><strong>Señales de esgotamiento.</strong> Qué observar en ti antes de que sea problema.</li>
+            <li><strong>Cómo delegar.</strong> Quién más puede participar en esta rutina, sin sobrecargar a ti.</li>
+            <li><strong>Descomplicando la medicación.</strong> Entiende lo que cada fármaco hace y los efectos secundarios para comunicarlo al médico.</li>
+            <li><strong>Respiro.</strong> Estrategias de 5 minutos para tu propio sistema nervioso.</li>
           </ul>
         </div>
         <div class="card">
           <span class="num">CUIDADOR</span>
-          <h3>"Não sei como ajudo sem atrapalhar."</h3>
-          <p style="margin-top: 16px;">Você não precisa ser o cuidador perfeito. Precisa ser o cuidador presente. Comece por uma coisa por dia — e cuide de você no intervalo.</p>
-          <div class="micro-action">Hoje: <span>Peça 20 minutos de silêncio para você enquanto o outro cuida.</span></div>
+          <h3>"No sé cómo ayudar sin estorbar."</h3>
+          <p style="margin-top: 16px;">No necesitas ser el cuidador perfecto. Necesitas ser el cuidador presente. Empieza por una cosa por día — y cuida de ti en el intervalo.</p>
+          <div class="micro-action">Hoy: <span>Pide 20 minutos de silencio para ti mientras el otro cuida.</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CONTEÚDO EDITORIAL (DEMO DO BOLETIM) ===== -->
-  <section id="conteudo">
+  <!-- ===== CONTENIDO EDITORIAL (DEMO DEL BOLETÍN) ===== -->
+  <section id="contenido">
     <div class="wrap">
       <div class="section-top">
-        <span class="eyebrow">O que chega toda semana</span>
-        <h2>Informação confiável, sem ficar 2 horas no Google.</h2>
-        <p>Todas as quartas-feiras você recebe um resumo de 3 minutos com o que a ciência recente significa na prática — traduzido do inglês, sempre com a fonte.</p>
+        <span class="eyebrow">Lo que llega cada semana</span>
+        <h2>Información confiable, sin tener que perder 2 horas buscando en Google.</h2>
+        <p>Todas las semanas recibes un resumen de 3 minutos con lo que la ciencia reciente significa en la práctica — traducido del inglés, siempre con el link a la fuente.</p>
       </div>
       <div class="two">
         <div>
           <ul class="list">
-            <li><strong>Semanal:</strong> tema escolhido + 3 lições práticas.</li>
-            <li><strong>Mensal:</strong> panorama das novidades e o que mudar no seu cuidado.</li>
-            <li><strong>Cada resumo:</strong> o que foi estudado, o que foi descoberto e o que ainda falta saber.</li>
-            <li><strong>Perguntas prontas:</strong> para levar ao seu médico na próxima consulta.</li>
+            <li><strong>Semanal:</strong> tema elegido + 3 lecciones prácticas.</li>
+            <li><strong>Mensual:</strong> panorama de las novedades y el qué cambiar en tu cuidado.</li>
+            <li><strong>Cada resumen:</strong> qué se investigó, qué se encontró y qué falta saber.</li>
+            <li><strong>Preguntas listas:</strong> para llevar al médico en la próxima consulta.</li>
           </ul>
         </div>
         <div class="newsletter">
           <article class="paper">
-            <span class="eyebrow">Vista prévia — formato do boletim</span>
-            <h3 style="margin-top: 6px;">Sua leitura desta semana</h3>
-            <p><strong>Tema:</strong> Como chegar na consulta com as perguntas certas.</p>
+            <span class="eyebrow">Vista previa — formato del boletín</span>
+            <h3 style="margin-top: 6px;">Tu lectura de la semana</h3>
+            <p><strong>Tema:</strong> Cómo llegar a la consulta con las preguntas correctas.</p>
             <hr>
-            <p><strong>O essencial</strong><br>Anote 3 perguntas antes de sair de casa. Chegar organizado muda o resultado da consulta.</p>
-            <p><strong>Um passo prático</strong><br>Use a ferramenta "3 perguntas" da sua rotina. Reserve 2 minutos hoje.</p>
-            <a class="source" href="https://www.parkinson.org/living-with-parkinsons" target="_blank" rel="noopener">Fonte: Parkinson's Foundation ↗</a>
-            <p class="fine" style="margin-top: 14px;">Exemplo educativo. Não é uma notícia nem um ensaio clínico novo.</p>
+            <p><strong>Lo esencial</strong><br>Escribe 3 preguntas antes de salir de casa. Llegar organizado cambia el resultado de la consulta.</p>
+            <p><strong>Un paso práctico</strong><br>Usa la herramienta "3 preguntas" de tu rutina. Reserva 2 minutos hoy.</p>
+            <a class="source" href="https://www.parkinson.org/living-with-parkinsons" target="_blank" rel="noopener">Fuente: Parkinson's Foundation ↗</a>
+            <p class="fine" style="margin-top: 14px;">Ejemplo educativo. No es una noticia ni un ensayo clínico nuevo.</p>
           </article>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CIÊNCIA (FONTES) ===== -->
+  <!-- ===== CIENCIA (FUENTES) ===== -->
   <section id="ciencia" style="background: #edf1e7;">
     <div class="wrap">
       <div class="section-top">
-        <span class="eyebrow">Bastidores da curadoria</span>
-        <h2>Usamos as melhores referências do mundo.<br>Traduzimos para você.</h2>
-        <p>Leitura de ParkinsonNet (Holanda), Parkinson's UK, Parkinson's Foundation (EUA) e estudos recentes — com link para a fonte original, data e o que muda na prática.</p>
+        <span class="eyebrow">Bastidores de la curaduría</span>
+        <h2>Usamos las mejores referencias del mundo.<br>Traducimos para ti.</h2>
+        <p>Referencias de ParkinsonNet (Países Bajos), Parkinson's UK, Parkinson's Foundation (EE. UU.) y estudios recientes — con link a la fuente original, fecha y el qué cambia en la práctica.</p>
       </div>
       <div class="grid">
         <article class="card">
           <span class="pill">Holanda</span>
           <h3>ParkinsonNet</h3>
-          <p>Referência em fisioterapia especializada e cuidado em equipe. Como pedir esse modelo ao seu profissional.</p>
-          <a class="source" href="https://www.parkinsonnet.com/" target="_blank" rel="noopener">Fonte original ↗</a>
+          <p>Referencia en fisioterapia especializada y cuidado en equipo. Cómo pedir este modelo a tu profesional.</p>
+          <a class="source" href="https://www.parkinsonnet.com/" target="_blank" rel="noopener">Fuente original ↗</a>
         </article>
         <article class="card">
           <span class="pill">Reino Unido</span>
           <h3>Parkinson's UK</h3>
-          <p>Guia prático para pessoas, amigos e familiares. A base da nossa biblioteca de atividades.</p>
-          <a class="source" href="https://www.parkinsons.org.uk/information" target="_blank" rel="noopener">Fonte original ↗</a>
+          <p>Guía práctica para personas, amigos y familiares. La base de nuestra biblioteca de actividades.</p>
+          <a class="source" href="https://www.parkinsons.org.uk/information" target="_blank" rel="noopener">Fuente original ↗</a>
         </article>
         <article class="card">
           <span class="pill">Estados Unidos</span>
           <h3>Parkinson's Foundation</h3>
-          <p>Recursos sobre diagnóstico, medicação e convivência no dia a dia.</p>
-          <a class="source" href="https://www.parkinson.org/living-with-parkinsons" target="_blank" rel="noopener">Fonte original ↗</a>
+          <p>Recursos sobre diagnóstico, medicación y convivencia en el día a día.</p>
+          <a class="source" href="https://www.parkinson.org/living-with-parkinsons" target="_blank" rel="noopener">Fuente original ↗</a>
         </article>
       </div>
-      <p class="fine" style="margin-top: 26px; text-align: center;">Traduzimos a informação. Nós não avaliamos nenhuma instituição — e nenhuma avaliou a gente. Você lê a fonte e decide.</p>
+      <p class="fine" style="margin-top: 26px; text-align: center;">Traducimos la información. Nosotros no evaluamos ninguna institución — y ninguna nos evaluó. Tú lees la fuente y decides.</p>
     </div>
   </section>
 
-  <!-- ===== PREÇO / PLANOS ===== -->
+  <!-- ===== PRECIOS / PLANES ===== -->
   <section id="plan">
     <div class="wrap">
       <div class="section-top text-center">
-        <span class="eyebrow">Próximo passo</span>
-        <h2>Tudo isso, em uma assinatura que cabe no seu bolso.</h2>
-        <p>Menos que o preço de uma consulta. Tudo o que você precisa para organizar o cuidado todos os dias.</p>
+        <span class="eyebrow">Próximo paso</span>
+        <h2>Todo esto, en una suscripción que se adapta a tu presupuesto.</h2>
+        <p>Menos que el precio de una consulta. Todo lo que necesitas para organizar el cuidado todos los días.</p>
       </div>
 
       <div class="pricebox">
-        <span class="pill">Viva Parkinson 360 — Assinatura</span>
+        <span class="pill">Viva Parkinson 360 — Suscripción</span>
         <div class="plan-switch">
           <div class="switcher">
-            <div class="active" id="btn-monthly">Mensal</div>
+            <div class="active" id="btn-monthly">Mensual</div>
             <div id="btn-annual">Anual</div>
           </div>
         </div>
 
         <div class="price-area">
-          <div class="price" id="price-display">R$ 19,90<span> /mês</span></div>
-          <div class="price-note">Primeiro mês por R$ 1,90</div>
-          <p style="font-size: 15px;">Após o primeiro mês, US$ 9,99/mês. Você pode cancelar quando quiser.</p>
+          <div class="price" id="price-display">USD 99<span> /año</span></div>
+          <div class="price-note">Ahorras 20% vs. mensual</div>
+          <p style="font-size: 15px;">Solo $9.99 USD/mes si seleccionas pago mensual.</p>
         </div>
 
         <ul class="list" style="margin: 26px 0;">
-          <li><strong>12 hábitos</strong> com rotina diária e microações de 5 minutos.</li>
-          <li><strong>13 receitas</strong> prontas, organizadas por dificuldade e tempo.</li>
-          <li><strong>Boletim semanal</strong> + revisão mensal com ciência traduzida.</li>
-          <li><strong>Planejador de consultas</strong> e checklist para o dia a dia.</li>
-          <li><strong>Área exclusiva</strong> para familiares e cuidadores.</li>
-          <li><strong>Cancela quando quiser</strong>, sem burocracia.</li>
+          <li><strong>12 hábitos</strong> con rutina diaria y microacciones de 5 minutos.</li>
+          <li><strong>13 recetas</strong> listas, organizadas por dificultad y tiempo.</li>
+          <li><strong>Boletín semanal</strong> + revisión mensual con ciencia traducida.</li>
+          <li><strong>Planeador de consultas</strong> y checklist para el día a día.</li>
+          <li><strong>Área exclusiva</strong> para familiares y cuidadores.</li>
+          <li><strong>Cancela cuando quieras</strong>, sin burocracia.</li>
         </ul>
 
         <div class="guarantee">
-          <strong>Garantia de uso real — 14 dias</strong>
-          Se você não completar pelo menos 3 microações na primeira semana, devolvemos 100%. Basta nos enviar um print da sua tela. Sem perguntas.
+          <strong>Garantía de uso real — 14 días</strong>
+          Si no completas 3 microacciones en la primera semana, te devolvemos 100%. Envíanos un print. Sin preguntas.
         </div>
 
-        <a id="cta-plan" class="btn full" href="#">Quero começar minha assinatura →</a>
-        <p class="fine text-center" style="margin-top: 14px;">Pagamento seguro • Renova automática • Fatura descritiva</p>
+        <a id="cta-plan" class="btn full" href="#">Empezar mi suscripción →</a>
+        <p class="fine text-center" style="margin-top: 14px;">Pago seguro • Renovación automática • Factura con descripción clara</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== FAQ QUE VENDE ===== -->
+  <!-- ===== PREGUNTAS FRECUENTES QUE VENDEN ===== -->
   <section class="dark" id="faq">
     <div class="wrap faq">
       <span class="eyebrow">Antes de decidir</span>
-      <h2>Perguntas diretas.</h2>
+      <h2>Preguntas directas.</h2>
 
       <details open>
-        <summary>A Viva 360 cura o Parkinson?</summary>
-        <p>Não. Não existe cura hoje e nós não prometemos milagres. O que a assinatura oferece é organização, informação confiável e rotina diária — coisas que, juntas, melhoram muito o dia a dia e ajudam você a conversar melhor com seu médico.</p>
+        <summary>¿Viva Parkinson 360 cura el Parkinson?</summary>
+        <p>No. No hay cura actual, y nosotros no prometemos milagres. Lo que la suscripción ofrece es organización, información confiable y rutina diaria, cosas que, juntas, mejoran mucho el día a día y ayudan a conversar mejor con el médico.</p>
       </details>
 
       <details open>
-        <summary>"Já tenho tudo de graça no Google."</summary>
-        <p>Tenho certeza que você já perdeu horas procurando. A informação é gratuita; o <strong>sistema que poupa esse tempo não é</strong>. Aqui você encontra a rotina pronta, em português, com a primeira ação marcada para hoje — não um site cheio de abas abertas.</p>
+        <summary>"Ya tengo todo gratis en Google."</summary>
+        <p>Seguro que ya perdiste horas buscando. La información es gratuita; el **sistema que ahorra este tiempo no es**. Aquí recibes la rutina lista, en español, con la primera acción marcada para hoy — no un sitio web con un montón de pestañas abiertas.</p>
       </details>
 
       <details open>
-        <summary>Como funciona o cancelamento?</summary>
-        <p>Simples. No painel da sua assinatura, "Cancelar". Você continua tendo acesso até o fim do período pago. Não tem multa e não tem telefone para ligar.</p>
+        <summary>¿Cómo funciona el cancelamiento?</summary>
+        <p>Sencillo. En el panel de tu suscripción, "Cancelar". Mantienes el acceso hasta el fin del ciclo. Sin complicaciones, sin teléfono que marcar.</p>
       </details>
 
       <details open>
-        <summary>Tem teste grátis?</summary>
-        <p>Temos o <strong>primeiro mês por R$ 1,90</strong>. É assim que conhecemos melhor: usamos, vemos se faz sentido, e só pagamos US$ 9,99 a partir do segundo mês se quiser continuar.</p>
+        <summary>¿Hay un período de prueba?</summary>
+        <p>Tenemos el **primer mes por $1.90**, solo para que conozcas el método. Si decides continuar, solo pagas $9.99 USD/mes.</p>
       </details>
 
       <details open>
-        <summary>Preciso saber inglês?</summary>
-        <p>Não. Toda a nossa curadoria é em português. As fontes originais podem ser em inglês, mas traduzimos o que importa e mantenho o link para você conferir.</p>
+        <summary>¿Necesito saber inglés?</summary>
+        <p>No. Toda nuestra curaduría es en español. Las fuentes originales pueden estar en inglés, pero traducimos lo importante y dejo el link para que puedas verificar.</p>
       </details>
 
       <details open>
-        <summary>Posso usar só eu, ou a família também?</summary>
-        <p>Os dois. A conta principal é para a pessoa com Parkinson e há espaço dedicado para cuidadores e familiares participarem da mesma rotina.</p>
+        <summary>¿Puedo usar la cuenta solo yo, o también mi familia?</summary>
+        <p>Los dos. La cuenta principal es para la persona con Parkinson, y hay espacio para que cuidadores y familiares participen de la misma rutina.</p>
       </details>
 
       <details open>
-        <summary>É seguro meu pagamento?</summary>
-        <p>Sim. Todo o pagamento é processado por gateway certificado (Stripe/Mercado Pago), sem que nossa plataforma armazene seus dados.</p>
+        <summary>¿Es seguro mi pago?</summary>
+        <p>Sí. Todo el procesamiento de pagos lo realiza el gateway seguro (Stripe/PayFast). Nunca almacenamos tus datos.</p>
       </details>
 
       <details open>
-        <summary>Se eu cancelar, perco tudo?</summary>
-        <p>Você mantém o acesso ao conteúdo adquirido até a data final do ciclo. Sem surpresas.</p>
+        <summary>Si cancelo, ¿pierdo todo?</summary>
+        <p>Mantienes el acceso al contenido que has adquirido hasta la fecha final del ciclo. Sin sorpresas.</p>
       </details>
     </div>
   </section>
@@ -618,33 +598,33 @@ details p { margin: 14px 0 0; color: var(--muted); }
 <footer class="footer">
   <div class="wrap">
     <a class="brand" href="#"><span class="mark">V</span><span>Viva Parkinson 360
-      <small>UM PASSO DE CADA VEZ</small>
+      <small>UN PASO A LA VEZ</small>
     </span></a>
     <div>
-      <p>Conteúdo educativo para complementar o cuidado profissional. Em caso de urgência, ligue para os serviços de emergência da sua região.</p>
-      <p>Esta página não armazena dados de saúde. Condições comerciais e política de privacidade da assinatura ficam disponíveis no momento da compra.</p>
-      <p>© 2026 Viva Parkinson 360. Todos os direitos reservados.</p>
+      <p>Contenido educativo para complementar el cuidado profesional. En caso de urgencia, contacta a los servicios de emergencia de tu localidad.</p>
+      <p>Esta página no solicita ni almacena datos de salud. Las condiciones comerciales y la política de privacidad de la suscripción deben estar disponibles antes de comprar.</p>
+      <p>© 2026 Viva Parkinson 360. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>
 
-<!-- STICKY MOBILE CTA -->
+<!-- CTA FIJO EN MOBILE -->
 <div class="sticky-mobile">
-  <a id="cta-mobile" class="btn" href="#">Começar por R$ 1,90 →</a>
+  <a id="cta-mobile" class="btn" href="#">Empezar hoy por $9.99 →</a>
 </div>
 
 <script>
 /* =============================================================
-   CONFIGURAÇÃO - SUBSTITUA OS LINKS PELO SEU CHECKOUT
+   CONFIGURACIÓN - Reemplaza con tu URL de checkout
    ============================================================= */
-const CHECKOUT_URL = "SEU_LINK_DE_CHECKOUT_AQUI";
+const CHECKOUT_URL = "https://payfast.greenn.com.br/9vdup43/offer/8yvrlG";
 
-// Atualiza os 3 botões principais para o mesmo checkout
+/* Actualiza los tres principales CTAs (hero, plan, sticky mobile) */
 document.querySelectorAll('#cta-hero, #cta-plan, #cta-mobile').forEach(btn => {
   btn.href = CHECKOUT_URL;
 });
 
-/* DEMO INTERATIVA (micro-conversão) */
+/* DEMO INTERACTIVA (micro-conversión) */
 const tasks = [...document.querySelectorAll('.demo-task')];
 const bar = document.getElementById('bar');
 const msg = document.getElementById('demo-message');
@@ -652,43 +632,40 @@ tasks.forEach(task => task.addEventListener('change', () => {
   const count = tasks.filter(t => t.checked).length;
   bar.style.width = (count / 3 * 100) + '%';
   msg.textContent = count === 3
-    ? '3 de 3. Cada pequeno passo conta. E na sua semana, há muito mais.'
-    : count + ' de 3 ações. Hoje você pode começar com uma.';
+    ? '3 de 3. Cada pequeño paso cuenta. Y en tu semana, hay mucho más.'
+    : count + ' de 3 acciones. Hoy puedes empezar con una.';
 }));
 
-/* ANO NO FOOTER */
+/* AÑO EN EL FOOTER */
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* SWITCH MENSAL/ANUAL */
+/* SWITCH MENSUAL / ANUAL */
 const monthlyBtn = document.getElementById('btn-monthly');
 const annualBtn = document.getElementById('btn-annual');
 const priceDisplay = document.getElementById('price-display');
-let annual = false;
+let isAnnual = false;
 
 monthlyBtn.addEventListener('click', () => {
-  annual = false;
+  isAnnual = false;
   monthlyBtn.classList.add('active');
   annualBtn.classList.remove('active');
-  priceDisplay.innerHTML = 'R$ 19,90<span> /mês</span>';
+  priceDisplay.innerHTML = 'USD 99<span> /año (2 meses gratis)</span>';
 });
 
 annualBtn.addEventListener('click', () => {
-  annual = true;
+  isAnnual = true;
   annualBtn.classList.add('active');
   monthlyBtn.classList.remove('active');
-  priceDisplay.innerHTML = 'US$ 99<span> /ano</span>';
+  priceDisplay.innerHTML = 'USD 99<span> /año (2 meses gratis)</span>';
 });
 
-/* OBS: garanta que seu checkout aceite redirecionamento seguro.
-   Se preferir modal, descomente abaixo: */
-/*
+/* Opcional: advertencia de URL no segura */
 document.getElementById('cta-plan').addEventListener('click', e => {
   if (!CHECKOUT_URL.includes('https')) {
     e.preventDefault();
-    alert('Conecte sua URL de checkout na configuração do script antes de vender.');
+    alert('Reemplaza el placeholder CHECKOUT_URL con tu URL de checkout antes de vender.');
   }
 });
-*/
 </script>
 </body>
 </html>
