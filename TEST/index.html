@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>US Federal Opportunity Radar – Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {font-family: system-ui, sans-serif; margin:0; padding:0; background:#fafafa; color:#222; line-height:1.6;}
+  h1, h2 {color:#004080;}
+  .container {max-width:800px; margin:2rem auto; padding:0 1rem;}
+  .card {background:#fff; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:1.5rem; margin-bottom:1.5rem;}
+  input, button {padding:0.5rem; font-size:1rem; margin:0.25rem 0; border:1px solid #ccc; border-radius:4px;}
+  input[type=text], input[type=number], input[type=email] {width:100%; max-width:250px;}
+  button.primary {background:#28a745; color:#fff; border:none; cursor:pointer;}
+  button.primary:hover {background:#218838;}
+  button.secondary {background:#6c757d; color:#fff; border:none; cursor:pointer;}
+  button.secondary:hover {background:#5a6268;}
+  .hidden {display:none;}
+  .radar-item {border-left:4px solid #004080; padding-left:0.75rem; margin:0.75rem 0;}
+  .radar-item strong {display:block;}
+  .footer {text-align:center; font-size:0.9rem; color:#555; margin-top:2rem; padding-top:1rem; border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📡 US Federal Opportunity Radar</h1>
+  <div class="card" id="lookupStep">
+    <h2>Step 1 – Enter your EIN (Tax ID)</h2>
+    <p>Enter your Employer Identification Number (EIN) to see if you’re already in the system. If not, you can create a profile.</p>
+    <input type="text" id="einInput" placeholder="e.g. 12-3456789" autocomplete="off">
+    <button id="lookupBtn" class="primary">Lookup EIN</button>
+    <p id="lookupMsg" class="hidden"></p>
+  </div>
+
+  <div class="card hidden" id="profileStep">
+    <h2>Step 2 – Set your profile</h2>
+    <p>Fill in the basics that will be used to filter opportunities.</p>
+    <label>NAICS Code (e.g. 236220 for Residential Building Construction)
+      <input type="text" id="naicsInput" placeholder="236220">
+    </label>
+    <label>State (2‑letter, e.g. CA)
+      <input type="text" id="stateInput" placeholder="CA" maxlength="2">
+    </label>
+    <label>Minimum contract value ($)
+      <input type="number" id="minValInput" placeholder="0" min="0" step="1000">
+    </label>
+    <button id="saveProfileBtn" class="primary">Save Profile</button>
+    <p id="profileMsg" class="hidden"></p>
+  </div>
+
+  <div class="card hidden" id="trialStep">
+    <h2>Step 3 – Start your free trial</h2>
+    <p>When you’re ready, click below to begin a 7‑day free trial (simulated). After the trial you would subscribe for $12/month.</p>
+    <button id="startTrialBtn" class="primary">Start 7‑day Free Trial</button>
+    <p id="trialMsg" class="hidden"></p>
+  </div>
+
+  <div class="card hidden" id="radarStep">
+    <h2>Your Radar (latest simulated opportunities)</h2>
+    <div id="radarList"></div>
+    <button id="refreshRadarBtn" class="secondary">Refresh Radar</button>
+  </div>
+</div>
+
+<div class="footer">
+  Demo site – data is mock‑generated. Replace with real SAM.gov API, Twilio WhatsApp, and Stripe integration for a production version.
+</div>
+
+<script>
+  // ---- Helper to store/retrieve from localStorage ----
+  const STORAGE_KEY = 'usLicitadoraDemo';
+  function getState() { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+  function setState(obj) { localStorage.setItem(STORAGE_KEY, JSON.stringify(obj)); }
+
+  // ---- Mock data generator (simulates SAM.gov opportunities) ----
+  function generateMockOpportunities(count = 8) {
+    const agencies = ['Department of Defense', 'General Services Administration', 'Department of Veterans Affairs', 'Department of Health and Human Services'];
+    const states = ['CA', 'TX', 'FL', 'NY', 'IL', 'PA', 'OH', 'GA'];
+    const naicsList = ['236220', '541511', '561210', '621111', '423840'];
+    const opps = [];
+    for (let i = 0; i < count; i++) {
+      const posted = new Date();
+      posted.setDate(posted.getDate() - Math.floor(Math.random()*30));
+      const response = new Date(posted);
+      response.setDate(response.getDate() + Math.floor(Math.random()*45));
+      const value = Math.floor(Math.random()*5000000) + 25000; // $25k‑$5M
+      opps.push({
+        noticeId: `OPP-${String(Math.random()).slice(2,8)}`,
+        title: [`Supply of ${naicsList[Math.floor(Math.random()*naicsList.length)]} Services`,
+                `Construction of ${agencies[Math.floor(Math.random()*agencies.length)]} Facility`,
+                `IT Support and Maintenance for ${states[Math.floor(Math.random()*states.length)]} Agency`][Math.floor(Math.random()*3)],
+        agency: agencies[Math.floor(Math.random()*agencies.length)],
+        state: states[Math.floor(Math.random()*states.length)],
+        naics: naicsList[Math.floor(Math.random()*naicsList.length)],
+        postedDate: posted.toISOString().split('T')[0],
+        responseDate: response.toISOString().split('T')[0],
+        estimatedValue: value,
+        link: `https://sam.gov/opp/${Math.random().toString(36).substr(2,9)}/view`
+      });
+    }
+    return opps;
+  }
+
+  // ---- UI wiring ----
+  const einInput = document.getElementById('einInput');
+  const lookupBtn = document.getElementById('lookupBtn');
+  const lookupMsg = document.getElementById('lookupMsg');
+
+  const profileStep = document.getElementById('profileStep');
+  const naicsInput = document.getElementById('naicsInput');
+  const stateInput = document.getElementById('stateInput');
+  const minValInput = document.getElementById('minValInput');
+  const saveProfileBtn = document.getElementById('saveProfileBtn');
+  const profileMsg = document.getElementById('profileMsg');
+
+  const trialStep = document.getElementById('trialStep');
+  const startTrialBtn = document.getElementById('startTrialBtn');
+  const trialMsg = document.getElementById('trialMsg');
+
+  const radarStep = document.getElementById('radarStep');
+  const radarList = document.getElementById('radarList');
+  const refreshRadarBtn = document.getElementById('refreshRadarBtn');
+
+  // Show/hide steps
+  function showLookup()  { document.getElementById('lookupStep').classList.remove('hidden'); profileStep.classList.add('hidden'); trialStep.classList.add('hidden'); radarStep.classList.add('hidden'); }
+  function showProfile() { document.getElementById('lookupStep').classList.add('hidden'); profileStep.classList.remove('hidden'); trialStep.classList.add('hidden'); radarStep.classList.add('hidden'); }
+  function showTrial()   { document.getElementById('lookupStep').classList.add('hidden'); profileStep.classList.add('hidden'); trialStep.classList.remove('hidden'); radarStep.classList.add('hidden'); }
+  function showRadar()   { document.getElementById('lookupStep').classList.add('hidden'); profileStep.classList.add('hidden'); trialStep.classList.add('hidden'); radarStep.classList.remove('hidden'); }
+
+  // Initial state
+  const state = getState();
+  if (state.ein) {
+    einInput.value = state.ein;
+    if (state.profileSaved) {
+      naicsInput.value = state.naics || '';
+      stateInput.value = state.state || '';
+      minValInput.value = state.minVal || '';
+      showTrial();
+    } else {
+      showProfile();
+    }
+  } else {
+    showLookup();
+  }
+
+  // Lookup EIN
+  lookupBtn.addEventListener('click', () => {
+    const ein = einInput.value.trim();
+    if (!ein) { lookupMsg.textContent = 'Please enter an EIN.'; lookupMsg.classList.remove('hidden'); lookupMsg.classList.add('error'); return; }
+    lookupMsg.textContent = `Checking EIN ${ein}…`;
+    lookupMsg.classList.remove('hidden');
+    lookupMsg.classList.remove('error');
+    // Simulate delay
+    setTimeout(() => {
+      const existing = getState();
+      if (existing.ein === ein) {
+        lookupMsg.textContent = `EIN ${ein} found!`;
+        lookupMsg.classList.add('success');
+        if (existing.profileSaved) {
+          naicsInput.value = existing.naics || '';
+          stateInput.value = existing.state || '';
+          minValInput.value = existing.minVal || '';
+          showTrial();
+        } else {
+          showProfile();
+        }
+      } else {
+        lookupMsg.textContent = `EIN ${ein} not in demo database. You can create a profile below.`;
+        lookupMsg.classList.add('success');
+        showProfile();
+      }
+    }, 800);
+  });
+
+  // Save profile
+  saveProfileBtn.addEventListener('click', () => {
+    const naics = naicsInput.value.trim();
+    const state = stateInput.value.trim().toUpperCase();
+    const minVal = parseFloat(minValInput.value) || 0;
+    if (!naics || !state || state.length !== 2 || !/^[A-Z]{2}$/.test(state)) {
+      profileMsg.textContent = 'Please fill in a valid NAICS code and a 2‑letter state.';
+      profileMsg.classList.remove('hidden');
+      profileMsg.classList.add('error');
+      return;
+    }
+    const newState = getState();
+    newState.ein = einInput.value.trim();
+    newState.naics = naics;
+    newState.state = state;
+    newState.minVal = minVal;
+    newState.profileSaved = true;
+    setState(newState);
+    profileMsg.textContent = 'Profile saved!';
+    profileMsg.classList.remove('hidden');
+    profileMsg.classList.add('success');
+    showTrial();
+  });
+
+  // Start trial (simulated)
+  startTrialBtn.addEventListener('click', () => {
+    const state = getState();
+    state.trialActive = true;
+    state.trialStart = Date.now();
+    setState(state);
+    trialMsg.textContent = 'Trial started! You will now see a simulated radar.';
+    trialMsg.classList.remove('hidden');
+    trialMsg.classList.add('success');
+    showRadar();
+    loadRadar();
+  });
+
+  // Load radar (mock)
+  function loadRadar() {
+    const state = getState();
+    if (!state.trialActive) { radarList.innerHTML = '<p>No active trial.</p>'; return; }
+    const now = Date.now();
+    const trialEnd = state.trialStart + 7*24*60*60*1000; // 7 days
+    const daysLeft = Math.max(0, Math.ceil((trialEnd - now) / (1000*60*60*24)));
+    const opps = generateMockOpportunities(6);
+    // Filter by user profile (naics, state, min value)
+    const filtered = opps.filter(o => {
+      const matchesNaics = !state.naics || o.naics === state.naics;
+      const matchesState = !state.state || o.state === state.state;
+      const matchesValue = o.estimatedValue >= (state.minVal || 0);
+      return matchesNaics && matchesState && matchesValue;
+    });
+    renderRadar(filtered, daysLeft);
+  }
+
+  function renderRadar(opps, daysLeft) {
+    radarList.innerHTML = '';
+    if (opps.length === 0) {
+      radarList.innerHTML = `<p>No opportunities match your current filters. Try adjusting NAICS, state, or minimum value.</p>`;
+      return;
+    }
+    const info = document.createElement('p');
+    info.innerHTML = `<strong>📅 Trial days left:</strong> ${daysLeft} (simulated)`;
+    radarList.appendChild(info);
+    opps.forEach(o => {
+      const div = document.createElement('div');
+      div.className = 'radar-item';
+      div.innerHTML = `
+        <strong>${o.title}</strong><br>
+        Agency: ${o.agency}<br>
+        State: ${o.state}<br>
+        NAICS: ${o.naics}<br>
+        Estimated Value: $${o.estimatedValue.toLocaleString()}<br>
+        <a href="${o.link}" target="_blank" rel="noopener">View on SAM.gov</a>
+      `;
+      radarList.appendChild(div);
+    });
+  }
+
+  refreshRadarBtn.addEventListener('click', loadRadar);
+</script>
+</body>
+</html>
