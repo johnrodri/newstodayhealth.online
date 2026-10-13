@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>El Test de los 100 Años</title>
+
+  <style>
+    :root {
+      --green: #236456;
+      --ink: #352a2e;
+      --muted: #827176;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f7f1;
+      color: var(--ink);
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      padding: 26px;
+      text-align: center;
+      letter-spacing: 3px;
+      font-size: 12px;
+      color: var(--green);
+    }
+
+    main {
+      max-width: 660px;
+      margin: 20px auto;
+      padding: 0 22px 55px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .track {
+      height: 4px;
+      background: #e0e6dc;
+      border-radius: 4px;
+      margin-bottom: 35px;
+    }
+
+    .fill {
+      height: 100%;
+      background: var(--green);
+      transition: width 0.3s;
+      border-radius: 4px;
+    }
+
+    article {
+      background: #fffdfb;
+      border: 1px solid #e0e6dc;
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 16px 50px rgba(35, 100, 86, 0.04);
+    }
+
+    h1,
+    h2 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 32px;
+      line-height: 1.2;
+      margin: 12px 0 22px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.65;
+      color: #6a595f;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 18px 20px;
+      border: 1px solid #dfd2ce;
+      background: white;
+      border-radius: 12px;
+      margin: 11px 0;
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .option:hover,
+    .option:focus-visible {
+      border-color: var(--green);
+      background: #edf3e9;
+      outline: 2px solid rgba(35, 100, 86, 0.15);
+    }
+
+    .option.selected {
+      background: #e4efe3;
+      border-color: var(--green);
+    }
+
+    .primary {
+      display: block;
+      background: var(--green);
+      color: white;
+      border: 0;
+      padding: 18px 22px;
+      border-radius: 12px;
+      width: 100%;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 22px;
+    }
+
+    .primary:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .back {
+      border: 0;
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 18px 0;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #8b7c80;
+      line-height: 1.6;
+      text-align: center;
+      margin: 24px 5px;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: #6a595f;
+      line-height: 1.8;
+    }
+
+    .sample {
+      background: #edf3e9;
+      border-radius: 12px;
+      padding: 22px;
+      margin: 22px 0;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #e0e6dc;
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 25px auto;
+    }
+
+    .hero-number {
+      font: 100px Georgia, serif;
+      color: var(--green);
+      margin: 15px 0;
+    }
+
+    .score {
+      font: 70px Georgia, serif;
+      color: var(--green);
+    }
+
+    .pill {
+      padding: 10px 15px;
+      background: #e4efe3;
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    .muted {
+      font-size: 13px;
+    }
+
+    .offer-heading {
+      margin-top: 38px;
+      border-top: 1px solid #e0e6dc;
+      padding-top: 30px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes ctaPulse {
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(35, 100, 86, 0.25);
+      }
+
+      50% {
+        transform: scale(1.025);
+        box-shadow: 0 0 0 12px rgba(35, 100, 86, 0);
+      }
+    }
+
+    #cta {
+      animation: ctaPulse 2s ease-in-out infinite;
+    }
+
+    #cta:hover,
+    #cta:focus-visible {
+      animation: none;
+    }
+
+    @media (max-width: 520px) {
+      main {
+        margin: 5px auto;
+      }
+
+      article {
+        padding: 25px;
+      }
+
+      h1,
+      h2 {
+        font-size: 28px;
+      }
+
+      header {
+        padding: 23px 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>EL TEST DE LOS 100 AÑOS</header>
+
+  <main>
+    <div class="top">
+      <span id="step"></span>
+      <span>Fuerza · Equilibrio · Autonomía</span>
+    </div>
+
+    <div class="track">
+      <div class="fill" id="fill"></div>
+    </div>
+
+    <article id="card" aria-live="polite"></article>
+
+    <button class="back" id="back" type="button">
+      ← Volver
+    </button>
+  </main>
+
+  <script>
+    const CHECKOUT_URL =
+      "https://pay.monetizze.com.br/KVZ471293";
+
+    const questions = [
+      {
+        tag: "Para conocerte",
+        title: "¿Eres…?",
+        opts: [
+          "Mujer",
+          "Hombre",
+          "Prefiero no decirlo"
+        ]
+      },
+      {
+        tag: "Tu etapa",
+        title: "¿Cuántos años tienes?",
+        opts: [
+          "40 a 49",
+          "50 a 59",
+          "60 a 69",
+          "70 o más"
+        ]
+      },
+      {
+        tag: "Lo que importa",
+        title:
+          "Cuando piensas en tu futuro, ¿qué es lo que más te preocupa?",
+        opts: [
+          "😟 Depender de mis hijos para cosas básicas",
+          "🦴 Sufrir una caída",
+          "🔋 Perder la energía para disfrutar",
+          "👵 No poder jugar con mis nietos",
+          "🪞 Repetir las dificultades que vivieron mis padres"
+        ]
+      },
+      {
+        tag: "Tu día a día",
+        title:
+          "¿Cuáles de estas situaciones te han pasado en los últimos meses?",
+        desc: "Puedes elegir varias.",
+        multi: true,
+        opts: [
+          "Me cuesta levantarme del sofá",
+          "Me agarro del pasamanos al subir escaleras",
+          "Llego sin aire después de 2 pisos",
+          "Me tambaleo al ponerme los pantalones de pie",
+          "Evito agacharme o sentarme en el suelo",
+          "Ninguna"
+        ]
+      },
+      {
+        tag: "Una mirada diferente",
+        title:
+          "Tu salud también se vive en los movimientos cotidianos",
+        desc:
+          "Además de la presión o el azúcar, la fuerza, el equilibrio y la movilidad importan para tu autonomía. La edad, la actividad y otros factores pueden influir en cómo te mueves. Este cuestionario organiza lo que cuentas; no reemplaza una evaluación profesional.",
+        info: true
+      },
+      {
+        tag: "Tus hábitos",
+        title:
+          "¿Cuántos días por semana haces algún ejercicio a propósito?",
+        desc:
+          "Por ejemplo: caminar a paso firme, ejercicios o baile.",
+        opts: [
+          "Ninguno",
+          "1 a 2 días",
+          "3 a 4 días",
+          "5 o más"
+        ]
+      },
+      {
+        tag: "La silla 🪑",
+        title:
+          "Piensa en cómo te levantas de una silla",
+        desc:
+          "No necesitas hacer una prueba ahora. Basándote en una experiencia reciente, ¿cómo te resulta levantarte varias veces de una silla firme?",
+        opts: [
+          "Lo hago fácil sin usar las manos",
+          "Lo hago, pero me cuesta",
+          "Necesito usar las manos",
+          "Prefiero no responder / no lo sé"
+        ]
+      },
+      {
+        tag: "El equilibrio",
+        title:
+          "¿Cómo sientes tu estabilidad al estar de pie?",
+        desc:
+          "Responde según tu experiencia. No te pongas sobre una pierna para completar este cuestionario.",
+        opts: [
+          "Me siento estable en las actividades cotidianas",
+          "A veces necesito apoyo",
+          "Con frecuencia me siento inestable",
+          "Prefiero no responder / no lo sé"
+        ]
+      },
+      {
+        tag: "Inspiración de Japón",
+        title:
+          "La autonomía se practica en lo cotidiano",
+        desc:
+          "En Japón hay más de 107.000 personas de 100 años o más, según los datos publicados en septiembre de 2026. Eso no significa que exista un único secreto. Los movimientos cotidianos pueden inspirarnos a prestar atención a nuestra propia movilidad. No necesitas sentarte en el suelo para completar el test.",
+        info: true
+      },
+      {
+        tag: "El suelo",
+        title:
+          "Según tu experiencia reciente, ¿cómo te resulta levantarte del suelo?",
+        desc:
+          "No intentes hacerlo ahora si no sabes si puedes, tienes dolor, mareo o riesgo de caída.",
+        opts: [
+          "Puedo sin apoyar las manos",
+          "Puedo con un apoyo",
+          "Necesito varios apoyos o agarrarme de algo",
+          "No estoy seguro / prefiero no responder"
+        ]
+      },
+      {
+        tag: "Tu tiempo",
+        title:
+          "¿Cuánto tiempo al día podrías dedicar a tu cuerpo?",
+        opts: [
+          "5 minutos",
+          "10 minutos",
+          "15 minutos",
+          "Más de 15 minutos"
+        ]
+      },
+      {
+        tag: "Tu próximo paso",
+        title:
+          "Si tuvieras un plan sencillo en casa para trabajar fuerza y equilibrio, ¿lo empezarías esta semana?",
+        opts: [
+          "💪 Sí, lo necesito",
+          "🙏 Sí, si es fácil de seguir"
+        ]
+      }
+    ];
+
+    let page = -1;
+    let answers = Array(questions.length).fill(null);
+    let pending = [];
+
+    const card = document.getElementById("card");
+    const back = document.getElementById("back");
+
+    function progress() {
+      document.getElementById("step").textContent =
+        page < 0
+          ? "Tu punto de partida"
+          : `Paso ${page + 2} de 14`;
+
+      document.getElementById("fill").style.width =
+        page < 0
+          ? "0%"
+          : `${Math.min(100, ((page + 1) / 13) * 100)}%`;
+
+      back.hidden =
+        page < 0 || page >= questions.length;
+    }
+
+    function start() {
+      page = -1;
+      progress();
+
+      card.innerHTML = `
+        <div class="eyebrow">Una mirada a tu movilidad</div>
+
+        <div class="hero-number">100</div>
+
+        <h1>¿Cómo está respondiendo tu cuerpo?</h1>
+
+        <p>
+          Descúbrelo en 2 minutos con un cuestionario sobre
+          tus hábitos, fuerza y equilibrio, inspirado en el
+          deseo de vivir más años con autonomía.
+        </p>
+
+        <p class="muted">
+          No calcula tu edad biológica ni predice cuánto vivirás.
+        </p>
+
+        <button class="primary" id="begin" type="button">
+          EMPEZAR MI TEST →
+        </button>
+      `;
+
+      document.getElementById("begin").onclick = () => {
+        page = 0;
+        render();
+      };
+    }
+
+    function next() {
+      page++;
+      window.scrollTo(0, 0);
+
+      if (page === questions.length) {
+        loading();
+      } else {
+        render();
+      }
+    }
+
+    function render() {
+      progress();
+
+      const question = questions[page];
+
+      pending = question.multi
+        ? [...(answers[page] || [])]
+        : [];
+
+      card.innerHTML = `
+        <div class="eyebrow">${question.tag}</div>
+        <h1>${question.title}</h1>
+        ${question.desc ? `<p>${question.desc}</p>` : ""}
+        <div id="options"></div>
+      `;
+
+      if (question.info) {
+        button("CONTINUAR →", next, "primary");
+        return;
+      }
+
+      question.opts.forEach((label, index) => {
+        const option = button(
+          label,
+          () => {
+            if (question.multi) {
+              if (index === 5) {
+                pending = pending.includes(5) ? [] : [5];
+              } else {
+                pending = pending.filter(value => value !== 5);
+
+                pending = pending.includes(index)
+                  ? pending.filter(value => value !== index)
+                  : [...pending, index];
+              }
+
+              document
+                .querySelectorAll(".option")
+                .forEach((element, optionIndex) => {
+                  const selected = pending.includes(optionIndex);
+
+                  element.classList.toggle("selected", selected);
+                  element.setAttribute("aria-pressed", selected);
+                });
+
+              document.getElementById("continue").disabled =
+                pending.length === 0;
+            } else {
+              answers[page] = index;
+              next();
+            }
+          },
+          "option"
+        );
+
+        if (question.multi) {
+          const selected = pending.includes(index);
+          option.classList.toggle("selected", selected);
+          option.setAttribute("aria-pressed", selected);
+        }
+      });
+
+      if (question.multi) {
+        const continueButton = button(
+          "CONTINUAR →",
+          () => {
+            answers[page] = [...pending];
+            next();
+          },
+          "primary"
+        );
+
+        continueButton.id = "continue";
+        continueButton.disabled = pending.length === 0;
+      }
+    }
+
+    function button(text, action, className) {
+      const element = document.createElement("button");
+
+      element.type = "button";
+      element.className = className;
+      element.textContent = text;
+      element.onclick = action;
+
+      (document.getElementById("options") || card).append(element);
+
+      return element;
+    }
+
+    function calculate() {
+      const situations = answers[3] || [];
+
+      const chair = [0, 2, 5, null][answers[6]];
+      const balance = [0, 2, 4, null][answers[7]];
+      const floor = [0, 1, 4, null][answers[9]];
+
+      const score =
+        (situations.includes(5) ? 0 : situations.length * 2) +
+        [4, 2, 0, 0][answers[5]] +
+        (chair || 0) +
+        (balance || 0) +
+        (floor || 0);
+
+      const missing = [chair, balance, floor]
+        .filter(value => value === null).length;
+
+      const category =
+        score === 0 ? 0 :
+        score <= 6 ? 1 :
+        score <= 12 ? 2 : 3;
+
+      const areas = [
+        ["Fuerza", chair === null ? null : chair / 5],
+        ["Equilibrio", balance === null ? null : balance / 4],
+        ["Movilidad desde el suelo", floor === null ? null : floor / 4]
+      ].filter(area => area[1] !== null);
+
+      const maximum = areas.length
+        ? Math.max(...areas.map(area => area[1]))
+        : 0;
+
+      const focus = maximum > 0
+        ? areas
+            .filter(area => area[1] === maximum)
+            .map(area => area[0])
+            .join(" y ")
+        : "Mantener una rutina de movimiento";
+
+      return {
+        score,
+        missing,
+        category,
+        focus
+      };
+    }
+
+    function loading() {
+      progress();
+
+      document.getElementById("step").textContent =
+        "Paso 14 de 14";
+
+      document.getElementById("fill").style.width = "100%";
+
+      card.innerHTML = `
+        <div class="eyebrow">Tu resumen</div>
+
+        <h1>Organizando tus respuestas…</h1>
+
+        <div class="spinner"></div>
+
+        <p>
+          ✔ Revisando lo que cuentas sobre tus piernas<br>
+          ✔ Revisando tu estabilidad<br>
+          ✔ Preparando tu punto de partida
+        </p>
+      `;
+
+      setTimeout(result, 1200);
+    }
+
+    function result() {
+      const summary = calculate();
+
+      const names = [
+        "🟢 Mantener tus hábitos",
+        "🟡 Revisar tu rutina",
+        "🟠 Prestar atención a tus dificultades",
+        "🔴 Priorizar una evaluación"
+      ];
+
+      const descriptions = [
+        "Tus respuestas describen pocas dificultades en estas actividades. Mantén la actividad y observa los cambios.",
+        "Has señalado algunas dificultades o poca actividad. Puede ser útil revisar tu rutina y buscar orientación si persisten.",
+        "Has señalado dificultades en varias actividades. Una evaluación puede ayudarte a elegir un comienzo adecuado.",
+        "Has señalado varias dificultades cotidianas. Consulta con un profesional antes de iniciar un plan de ejercicios y evita pruebas que te hagan sentir inestable."
+      ];
+
+      card.innerHTML = `
+        <div class="eyebrow">Tu resultado orientativo</div>
+
+        <h1>${names[summary.category]}</h1>
+
+        <div class="score">
+          ${summary.score}
+          <span style="font:18px Arial"> / 27</span>
+        </div>
+
+        <p>
+          Índice de dificultades declaradas y actividad.
+          Una puntuación más alta significa que marcaste más
+          dificultades; no equivale a años de edad ni mide
+          tu riesgo médico.
+        </p>
+
+        <span class="pill">
+          Tu edad declarada: ${questions[1].opts[answers[1]]}
+        </span>
+
+        <p>${descriptions[summary.category]}</p>
+
+        <div class="sample">
+          <strong>Un área para explorar</strong>
+          <p>${summary.focus}</p>
+
+          ${
+            summary.missing
+              ? `
+                <p class="muted">
+                  Tu resumen es parcial: dejaste alguna actividad
+                  sin evaluar. No añadimos puntos por omitirla.
+                </p>
+              `
+              : ""
+          }
+        </div>
+
+        <h2>Mira cómo dar tu próximo paso</h2>
+
+        <p>
+          Conoce la propuesta y decide si se adapta a lo que buscas.
+        </p>
+
+        <div id="video"></div>
+
+        <div class="offer-heading">
+          <div class="eyebrow">La propuesta del programa</div>
+
+          <h2>El Test de los 100 Años</h2>
+
+          <p>
+            Un plan de 12 semanas, con sesiones de 15 minutos,
+            para trabajar fuerza, equilibrio y movimiento
+            en casa, sin gimnasio.
+          </p>
+
+          <ul>
+            <li>Los 6 tests completos y sus instrucciones.</li>
+            <li>Una tabla para registrar resultados y evolución.</li>
+            <li>Las 3 fases: Despertar, Fortalecer y Renovar.</li>
+            <li>
+              Una guía de hábitos inspirados en la vida
+              cotidiana japonesa.
+            </li>
+            <li>
+              Registro imprimible para el día 1,
+              la semana 6 y la semana 12.
+            </li>
+          </ul>
+
+          <button class="primary" id="cta" type="button">
+            QUIERO CONOCER EL PLAN →
+          </button>
+
+          <div id="purchase"></div>
+
+          <p class="note">
+            Propuesta de producto para esta vista de prueba.
+            Precio y garantía pendientes de confirmar.
+            Este cuestionario no es una evaluación clínica validada.
+          </p>
+
+          <button class="back" id="restart" type="button">
+            Volver a empezar
+          </button>
+        </div>
+      `;
+
+      document.getElementById("video").innerHTML = `
+        <vturb-smartplayer
+          id="vid-6ace9de6feba2f66a1f0e8b7"
+          style="display:block;margin:0 auto;width:100%"
+        >
+          <div
+            class="vturb-player-placeholder"
+            style="
+              position:relative;
+              width:100%;
+              padding:56.25% 0 0;
+              z-index:0;
+              background-color:black;
+            "
+          ></div>
+        </vturb-smartplayer>
+      `;
+
+      if (!document.getElementById("vturb-100-script")) {
+        const script = document.createElement("script");
+
+        script.id = "vturb-100-script";
+
+        script.src =
+          "https://scripts.converteai.net/9f0596ae-2df4-4d35-b169-78bb42ca8fab/players/6ace9de6feba2f66a1f0e8b7/v4/player.js";
+
+        script.async = true;
+        document.head.appendChild(script);
+      }
+
+      document.getElementById("cta").onclick = () => {
+        location.assign(CHECKOUT_URL);
+      };
+
+      document.getElementById("restart").onclick = () => {
+        answers.fill(null);
+        start();
+        window.scrollTo(0, 0);
+      };
+    }
+
+    back.onclick = () => {
+      if (page === 0) {
+        start();
+      } else {
+        page--;
+        render();
+      }
+
+      window.scrollTo(0, 0);
+    };
+
+    start();
+  </script>
+</body>
+</html>
