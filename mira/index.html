@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Que Vuelva a Mirarte</title>
+
+  <style>
+    :root {
+      --wine: #722f46;
+      --ink: #352a2e;
+      --muted: #827176;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #faf5f1;
+      color: var(--ink);
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      padding: 26px;
+      text-align: center;
+      letter-spacing: 3px;
+      font-size: 12px;
+      color: var(--wine);
+    }
+
+    main {
+      max-width: 660px;
+      margin: 20px auto;
+      padding: 0 22px 55px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .track {
+      height: 4px;
+      background: #e7d9d6;
+      border-radius: 4px;
+      margin-bottom: 35px;
+    }
+
+    .fill {
+      height: 100%;
+      background: var(--wine);
+      transition: width 0.3s;
+      border-radius: 4px;
+    }
+
+    article {
+      background: #fffdfb;
+      border: 1px solid #eaded8;
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 16px 50px #63304608;
+    }
+
+    h1,
+    h2 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 32px;
+      line-height: 1.2;
+      margin: 12px 0 22px;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.65;
+      color: #6a595f;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--wine);
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 18px 20px;
+      border: 1px solid #dfd2ce;
+      background: white;
+      border-radius: 12px;
+      margin: 11px 0;
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .option:hover,
+    .option:focus-visible {
+      border-color: var(--wine);
+      background: #fbf1f3;
+      outline: 2px solid #722f4622;
+    }
+
+    .option.selected {
+      border-color: var(--wine);
+      background: #fbf1f3;
+    }
+
+    .primary {
+      display: block;
+      background: var(--wine);
+      color: white;
+      border: 0;
+      padding: 18px 22px;
+      border-radius: 12px;
+      width: 100%;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 22px;
+    }
+
+    .back {
+      border: 0;
+      background: none;
+      color: #827176;
+      cursor: pointer;
+      padding: 18px 0;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #8b7c80;
+      line-height: 1.6;
+      text-align: center;
+      margin: 24px 5px;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: #6a595f;
+      line-height: 1.8;
+    }
+
+    .sample {
+      background: #f8eee9;
+      border-radius: 12px;
+      padding: 22px;
+      margin: 22px 0;
+    }
+
+    .week {
+      padding: 10px 0;
+      border-bottom: 1px solid #dfd2ce;
+      line-height: 1.7;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #eaded8;
+      border-top-color: var(--wine);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 25px auto;
+    }
+
+    .level {
+      display: inline-block;
+      background: #f4e5e9;
+      color: var(--wine);
+      border-radius: 50px;
+      padding: 8px 15px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .video-title {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .video-intro {
+      margin-top: 0;
+    }
+
+    .offer-heading {
+      margin-top: 38px;
+      border-top: 1px solid #eaded8;
+      padding-top: 30px;
+    }
+
+    .benefits {
+      list-style: none;
+      padding: 0;
+    }
+
+    .benefits li {
+      margin: 18px 0;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes ctaPulse {
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(114, 47, 70, 0.25);
+      }
+
+      50% {
+        transform: scale(1.025);
+        box-shadow: 0 0 0 12px rgba(114, 47, 70, 0);
+      }
+    }
+
+    #cta {
+      animation: ctaPulse 2s ease-in-out infinite;
+    }
+
+    #cta:hover,
+    #cta:focus-visible {
+      animation: none;
+    }
+
+    @media (max-width: 520px) {
+      main {
+        margin: 5px auto;
+      }
+
+      article {
+        padding: 25px;
+      }
+
+      h1,
+      h2 {
+        font-size: 28px;
+      }
+
+      header {
+        padding: 23px 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>QUE VUELVA A MIRARTE</header>
+
+  <main>
+    <div class="top">
+      <span id="step"></span>
+      <span>Un momento para ti</span>
+    </div>
+
+    <div class="track">
+      <div class="fill" id="fill"></div>
+    </div>
+
+    <article id="card" aria-live="polite"></article>
+
+    <button id="back" class="back" type="button">
+      ← Volver
+    </button>
+  </main>
+
+  <script>
+    const OFFER_URL = "https://pay.monetizze.com.br/DKL387356";
+
+    const q = [
+      [
+        "Tu historia",
+        "¿Cuánto tiempo llevas casada o viviendo con él?",
+        "Cada historia es distinta. Cuéntame un poco de la tuya.",
+        [
+          "Menos de 3 años",
+          "De 3 a 10 años",
+          "De 10 a 20 años",
+          "Más de 20 años"
+        ]
+      ],
+      [
+        "Lo que estás sintiendo",
+        "¿Qué frase describe mejor lo que estás viviendo con él?",
+        "",
+        [
+          "Compartimos casa… pero casi no compartimos momentos",
+          "Solo me busca cuando necesita algo",
+          "Siento que ya no me mira como antes",
+          "Cualquier conversación termina en discusión",
+          "Nos queremos… pero extraño la chispa"
+        ]
+      ],
+      [
+        "La carga diaria",
+        "¿Quién lleva la agenda de la casa, recuerda los pendientes y termina resolviendo casi todo?",
+        "No se trata de culparte por cuidar. Queremos ver cuánto espacio te queda para ti y para ustedes.",
+        [
+          "Yo. Si no lo hago, siento que nadie lo hace",
+          "Casi siempre yo, aunque él también participa",
+          "Lo compartimos bastante"
+        ]
+      ],
+      [
+        "Antes y ahora",
+        "Al principio él buscaba momentos contigo, te escribía y hacía planes para verte. ¿Qué sientes que cambió?",
+        "",
+        [
+          "Dejamos de tener detalles entre nosotros",
+          "La rutina nos ganó",
+          "Yo terminé pendiente de todo y de todos",
+          "No lo sé… y eso es lo que más me duele"
+        ]
+      ],
+      [
+        "Una pequeña señal",
+        "Cuando hablas con él, ¿te sale más fácil decir “¿ya hiciste eso?” que decir “quiero estar contigo”?",
+        "",
+        [
+          "Sí… nuestras conversaciones son casi puro pendiente",
+          "A veces. Me doy cuenta después",
+          "No tanto, pero igual nos siento distantes"
+        ]
+      ],
+      [
+        "Reconocer el patrón",
+        "De tanto encargarte de todo, puedes quedarte sin espacio para ser pareja.",
+        "Organizas, recuerdas, corriges, resuelves… y acabas agotada. En Que Vuelva a Mirarte llamamos a ese patrón “Esposa-Mamá”. Es una forma de describir la rutina, no un diagnóstico. El primer paso es reconocer qué cargas puedes compartir, recuperar momentos propios y abrir espacio para la conexión. ¿Te reconoces?",
+        [
+          "Sí. Me siento más encargada de todo que pareja",
+          "En algunas cosas, sí",
+          "No del todo. Lo que más extraño es nuestra conexión"
+        ]
+      ],
+      [
+        "Lo que quieres recuperar",
+        "¿Te gustaría volver a sentirte vista, deseada y tomada en cuenta, sin rogar por atención ni convertir cada intento de acercarte en una discusión?",
+        "",
+        [
+          "🥹 Sí. Extraño sentirme su mujer",
+          "🥲 Sí. Estoy cansada de sentirme invisible",
+          "Quiero recuperar la cercanía que teníamos"
+        ]
+      ],
+      [
+        "Imagínalo",
+        "¿Qué momento te gustaría recuperar primero?",
+        "Un abrazo en la cocina, un mensaje cariñoso o una salida que no tenga nada que ver con las obligaciones. Esos son los momentos para los que queremos abrir espacio. La respuesta de él también cuenta.",
+        [
+          "Que me busque para pasar tiempo conmigo",
+          "Los abrazos y el cariño espontáneo",
+          "Hablar y reírnos como antes",
+          "Sentir que también soy importante en sus planes"
+        ]
+      ],
+      [
+        "Tu primer paso",
+        "¿Cuánto tiempo podrías reservar para ti cada día?",
+        "Elige algo que de verdad puedas sostener.",
+        [
+          "5 minutos",
+          "10 minutos",
+          "15 minutos o más"
+        ]
+      ]
+    ];
+
+    let current = 0;
+    let answers = Array(q.length).fill(null);
+    let timer;
+
+    const card = document.getElementById("card");
+    const back = document.getElementById("back");
+
+    function render() {
+      document.getElementById("step").textContent =
+        `Paso ${current + 1} de 10`;
+
+      document.getElementById("fill").style.width =
+        `${current * 10}%`;
+
+      back.hidden = current === 0;
+
+      const [tag, title, desc, opts] = q[current];
+
+      card.innerHTML = `
+        <div class="eyebrow">${tag}</div>
+        <h1>${title}</h1>
+        ${desc ? `<p>${desc}</p>` : ""}
+        <div id="options"></div>
+      `;
+
+      opts.forEach((text, index) => {
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className =
+          "option" + (answers[current] === index ? " selected" : "");
+        button.textContent = text;
+
+        button.addEventListener("click", () => {
+          answers[current] = index;
+
+          if (current === q.length - 1) {
+            loading();
+          } else {
+            current++;
+            render();
+          }
+
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        });
+
+        document.getElementById("options").append(button);
+      });
+    }
+
+    function loading() {
+      current = 9;
+      back.hidden = true;
+
+      document.getElementById("step").textContent = "Paso 10 de 10";
+      document.getElementById("fill").style.width = "100%";
+
+      card.innerHTML = `
+        <div class="eyebrow">Tu resumen</div>
+        <h1>Preparando tu resumen…</h1>
+        <div class="spinner"></div>
+        <p>
+          Estamos organizando tus respuestas para mostrarte
+          un punto de partida.
+        </p>
+      `;
+
+      timer = setTimeout(result, 1300);
+    }
+
+    function profile() {
+      const weights = [2, 1, 0];
+
+      const score =
+        weights[answers[2]] +
+        weights[answers[4]] +
+        weights[answers[5]];
+
+      return score >= 5 ? 0 : score >= 2 ? 1 : 2;
+    }
+
+    function result() {
+      const profiles = [
+        [
+          "La Esposa-Mamá",
+          "Alto",
+          "Según tus respuestas, llevas gran parte de la organización, los recordatorios y las soluciones de casa. Lo haces por amor… pero tantas responsabilidades pueden dejar poco espacio para sentirte pareja.",
+          "Por eso puedes sentirte cansada, invisible y extrañar cómo te miraba antes."
+        ],
+        [
+          "La Esposa-Mamá",
+          "Medio",
+          "Tus respuestas muestran que, en algunos momentos, terminas más pendiente de resolver y recordar que de compartir tiempo como pareja.",
+          "La rutina puede estar dejando en segundo plano los detalles que extrañas."
+        ],
+        [
+          "La conexión en pausa",
+          "Bajo en el patrón Esposa-Mamá",
+          "Tus respuestas no muestran una carga alta de ese patrón. Lo que destaca es tu deseo de recuperar cercanía y momentos compartidos.",
+          "No necesitas encajar en una etiqueta para empezar a cuidar tu espacio y tu relación."
+        ]
+      ];
+
+      const [title, level, desc, pain] = profiles[profile()];
+
+      card.innerHTML = `
+        <div class="eyebrow">Tu resultado</div>
+
+        <h1>${title}</h1>
+
+        <div class="level">Nivel: ${level}</div>
+
+        <p>${desc}</p>
+        <p>${pain}</p>
+
+        <div class="sample">
+          <strong>La buena noticia</strong>
+          <p>
+            La distancia no demuestra, por sí sola, falta de amor.
+            Puedes empezar por pequeños cambios en tu rutina,
+            sin rogar por atención ni iniciar otra pelea.
+            La respuesta de él también importa.
+          </p>
+        </div>
+
+        <h2 class="video-title">Mira esto antes de continuar</h2>
+
+        <p class="video-intro">
+          Descubre cómo empezar con Que Vuelva a Mirarte.
+        </p>
+
+        <vturb-smartplayer
+          id="vid-6acdb3d755229e07c567df2e"
+          style="display:block;margin:0 auto;width:100%;max-width:400px"
+        >
+          <div
+            class="vturb-player-placeholder"
+            style="
+              position:relative;
+              width:100%;
+              padding:177.77777777777777% 0 0;
+              z-index:0;
+              background-color:black
+            "
+          ></div>
+        </vturb-smartplayer>
+
+        <div class="offer-heading">
+          <div class="eyebrow">Tu próximo paso</div>
+
+          <h2>Que Vuelva a Mirarte</h2>
+
+          <p>
+            <em>
+              El protocolo de 30 días para dejar de ser su mamá
+              y volver a ser su mujer.
+            </em>
+          </p>
+        </div>
+
+        <h3>Lo que vas a recibir</h3>
+
+        <ul class="benefits">
+          <li>
+            🔍 <strong>El test de la Esposa-Mamá:</strong>
+            reconoce cuáles de estos hábitos aparecen en tu relación.
+          </li>
+
+          <li>
+            🚫 <strong>Las 10 cosas que debes dejar de hacer hoy:</strong>
+            incluida la frase “déjalo, yo lo hago”, que puede dejarte
+            cargando con todo otra vez.
+          </li>
+
+          <li>
+            📅 <strong>El calendario de 30 días:</strong>
+            abres el día, encuentras la tarea y empiezas.
+          </li>
+        </ul>
+
+        <div class="sample">
+          <div class="week">
+            <strong>Semana 1 · Soltar</strong><br>
+            Deja de cargar con todo.
+          </div>
+
+          <div class="week">
+            <strong>Semana 2 · Volver a ti</strong><br>
+            Recupera tus gustos, tus planes y tu espacio.
+          </div>
+
+          <div class="week">
+            <strong>Semana 3 · Reconectar</strong><br>
+            Practica pequeñas señales de atención y cercanía.
+          </div>
+
+          <div class="week">
+            <strong>Semana 4 · Encender</strong><br>
+            Cultiva admiración, contacto y momentos juntos.
+          </div>
+        </div>
+
+        <ul class="benefits">
+          <li>
+            💬 <strong>Cambia reclamos por pedidos:</strong>
+            ejemplos concretos para expresar lo que necesitas sin atacar.
+          </li>
+        </ul>
+
+        <p>
+          ⏱️ Muchas tareas son breves; algunas requieren
+          entre 10 y 15 minutos.
+        </p>
+
+        <button class="primary" id="cta" type="button">
+          QUIERO QUE VUELVA A MIRARME →
+        </button>
+
+        <div id="offer"></div>
+
+        <p class="note">
+          Tu resultado es orientativo, no un diagnóstico
+          ni una medida del deseo de tu pareja.
+        </p>
+
+        <button class="back" id="restart" type="button">
+          Volver a hacer el quiz
+        </button>
+      `;
+
+      if (!document.getElementById("vturb-script")) {
+        const script = document.createElement("script");
+
+        script.id = "vturb-script";
+        script.src =
+          "https://scripts.converteai.net/9f0596ae-2df4-4d35-b169-78bb42ca8fab/players/6acdb3d755229e07c567df2e/v4/player.js";
+
+        script.async = true;
+        document.head.appendChild(script);
+      }
+
+      document.getElementById("cta").onclick = () => {
+        location.assign(OFFER_URL);
+      };
+
+      document.getElementById("restart").onclick = () => {
+        clearTimeout(timer);
+        current = 0;
+        answers.fill(null);
+        render();
+        window.scrollTo(0, 0);
+      };
+    }
+
+    back.onclick = () => {
+      if (current > 0 && current < 9) {
+        current--;
+        render();
+      }
+    };
+
+    render();
+  </script>
+</body>
+</html>
