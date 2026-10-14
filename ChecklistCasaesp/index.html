@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checklist Casa Segura</title>
+<style>
+:root{--green:#236456;--ink:#352a2e;--muted:#827176}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:#f4f7f1;color:var(--ink);font-family:Arial,sans-serif}
+header{padding:26px;text-align:center;letter-spacing:3px;font-size:12px;color:var(--green)}
+main{max-width:660px;margin:20px auto;padding:0 22px 55px}
+.top{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px;margin-bottom:12px}
+.track{height:4px;background:#e0e6dc;border-radius:4px;margin-bottom:35px}
+.fill{height:100%;background:var(--green);transition:width .3s;border-radius:4px}
+article{background:#fffdfb;border:1px solid #e0e6dc;border-radius:22px;padding:38px;box-shadow:0 16px 50px rgba(35,100,86,.04)}
+h1,h2{font-family:Georgia,serif;font-weight:normal;font-size:32px;line-height:1.2;margin:12px 0 22px}
+p{font-size:16px;line-height:1.65;color:#6a595f}
+.eyebrow{text-transform:uppercase;letter-spacing:2px;color:var(--green);font-size:11px;font-weight:bold;line-height:1.6}
+.house{font-size:62px;margin:10px 0;color:var(--green)}
+.option{display:block;width:100%;text-align:left;padding:18px 20px;border:1px solid #dfd2ce;background:white;border-radius:12px;margin:11px 0;font-size:15px;line-height:1.4;color:var(--ink);cursor:pointer}
+.option:hover,.option:focus-visible{border-color:var(--green);background:#edf3e9}
+.option.selected{background:#e4efe3;border-color:var(--green)}
+.primary{display:block;background:var(--green);color:white;border:0;padding:18px 22px;border-radius:12px;width:100%;font-size:15px;font-weight:bold;cursor:pointer;text-align:center;text-decoration:none;margin-top:22px}
+.primary:disabled{opacity:.45;cursor:not-allowed}
+.back{border:0;background:none;color:var(--muted);cursor:pointer;padding:18px 0}
+button:focus-visible,a:focus-visible{outline:3px solid #589b83;outline-offset:3px}
+.note,.muted{font-size:12px;color:#8b7c80;line-height:1.6}
+.note{text-align:center;margin:24px 5px}
+.sample{background:#edf3e9;border-radius:12px;padding:22px;margin:22px 0}
+.pill{padding:10px 15px;background:#e4efe3;border-radius:20px;display:inline-block}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:25px 0}
+.room{padding:18px;border-radius:14px;border:1px solid #dde5dc;line-height:1.5}
+.room strong{display:block;font-size:16px}
+.room small{display:block;font-size:12px;margin-top:7px}
+.room em{font-size:12px;font-style:normal}
+.green{background:#e8f2e9;color:#285f3a}
+.yellow{background:#fff4d7;color:#7d5d12}
+.red{background:#fbe9e5;color:#923c31}
+.block{border-left:3px solid var(--green);padding:4px 0 4px 16px;margin:18px 0}
+.spinner{width:40px;height:40px;border:3px solid #e0e6dc;border-top-color:var(--green);border-radius:50%;animation:spin 1s linear infinite;margin:25px auto}
+.loadingline{padding:9px 0;color:#7a857c}
+.loadingline.done{color:var(--green)}
+.offer-heading{margin-top:38px;border-top:1px solid #e0e6dc;padding-top:30px}
+.deliverables{display:grid;gap:14px;margin:24px 0}
+.delivery{border:1px solid #dce5d8;border-radius:15px;background:white;padding:23px}
+.delivery h3{margin:9px 0;font-size:20px;line-height:1.35;color:var(--green)}
+.delivery p{margin:10px 0 0;font-size:15px}
+.delivery-icon{font-size:25px}
+.bonus-heading{margin-top:35px}
+.bonuses .delivery{background:#f6f4e9;border-color:#e7dfc5}
+.gift-tag{font-size:10px;font-weight:bold;letter-spacing:2px;color:#806323}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes ctaPulse{
+0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(35,100,86,.25)}
+50%{transform:scale(1.025);box-shadow:0 0 0 12px rgba(35,100,86,0)}
+}
+.pulse{animation:ctaPulse 2s ease-in-out infinite}
+.pulse:hover,.pulse:focus-visible{animation:none}
+@media(max-width:520px){
+main{margin:5px auto}
+article{padding:25px}
+h1,h2{font-size:28px}
+header{padding:23px 12px}
+}
+@media(max-width:380px){.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){
+*{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header>CHECKLIST CASA SEGURA</header>
+<main>
+  <div class="top">
+    <span id="step"></span>
+    <span>Para quienes más amas</span>
+  </div>
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <article id="card" aria-live="polite"></article>
+  <button id="back" class="back" type="button">← Volver</button>
+</main>
+
+<script>
+const CONFIG = {
+  checkoutUrl: "https://pay.monetizze.com.br/KWM471299",
+  vturbPlayerId: "6aceba5321ff7b56c1337ce7",
+  vturbAccountId: "9f0596ae-2df4-4d35-b169-78bb42ca8fab",
+  ctaDelaySeconds: 150,
+  loadingMs: 6000
+};
+
+const questions = [
+  {
+    title: "¿Con quién viven tus padres hoy?",
+    desc: "Esto nos ayuda a personalizar tu resultado.",
+    opts: ["Viven los dos juntos","Uno de ellos vive solo","Viven con un familiar o cuidador"],
+    weights: [1,2,0]
+  },
+  {
+    title: "¿Qué edad tiene tu papá o tu mamá (el mayor)?",
+    opts: ["60 a 69 años","70 a 79 años","80 años o más"],
+    weights: [1,2,3]
+  },
+  {
+    title: "¿Qué tan cerca vives de ellos?",
+    desc: "Muchos hijos que viven lejos notan algunos cambios cuando visitan.",
+    opts: ["Vivimos en la misma casa","Cerca, a menos de 30 minutos","Lejos, en otra ciudad o país"],
+    weights: [0,1,2]
+  },
+  {
+    title: "¿Alguno de ellos ya tuvo una caída o un “casi”?",
+    desc: "Un tropiezo o un “casi me caigo” merece atención, aunque no haya lesión.",
+    opts: ["No, nunca","Un tropezón o un “casi me caigo”","Sí, ya tuvo una caída"],
+    weights: [0,2,3]
+  },
+  {
+    title: "En el baño de tus padres, ¿hay barras de apoyo y superficie antideslizante?",
+    desc: "El baño combina humedad, poco espacio y movimientos de agacharse y levantarse. Las barras deben estar bien fijadas; una alfombra suelta también puede ser un obstáculo.",
+    opts: ["Sí, tiene las dos cosas","Solo una de ellas","Ninguna","No lo sé"],
+    weights: [0,1,2,2]
+  },
+  {
+    title: "Cuando se levantan de madrugada para ir al baño, ¿cómo está el camino?",
+    opts: ["Hay luz automática o una lucecita encendida","Tienen que buscar el interruptor","Caminan a oscuras","No lo sé"],
+    weights: [0,1,2,2]
+  },
+  {
+    title: "¿Cuáles de estas cosas hay en la sala o en los pasillos?",
+    desc: "Puedes elegir varias.",
+    multi: true,
+    opts: ["Alfombras sueltas","Cables en el suelo","Mesa de centro o muebles bajos en el paso","Objetos o revistas en el piso","Ninguna"],
+    weights: [1,1,1,1,0]
+  },
+  {
+    title: "¿Las cosas de uso diario están al alcance de la mano?",
+    opts: ["Sí, todo está a mano","Algunas cosas están arriba","Se suben a un banquito o una silla para alcanzarlas"],
+    weights: [0,1,2]
+  },
+  {
+    title: "¿Qué usan normalmente dentro de casa?",
+    opts: ["Zapato cerrado con suela antideslizante","Pantuflas abiertas, medias o andan descalzos","No lo sé"],
+    weights: [0,2,1]
+  },
+  {
+    title: "¿Notaste alguna de estas señales en los últimos meses?",
+    desc: "Los cambios nuevos o persistentes merecen una conversación y, según el caso, una evaluación profesional. No indican por sí solos una enfermedad.",
+    multi: true,
+    opts: ["Olvidos más frecuentes","Ollas quemadas o la estufa encendida por descuido","Más cansancio o menos ganas de salir","Moretones que no recuerdan cómo se hicieron","Cuentas o medicamentos desorganizados","Ninguna"],
+    weights: [1,1,1,1,1,0]
+  },
+  {
+    title: "¿Tus padres tienen una hoja de emergencia visible y sus medicamentos organizados?",
+    opts: ["Sí, las dos cosas","Solo una de ellas","Ninguna"],
+    weights: [0,1,2]
+  }
+];
+
+const labels = [
+  "Su situación","Su edad","La distancia","Caídas y tropiezos",
+  "El baño","El camino nocturno","Sala y pasillos","La cocina",
+  "El calzado","Cambios cotidianos","Prepararse para una emergencia"
+];
+
+let page = -1;
+let answers = Array(questions.length).fill(null);
+let pending = [];
+let timers = [];
+
+const card = document.getElementById("card");
+const back = document.getElementById("back");
+
+function cancelTimers() {
+  timers.forEach(clearTimeout);
+  timers = [];
+}
+
+function progress() {
+  document.getElementById("step").textContent =
+    page < 0 ? "Menos de 2 minutos" :
+    page < questions.length ? `Pregunta ${page + 1} de 11` :
+    "Tu resultado";
+
+  document.getElementById("fill").style.width =
+    page < 0 ? "0%" : `${Math.min(100, page / 11 * 100)}%`;
+
+  back.hidden = page < 0 || page >= questions.length;
+}
+
+function start() {
+  cancelTimers();
+  page = -1;
+  progress();
+
+  card.innerHTML = `
+    <div class="eyebrow">Una mirada nueva a su hogar</div>
+    <div class="house" aria-hidden="true">⌂</div>
+    <h1>Checklist Casa Segura</h1>
+    <p><strong>Mira lo que los ojos no ven y cuida a quien más amas.</strong></p>
+    <p>Responde 11 preguntas rápidas sobre la casa de tus padres y descubre qué detalles conviene revisar.</p>
+    <p>⏱️ Toma menos de 2 minutos.</p>
+    <button class="primary" id="begin" type="button">EMPEZAR EL CHECKLIST →</button>
+  `;
+
+  document.getElementById("begin").onclick = () => {
+    page = 0;
+    render();
+  };
+}
+
+function next() {
+  page++;
+  window.scrollTo(0,0);
+  page === questions.length ? loading() : render();
+}
+
+function render() {
+  progress();
+  const question = questions[page];
+  pending = question.multi ? [...(answers[page] || [])] : [];
+
+  card.innerHTML = `
+    <div class="eyebrow">${labels[page]}</div>
+    <h1>${question.title}</h1>
+    ${question.desc ? `<p>${question.desc}</p>` : ""}
+    <div id="options"></div>
+  `;
+
+  question.opts.forEach((label,index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "option";
+    button.textContent = label;
+
+    const selected = question.multi ?
+      pending.includes(index) : answers[page] === index;
+
+    button.classList.toggle("selected",selected);
+    if(question.multi) button.setAttribute("aria-pressed",selected);
+
+    button.onclick = () => {
+      if(!question.multi) {
+        answers[page] = index;
+        next();
+        return;
+      }
+
+      const noneIndex = question.opts.length - 1;
+
+      if(index === noneIndex) {
+        pending = pending.includes(noneIndex) ? [] : [noneIndex];
+      } else {
+        pending = pending.filter(value => value !== noneIndex);
+        pending = pending.includes(index) ?
+          pending.filter(value => value !== index) :
+          [...pending,index];
+      }
+
+      document.querySelectorAll(".option").forEach((element,i) => {
+        const active = pending.includes(i);
+        element.classList.toggle("selected",active);
+        element.setAttribute("aria-pressed",active);
+      });
+
+      document.getElementById("continue").disabled = !pending.length;
+    };
+
+    document.getElementById("options").append(button);
+  });
+
+  if(question.multi) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "continue";
+    button.className = "primary";
+    button.textContent = "CONTINUAR →";
+    button.disabled = !pending.length;
+
+    button.onclick = () => {
+      answers[page] = [...pending];
+      next();
+    };
+
+    card.append(button);
+  }
+}
+
+function calculate() {
+  const values = questions.map((question,index) =>
+    question.multi ?
+      (answers[index] || []).reduce((sum,j) => sum + question.weights[j],0) :
+      question.weights[answers[index]]
+  );
+
+  const score = values.reduce((sum,value) => sum + value,0);
+  const color = (value,greenLimit,yellowLimit) =>
+    value <= greenLimit ? "green" :
+    value <= yellowLimit ? "yellow" : "red";
+
+  const rooms = [
+    {
+      name: "Baño",
+      color: color(values[4],0,1),
+      unknown: answers[4] === 3,
+      tip: [
+        "Verifica que las barras estén bien fijadas y el piso no resbale.",
+        "Revisa qué apoyo o superficie antideslizante falta.",
+        "Revisa apoyos y superficies con quien pueda instalarlos correctamente."
+      ][Math.min(values[4],2)]
+    },
+    {
+      name: "Camino nocturno",
+      color: color(values[5],0,1),
+      unknown: answers[5] === 3,
+      tip: "Revisa iluminación accesible y un camino libre de obstáculos."
+    },
+    {
+      name: "Sala y pasillos",
+      color: color(values[6],0,2),
+      tip: "Revisa alfombras, cables y muebles que invaden el paso."
+    },
+    {
+      name: "Cocina",
+      color: color(values[7],0,1),
+      tip: "Coloca lo que usan a diario al alcance, sin tener que subirse a una silla."
+    },
+    {
+      name: "Calzado",
+      color: color(values[8],0,1),
+      unknown: answers[8] === 2,
+      tip: "Revisa el ajuste, el soporte y la adherencia del calzado habitual."
+    },
+    {
+      name: "Rutina y señales",
+      color: color(values[9] + values[10],1,3),
+      tip: "Organiza contactos de emergencia y revisa cambios de rutina. No cambies dosis ni tratamientos."
+    }
+  ];
+
+  return {
+    score,
+    rooms,
+    count: rooms.filter(room => room.color !== "green").length,
+    level: score <= 7 ? 0 : score <= 15 ? 1 : 2
+  };
+}
+
+function loading() {
+  cancelTimers();
+  progress();
+  document.getElementById("fill").style.width = "100%";
+
+  card.innerHTML = `
+    <div class="eyebrow">Tu resumen</div>
+    <h1>Analizando tus respuestas…</h1>
+    <div class="spinner"></div>
+    <div id="checks"></div>
+  `;
+
+  [
+    "Revisando el baño",
+    "Revisando el camino nocturno",
+    "Revisando sala y cocina",
+    "Organizando señales y pendientes"
+  ].forEach((text,index) => {
+    const line = document.createElement("div");
+    line.className = "loadingline";
+    line.textContent = text;
+    document.getElementById("checks").append(line);
+
+    timers.push(setTimeout(() => {
+      line.classList.add("done");
+      line.textContent = "✔ " + text;
+    },(index + 1) * 1000));
+  });
+
+  timers.push(setTimeout(result,CONFIG.loadingMs));
+}
+
+function result() {
+  const summary = calculate();
+
+  const titles = [
+    "Hay detalles que vale la pena revisar",
+    "Hay varios puntos que merecen atención",
+    "Conviene priorizar una revisión de la casa"
+  ];
+
+  const levels = [
+    "🟢 Pocas prioridades señaladas",
+    "🟡 Varias prioridades señaladas",
+    "🔴 Muchas prioridades señaladas"
+  ];
+
+  const blocks = [];
+
+  if(answers[0] === 1) blocks.push(
+    "Como tu papá o tu mamá vive solo, conviene acordar cómo pedir ayuda y quién puede responder si ocurre algo."
+  );
+
+  if(answers[2] === 2) blocks.push(
+    "Como vives lejos, puedes usar esta lista para preparar una visita o revisar detalles por videollamada con alguien de confianza."
+  );
+
+  if(answers[3] === 1) blocks.push(
+    "Ese “casi” merece atención. Revisen dónde ocurrió y qué pudo contribuir al tropiezo."
+  );
+
+  if(answers[3] === 2) blocks.push(
+    "Una caída previa merece una revisión de la casa y una conversación con un profesional sobre posibles factores que contribuyeron."
+  );
+
+  if(summary.level === 0) blocks.push(
+    "Incluso una casa cuidada puede tener detalles pendientes. Este cuestionario breve no revisa todos los factores de seguridad."
+  );
+
+  const icons = {green:"🟢",yellow:"🟡",red:"🔴"};
+
+  const roomHTML = summary.rooms.map(room => {
+    const status = room.unknown ? "Pendiente de verificar" :
+      room.color === "green" ? "Sin dificultades señaladas" :
+      room.color === "yellow" ? "Revisar" : "Priorizar revisión";
+
+    const tip = room.unknown ?
+      "No conocer este detalle no confirma un peligro: compruébalo en la próxima revisión." :
+      room.tip;
+
+    return `
+      <div class="room ${room.color}">
+        <strong>${icons[room.color]} ${room.name}</strong>
+        <em>${status}</em>
+        <small>${tip}</small>
+      </div>
+    `;
+  }).join("");
+
+  card.innerHTML = `
+    <div class="eyebrow">Tu Checklist Casa Segura está listo</div>
+    <h1>${titles[summary.level]}</h1>
+    <p><strong>Señalaste ${summary.count} de 6 áreas para revisar.</strong></p>
+    <span class="pill">${levels[summary.level]}</span>
+    <p class="muted">
+      Puntuación orientativa: ${summary.score} / 29.
+      Resume tus respuestas; no calcula la probabilidad de una caída
+      ni garantiza que una casa sea segura.
+    </p>
+
+    <div class="grid">${roomHTML}</div>
+
+    ${blocks.map(text => `<div class="block"><p>${text}</p></div>`).join("")}
+
+    <div class="sample">
+      <strong>Empieza por un cambio concreto</strong>
+      <p>
+        Algunos detalles, como despejar el paso o acercar objetos de uso
+        diario, pueden revisarse este fin de semana. Otros necesitan
+        instalación adecuada o valoración profesional.
+      </p>
+    </div>
+
+    <h2>Lo que tus ojos no ven en casa de tus padres</h2>
+    <p>Y qué puedes empezar a revisar este fin de semana.</p>
+
+    <div id="video"></div>
+
+    <div class="offer-heading">
+      <div class="eyebrow">Lo que vas a recibir</div>
+      <h2>Entra en su casa y empieza a verla con otros ojos.</h2>
+      <p>
+        <strong>Checklist Casa Segura</strong> te guía habitación por
+        habitación para convertir “tengo que revisar eso” en una
+        lista concreta de cambios.
+      </p>
+
+      <div class="deliverables">
+        <section class="delivery">
+          <span class="delivery-icon">🏠</span>
+          <h3>El recorrido de 20 minutos que cambia lo que ves</h3>
+          <p>
+            La alfombra de siempre, el banquito de la cocina, el pasillo
+            de madrugada… Aprende qué revisar en <strong>baño, cocina,
+            sala, dormitorio, escaleras y camino nocturno</strong>,
+            sin tener que recordar todo de memoria.
+          </p>
+        </section>
+
+        <section class="delivery">
+          <span class="delivery-icon">🔎</span>
+          <h3>Los pequeños cambios que no conviene dejar pasar</h3>
+          <p>
+            Olvidos, menos ganas de salir o medicamentos desordenados:
+            una guía para <strong>observar señales, anotarlas y saber
+            cuándo pedir orientación</strong>, sin sacar conclusiones
+            por un detalle aislado.
+          </p>
+        </section>
+
+        <section class="delivery">
+          <span class="delivery-icon">💬</span>
+          <h3>Qué decir cuando te responden: “Aquí siempre estuvo así”</h3>
+          <p>
+            <strong>Frases concretas para proponer cambios</strong>
+            sin hablarles como niños ni hacerles sentir que quieres
+            decidir por ellos. Cuidar también es escuchar.
+          </p>
+        </section>
+
+        <section class="delivery">
+          <span class="delivery-icon">📺</span>
+          <h3>10 minutos juntos, frente a la tele</h3>
+          <p>
+            Una propuesta de <strong>movimientos sencillos para
+            compartir</strong>, respetando sus capacidades y las
+            indicaciones de su profesional. Sin convertir la casa
+            en un gimnasio.
+          </p>
+        </section>
+
+        <section class="delivery">
+          <span class="delivery-icon">📋</span>
+          <h3>La hoja que no quieres tener que buscar en una emergencia</h3>
+          <p>
+            <strong>Un modelo de una página</strong> para reunir
+            contactos, información relevante y medicamentos prescritos.
+            Complétalo con ellos y acuerden un lugar accesible.
+          </p>
+        </section>
+      </div>
+
+      <div class="bonus-heading">
+        <div class="eyebrow">Además, incluye 4 regalos</div>
+        <h2>Más herramientas para cuidar sin improvisar.</h2>
+      </div>
+
+      <div class="deliverables bonuses">
+        <section class="delivery">
+          <span class="gift-tag">REGALO 1</span>
+          <h3>Los Hábitos de los que Llegan a los 100</h3>
+          <p>
+            <strong>¿Qué puedes aprender de su vida cotidiana?</strong>
+            Ideas de hábitos para conversar y adaptar a su rutina,
+            sin prometer que exista una fórmula para llegar a los 100.
+          </p>
+        </section>
+
+        <section class="delivery">
+          <span class="gift-tag">REGALO 2</span>
+          <h3>Después de los 60: Cambia Esto por Esto</h3>
+          <p>
+            <strong>Alternativas sencillas en la comida sin renunciar
+            al sabor.</strong> Una guía de sustituciones para revisar
+            según sus gustos, necesidades y orientación nutricional.
+          </p>
+        </section>
+
+        <section class="delivery">
+          <span class="gift-tag">REGALO 3</span>
+          <h3>El Diario de Papá y Mamá</h3>
+          <p>
+            <strong>Dos minutos para anotar lo que después puedes
+            olvidar.</strong> Organiza cambios y observaciones para
+            conversar con ellos y llevar información más clara
+            a una consulta.
+          </p>
+        </section>
+
+        <section class="delivery">
+          <span class="gift-tag">REGALO 4</span>
+          <h3>Las Estafas contra Mayores</h3>
+          <p>
+            <strong>Cuando el peligro llega por teléfono o WhatsApp.</strong>
+            Ejemplos de engaños y pautas para verificar solicitudes
+            antes de compartir datos o enviar dinero.
+          </p>
+        </section>
+      </div>
+
+      <div class="sample">
+        <strong>Tu próximo paso no tiene que ser una obra.</strong>
+        <p>
+          Empieza por una revisión, una conversación y una lista de
+          prioridades. Elige con ellos qué cambios pueden hacer primero.
+        </p>
+      </div>
+
+      <!-- Botón con temporizador -->
+      <div id="ctawrap">
+        <a class="primary pulse" id="cta"
+           href="${CONFIG.checkoutUrl}">
+          QUIERO MI CHECKLIST CASA SEGURA →
+        </a>
+      </div>
+
+      <p class="note">
+        Resumen educativo; no sustituye una evaluación
+        de seguridad profesional.
+      </p>
+
+      <button class="back" id="restart" type="button">
+        Volver a hacer el checklist
+      </button>
+
+      <!-- Botón adicional, siempre visible, sin temporizador -->
+      <a class="primary pulse" id="cta-extra"
+         href="${CONFIG.checkoutUrl}">
+        QUIERO MI CHECKLIST CASA SEGURA →
+      </a>
+    </div>
+  `;
+
+  document.getElementById("video").innerHTML = `
+    <vturb-smartplayer
+      id="vid-${CONFIG.vturbPlayerId}"
+      style="display:block;margin:0 auto;width:100%"
+    >
+      <div class="vturb-player-placeholder"
+        style="position:relative;width:100%;padding:56.25% 0 0;z-index:0;background-color:black">
+      </div>
+    </vturb-smartplayer>
+  `;
+
+  if(!document.getElementById("casa-player-script")) {
+    const script = document.createElement("script");
+    script.id = "casa-player-script";
+    script.src =
+      `https://scripts.converteai.net/${CONFIG.vturbAccountId}/players/${CONFIG.vturbPlayerId}/v4/player.js`;
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  if(CONFIG.ctaDelaySeconds > 0) {
+    const wrapper = document.getElementById("ctawrap");
+    wrapper.hidden = true;
+
+    timers.push(setTimeout(() => {
+      wrapper.hidden = false;
+    },CONFIG.ctaDelaySeconds * 1000));
+  }
+
+  document.getElementById("restart").onclick = () => {
+    answers.fill(null);
+    start();
+    window.scrollTo(0,0);
+  };
+}
+
+back.onclick = () => {
+  if(page === 0) start();
+  else {
+    page--;
+    render();
+  }
+  window.scrollTo(0,0);
+};
+
+start();
+</script>
+</body>
+</html>
