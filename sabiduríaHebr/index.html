@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="500 fichas de sabiduría hebrea para la vida cotidiana. Texto hebreo, traducción al español y aplicaciones prácticas. Para guardar e imprimir. US$ 12.">
+<title>Sabiduría Hebrea para la Vida Cotidiana</title>
+
+<style>
+:root {
+  --papel: #f6f1e9;
+  --tinta: #49352d;
+  --marron: #654439;
+  --verde: #177b66;
+  --borde: #d6c8bb;
+  --suave: #e9ddd0;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font: 18px/1.65 Georgia, serif;
+}
+
+header {
+  padding: 12px 20px;
+  background: var(--marron);
+  color: #fff7ed;
+  text-align: center;
+  font: 12px/1.6 Arial, sans-serif;
+  letter-spacing: 1.4px;
+}
+
+main {
+  max-width: 780px;
+  margin: auto;
+}
+
+section { padding: 46px 30px; }
+
+h1, h2, h3, p { margin: 0 0 20px; }
+
+h1 {
+  font-size: clamp(36px, 6vw, 55px);
+  line-height: 1.15;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 1.25;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 23px;
+  line-height: 1.35;
+}
+
+a { color: var(--verde); }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+.centro { text-align: center; }
+.fondo { background: var(--suave); }
+
+.etiqueta {
+  margin-bottom: 20px;
+  font: 12px/1.5 Arial, sans-serif;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}
+
+.introduccion { font-size: 21px; }
+
+.boton {
+  display: inline-block;
+  padding: 15px 27px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--verde);
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font: bold 16px/1.5 Arial, sans-serif;
+  cursor: pointer;
+}
+
+.boton:hover { background: #106653; }
+
+.boton:disabled {
+  opacity: .65;
+  cursor: default;
+}
+
+.pequeno {
+  margin-top: 12px;
+  color: #75685f;
+  font: 13px/1.7 Arial, sans-serif;
+}
+
+.linea {
+  height: 1px;
+  margin: 0 30px;
+  background: var(--borde);
+}
+
+.portada {
+  width: 245px;
+  margin: 32px auto 38px;
+  padding: 36px 26px 28px;
+  background: #ede1ca;
+  outline: 1px solid #9a8365;
+  outline-offset: -12px;
+  box-shadow: 7px 9px 0 #d7c5ac, 12px 16px 22px #49352d22;
+  transform: rotate(-3deg);
+}
+
+.portada .numero {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 67px;
+  line-height: 1.1;
+}
+
+.portada h2 { font-size: 28px; }
+.portada p { font: 12px/1.7 Arial, sans-serif; }
+.portada .adorno { font-size: 27px; }
+
+.situaciones {
+  padding: 0;
+  list-style: none;
+}
+
+.situaciones li {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+.situaciones li::before {
+  content: "→";
+  margin-right: 12px;
+  color: var(--verde);
+}
+
+.nota {
+  padding-left: 20px;
+  border-left: 3px solid #9d7660;
+}
+
+.ficha {
+  padding: 28px;
+  background: #fffdf8;
+  border: 1px solid #d4c3af;
+  box-shadow: 3px 4px 0 #e6d8c7;
+}
+
+.ficha .rotulo {
+  font: bold 11px/1.5 Arial, sans-serif;
+  color: #80634a;
+  letter-spacing: 1.3px;
+}
+
+.ficha h3 { margin-top: 14px; }
+.ficha p { font-size: 17px; }
+
+.hebreo {
+  direction: rtl;
+  text-align: right;
+  font-family: Arial, sans-serif;
+  font-size: 29px !important;
+  line-height: 1.9;
+}
+
+.fuente {
+  color: #75685f;
+  font: 13px/1.7 Arial, sans-serif !important;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 28px 0;
+}
+
+.miniatura {
+  display: block;
+  width: 100%;
+  padding: 18px 13px;
+  border: 1px solid #d4c3af;
+  background: #fffdf8;
+  color: var(--tinta);
+  text-align: left;
+  font-family: Georgia, serif;
+  cursor: pointer;
+}
+
+.miniatura:hover {
+  box-shadow: 0 5px 14px #49352d18;
+}
+
+.miniatura small {
+  display: block;
+  margin-bottom: 13px;
+  color: #80634a;
+  font: 9px/1.5 Arial, sans-serif;
+}
+
+.miniatura strong {
+  display: block;
+  margin-bottom: 13px;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.miniatura span {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.miniatura .renglon {
+  height: 16px;
+  border-bottom: 1px solid #d4c3af;
+}
+
+.categorias {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+  font: 16px/1.5 Arial, sans-serif;
+}
+
+.categorias > div {
+  padding: 15px 0;
+  border-bottom: 1px solid #d1c1b1;
+}
+
+.categorias span {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #796a60;
+}
+
+.pasos { counter-reset: paso; }
+
+.pasos p {
+  position: relative;
+  padding-left: 42px;
+}
+
+.pasos p::before {
+  counter-increment: paso;
+  content: counter(paso);
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 27px;
+  height: 27px;
+  border: 1px solid #9c8069;
+  border-radius: 50%;
+  text-align: center;
+  font: 15px/27px Georgia, serif;
+}
+
+.retrato {
+  max-width: 230px;
+  margin: 0 auto 25px;
+}
+
+.retrato img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #d4c3af;
+}
+
+.oferta {
+  padding: 33px;
+  border: 1px solid #b89f89;
+  background: #fffaf1;
+  text-align: center;
+}
+
+.oferta ul {
+  padding-left: 23px;
+  text-align: left;
+  font-size: 17px;
+}
+
+.oferta li { margin-bottom: 9px; }
+
+.precio {
+  margin-bottom: 5px;
+  font-size: 53px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+details {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+summary {
+  cursor: pointer;
+  font: bold 16px/1.5 Arial, sans-serif;
+}
+
+details p {
+  margin: 12px 0 0;
+  font-size: 16px;
+}
+
+footer {
+  padding: 30px 20px;
+  color: #75685f;
+  text-align: center;
+  font: 12px/1.8 Arial, sans-serif;
+}
+
+dialog {
+  width: min(92vw, 620px);
+  max-height: 90vh;
+  padding: 27px;
+  overflow: auto;
+  border: 1px solid #b89f89;
+  background: var(--papel);
+  color: var(--tinta);
+}
+
+dialog::backdrop { background: #21150fb8; }
+
+.cerrar {
+  display: block;
+  margin: 0 0 20px auto;
+  padding: 9px 16px;
+  border: 1px solid var(--borde);
+  background: white;
+  color: var(--tinta);
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid #bd914c;
+  outline-offset: 4px;
+}
+
+@media (max-width: 540px) {
+  section { padding: 35px 22px; }
+  h2 { font-size: 29px; }
+  .boton { display: block; width: 100%; }
+  .categorias { grid-template-columns: 1fr; }
+  .galeria { gap: 7px; }
+  .miniatura { padding: 13px 9px; }
+  .miniatura strong { font-size: 14px; }
+  .miniatura span { font-size: 11px; }
+  .oferta { padding: 26px 20px; }
+  .ficha { padding: 23px; }
+}
+
+@media print {
+  header, .boton, dialog, footer { display: none; }
+  section { padding: 20px; }
+  .portada { transform: none; box-shadow: none; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+UNA COLECCIÓN PARA CONSULTAR, GUARDAR Y LLEVAR A TU VIDA
+</header>
+
+<main>
+
+<section class="centro">
+  <p class="etiqueta">Sabiduría hebrea · Vida cotidiana</p>
+
+  <h1>Hay días en los que una buena reflexión hace falta.</h1>
+
+  <p class="introduccion">
+    Una palabra antes de responder.<br>
+    Una pausa antes de decidir.<br>
+    Una idea para volver a empezar.
+  </p>
+
+  <div class="portada" aria-label="Representación de la portada de la colección">
+    <div class="adorno">❦</div>
+    <b class="numero">500</b>
+    <h2>Enseñanzas de la Sabiduría Hebrea</h2>
+    <p>
+      PARA LA VIDA COTIDIANA<br>
+      Lee. Reflexiona. Ponlo en práctica.
+    </p>
+    <hr>
+    <p>
+      Una colección organizada<br>
+      por situaciones de la vida.
+    </p>
+  </div>
+
+  <p>
+    Enseñanzas de la tradición judía, con explicaciones sencillas
+    y prácticas para el día a día. Para leer en tu celular
+    o imprimir y tener a mano.
+  </p>
+
+  <a class="boton" href="#por-dentro">
+    Quiero ver cómo es por dentro
+  </a>
+
+  <p class="pequeno">
+    500 fichas · En español · US$ 12 · Pago único
+  </p>
+</section>
+
+<div class="linea"></div>
+
+<section>
+  <h2>¿Qué estás viviendo hoy?</h2>
+
+  <p>
+    No necesitas empezar en la primera página. Busca la situación
+    que estás atravesando y encuentra una ficha para reflexionar sobre ella.
+  </p>
+
+  <ul class="situaciones">
+    <li>Una conversación en casa terminó en discusión.</li>
+    <li>Estás intentando resolverlo todo sin ayuda.</li>
+    <li>No puedes dejar de pensar en una decisión importante.</li>
+    <li>Al compararte con otros, tu vida parece valer menos.</li>
+    <li>Quieres empezar de nuevo, pero no sabes por dónde.</li>
+  </ul>
+
+  <p class="nota">
+    Elige una situación. Lee la enseñanza.
+    Prueba una pequeña acción ese día.
+  </p>
+</section>
+
+<section id="por-dentro" class="fondo">
+  <p class="etiqueta">Mira una ficha por dentro</p>
+
+  <h2>
+    Por ejemplo: cuando una conversación
+    empieza a convertirse en discusión.
+  </h2>
+
+  <article class="ficha">
+    <p class="rotulo">PALABRAS Y CONVIVENCIA</p>
+    <h3>Antes de tu próxima respuesta</h3>
+
+    <p class="rotulo">TEXTO ORIGINAL EN HEBREO</p>
+
+    <p class="hebreo" lang="he" dir="rtl">
+      מענה־רך ישיב חמה ודבר־עצב יעלה־אף׃
+    </p>
+
+    <p>
+      <strong>Traducción al español</strong><br>
+      Una respuesta suave aparta la ira,
+      pero una palabra hiriente aviva el enojo.
+    </p>
+
+    <p class="fuente">
+      <span lang="he" dir="rtl">משלי ט״ו:א׳</span><br>
+      Mishlei / Proverbios 15:1<br>
+      Traducción editorial del versículo.
+      <a href="https://www.sefaria.org/Proverbs.15.1"
+         target="_blank" rel="noopener">
+        Consultar la fuente
+      </a>
+    </p>
+
+    <p>
+      <strong>En la vida real</strong><br>
+      Cuando estamos molestos, es fácil sustituir el tema por una
+      acusación. Elegir las palabras ayuda a expresar con claridad
+      lo que necesitamos decir.
+    </p>
+
+    <p>
+      <strong>Una acción para hoy</strong><br>
+      Antes de enviar ese mensaje, elimina una ofensa
+      y pon una petición concreta en su lugar.
+    </p>
+
+    <p>
+      <strong>Para escribir</strong><br>
+      ¿Qué necesito resolver en esta conversación?
+    </p>
+
+    <p class="pequeno">
+      La práctica es una aplicación actual, no una instrucción
+      literal del texto antiguo. Una respuesta tranquila
+      no garantiza la reacción de la otra persona.
+    </p>
+  </article>
+
+  <p style="margin-top:28px">
+    Así se organiza el contenido por dentro:
+    una situación concreta, su referencia y una práctica para hoy.
+  </p>
+
+  <div class="galeria">
+    <button class="miniatura" type="button" onclick="abrirFicha(1)">
+      <small>SABIDURÍA HEBREA</small>
+      <strong>Cuando todo parece depender de ti</strong>
+      <span>Pirkei Avot 2:16</span>
+      <span>Una acción que puedes hacer hoy y una ayuda que puedes pedir.</span>
+      <span class="renglon"></span>
+      <small>TOCA PARA AMPLIAR</small>
+    </button>
+
+    <button class="miniatura" type="button" onclick="abrirFicha(2)">
+      <small>SABIDURÍA HEBREA</small>
+      <strong>Cuando necesitas otra perspectiva</strong>
+      <span>Pirkei Avot 1:6</span>
+      <span>Una decisión concreta. Dos preguntas. Una conversación útil.</span>
+      <span class="renglon"></span>
+      <small>TOCA PARA AMPLIAR</small>
+    </button>
+
+    <button class="miniatura" type="button" onclick="abrirFicha(3)">
+      <small>SABIDURÍA HEBREA</small>
+      <strong>Antes de tu próxima respuesta</strong>
+      <span>Proverbios 15:1</span>
+      <span>Cambia una acusación por una petición concreta.</span>
+      <span class="renglon"></span>
+      <small>TOCA PARA AMPLIAR</small>
+    </button>
+  </div>
+
+  <p class="pequeno">
+    Ejemplos del formato editorial. Material digital para uso personal;
+    no se envía un libro físico.
+  </p>
+
+  <a class="boton" href="#oferta">
+    Quiero la colección · US$ 12
+  </a>
+</section>
+
+<section>
+  <h2>Una colección para distintos momentos de la vida.</h2>
+
+  <p>
+    <strong>500 fichas organizadas en 10 temas</strong>,
+    con 50 situaciones por tema.
+  </p>
+
+  <div class="categorias">
+    <div>
+      Paciencia y palabras
+      <span>Impulsos, enojo y conversaciones difíciles.</span>
+    </div>
+    <div>
+      Decisiones y dudas
+      <span>Consejos, elecciones y prioridades.</span>
+    </div>
+    <div>
+      Pareja y convivencia
+      <span>Escucha, acuerdos y respeto.</span>
+    </div>
+    <div>
+      Hijos y familia
+      <span>Ejemplo, diálogo y responsabilidades.</span>
+    </div>
+    <div>
+      Dinero y consumo
+      <span>Compras, planificación y prioridades.</span>
+    </div>
+    <div>
+      Trabajo y responsabilidad
+      <span>Compromisos, cooperación e integridad.</span>
+    </div>
+    <div>
+      Hábitos y disciplina
+      <span>Empezar, continuar y cumplir lo acordado.</span>
+    </div>
+    <div>
+      Gratitud y contentamiento
+      <span>Comparación y reconocimiento de lo que importa.</span>
+    </div>
+    <div>
+      Dificultades y nuevos comienzos
+      <span>Errores, frustración y próximos pasos.</span>
+    </div>
+    <div>
+      Amistades y límites
+      <span>Confianza, generosidad y reciprocidad.</span>
+    </div>
+  </div>
+
+  <p class="pequeno">
+    Son 500 aplicaciones prácticas basadas en 42 pasajes identificados.
+    Un mismo pasaje puede fundamentar distintas situaciones.
+    No son 500 citas antiguas diferentes.
+  </p>
+</section>
+
+<section class="fondo">
+  <h2>Para usar a tu manera.</h2>
+
+  <div class="pasos">
+    <p>
+      <strong>En tu celular</strong><br>
+      Guarda el PDF y busca una situación desde su índice clicable.
+    </p>
+    <p>
+      <strong>En papel</strong><br>
+      Imprime la ficha que necesites y escribe tu reflexión.
+    </p>
+    <p>
+      <strong>En tu rutina</strong><br>
+      Guarda una ficha en tu cuaderno o déjala cerca de tu mesa
+      para volver a ella.
+    </p>
+  </div>
+
+  <p>
+    Cada ficha reúne un fragmento hebreo, su traducción al español,
+    una fuente identificada, contexto, una aplicación actual
+    y una pregunta para escribir.
+  </p>
+
+  <p class="pequeno">
+    Formato A5. Puedes imprimir dos páginas por hoja A4.
+    El ebook completo tiene 531 páginas, incluyendo las 500 fichas,
+    índices, instrucciones y referencias.
+  </p>
+</section>
+
+<section id="presentacion" class="centro">
+  <p class="etiqueta">Una presentación más cercana</p>
+
+  <figure class="retrato">
+    <img
+      alt="Retrato ilustrativo de Clara, personaje editorial ficticio creado con inteligencia artificial"
+      width="100"
+      height="150"
+      loading="lazy"
+      src="data:image/jpeg;base64,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"
+    >
+    <figcaption class="pequeno">
+      Personaje ficticio · Imagen generada con IA
+    </figcaption>
+  </figure>
+
+  <h2>
+    Clara, la voz editorial<br>
+    de esta colección
+  </h2>
+
+  <p>
+    Clara es el personaje creado para presentar
+    <em>Sabiduría Hebrea para la Vida Cotidiana</em>
+    de una forma sencilla y cercana: una situación que reconoces,
+    una enseñanza con su fuente y una pequeña acción que puedes probar.
+  </p>
+
+  <p>
+    La idea del libro es que puedas encontrar una reflexión útil
+    sin leerlo de principio a fin. Abres el tema que necesitas,
+    lees a tu ritmo y guardas o imprimes la ficha
+    que quieres tener cerca.
+  </p>
+
+  <h3>Cómo se creó el contenido</h3>
+
+  <p>
+    Esta edición se elaboró con ayuda de inteligencia artificial.
+    Reúne 500 aplicaciones contemporáneas basadas en 42 pasajes
+    identificados de la tradición judía. Los fragmentos hebreos
+    se cotejaron con las fuentes citadas; las traducciones al español,
+    las explicaciones y los ejercicios son editoriales.
+  </p>
+
+  <p class="pequeno">
+    Clara no es una autora real ni una especialista religiosa.
+    La colección no cuenta con revisión rabínica.
+    Puedes consultar las referencias y los criterios
+    de elaboración dentro del libro.
+  </p>
+
+  <a class="boton" href="#oferta">Ver la colección · US$ 12</a>
+</section>
+
+<section id="oferta">
+  <div class="oferta">
+    <p class="etiqueta">Colección digital completa</p>
+
+    <h2>
+      Sabiduría Hebrea<br>
+      para la Vida Cotidiana
+    </h2>
+
+    <p>
+      500 situaciones para consultar.<br>
+      Una pequeña acción a la vez.
+    </p>
+
+    <p class="etiqueta" style="margin-bottom:5px">
+      PRECIO DE LA COLECCIÓN
+    </p>
+
+    <p class="precio">US$ 12</p>
+
+    <p class="pequeno" style="margin-top:0">
+      Pago único · Dólares estadounidenses
+    </p>
+
+    <ul>
+      <li>500 fichas organizadas en 10 temas.</li>
+      <li>Fragmentos hebreos con traducción al español.</li>
+      <li>Fuentes identificadas y contexto.</li>
+      <li>Una aplicación práctica en cada ficha.</li>
+      <li>Preguntas y espacio para escribir.</li>
+      <li>Índice clicable para encontrar cada situación.</li>
+      <li>PDF para guardar en tu celular o imprimir.</li>
+    </ul>
+
+    <!--
+      CUANDO TENGAS EL CHECKOUT:
+      sustituye este botón por:
+      <a class="boton" href="URL-DEL-CHECKOUT">
+        Quiero mi colección por US$ 12
+      </a>
+      y elimina el aviso de compras no habilitadas.
+    -->
+
+    <button class="boton" type="button" disabled>
+      Comprar por US$ 12 · Próximamente
+    </button>
+
+    <p class="pequeno">
+      Las compras todavía no están habilitadas.
+    </p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <h2>Quizá quieras saber…</h2>
+
+  <details>
+    <summary>¿Necesito saber hebreo?</summary>
+    <p>
+      No. Los fragmentos hebreos llevan su traducción al español,
+      junto con las explicaciones y aplicaciones.
+      El objetivo es reflexionar y poner una idea
+      en práctica en tu vida cotidiana.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Es un libro físico?</summary>
+    <p>
+      No. Es un ebook en PDF para guardar en tu celular
+      o computadora e imprimir las páginas que quieras.
+      No se envía ningún producto físico.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Qué contiene?</summary>
+    <p>
+      500 fichas en 10 categorías. Cada ficha presenta una situación,
+      un fragmento hebreo con traducción, su referencia, contexto,
+      una aplicación contemporánea y una pregunta para escribir.
+      El PDF completo tiene 531 páginas.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Cuánto cuesta?</summary>
+    <p>
+      US$ 12, en un solo pago. El precio está expresado
+      en dólares estadounidenses.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Puedo imprimir solo algunas fichas?</summary>
+    <p>
+      Sí. Puedes seleccionar las páginas que quieras.
+      El formato es A5 y permite imprimir dos páginas
+      por hoja A4, revisando antes la configuración de tu impresora.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿De dónde vienen las enseñanzas?</summary>
+    <p>
+      La selección utiliza 42 pasajes identificados de Pirkei Avot,
+      Proverbios, Salmos, Eclesiastés, Éxodo, Levítico
+      y Deuteronomio. Las referencias y los enlaces
+      están dentro del ebook.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Son 500 frases antiguas diferentes?</summary>
+    <p>
+      Son 500 fichas con situaciones y aplicaciones propias,
+      basadas en 42 pasajes. Un mismo pasaje puede fundamentar
+      más de una aplicación. No se presentan como
+      500 citas antiguas distintas.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Es asesoramiento religioso, médico o financiero?</summary>
+    <p>
+      Es un material de reflexión cultural.
+      No sustituye orientación individual en esas áreas
+      ni promete resultados específicos.
+    </p>
+  </details>
+</section>
+
+</main>
+
+<footer>
+  Sabiduría Hebrea para la Vida Cotidiana<br>
+  Contenido en español · Formato digital para imprimir<br>
+  Fuentes identificadas. Aplicaciones contemporáneas.
+</footer>
+
+<dialog id="detalle">
+  <button class="cerrar" type="button" onclick="cerrarFicha()">
+    Cerrar ✕
+  </button>
+  <article id="contenido-detalle" class="ficha"></article>
+</dialog>
+
+<script>
+const ejemplos = {
+  1: `
+    <p class="rotulo">RESPONSABILIDAD Y LÍMITES</p>
+    <h3>Cuando todo parece depender de ti</h3>
+    <p class="hebreo" lang="he" dir="rtl">
+      לא עליך המלאכה לגמר
+    </p>
+    <p><strong>
+      No te corresponde terminar toda la tarea.
+    </strong></p>
+    <p class="fuente">
+      Pirkei Avot 2:16 · Fragmento · Traducción editorial
+    </p>
+    <p>
+      El pasaje continúa señalando que tampoco eres libre
+      de desentenderte de la tarea. La aplicación propone
+      reconocer tu responsabilidad sin atribuirte
+      el control de todo.
+    </p>
+    <p>
+      <strong>Una acción para hoy</strong><br>
+      Anota una acción que puedes hacer hoy
+      y una ayuda que puedes pedir.
+    </p>
+    <p class="pequeno">
+      Aplicación editorial contemporánea.
+    </p>
+  `,
+
+  2: `
+    <p class="rotulo">DECISIONES Y APOYO</p>
+    <h3>Cuando necesitas otra perspectiva</h3>
+    <p class="hebreo" lang="he" dir="rtl">
+      עשה לך רב וקנה לך חבר
+    </p>
+    <p><strong>
+      Hazte de un maestro y adquiere un compañero.
+    </strong></p>
+    <p class="fuente">
+      Pirkei Avot 1:6 · Fragmento · Traducción editorial
+    </p>
+    <p>
+      El texto relaciona orientación y amistad.
+      Buscar una segunda perspectiva es una aplicación
+      actual de esta enseñanza.
+    </p>
+    <p>
+      <strong>Una acción para hoy</strong><br>
+      Escribe tu decisión en una frase.
+      Prepara dos preguntas y busca una persona
+      adecuada para conversar.
+    </p>
+    <p class="pequeno">
+      Aplicación editorial contemporánea.
+    </p>
+  `,
+
+  3: `
+    <p class="rotulo">PALABRAS Y CONVIVENCIA</p>
+    <h3>Antes de tu próxima respuesta</h3>
+    <p class="hebreo" lang="he" dir="rtl">
+      מענה רך ישיב חמה
+    </p>
+    <p><strong>
+      Una respuesta suave aparta la ira.
+    </strong></p>
+    <p class="fuente">
+      Proverbios 15:1 · Fragmento · Traducción editorial
+    </p>
+    <p>
+      El proverbio contrapone una respuesta suave
+      y una palabra hiriente. No garantiza controlar
+      cómo reaccionará otra persona.
+    </p>
+    <p>
+      <strong>Una acción para hoy</strong><br>
+      Antes de enviar ese mensaje,
+      cambia una ofensa por una petición concreta.
+    </p>
+    <p class="pequeno">
+      Aplicación editorial contemporánea.
+    </p>
+  `
+};
+
+function abrirFicha(numero) {
+  const dialogo = document.getElementById("detalle");
+  document.getElementById("contenido-detalle").innerHTML =
+    ejemplos[numero];
+  dialogo.showModal();
+}
+
+function cerrarFicha() {
+  document.getElementById("detalle").close();
+}
+
+document.getElementById("detalle").addEventListener(
+  "click",
+  function(evento) {
+    if (evento.target === this) {
+      this.close();
+    }
+  }
+);
+</script>
+
+</body>
+</html>
