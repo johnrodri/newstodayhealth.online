@@ -1,1 +1,472 @@
-<vturb-smartplayer id="vid-6ad44a2bf9aa9287e18057f5" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/9f0596ae-2df4-4d35-b169-78bb42ca8fab/players/6ad44a2bf9aa9287e18057f5/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Parkinson : comprendre la maladie et découvrir les pistes de recherche au Japon, avec des références scientifiques et institutionnelles.">
+  <meta name="theme-color" content="#cb140c">
+
+  <title>Parkinson — Les pistes de recherche au Japon | SantéNews</title>
+
+  <style>
+    :root {
+      --red: #cb140c;
+      --red-text: #b22c24;
+      --ink: #2c2825;
+      --muted: #757575;
+      --background: #eceef0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #075abd;
+      outline-offset: 5px;
+    }
+
+    .skip {
+      position: absolute;
+      left: 16px;
+      top: -80px;
+      padding: 12px;
+      z-index: 20;
+      background: white;
+    }
+
+    .skip:focus {
+      top: 10px;
+    }
+
+    .page {
+      max-width: 1060px;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 0 65px #0000000b;
+    }
+
+    .topbar {
+      min-height: 54px;
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 5px solid var(--red);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .topics {
+      display: flex;
+      gap: 28px;
+      letter-spacing: 1.3px;
+      font-size: 14px;
+    }
+
+    .masthead {
+      min-height: 100px;
+      padding: 24px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      color: var(--red);
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -1.1px;
+      white-space: nowrap;
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      background: var(--red);
+      color: white;
+      border-radius: 5px;
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .nav {
+      display: flex;
+      gap: 28px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .nav a {
+      text-decoration: none;
+    }
+
+    .nav a:hover,
+    .nav .active {
+      color: var(--red);
+    }
+
+    .intro {
+      padding: 42px 52px 51px;
+    }
+
+    .category {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      border-radius: 4px;
+      padding: 11px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 40px auto 0;
+      text-align: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 34px;
+      line-height: 1.23;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      text-wrap: balance;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--red-text);
+    }
+
+    .video-slot {
+      position: relative;
+      width: 100%;
+      background: black;
+      color: white;
+    }
+
+    .references {
+      padding: 42px 28px 28px;
+      color: var(--muted);
+      scroll-margin-top: 24px;
+    }
+
+    .references h2 {
+      margin: 0 0 20px;
+      font-size: 15px;
+      letter-spacing: 1.6px;
+      font-weight: 700;
+    }
+
+    .references ol {
+      margin: 0;
+      padding-left: 24px;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .references li {
+      padding-left: 1px;
+      margin-bottom: 11px;
+    }
+
+    .references a {
+      text-decoration: none;
+      border-bottom: 1px solid #c9c9c9;
+      overflow-wrap: anywhere;
+    }
+
+    .references a:hover {
+      color: var(--red-text);
+      border-color: var(--red-text);
+    }
+
+    .study-note {
+      margin: 24px 0 0;
+      padding: 17px 19px;
+      border-left: 3px solid #d7d7d7;
+      background: #f7f7f7;
+      font-size: 13px;
+      line-height: 1.65;
+      color: #666;
+    }
+
+    footer {
+      padding: 20px 28px 28px;
+      border-top: 1px solid #efefef;
+      color: #777;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        padding: 12px 20px;
+        font-size: 13px;
+        min-height: 46px;
+      }
+
+      .topics {
+        font-size: 10px;
+        gap: 13px;
+        letter-spacing: 0.7px;
+      }
+
+      .masthead {
+        min-height: 85px;
+        padding: 21px 24px;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        font-size: 27px;
+      }
+
+      .brand-icon {
+        width: 37px;
+        height: 37px;
+        font-size: 23px;
+      }
+
+      .nav {
+        font-size: 11px;
+        gap: 17px;
+      }
+
+      .intro {
+        padding: 30px 24px 35px;
+      }
+
+      .category {
+        font-size: 10px;
+        padding: 10px 12px;
+      }
+
+      h1 {
+        margin-top: 28px;
+        font-size: 29px;
+        line-height: 1.22;
+        letter-spacing: -0.5px;
+      }
+
+      .references {
+        padding: 30px 24px 25px;
+      }
+
+      .references ol {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .topics {
+        display: none;
+      }
+
+      .masthead {
+        justify-content: center;
+      }
+
+      .nav {
+        justify-content: center;
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <div class="page" id="haut">
+    <header>
+      <div class="topbar">
+        <!-- Data editorial: atualize quando necessário. -->
+        <time datetime="2026-10-18">
+          Dimanche 18 octobre 2026
+        </time>
+
+        <div class="topics" aria-label="Thématiques">
+          <span>SANTÉ</span>
+          <span>BIEN-ÊTRE</span>
+          <span>SCIENCE</span>
+        </div>
+      </div>
+
+      <div class="masthead">
+        <a class="brand" href="#haut" aria-label="SantéNews, accueil">
+          <span class="brand-icon" aria-hidden="true">S</span>
+          SantéNews
+        </a>
+
+        <nav class="nav" aria-label="Navigation principale">
+          <a class="active" href="#contenu">NEUROLOGIE</a>
+          <a href="#video">VIDÉO</a>
+          <a href="#references">RECHERCHE</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenu">
+      <section class="intro" aria-labelledby="titre">
+        <span class="category">
+          SANTÉ &amp; NEUROSCIENCES
+        </span>
+
+        <!-- TÍTULO DA PÁGINA -->
+        <h1 id="titre">
+          Parkinson&nbsp;:
+          <em>la leçon qui nous vient du Japon.</em>
+          <br>
+          Découvrez les pistes de recherche pour mieux comprendre la maladie.
+        </h1>
+      </section>
+
+      <!-- VÍDEO VTURB -->
+      <section
+        class="video-slot"
+        id="video"
+        aria-label="Présentation vidéo sur la maladie de Parkinson"
+      >
+        <vturb-smartplayer
+          id="vid-6ad44a2bf9aa9287e18057f5"
+          style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"
+        >
+          <div
+            class="vturb-player-placeholder"
+            style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"
+          ></div>
+        </vturb-smartplayer>
+      </section>
+
+      <!-- REFERÊNCIAS SOBRE PARKINSON -->
+      <section
+        class="references"
+        id="references"
+        aria-labelledby="references-title"
+      >
+        <h2 id="references-title">
+          RÉFÉRENCES SCIENTIFIQUES ET INSTITUTIONNELLES
+        </h2>
+
+        <ol>
+          <li>
+            Sawamoto, N., Doi, D., Nakanishi, E. et al. (2025).
+            <a
+              href="https://www.nature.com/articles/s41586-025-08700-0"
+              target="_blank"
+              rel="noopener noreferrer"
+              lang="en"
+            >Phase I/II trial of iPS-cell-derived dopaminergic cells for Parkinson’s disease</a>.
+            <i>Nature</i>, 641, 971–977.
+            Essai de phase I/II réalisé à l’université de Kyoto.
+            DOI&nbsp;: 10.1038/s41586-025-08700-0.
+          </li>
+
+          <li>
+            Organisation mondiale de la Santé (2023).
+            <a
+              href="https://www.who.int/fr/news-room/fact-sheets/detail/parkinson-disease"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Maladie de Parkinson</a>.
+            Fiche d’information sur les symptômes, les traitements,
+            la réadaptation et les besoins de soins.
+          </li>
+
+          <li>
+            Inserm (2022).
+            <a
+              href="https://www.inserm.fr/dossier/parkinson-maladie/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Maladie de Parkinson</a>.
+            Dossier sur les mécanismes de la maladie, sa prise en charge
+            et les enjeux de la recherche.
+          </li>
+
+          <li>
+            Institut Pasteur (mise à jour&nbsp;: août 2024).
+            <a
+              href="https://www.pasteur.fr/fr/votre-sante/comprendre-les-maladies/les-maladies-de-z/parkinson"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Parkinson&nbsp;: symptômes, traitement et prévention</a>.
+            Informations sur les neurones dopaminergiques,
+            le diagnostic et les soins.
+          </li>
+        </ol>
+
+        <p class="study-note">
+          L’étude de Kyoto porte sur une approche de thérapie cellulaire
+          évaluée dans un petit essai ouvert de phase I/II.
+          Ses résultats nécessitent des recherches complémentaires
+          et ne démontrent pas une guérison de la maladie.
+          Ces références ne constituent pas une validation d’un ebook
+          ou d’un programme commercial.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>SantéNews · Contenu informatif indépendant.</p>
+      <p>
+        Ces informations ne remplacent pas une consultation
+        ni les conseils de votre médecin.
+      </p>
+    </footer>
+  </div>
+
+  <!-- CARREGAMENTO DO PLAYER VTURB -->
+  <script type="text/javascript">
+    var s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/9f0596ae-2df4-4d35-b169-78bb42ca8fab/players/6ad44a2bf9aa9287e18057f5/v4/player.js";
+    s.async = true;
+    document.head.appendChild(s);
+  </script>
+</body>
+</html>
