@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ansiedad en la adolescencia | Mi Espacio Emocional</title>
+<meta name="description" content="Cuaderno digital de 46 páginas en español para explorar emociones, autoestima, estrés y relaciones durante la adolescencia.">
+
+<style>
+:root {
+  --ink:#263f4b;
+  --muted:#617078;
+  --cream:#f5efe5;
+  --paper:#fffdf8;
+  --blue:#b7d4e2;
+  --peach:#efd0ba;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:25px}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Arial,sans-serif;
+  line-height:1.65;
+}
+a{color:inherit}
+img{display:block;width:100%;height:auto}
+button{font-family:inherit}
+.wrap{max-width:1160px;margin:auto;padding:70px 24px}
+.topbar{
+  padding:10px 20px;
+  text-align:center;
+  background:#eedca8;
+  font-size:12px;
+}
+nav{
+  max-width:1160px;
+  margin:auto;
+  padding:24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{font:bold 23px Georgia,serif}
+.brand small{
+  display:block;
+  font:10px Arial,sans-serif;
+  letter-spacing:2px;
+  margin-top:5px;
+}
+nav a{text-decoration:none;font-size:13px}
+.eyebrow{
+  font-size:11px;
+  letter-spacing:2px;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+h1,h2,h3{
+  font-family:Georgia,serif;
+  font-weight:400;
+  line-height:1.15;
+}
+h1{font-size:clamp(40px,5vw,64px);margin:22px 0}
+h2{font-size:clamp(32px,4vw,46px);margin:18px 0 24px}
+h3{font-size:25px}
+em{color:#547a90;font-weight:400}
+p{margin:0 0 18px}
+.lead{font-size:18px;color:#536872}
+.fine{font-size:12px;color:var(--muted)}
+.btn{
+  display:inline-block;
+  padding:17px 25px;
+  background:#294e60;
+  color:white;
+  text-decoration:none;
+  border:0;
+  border-radius:6px;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.hero{background:var(--cream)}
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:65px;
+  align-items:center;
+}
+.hero img{
+  border-radius:12px;
+  box-shadow:0 20px 45px #263f4b20;
+}
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  font-size:12px;
+  margin:22px 0;
+}
+.bar{
+  text-align:center;
+  font-size:11px;
+  letter-spacing:1px;
+  padding:20px;
+  border-bottom:1px solid #ddd6c9;
+}
+.center{text-align:center;max-width:780px;margin:auto}
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+  margin-top:40px;
+}
+.step{border-top:1px solid #ccc9bf;padding-top:20px}
+.step span{font:28px Georgia;color:#658597}
+.step p{font-size:14px;color:var(--muted)}
+.showcase{background:#eaf0f1}
+.showcase img{border-radius:10px}
+ul.clean{list-style:none;padding:0}
+ul.clean li{padding:12px 0;border-bottom:1px solid #ccd7da}
+ul.clean li::before{content:"✓";margin-right:12px;color:#53798c}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  margin-top:35px;
+}
+figure{margin:0}
+figure img{border-radius:9px;aspect-ratio:1;object-fit:cover}
+figcaption{padding:15px 0}
+figcaption h3{font-size:23px;margin:0 0 9px}
+figcaption p{font-size:13px;color:var(--muted)}
+.zoom{
+  border:0;
+  padding:0;
+  background:none;
+  width:100%;
+  cursor:zoom-in;
+}
+.receive{background:#f0f3ef}
+.receive-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  margin-top:35px;
+}
+.receive-grid article{border-top:1px solid #bccbc1;padding-top:18px}
+.receive-grid h3{margin:12px 0}
+.receive-grid p{font-size:14px;color:var(--muted)}
+.topics{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 40px;
+  margin-top:30px;
+}
+.topic{
+  display:flex;
+  gap:18px;
+  padding:22px 0;
+  border-top:1px solid #ddd6c9;
+}
+.topic b{font:24px Georgia;color:#6f8a98}
+.topic h3{font-size:23px;margin:0 0 10px}
+.topic p{font-size:14px;color:var(--muted);margin:0}
+.quote{background:#ecd5c4;text-align:center}
+.quote .wrap{max-width:850px}
+.author{background:#eee5da}
+.author img{
+  max-height:580px;
+  object-fit:cover;
+  border-radius:180px 180px 10px 10px;
+}
+.author-note{
+  border-left:3px solid #c4a58b;
+  padding-left:20px;
+  font:23px/1.5 Georgia;
+}
+.offer{background:#263f4b;color:white}
+.offer p{color:#d0dde1}
+.offer-box{border:1px solid #7b929c;padding:32px}
+.offer-box h3{margin-top:20px}
+.offer-box li{padding:7px 0;font-size:14px}
+.price{font:70px/1.2 Georgia;color:var(--peach);margin:12px 0}
+.price small{font:15px Arial;color:#d0dde1}
+.offer .btn{background:var(--peach);color:var(--ink);width:100%;text-align:center}
+.offer .fine{color:#d0dde1}
+.reviews{background:var(--cream)}
+.review-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  margin-top:30px;
+}
+.review{
+  padding:26px;
+  background:var(--paper);
+  border:1px solid #ddd6c9;
+  border-radius:10px;
+}
+.review blockquote{font:21px/1.5 Georgia;margin:0 0 24px}
+.review time{display:block;font-size:11px;color:var(--muted)}
+.review a{display:inline-block;font-size:11px;margin-top:15px}
+.faq{max-width:850px}
+details{border-top:1px solid #d8d7cf;padding:20px 0}
+summary{cursor:pointer;font-weight:bold}
+details p{font-size:14px;color:var(--muted);margin:15px 0 0}
+footer{background:var(--cream)}
+footer .wrap{padding-top:35px;padding-bottom:35px}
+dialog{
+  border:0;
+  border-radius:12px;
+  padding:28px;
+  max-width:460px;
+  width:90%;
+  color:var(--ink);
+}
+dialog::backdrop{background:#263f4baa}
+dialog h3{margin-top:0}
+#lightbox{max-width:950px}
+#lightbox img{max-height:78vh;width:auto;max-width:100%;margin:auto}
+.close{
+  background:#294e60;
+  color:white;
+  border:0;
+  border-radius:5px;
+  padding:10px 18px;
+  cursor:pointer;
+  margin-bottom:15px;
+}
+@media(max-width:760px){
+  .wrap{padding:50px 22px}
+  nav a{display:none}
+  .split{grid-template-columns:1fr;gap:30px}
+  .steps{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr;gap:16px}
+  .receive-grid{grid-template-columns:1fr 1fr}
+  .topics,.review-grid{grid-template-columns:1fr}
+  h1{font-size:43px}
+  .offer-box{padding:24px}
+  figcaption h3{font-size:20px}
+}
+@media(max-width:400px){
+  .receive-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  Cuaderno digital · 46 páginas en español · US$12
+</div>
+
+<nav>
+  <div class="brand">
+    mi espacio emocional
+    <small>CRECER TAMBIÉN SE APRENDE</small>
+  </div>
+  <a href="#contenido">Explorar el cuaderno ↗</a>
+</nav>
+
+<main>
+
+<section class="hero">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Ansiedad en la adolescencia · 13 a 18 años</div>
+      <h1>Entender la ansiedad.<br><em>El primer paso para explorar lo que siente.</em></h1>
+      <p class="lead">
+        Un cuaderno visual en español para reconocer pensamientos,
+        sensaciones y emociones, explorar recursos de afrontamiento
+        y abrir conversaciones con personas de confianza.
+      </p>
+      <a class="btn" href="#galeria">Ver las actividades por dentro ↗</a>
+      <div class="tags">
+        <span>✦ En español</span>
+        <span>✦ 46 páginas en PDF</span>
+        <span>✦ Para imprimir</span>
+      </div>
+      <p class="fine">Actividades de reflexión para acompañar la adolescencia, a su ritmo.</p>
+    </div>
+    <button class="zoom" aria-label="Ampliar presentación">
+      <img data-asset="ansiedad-inicio" alt="Ansiedad en la adolescencia: actividades en español">
+    </button>
+  </div>
+</section>
+
+<div class="bar">
+  EMPEZAMOS POR LA ANSIEDAD. ABRIMOS UN ESPACIO PARA TODO LO DEMÁS.
+</div>
+
+<section class="wrap">
+  <div class="center">
+    <div class="eyebrow">La puerta de entrada al cuaderno</div>
+    <h2>La ansiedad es el comienzo.<br><em>El recorrido va más allá.</em></h2>
+    <p>
+      Empezamos por observar lo que se piensa, lo que se siente en el
+      cuerpo y cómo se responde. Desde ahí, el cuaderno abre espacio
+      para explorar autoestima, estrés escolar, amistades, redes
+      sociales y relaciones familiares.
+    </p>
+  </div>
+  <div class="steps">
+    <article class="step">
+      <span>01 / Reconocer</span>
+      <h3>¿Qué estoy sintiendo?</h3>
+      <p>Identificar emociones y situaciones con preguntas concretas y apoyos visuales.</p>
+    </article>
+    <article class="step">
+      <span>02 / Expresar</span>
+      <h3>¿Qué necesito?</h3>
+      <p>Escribir o dibujar para dar forma a lo que cuesta decir y elegir qué compartir.</p>
+    </article>
+    <article class="step">
+      <span>03 / Practicar</span>
+      <h3>¿Qué puedo intentar?</h3>
+      <p>Explorar recursos personales y elegir un siguiente paso pequeño y realista.</p>
+    </article>
+  </div>
+</section>
+
+<section class="showcase">
+  <div class="wrap split">
+    <button class="zoom" aria-label="Ampliar iceberg emocional">
+      <img data-asset="iceberg" loading="lazy" alt="Actividad Mi iceberg emocional">
+    </button>
+    <div>
+      <div class="eyebrow">Un vistazo por dentro</div>
+      <h2>No solo leer sobre emociones.<br><em>Darles un lugar.</em></h2>
+      <p>
+        El iceberg invita a explorar la diferencia entre lo que
+        se muestra y lo que se vive por dentro.
+      </p>
+      <ul class="clean">
+        <li>Una imagen para explorar una idea.</li>
+        <li>Preguntas breves para orientar la reflexión.</li>
+        <li>Espacio para escribir sin respuestas perfectas.</li>
+        <li>Una oportunidad para reconocer una necesidad.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="wrap">
+  <div class="eyebrow">Mira las actividades de cerca</div>
+  <h2>Así se ve un espacio<br><em>para expresarse.</em></h2>
+  <p>Toca las imágenes para ampliarlas.</p>
+  <div class="gallery" id="gallery"></div>
+  <p class="fine">
+    Imágenes ilustrativas de presentación.
+    El producto se entrega como cuaderno digital PDF.
+  </p>
+</section>
+
+<section class="receive">
+  <div class="wrap">
+    <div class="eyebrow">Qué encontrarás</div>
+    <h2>Un cuaderno para leer,<br><em>escribir y explorar.</em></h2>
+    <div class="receive-grid">
+      <article>
+        <h3>Infográficos claros</h3>
+        <p>Conceptos visuales sobre emociones y adolescencia, en un lenguaje cercano.</p>
+      </article>
+      <article>
+        <h3>Hojas de actividades</h3>
+        <p>Preguntas guiadas, mapas personales y espacios para escribir o dibujar.</p>
+      </article>
+      <article>
+        <h3>Reflexión y diario</h3>
+        <p>Propuestas para empezar cuando todavía cuesta explicar lo que pasa por dentro.</p>
+      </article>
+      <article>
+        <h3>Registros reutilizables</h3>
+        <p>Una hoja diaria y otra semanal para volver a observar experiencias y recursos.</p>
+      </article>
+      <article>
+        <h3>Tarjetas de recordatorio</h3>
+        <p>Frases para recortar, guardar o adaptar con palabras propias.</p>
+      </article>
+      <article>
+        <h3>Guía para acompañantes</h3>
+        <p>Orientaciones para familias y educadores sobre escucha, privacidad y apoyo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contenido" class="wrap">
+  <div class="eyebrow">El recorrido del cuaderno</div>
+  <h2>El mundo adolescente,<br><em>una actividad a la vez.</em></h2>
+  <div class="topics" id="topics"></div>
+</section>
+
+<section class="quote">
+  <div class="wrap">
+    <div class="eyebrow">Acompañar con respeto</div>
+    <h2>“Puedes escribirlo.<br>Puedes dibujarlo.<br>Puedes compartirlo cuando quieras.”</h2>
+    <p>
+      El cuaderno es un espacio personal.
+      Acompañar también significa respetar lo que un adolescente
+      decide guardar para sí.
+    </p>
+  </div>
+</section>
+
+<section id="autora" class="author">
+  <div class="wrap split">
+    <div>
+      <img data-asset="autora" loading="lazy"
+        alt="Sofía Martín, presentadora virtual de Mi Espacio Emocional">
+      <p class="fine">Sofía Martín · Presentadora virtual.</p>
+    </div>
+    <div>
+      <div class="eyebrow">La voz de Mi Espacio Emocional</div>
+      <h2>Sofía Martín<br><em>Un espacio para escuchar.</em></h2>
+      <p class="author-note">
+        Acompañar empieza por escuchar. Y, a veces, una página
+        puede ser el primer lugar donde encontrar las palabras.
+      </p>
+      <p>
+        Mi Espacio Emocional propone un recorrido por las preguntas,
+        emociones y experiencias de crecer, con actividades que
+        invitan a explorar sin exigir respuestas perfectas.
+      </p>
+      <p class="fine">
+        Sofía Martín es una identidad editorial y presentadora virtual.
+        El nombre y el retrato no representan a una profesional de
+        salud real ni una revisión clínica del cuaderno.
+      </p>
+      <a href="#oferta" class="btn">Conocer la edición digital ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="oferta" class="offer">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Cuaderno digital · 46 páginas</div>
+      <h2>Mi Espacio<br><em style="color:#b7d4e2">Emocional</em></h2>
+      <p>
+        Actividades en español sobre ansiedad, emociones,
+        autoestima, estrés, relaciones y resiliencia.
+      </p>
+      <p>Porque crecer trae preguntas.<br>Y acompañar puede empezar con una.</p>
+    </div>
+    <div class="offer-box">
+      <div class="eyebrow">Precio del cuaderno digital</div>
+      <div class="price">US$12 <small>USD</small></div>
+      <p>PDF en español · Para imprimir en casa</p>
+      <h3>Qué recibirás</h3>
+      <ul>
+        <li>Un cuaderno de 46 páginas para adolescentes de 13 a 18 años.</li>
+        <li>Actividades sobre ansiedad, emociones, escuela, autoestima y relaciones.</li>
+        <li>Preguntas para reflexión personal y escritura.</li>
+        <li>Registros diario y semanal reutilizables.</li>
+        <li>Tarjetas de recordatorio y guía para acompañantes.</li>
+        <li>Dos formatos: A4 y carta, con el mismo contenido.</li>
+      </ul>
+      <button class="btn" id="purchase">Consultar disponibilidad ↗</button>
+      <p class="fine" id="availability">
+        Producto digital para uso personal. No incluye envío físico.
+        La compra se habilitará al conectar el checkout.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" class="reviews">
+  <div class="wrap">
+    <div class="eyebrow">Comentarios sobre el producto de referencia en Etsy</div>
+    <h2>Experiencias compartidas<br><em>sobre el material de referencia.</em></h2>
+    <p>
+      Estos comentarios corresponden al material original de referencia
+      en Etsy. No son reseñas de compradores de Mi Espacio Emocional
+      ni de esta edición en español. Su puntuación no ha sido verificada.
+    </p>
+    <div class="review-grid" id="reviews"></div>
+    <p class="fine" style="margin-top:25px">
+      Traducciones de los comentarios proporcionados. Los enlaces
+      dirigen a perfiles y no verifican el producto reseñado ni la compra.
+      Estas opiniones no acreditan resultados clínicos.
+    </p>
+  </div>
+</section>
+
+<section class="wrap faq">
+  <div class="eyebrow">Antes de empezar</div>
+  <h2>Preguntas frecuentes</h2>
+
+  <details open>
+    <summary>¿Es un tratamiento o una terapia?</summary>
+    <p>
+      No. Es un recurso educativo de reflexión y bienestar emocional.
+      No diagnostica ni trata trastornos y no sustituye atención profesional.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Es un libro físico?</summary>
+    <p>
+      No. Es un cuaderno digital PDF para imprimir.
+      No se envía un libro físico.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Cuántas páginas tiene?</summary>
+    <p>
+      Tiene 46 páginas, incluyendo portada, guía de uso, actividades,
+      registros, tarjetas de recordatorio y fuentes.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Qué diferencia hay entre A4 y carta?</summary>
+    <p>
+      El tamaño del papel. Ambas versiones contienen las mismas
+      actividades. Elige la que corresponda a tu impresora.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Se puede usar en una tablet?</summary>
+    <p>
+      Se puede visualizar en dispositivos compatibles con PDF.
+      Para escribir sobre el archivo necesitas una aplicación de anotación.
+      No incluye una aplicación propia.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Hay que compartir todas las respuestas?</summary>
+    <p>
+      No. Conviene acordar cómo se utilizará el cuaderno y respetar
+      la privacidad. Compartir respuestas es una invitación, no una obligación.
+    </p>
+  </details>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">mi espacio emocional</div>
+    <p class="fine" style="margin-top:18px">
+      Edición digital en español · 46 páginas.
+      Imágenes ilustrativas. Sofía Martín es una identidad editorial virtual.
+    </p>
+    <p class="fine">
+      Material educativo. No sustituye evaluación ni tratamiento profesional.
+      Ante dificultades persistentes o que afecten la vida cotidiana,
+      busca acompañamiento de un profesional cualificado.
+    </p>
+  </div>
+</footer>
+
+<dialog id="notice">
+  <h3>El cuaderno está preparado.</h3>
+  <p>
+    El precio es de US$12.
+    La compra se habilitará cuando se conecte el checkout.
+  </p>
+  <button class="close" id="close-notice">Volver a la página</button>
+</dialog>
+
+<dialog id="lightbox">
+  <button class="close" id="close-lightbox">Cerrar ×</button>
+  <img id="large-image" alt="Vista ampliada de la actividad">
+</dialog>
+
+<script>
+/* ===================================================
+   CONFIGURACIÓN
+   Pega tu enlace de pago entre las comillas.
+   Ejemplo:
+   const CHECKOUT_URL = "https://tu-checkout.com";
+   =================================================== */
+
+const CHECKOUT_URL = "";
+
+const ASSET_BASE =
+  "https://mi-espacio-emocional.jonathanrodriguesglo.chatgpt.site/assets/";
+
+const gallery = [
+  ["regulacion", "Poner nombre a lo que siente",
+   "Una rueda de emociones y preguntas para explorar experiencias."],
+  ["manos", "Su caja de herramientas",
+   "Recursos para el cuerpo, los pensamientos y la conexión."],
+  ["redes", "Mirar más allá de las redes",
+   "Preguntas sobre comparación y cualidades personales."],
+  ["familia", "Reconocer su red de apoyo",
+   "Un mapa para identificar personas de confianza."],
+  ["tablet", "También en pantalla",
+   "El PDF puede visualizarse en dispositivos compatibles."],
+  ["impresora", "Del archivo a sus manos",
+   "Hojas para imprimir y completar a su ritmo."]
+];
+
+const topics = [
+  ["Entender la ansiedad",
+   "Observar situaciones, pensamientos, sensaciones y respuestas."],
+  ["Cambios de la adolescencia",
+   "Explorar el desarrollo, los cambios de ánimo y el contexto."],
+  ["Emociones y necesidades",
+   "Poner palabras a lo que siente y a lo que necesita."],
+  ["Estrés y presión escolar",
+   "Reflexionar sobre demandas, organización y expectativas."],
+  ["Perfeccionismo y errores",
+   "Definir criterios realistas y aprender sin insultarse."],
+  ["Fortalezas y autoestima",
+   "Reconocer valores y cualidades más allá de la apariencia."],
+  ["Cuerpo y redes sociales",
+   "Observar la comparación y revisar hábitos digitales."],
+  ["Amistades y límites",
+   "Explorar relaciones y preparar formas de expresar necesidades."],
+  ["Familia y apoyo",
+   "Preparar conversaciones e identificar a quién pedir ayuda."],
+  ["Resiliencia y futuro",
+   "Reconocer recursos, explorar intereses y elegir próximos pasos."]
+];
+
+const reviews = [
+  {
+    name:"Gina",
+    date:"06/06/2026",
+    text:"¡Una herramienta muy útil para terapeutas!",
+    url:"https://www.etsy.com/people/ginashuster?ref=l_review"
+  },
+  {
+    name:"Ria",
+    date:"07/11/2025",
+    text:"¡Me encantó! Es genial.",
+    url:"https://www.etsy.com/people/bidosirc9dhud37t?ref=l_review"
+  },
+  {
+    name:"Tiffany",
+    date:"29/10/2025",
+    text:"Fácil de imprimir al comprar la versión descargable.",
+    url:"https://www.etsy.com/people/9858k68fmsctuj1w?ref=l_review"
+  },
+  {
+    name:"Christabelle",
+    date:"27/10/2025",
+    text:"¡Buena calidad y muy buen precio!",
+    url:"https://www.etsy.com/people/belle83113?ref=l_review"
+  },
+  {
+    name:"Comprador de Etsy",
+    date:"08/10/2025",
+    text:"¡Perfecto para un orientador escolar!",
+    url:"https://www.etsy.com/people/KellyDeal?ref=l_review"
+  }
+];
+
+document.getElementById("gallery").innerHTML = gallery.map(
+  ([asset,title,text]) => `
+    <figure>
+      <button class="zoom" aria-label="Ampliar: ${title}">
+        <img
+          src="${ASSET_BASE}${asset}.webp"
+          alt="${title}"
+          loading="lazy">
+      </button>
+      <figcaption>
+        <h3>${title}</h3>
+        <p>${text}</p>
+      </figcaption>
+    </figure>`
+).join("");
+
+document.getElementById("topics").innerHTML = topics.map(
+  ([title,text],index) => `
+    <article class="topic">
+      <b>${String(index+1).padStart(2,"0")}</b>
+      <div>
+        <h3>${title}</h3>
+        <p>${text}</p>
+      </div>
+    </article>`
+).join("");
+
+document.getElementById("reviews").innerHTML = reviews.map(
+  review => `
+    <article class="review">
+      <blockquote>“${review.text}”</blockquote>
+      <b>${review.name}</b>
+      <time>${review.date}</time>
+      <a href="${review.url}"
+         target="_blank"
+         rel="noopener noreferrer">Perfil citado de Etsy ↗</a>
+    </article>`
+).join("");
+
+document.querySelectorAll("[data-asset]").forEach(image => {
+  image.src = ASSET_BASE + image.dataset.asset + ".webp";
+});
+
+const notice = document.getElementById("notice");
+const purchase = document.getElementById("purchase");
+
+if (CHECKOUT_URL.trim()) {
+  purchase.textContent = "Quiero mi cuaderno por US$12 ↗";
+  document.getElementById("availability").textContent =
+    "Producto digital para uso personal. No incluye envío físico. " +
+    "Revisa las condiciones de pago y entrega en el checkout.";
+}
+
+purchase.addEventListener("click", () => {
+  if (CHECKOUT_URL.trim()) {
+    window.location.assign(CHECKOUT_URL);
+  } else {
+    notice.showModal();
+  }
+});
+
+document.getElementById("close-notice").addEventListener(
+  "click", () => notice.close()
+);
+
+const lightbox = document.getElementById("lightbox");
+const largeImage = document.getElementById("large-image");
+
+document.querySelectorAll(".zoom").forEach(button => {
+  button.addEventListener("click", () => {
+    const image = button.querySelector("img");
+    largeImage.src = image.src;
+    largeImage.alt = image.alt;
+    lightbox.showModal();
+  });
+});
+
+document.getElementById("close-lightbox").addEventListener(
+  "click", () => lightbox.close()
+);
+
+[notice,lightbox].forEach(dialog => {
+  dialog.addEventListener("click", event => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom
+    ) dialog.close();
+  });
+});
+</script>
+
+</body>
+</html>
