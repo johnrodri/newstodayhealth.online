@@ -243,6 +243,13 @@ dialog h3{margin-top:0}
 @media(max-width:400px){
   .receive-grid{grid-template-columns:1fr}
 }
+.original-price{margin:12px 0 0;font-size:19px}
+.original-price s{color:#d0dde1}
+.countdown-box{padding:18px;border:1px solid #efd0ba70;border-radius:8px;margin:22px 0;background:#ffffff09}
+#offer-clock{font:700 44px/1.3 Arial,sans-serif;font-variant-numeric:tabular-nums;color:#efd0ba;margin:8px 0}
+.countdown-box p{margin:0}
+.btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+.receive-grid blockquote{margin:16px 0;font-size:14px;padding-left:14px;border-left:3px solid #9db7ad}
 </style>
 <link rel="icon" type="image/png" sizes="240x240" href="/caderno/assets/favicon.png?v=20261021">
 <link rel="apple-touch-icon" href="/caderno/assets/favicon.png?v=20261021">
@@ -406,6 +413,21 @@ dialog h3{margin-top:0}
   </div>
 </section>
 
+<section id="ia" class="receive">
+  <div class="wrap">
+    <div class="eyebrow">Una conversación que también importa hoy</div>
+    <h2>Crecer entre redes,<br><em>pantallas e inteligencia artificial.</em></h2>
+    <p class="lead">La IA ya forma parte de su mundo. Aprender a usarla con criterio también puede formar parte de las conversaciones en casa y en la escuela.</p>
+    <p>Empieza aquí con tres ejemplos prácticos. Esta guía está disponible en esta página; el producto de pago es el cuaderno PDF y no incluye un chatbot.</p>
+    <div class="receive-grid">
+      <article><h3>Organizar sin delegar el aprendizaje</h3><p>Para dividir una tarea grande en pasos, sin pedir que la IA haga todo el trabajo.</p><blockquote>“Ayúdame a organizar una tarea escolar en pasos de 15 minutos. Hazme preguntas sobre el tiempo disponible. No resuelvas la tarea por mí.”</blockquote></article>
+      <article><h3>Cuestionar las respuestas</h3><p>Una respuesta convincente puede contener errores. Revisar fuentes y contrastar con un adulto o docente ayuda a decidir qué usar.</p><blockquote>“Señala qué partes de tu respuesta necesitan verificación y qué fuentes originales debería consultar. Si no sabes algo, dilo.”</blockquote></article>
+      <article><h3>Proteger lo personal</h3><p>Usar ejemplos inventados en lugar de compartir nombres, escuela, fotos, conversaciones privadas o datos de salud. Revisar la edad mínima y las condiciones de cada herramienta con un adulto.</p><blockquote>Antes de enviar: “¿Podría hacer esta pregunta sin revelar información privada mía o de otra persona?”</blockquote></article>
+    </div>
+    <p class="fine">Para emociones difíciles, una conversación con una persona de confianza importa. Un chatbot no sustituye apoyo humano ni atención profesional.</p>
+  </div>
+</section>
+
 <section id="autora" class="author">
   <div class="wrap split">
     <div>
@@ -448,7 +470,14 @@ dialog h3{margin-top:0}
     </div>
     <div class="offer-box">
       <div class="eyebrow">Precio del cuaderno digital</div>
-      <div class="price">US$12 <small>USD</small></div>
+      <p class="original-price">Antes <s>US$295</s></p>
+      <div class="price">US$12 <small>USD · pago único</small></div>
+      <p>Ahorras US$283 · 95,9% de descuento</p>
+      <div class="countdown-box">
+        <b>Tu acceso a esta oferta desde esta página</b>
+        <div id="offer-clock" role="timer" aria-label="Tiempo restante">08:00</div>
+        <p class="fine" id="timer-status">Dispones de 8 minutos desde tu primera visita. El contador no se reinicia al actualizar.</p>
+      </div>
       <p>PDF en español · Para imprimir en casa</p>
       <h3>Qué recibirás</h3>
       <ul>
@@ -459,10 +488,10 @@ dialog h3{margin-top:0}
         <li>Tarjetas de recordatorio y guía para acompañantes.</li>
         <li>Dos formatos: A4 y carta, con el mismo contenido.</li>
       </ul>
-      <button class="btn" id="purchase">Consultar disponibilidad ↗</button>
+      <a class="btn" id="purchase" href="https://pay.monetizze.com.br/KWW471616">Quiero mi cuaderno por US$12 ↗</a>
       <p class="fine" id="availability">
         Producto digital para uso personal. No incluye envío físico.
-        La compra se habilitará al conectar el checkout.
+        Revisa el importe, las condiciones de pago y la entrega en Monetizze.
       </p>
     </div>
   </div>
@@ -579,7 +608,7 @@ dialog h3{margin-top:0}
    const CHECKOUT_URL = "https://tu-checkout.com";
    =================================================== */
 
-const CHECKOUT_URL = "";
+const CHECKOUT_URL = "https://pay.monetizze.com.br/KWW471616";
 
 const ASSET_BASE =
   "./assets/";
@@ -708,12 +737,46 @@ if (CHECKOUT_URL.trim()) {
     "Revisa las condiciones de pago y entrega en el checkout.";
 }
 
-purchase.addEventListener("click", () => {
-  if (CHECKOUT_URL.trim()) {
-    window.location.assign(CHECKOUT_URL);
+// A single persisted window per browser; refreshing does not restart it.
+const OFFER_DURATION_MS = 8 * 60 * 1000;
+const OFFER_KEY = "mi-espacio-oferta-20261021-v1";
+let offerEndsAt;
+try {
+  const savedDeadline = Number(localStorage.getItem(OFFER_KEY));
+  offerEndsAt = Number.isFinite(savedDeadline) && savedDeadline > 0
+    ? savedDeadline : Date.now() + OFFER_DURATION_MS;
+  localStorage.setItem(OFFER_KEY, String(offerEndsAt));
+} catch {
+  offerEndsAt = Date.now(); // Do not display a resetting countdown if storage is unavailable.
+}
+function renderOffer() {
+  const remaining = Math.max(0, Math.ceil((offerEndsAt - Date.now()) / 1000));
+  document.getElementById("offer-clock").textContent =
+    String(Math.floor(remaining / 60)).padStart(2, "0") + ":" +
+    String(remaining % 60).padStart(2, "0");
+  const expired = remaining === 0;
+  purchase.setAttribute("aria-disabled", String(expired));
+  if (expired) {
+    purchase.removeAttribute("href");
+    purchase.textContent = "El acceso a esta oferta ha finalizado";
+    document.getElementById("timer-status").textContent =
+      "El plazo de esta oferta en esta página terminó. El contador no se reinicia.";
   } else {
-    notice.showModal();
+    purchase.href = CHECKOUT_URL;
   }
+  return !expired;
+}
+renderOffer();
+setInterval(renderOffer, 1000);
+window.addEventListener("storage", event => {
+  if (event.key === OFFER_KEY) {
+    const deadline = Number(event.newValue);
+    if (Number.isFinite(deadline) && deadline > 0) offerEndsAt = deadline;
+    renderOffer();
+  }
+});
+purchase.addEventListener("click", event => {
+  if (!renderOffer()) event.preventDefault();
 });
 
 document.getElementById("close-notice").addEventListener(
