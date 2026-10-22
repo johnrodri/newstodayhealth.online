@@ -1,817 +1,141 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ansiedad en la adolescencia | Mi Espacio Emocional</title>
-<meta name="description" content="Cuaderno digital de 46 páginas en español para explorar emociones, autoestima, estrés y relaciones durante la adolescencia.">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cuaderno de Salud Mental para Adolescentes · 46 páginas · US$12</title>
+<meta name="description" content="46 páginas de actividades en español para explorar ansiedad, emociones, autoestima y estrés adolescente. PDF imprimible A4 y carta. Pago único de US$12.">
+<meta name="theme-color" content="#173f3a">
+<link rel="icon" type="image/png" href="./assets/favicon.png?v=20261021">
+<link rel="apple-touch-icon" href="./assets/favicon.png?v=20261021">
 <style>
-:root {
-  --ink:#263f4b;
-  --muted:#617078;
-  --cream:#f5efe5;
-  --paper:#fffdf8;
-  --blue:#b7d4e2;
-  --peach:#efd0ba;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:25px}
-body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:Arial,sans-serif;
-  line-height:1.65;
-}
-a{color:inherit}
-img{display:block;width:100%;height:auto}
-button{font-family:inherit}
-.wrap{max-width:1160px;margin:auto;padding:70px 24px}
-.topbar{
-  padding:10px 20px;
-  text-align:center;
-  background:#eedca8;
-  font-size:12px;
-}
-nav{
-  max-width:1160px;
-  margin:auto;
-  padding:24px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.brand{font:bold 23px Georgia,serif}
-.brand small{
-  display:block;
-  font:10px Arial,sans-serif;
-  letter-spacing:2px;
-  margin-top:5px;
-}
-nav a{text-decoration:none;font-size:13px}
-.eyebrow{
-  font-size:11px;
-  letter-spacing:2px;
-  font-weight:bold;
-  text-transform:uppercase;
-}
-h1,h2,h3{
-  font-family:Georgia,serif;
-  font-weight:400;
-  line-height:1.15;
-}
-h1{font-size:clamp(40px,5vw,64px);margin:22px 0}
-h2{font-size:clamp(32px,4vw,46px);margin:18px 0 24px}
-h3{font-size:25px}
-em{color:#547a90;font-weight:400}
-p{margin:0 0 18px}
-.lead{font-size:18px;color:#536872}
-.fine{font-size:12px;color:var(--muted)}
-.btn{
-  display:inline-block;
-  padding:17px 25px;
-  background:#294e60;
-  color:white;
-  text-decoration:none;
-  border:0;
-  border-radius:6px;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-}
-.hero{background:var(--cream)}
-.split{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:65px;
-  align-items:center;
-}
-.hero img{
-  border-radius:12px;
-  box-shadow:0 20px 45px #263f4b20;
-}
-.tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-  font-size:12px;
-  margin:22px 0;
-}
-.bar{
-  text-align:center;
-  font-size:11px;
-  letter-spacing:1px;
-  padding:20px;
-  border-bottom:1px solid #ddd6c9;
-}
-.center{text-align:center;max-width:780px;margin:auto}
-.steps{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:32px;
-  margin-top:40px;
-}
-.step{border-top:1px solid #ccc9bf;padding-top:20px}
-.step span{font:28px Georgia;color:#658597}
-.step p{font-size:14px;color:var(--muted)}
-.showcase{background:#eaf0f1}
-.showcase img{border-radius:10px}
-ul.clean{list-style:none;padding:0}
-ul.clean li{padding:12px 0;border-bottom:1px solid #ccd7da}
-ul.clean li::before{content:"✓";margin-right:12px;color:#53798c}
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-  margin-top:35px;
-}
-figure{margin:0}
-figure img{border-radius:9px;aspect-ratio:1;object-fit:cover}
-figcaption{padding:15px 0}
-figcaption h3{font-size:23px;margin:0 0 9px}
-figcaption p{font-size:13px;color:var(--muted)}
-.zoom{
-  border:0;
-  padding:0;
-  background:none;
-  width:100%;
-  cursor:zoom-in;
-}
-.receive{background:#f0f3ef}
-.receive-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:30px;
-  margin-top:35px;
-}
-.receive-grid article{border-top:1px solid #bccbc1;padding-top:18px}
-.receive-grid h3{margin:12px 0}
-.receive-grid p{font-size:14px;color:var(--muted)}
-.topics{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:0 40px;
-  margin-top:30px;
-}
-.topic{
-  display:flex;
-  gap:18px;
-  padding:22px 0;
-  border-top:1px solid #ddd6c9;
-}
-.topic b{font:24px Georgia;color:#6f8a98}
-.topic h3{font-size:23px;margin:0 0 10px}
-.topic p{font-size:14px;color:var(--muted);margin:0}
-.quote{background:#ecd5c4;text-align:center}
-.quote .wrap{max-width:850px}
-.author{background:#eee5da}
-.author img{
-  max-height:580px;
-  object-fit:cover;
-  border-radius:180px 180px 10px 10px;
-}
-.author-note{
-  border-left:3px solid #c4a58b;
-  padding-left:20px;
-  font:23px/1.5 Georgia;
-}
-.offer{background:#263f4b;color:white}
-.offer p{color:#d0dde1}
-.offer-box{border:1px solid #7b929c;padding:32px}
-.offer-box h3{margin-top:20px}
-.offer-box li{padding:7px 0;font-size:14px}
-.price{font:70px/1.2 Georgia;color:var(--peach);margin:12px 0}
-.price small{font:15px Arial;color:#d0dde1}
-.offer .btn{background:var(--peach);color:var(--ink);width:100%;text-align:center}
-.offer .fine{color:#d0dde1}
-.reviews{background:var(--cream)}
-.review-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
-  margin-top:30px;
-}
-.review{
-  padding:26px;
-  background:var(--paper);
-  border:1px solid #ddd6c9;
-  border-radius:10px;
-}
-.review blockquote{font:21px/1.5 Georgia;margin:0 0 24px}
-.review time{display:block;font-size:11px;color:var(--muted)}
-.review a{display:inline-block;font-size:11px;margin-top:15px}
-.faq{max-width:850px}
-details{border-top:1px solid #d8d7cf;padding:20px 0}
-summary{cursor:pointer;font-weight:bold}
-details p{font-size:14px;color:var(--muted);margin:15px 0 0}
-footer{background:var(--cream)}
-footer .wrap{padding-top:35px;padding-bottom:35px}
-dialog{
-  border:0;
-  border-radius:12px;
-  padding:28px;
-  max-width:460px;
-  width:90%;
-  color:var(--ink);
-}
-dialog::backdrop{background:#263f4baa}
-dialog h3{margin-top:0}
-#lightbox{max-width:950px}
-#lightbox img{max-height:78vh;width:auto;max-width:100%;margin:auto}
-.close{
-  background:#294e60;
-  color:white;
-  border:0;
-  border-radius:5px;
-  padding:10px 18px;
-  cursor:pointer;
-  margin-bottom:15px;
-}
-@media(max-width:760px){
-  .wrap{padding:50px 22px}
-  nav a{display:none}
-  .split{grid-template-columns:1fr;gap:30px}
-  .steps{grid-template-columns:1fr}
-  .gallery{grid-template-columns:1fr 1fr;gap:16px}
-  .receive-grid{grid-template-columns:1fr 1fr}
-  .topics,.review-grid{grid-template-columns:1fr}
-  h1{font-size:43px}
-  .offer-box{padding:24px}
-  figcaption h3{font-size:20px}
-}
-@media(max-width:400px){
-  .receive-grid{grid-template-columns:1fr}
-}
-.original-price{margin:12px 0 0;font-size:19px}
-.original-price s{color:#d0dde1}
-.countdown-box{padding:18px;border:1px solid #efd0ba70;border-radius:8px;margin:22px 0;background:#ffffff09}
-#offer-clock{font:700 44px/1.3 Arial,sans-serif;font-variant-numeric:tabular-nums;color:#efd0ba;margin:8px 0}
-.countdown-box p{margin:0}
-.btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
-.receive-grid blockquote{margin:16px 0;font-size:14px;padding-left:14px;border-left:3px solid #9db7ad}
+:root{--paper:#faf8f2;--white:#fff;--ink:#192e2c;--muted:#566761;--green:#17654d;--deep:#173f3a;--pale:#eaf0e8;--peach:#f1dac8;--line:#dce1d7;--gold:#a27628}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:25px}body{margin:0;color:var(--ink);background:var(--paper);font-family:Arial,Helvetica,sans-serif;font-size:17px;line-height:1.65}body:has(dialog[open]){overflow:hidden}a{color:inherit}img{display:block;width:100%;height:auto}button{font:inherit}h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.13;letter-spacing:-.035em}h1{font-size:clamp(34px,4.5vw,58px);font-weight:800;max-width:940px;margin:20px auto 26px}h2{font-size:clamp(29px,3.5vw,43px);margin-bottom:22px}h3{font-size:22px;letter-spacing:-.02em;margin-bottom:12px}p{margin-bottom:20px}.wrap{max-width:1080px;margin:auto;padding:76px 24px}.narrow{max-width:790px}.center{text-align:center}.intro{max-width:740px;margin:0 auto 35px;color:var(--muted)}.kicker{display:block;color:var(--green);font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:15px}.accent{color:var(--green)}.fine{font-size:13px;line-height:1.6;color:var(--muted)}.small{font-size:15px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:16px;text-align:center;background:var(--green);color:white;text-decoration:none;font-size:16px;font-weight:800;line-height:1.35;padding:20px 28px;border-radius:9px;box-shadow:0 5px 0 #104936;min-height:64px;border:0;transition:transform .2s,background .2s}.btn:hover{background:#124d3c;transform:translateY(-2px)}.btn:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #c78541;outline-offset:5px}.btn span{font-size:22px}.text-link{display:inline-block;margin-top:17px;font-size:14px;text-underline-offset:4px}.cta-note{display:block;margin:15px auto 0;color:var(--muted);font-size:12px}.topbar{background:var(--deep);color:#fff;text-align:center;font-size:11px;font-weight:700;padding:9px 16px;letter-spacing:1px}.brand{font-size:15px;font-weight:800;letter-spacing:.04em}.brand img{width:29px;height:29px;object-fit:contain}.nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:19px 24px;border-bottom:1px solid var(--line)}.nav .brand{display:flex;align-items:center;gap:9px}.nav a:last-child{font-size:13px;text-decoration:none;font-weight:700;color:var(--green)}.hero .wrap{padding-top:42px;padding-bottom:46px}.pill{display:inline-block;border:1px solid #b9cfc1;padding:5px 13px;border-radius:99px;font-size:11px;font-weight:800;color:var(--green);letter-spacing:.7px}.hero-visual{position:relative;width:min(600px,100%);height:390px;margin:28px auto 35px}.book-cover{position:absolute;width:245px;left:50%;top:8px;transform:translateX(-50%) rotate(-5deg);border-radius:3px 9px 9px 3px;box-shadow:12px 20px 34px #173f3a2b;border-left:7px solid #31514e;z-index:2}.hero-sheet{position:absolute;width:182px;border:1px solid #d8ded4;box-shadow:5px 12px 22px #173f3a15;border-radius:3px;top:38px}.hero-sheet.left{left:35px;transform:rotate(-14deg)}.hero-sheet.right{right:35px;transform:rotate(13deg)}.page-badge{position:absolute;z-index:3;right:72px;bottom:15px;background:var(--peach);border:5px solid var(--paper);border-radius:50%;width:112px;height:112px;display:grid;place-content:center;font-size:13px;font-weight:800;line-height:1.3;transform:rotate(9deg)}.page-badge b{font-size:34px}.hero .lead{font-size:19px;max-width:690px;margin:0 auto 24px}.hero .btn{min-width:330px}.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}.strip .wrap{padding:20px 24px;display:flex;justify-content:center;gap:35px;flex-wrap:wrap;font-size:13px;font-weight:700}.chips{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:24px 0}.chips span{background:var(--pale);padding:8px 14px;border-radius:99px;font-size:13px}.soft{background:var(--pale)}.white{background:#fff}.split{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:55px}.page-preview{width:min(100%,340px);margin:auto;border:1px solid #dce1d7;box-shadow:0 15px 35px #173f3a17;border-radius:4px}.zoom{display:block;border:0;padding:0;background:none;cursor:zoom-in;max-width:100%;margin:auto}.steps{counter-reset:step;display:grid;gap:21px;margin-top:28px}.step{position:relative;padding-left:53px}.step:before{counter-increment:step;content:counter(step);position:absolute;top:0;left:0;background:#d7e7da;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:var(--green)}.step h3{font-size:19px;margin:0 0 6px}.step p{font-size:15px;color:var(--muted);margin:0}.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}.compare>div{padding:28px;border:1px solid var(--line);border-radius:12px;background:#fff}.compare>div:last-child{background:var(--deep);color:#fff}.compare .label{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}.compare blockquote{font-size:22px;font-weight:700;line-height:1.4;margin:14px 0}.compare p{font-size:15px;margin:0}.preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 22px}.preview-grid figure{margin:0}.preview-grid .zoom{width:100%}.preview-grid img{border-radius:4px;box-shadow:0 8px 22px #173f3a12;border:1px solid var(--line);aspect-ratio:595/842;object-fit:contain;background:#fff}.preview-grid figcaption{font-size:14px;font-weight:800;margin-top:15px}.preview-grid figcaption small{display:block;font-size:12px;font-weight:400;color:var(--muted);margin-top:5px}.section-cta{text-align:center;margin-top:38px}.checks{list-style:none;padding:0;margin:24px 0}.checks li{position:relative;padding-left:29px;margin-bottom:17px}.checks li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:800}.checks strong{display:block;font-size:17px}.checks p{font-size:15px;color:var(--muted);margin:2px 0 0}.bundle-art{position:relative;min-height:440px}.bundle-art img{position:absolute;width:46%;border:1px solid #d5dacd;box-shadow:0 12px 24px #173f3a20;border-radius:4px}.bundle-art img:nth-child(1){left:0;top:40px;transform:rotate(-12deg)}.bundle-art img:nth-child(2){right:0;top:40px;transform:rotate(12deg)}.bundle-art img:nth-child(3){left:27%;top:0;z-index:2;transform:rotate(-2deg)}.lifestyle{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}.lifestyle figure{margin:0}.lifestyle img{border-radius:12px;aspect-ratio:1;object-fit:cover}.lifestyle figcaption{font-size:14px;font-weight:700;margin-top:13px}.audience{display:grid;grid-template-columns:1fr 1fr;gap:20px}.audience article{padding:25px 0;border-top:1px solid #cbd8cb}.audience h3{font-size:22px}.audience p{font-size:15px;color:var(--muted);margin:0}.extras{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.extra{padding:28px;border:1px solid var(--line);border-radius:12px;background:#fff}.extra .number{display:block;font-size:11px;letter-spacing:1px;color:var(--green);font-weight:800;margin-bottom:14px}.extra p{font-size:15px;color:var(--muted)}.included{display:inline-block;font-size:11px;font-weight:800;background:var(--pale);color:var(--green);padding:5px 10px;border-radius:5px}.ia-guide{margin-top:24px;border:1px solid #bdd0c1;border-radius:12px;padding:28px;background:#f4f6ef}.ia-guide blockquote{margin:15px 0;border-left:3px solid var(--green);padding-left:18px;font-size:16px}.ia-guide details{padding:12px 0}.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:27px}.review{margin:0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px}.review blockquote{margin:0 0 18px;font-size:18px;font-weight:700;line-height:1.5}.review figcaption{font-size:13px;color:var(--muted)}.review a{display:inline-block;font-size:12px;margin-top:9px}.recap{max-width:700px;margin:30px auto 0;background:#fff;padding:30px;border:1px solid var(--line);border-radius:12px}.recap div{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding:15px 0;font-size:15px}.recap div:last-child{border:0}.recap b{white-space:nowrap;color:var(--green)}.offer{background:var(--deep);color:white}.offer .kicker{color:#c9dfbf}.offer .intro,.offer .fine{color:#dae4da}.offer-card{max-width:640px;margin:35px auto 0;padding:36px;background:var(--paper);border:2px solid #c8d9b8;border-radius:17px;color:var(--ink);text-align:center;box-shadow:0 20px 40px #0002}.offer-card .mini-cover{width:155px;margin:20px auto;box-shadow:7px 12px 18px #173f3a25;border-radius:4px}.offer-card .checks{text-align:left;font-size:15px;max-width:435px;margin:25px auto}.offer-card .checks li{margin-bottom:11px}.offer-card .fine{color:var(--muted)}.old-price{font-size:17px;margin-bottom:0}.price{font-size:76px;font-weight:800;letter-spacing:-4px;line-height:1.1;color:var(--green);margin:10px 0}.price small{font-size:27px;letter-spacing:-1px}.offer-card .btn{display:flex;width:100%;margin:25px auto 0}.saving{font-size:13px;font-weight:700;color:var(--green)}.delivery{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:900px;margin:45px auto 0}.delivery .num{display:grid;place-items:center;width:36px;height:36px;background:#335d52;color:#fff;border-radius:50%;font-weight:800;margin:0 auto 16px}.delivery h3{font-size:18px;letter-spacing:0}.delivery p{font-size:14px;color:#d4e2d7;margin:0}.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:32px}.trust-grid h3{font-size:19px}.trust-grid p{font-size:14px;color:var(--muted)}.trust-icon{font-size:25px;margin-bottom:12px}details{border-top:1px solid var(--line);padding:20px 0}summary{cursor:pointer;font-weight:700;line-height:1.4;padding-right:12px}details p{font-size:15px;color:var(--muted);margin:15px 0 0}.last{background:var(--peach)}footer{border-top:1px solid var(--line)}footer .wrap{padding-top:32px;padding-bottom:105px}footer p{font-size:12px;color:var(--muted);max-width:850px;margin:16px auto}.sticky{position:fixed;z-index:10;bottom:0;left:0;width:100%;background:#fffef9f5;backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 20px;box-shadow:0 -8px 30px #173f3a0a}.sticky-inner{max-width:1000px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}.sticky p{margin:0;font-size:13px;line-height:1.35}.sticky strong{display:block;font-size:22px;color:var(--green)}.sticky .btn{padding:12px 23px;min-height:46px;font-size:14px;box-shadow:0 3px 0 #104936}dialog{width:min(850px,94vw);max-height:92vh;border:0;background:var(--paper);border-radius:12px;padding:16px}dialog::backdrop{background:#102c27d9}dialog img{width:auto;max-width:100%;max-height:77vh;margin:auto}.close{display:block;margin:0 0 12px auto;border:1px solid var(--line);background:white;padding:9px 16px;border-radius:6px;cursor:pointer;font-size:13px}.dialog-caption{text-align:center;font-size:13px;margin:12px 0 0;color:var(--muted)}
+@media(max-width:760px){body{font-size:16px}.wrap{padding:52px 20px}.nav{padding:14px 20px}.nav .brand{font-size:12px}.nav a:last-child{font-size:12px}.hero .wrap{padding-top:28px}h1{font-size:35px;letter-spacing:-1.5px;margin:18px auto 22px}.hero-visual{height:330px;margin:22px auto}.book-cover{width:206px;top:6px}.hero-sheet{width:145px;top:34px}.hero-sheet.left{left:3%}.hero-sheet.right{right:3%}.page-badge{right:9%;bottom:0;width:92px;height:92px;font-size:11px}.page-badge b{font-size:29px}.hero .lead{font-size:17px}.hero .btn{min-width:0;width:100%;font-size:14px}.strip .wrap{gap:10px 22px;padding:18px 20px;font-size:11px}.split{grid-template-columns:1fr;gap:32px}.mechanism .split>div{order:-1}.preview-grid{grid-template-columns:repeat(2,1fr);gap:24px 14px}.preview-grid figcaption{font-size:13px}.preview-grid figcaption small{font-size:11px}.compare{grid-template-columns:1fr}.compare>div{padding:23px}.bundle-art{min-height:420px;max-width:420px;width:100%;margin:0 auto}.lifestyle{gap:12px}.lifestyle figcaption{font-size:12px}.extras,.audience{grid-template-columns:1fr}.reviews-grid{grid-template-columns:1fr}.extra{padding:24px}.recap{padding:22px}.recap div{font-size:13px;gap:12px}.offer-card{padding:26px 20px}.price{font-size:70px}.delivery{grid-template-columns:1fr;text-align:left;gap:27px}.delivery article{position:relative;padding-left:53px}.delivery .num{position:absolute;left:0;top:0}.delivery h3{margin-bottom:8px}.trust-grid{grid-template-columns:1fr;gap:10px}.trust-grid article{padding-left:48px;position:relative}.trust-icon{position:absolute;left:0;top:-5px}.sticky{padding:10px 15px}.sticky p{font-size:10px}.sticky strong{font-size:21px}.sticky .btn{font-size:12px;gap:8px;padding:12px 16px}.section-cta .btn,.last .btn{width:100%;font-size:14px}.ia-guide{padding:22px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
-<link rel="icon" type="image/png" sizes="240x240" href="/caderno/assets/favicon.png?v=20261021">
-<link rel="apple-touch-icon" href="/caderno/assets/favicon.png?v=20261021">
 </head>
-
 <body>
-
-<div class="topbar">
-  Cuaderno digital · 46 páginas en español · US$12
-</div>
-
-<nav>
-  <div class="brand">
-    mi espacio emocional
-    <small>CRECER TAMBIÉN SE APRENDE</small>
-  </div>
-  <a href="#contenido">Explorar el cuaderno ↗</a>
-</nav>
-
+<div class="topbar">EDICIÓN DIGITAL EN ESPAÑOL · PAGO ÚNICO · US$12</div>
+<nav class="nav"><div class="brand"><img src="./assets/favicon.png" width="29" height="29" alt="">mi espacio emocional</div><a href="#previas">Ver por dentro ↗</a></nav>
 <main>
-
-<section class="hero">
-  <div class="wrap split">
-    <div>
-      <div class="eyebrow">Ansiedad en la adolescencia · 13 a 18 años</div>
-      <h1>Entender la ansiedad.<br><em>El primer paso para explorar lo que siente.</em></h1>
-      <p class="lead">
-        Un cuaderno visual en español para reconocer pensamientos,
-        sensaciones y emociones, explorar recursos de afrontamiento
-        y abrir conversaciones con personas de confianza.
-      </p>
-      <a class="btn" href="#galeria">Ver las actividades por dentro ↗</a>
-      <div class="tags">
-        <span>✦ En español</span>
-        <span>✦ 46 páginas en PDF</span>
-        <span>✦ Para imprimir</span>
-      </div>
-      <p class="fine">Actividades de reflexión para acompañar la adolescencia, a su ritmo.</p>
-    </div>
-    <button class="zoom" aria-label="Ampliar presentación">
-      <img src="./assets/ansiedad-inicio.webp" data-asset="ansiedad-inicio" width="1254" height="1254" fetchpriority="high" alt="Ansiedad en la adolescencia: actividades en español">
-    </button>
-  </div>
-</section>
-
-<div class="bar">
-  EMPEZAMOS POR LA ANSIEDAD. ABRIMOS UN ESPACIO PARA TODO LO DEMÁS.
+<!-- 01: producto y beneficio -->
+<header class="hero center" id="inicio"><div class="wrap">
+<span class="pill">ANSIEDAD EN LA ADOLESCENCIA · 13 A 18 AÑOS</span>
+<h1>46 páginas para ayudar a los adolescentes a <span class="accent">poner en palabras lo que sienten.</span></h1>
+<div class="hero-visual" aria-label="Portada y páginas reales del cuaderno digital">
+<img class="hero-sheet left" src="./assets/pagina-15.webp" width="953" height="1348" alt="Página Mi iceberg emocional" fetchpriority="high">
+<img class="hero-sheet right" src="./assets/pagina-05.webp" width="953" height="1348" alt="Página Entender la ansiedad">
+<img class="book-cover" src="./assets/pagina-01.webp" width="953" height="1348" alt="Portada Mi Espacio Emocional, cuaderno de actividades para adolescentes" fetchpriority="high">
+<div class="page-badge"><b>46</b>páginas<br>en español</div>
 </div>
-
-<section class="wrap">
-  <div class="center">
-    <div class="eyebrow">La puerta de entrada al cuaderno</div>
-    <h2>La ansiedad es el comienzo.<br><em>El recorrido va más allá.</em></h2>
-    <p>
-      Empezamos por observar lo que se piensa, lo que se siente en el
-      cuerpo y cómo se responde. Desde ahí, el cuaderno abre espacio
-      para explorar autoestima, estrés escolar, amistades, redes
-      sociales y relaciones familiares.
-    </p>
-  </div>
-  <div class="steps">
-    <article class="step">
-      <span>01 / Reconocer</span>
-      <h3>¿Qué estoy sintiendo?</h3>
-      <p>Identificar emociones y situaciones con preguntas concretas y apoyos visuales.</p>
-    </article>
-    <article class="step">
-      <span>02 / Expresar</span>
-      <h3>¿Qué necesito?</h3>
-      <p>Escribir o dibujar para dar forma a lo que cuesta decir y elegir qué compartir.</p>
-    </article>
-    <article class="step">
-      <span>03 / Practicar</span>
-      <h3>¿Qué puedo intentar?</h3>
-      <p>Explorar recursos personales y elegir un siguiente paso pequeño y realista.</p>
-    </article>
-  </div>
-</section>
-
-<section class="showcase">
-  <div class="wrap split">
-    <button class="zoom" aria-label="Ampliar iceberg emocional">
-      <img src="./assets/iceberg.webp" data-asset="iceberg" width="1254" height="1254" loading="lazy" alt="Actividad Mi iceberg emocional">
-    </button>
-    <div>
-      <div class="eyebrow">Un vistazo por dentro</div>
-      <h2>No solo leer sobre emociones.<br><em>Darles un lugar.</em></h2>
-      <p>
-        El iceberg invita a explorar la diferencia entre lo que
-        se muestra y lo que se vive por dentro.
-      </p>
-      <ul class="clean">
-        <li>Una imagen para explorar una idea.</li>
-        <li>Preguntas breves para orientar la reflexión.</li>
-        <li>Espacio para escribir sin respuestas perfectas.</li>
-        <li>Una oportunidad para reconocer una necesidad.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="galeria" class="wrap">
-  <div class="eyebrow">Mira las actividades de cerca</div>
-  <h2>Así se ve un espacio<br><em>para expresarse.</em></h2>
-  <p>Toca las imágenes para ampliarlas.</p>
-  <div class="gallery" id="gallery"></div>
-  <p class="fine">
-    Imágenes ilustrativas de presentación.
-    El producto se entrega como cuaderno digital PDF.
-  </p>
-</section>
-
-<section class="receive">
-  <div class="wrap">
-    <div class="eyebrow">Qué encontrarás</div>
-    <h2>Un cuaderno para leer,<br><em>escribir y explorar.</em></h2>
-    <div class="receive-grid">
-      <article>
-        <h3>Infográficos claros</h3>
-        <p>Conceptos visuales sobre emociones y adolescencia, en un lenguaje cercano.</p>
-      </article>
-      <article>
-        <h3>Hojas de actividades</h3>
-        <p>Preguntas guiadas, mapas personales y espacios para escribir o dibujar.</p>
-      </article>
-      <article>
-        <h3>Reflexión y diario</h3>
-        <p>Propuestas para empezar cuando todavía cuesta explicar lo que pasa por dentro.</p>
-      </article>
-      <article>
-        <h3>Registros reutilizables</h3>
-        <p>Una hoja diaria y otra semanal para volver a observar experiencias y recursos.</p>
-      </article>
-      <article>
-        <h3>Tarjetas de recordatorio</h3>
-        <p>Frases para recortar, guardar o adaptar con palabras propias.</p>
-      </article>
-      <article>
-        <h3>Guía para acompañantes</h3>
-        <p>Orientaciones para familias y educadores sobre escucha, privacidad y apoyo.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="contenido" class="wrap">
-  <div class="eyebrow">El recorrido del cuaderno</div>
-  <h2>El mundo adolescente,<br><em>una actividad a la vez.</em></h2>
-  <div class="topics" id="topics"></div>
-</section>
-
-<section class="quote">
-  <div class="wrap">
-    <div class="eyebrow">Acompañar con respeto</div>
-    <h2>“Puedes escribirlo.<br>Puedes dibujarlo.<br>Puedes compartirlo cuando quieras.”</h2>
-    <p>
-      El cuaderno es un espacio personal.
-      Acompañar también significa respetar lo que un adolescente
-      decide guardar para sí.
-    </p>
-  </div>
-</section>
-
-<section id="ia" class="receive">
-  <div class="wrap">
-    <div class="eyebrow">Una conversación que también importa hoy</div>
-    <h2>Crecer entre redes,<br><em>pantallas e inteligencia artificial.</em></h2>
-    <p class="lead">La IA ya forma parte de su mundo. Aprender a usarla con criterio también puede formar parte de las conversaciones en casa y en la escuela.</p>
-    <p>Empieza aquí con tres ejemplos prácticos. Esta guía está disponible en esta página; el producto de pago es el cuaderno PDF y no incluye un chatbot.</p>
-    <div class="receive-grid">
-      <article><h3>Organizar sin delegar el aprendizaje</h3><p>Para dividir una tarea grande en pasos, sin pedir que la IA haga todo el trabajo.</p><blockquote>“Ayúdame a organizar una tarea escolar en pasos de 15 minutos. Hazme preguntas sobre el tiempo disponible. No resuelvas la tarea por mí.”</blockquote></article>
-      <article><h3>Cuestionar las respuestas</h3><p>Una respuesta convincente puede contener errores. Revisar fuentes y contrastar con un adulto o docente ayuda a decidir qué usar.</p><blockquote>“Señala qué partes de tu respuesta necesitan verificación y qué fuentes originales debería consultar. Si no sabes algo, dilo.”</blockquote></article>
-      <article><h3>Proteger lo personal</h3><p>Usar ejemplos inventados en lugar de compartir nombres, escuela, fotos, conversaciones privadas o datos de salud. Revisar la edad mínima y las condiciones de cada herramienta con un adulto.</p><blockquote>Antes de enviar: “¿Podría hacer esta pregunta sin revelar información privada mía o de otra persona?”</blockquote></article>
-    </div>
-    <p class="fine">Para emociones difíciles, una conversación con una persona de confianza importa. Un chatbot no sustituye apoyo humano ni atención profesional.</p>
-  </div>
-</section>
-
-<section id="autora" class="author">
-  <div class="wrap split">
-    <div>
-      <img src="./assets/autora.webp" data-asset="autora" width="1122" height="1402" loading="lazy"
-        alt="Sofía Martín, presentadora virtual de Mi Espacio Emocional">
-      <p class="fine">Sofía Martín · Presentadora virtual.</p>
-    </div>
-    <div>
-      <div class="eyebrow">La voz de Mi Espacio Emocional</div>
-      <h2>Sofía Martín<br><em>Un espacio para escuchar.</em></h2>
-      <p class="author-note">
-        Acompañar empieza por escuchar. Y, a veces, una página
-        puede ser el primer lugar donde encontrar las palabras.
-      </p>
-      <p>
-        Mi Espacio Emocional propone un recorrido por las preguntas,
-        emociones y experiencias de crecer, con actividades que
-        invitan a explorar sin exigir respuestas perfectas.
-      </p>
-      <p class="fine">
-        Sofía Martín es una identidad editorial y presentadora virtual.
-        El nombre y el retrato no representan a una profesional de
-        salud real ni una revisión clínica del cuaderno.
-      </p>
-      <a href="#oferta" class="btn">Conocer la edición digital ↗</a>
-    </div>
-  </div>
-</section>
-
-<section id="oferta" class="offer">
-  <div class="wrap split">
-    <div>
-      <div class="eyebrow">Cuaderno digital · 46 páginas</div>
-      <h2>Mi Espacio<br><em style="color:#b7d4e2">Emocional</em></h2>
-      <p>
-        Actividades en español sobre ansiedad, emociones,
-        autoestima, estrés, relaciones y resiliencia.
-      </p>
-      <p>Porque crecer trae preguntas.<br>Y acompañar puede empezar con una.</p>
-    </div>
-    <div class="offer-box">
-      <div class="eyebrow">Precio del cuaderno digital</div>
-      <p class="original-price">Antes <s>US$295</s></p>
-      <div class="price">US$12 <small>USD · pago único</small></div>
-      <p>Ahorras US$283 · 95,9% de descuento</p>
-      <div class="countdown-box">
-        <b>Tu acceso a esta oferta desde esta página</b>
-        <div id="offer-clock" role="timer" aria-label="Tiempo restante">08:00</div>
-        <p class="fine" id="timer-status">Dispones de 8 minutos desde tu primera visita. El contador no se reinicia al actualizar.</p>
-      </div>
-      <p>PDF en español · Para imprimir en casa</p>
-      <h3>Qué recibirás</h3>
-      <ul>
-        <li>Un cuaderno de 46 páginas para adolescentes de 13 a 18 años.</li>
-        <li>Actividades sobre ansiedad, emociones, escuela, autoestima y relaciones.</li>
-        <li>Preguntas para reflexión personal y escritura.</li>
-        <li>Registros diario y semanal reutilizables.</li>
-        <li>Tarjetas de recordatorio y guía para acompañantes.</li>
-        <li>Dos formatos: A4 y carta, con el mismo contenido.</li>
-      </ul>
-      <a class="btn" id="purchase" href="https://pay.monetizze.com.br/KWW471616">Quiero mi cuaderno por US$12 ↗</a>
-      <p class="fine" id="availability">
-        Producto digital para uso personal. No incluye envío físico.
-        Revisa el importe, las condiciones de pago y la entrega en Monetizze.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section id="opiniones" class="reviews">
-  <div class="wrap">
-    <div class="eyebrow">Comentarios sobre el producto de referencia </div>
-    <h2>Experiencias compartidas<br><em>sobre el material de referencia.</em></h2>
-    <p>
-      Estos comentarios corresponden al material original de referencia
-      . No son reseñas de compradores de Mi Espacio Emocional
-      ni de esta edición en español. Su puntuación no ha sido verificada.
-    </p>
-    <div class="review-grid" id="reviews"></div>
-    <p class="fine" style="margin-top:25px">
-      Traducciones de los comentarios proporcionados. Los enlaces
-      dirigen a perfiles y no verifican el producto reseñado ni la compra.
-      Estas opiniones no acreditan resultados clínicos.
-    </p>
-  </div>
-</section>
-
-<section class="wrap faq">
-  <div class="eyebrow">Antes de empezar</div>
-  <h2>Preguntas frecuentes</h2>
-
-  <details open>
-    <summary>¿Es un tratamiento o una terapia?</summary>
-    <p>
-      No. Es un recurso educativo de reflexión y bienestar emocional.
-      No diagnostica ni trata trastornos y no sustituye atención profesional.
-    </p>
-  </details>
-
-  <details>
-    <summary>¿Es un libro físico?</summary>
-    <p>
-      No. Es un cuaderno digital PDF para imprimir.
-      No se envía un libro físico.
-    </p>
-  </details>
-
-  <details>
-    <summary>¿Cuántas páginas tiene?</summary>
-    <p>
-      Tiene 46 páginas, incluyendo portada, guía de uso, actividades,
-      registros, tarjetas de recordatorio y fuentes.
-    </p>
-  </details>
-
-  <details>
-    <summary>¿Qué diferencia hay entre A4 y carta?</summary>
-    <p>
-      El tamaño del papel. Ambas versiones contienen las mismas
-      actividades. Elige la que corresponda a tu impresora.
-    </p>
-  </details>
-
-  <details>
-    <summary>¿Se puede usar en una tablet?</summary>
-    <p>
-      Se puede visualizar en dispositivos compatibles con PDF.
-      Para escribir sobre el archivo necesitas una aplicación de anotación.
-      No incluye una aplicación propia.
-    </p>
-  </details>
-
-  <details>
-    <summary>¿Hay que compartir todas las respuestas?</summary>
-    <p>
-      No. Conviene acordar cómo se utilizará el cuaderno y respetar
-      la privacidad. Compartir respuestas es una invitación, no una obligación.
-    </p>
-  </details>
-</section>
-
+<p class="lead"><strong>Cuaderno de Salud Mental para Adolescentes.</strong> Actividades visuales sobre ansiedad, autoestima, estrés y emociones, para escribir, reflexionar y abrir una conversación a su ritmo.</p>
+<a class="btn checkout" data-placement="hero" href="https://pay.monetizze.com.br/KWW471616">QUIERO EL CUADERNO POR US$12 <span>→</span></a>
+<span class="cta-note">PDF imprimible · A4 y carta · Un solo pago</span>
+<a class="text-link" href="#previas">Primero quiero ver las páginas ↓</a>
+</div></header>
+<div class="strip"><div class="wrap"><span>✓ 46 páginas en español</span><span>✓ Para adolescentes de 13 a 18 años</span><span>✓ PDF para imprimir</span><span>✓ Sin suscripción</span></div></div>
+<!-- 02: situación cotidiana -->
+<section id="situacion"><div class="wrap narrow center">
+<span class="kicker">Cuando cuesta encontrar las palabras</span>
+<h2>“¿Qué te pasa?”<br><span class="accent">A veces, la respuesta es “no sé”.</span></h2>
+<div class="chips"><span>Presión escolar</span><span>Amistades</span><span>Autoestima</span><span>Redes sociales</span><span>Cambios del cuerpo</span></div>
+<p>Entre los exámenes, los mensajes y las expectativas, puede ser difícil explicar lo que está pasando por dentro. Y para quien acompaña, también puede ser difícil saber por dónde empezar.</p>
+<p><strong>Una pregunta concreta y un espacio para escribir ofrecen un punto de partida.</strong> Sin exigir una conversación perfecta ni completar todas las hojas de una vez.</p>
+</div></section>
+<!-- 03: explicación del recurso -->
+<section class="soft mechanism" id="como-funciona"><div class="wrap split">
+<button class="zoom" data-caption="Mi iceberg emocional · Página 15 del PDF" aria-label="Ampliar página Mi iceberg emocional"><img class="page-preview" src="./assets/pagina-15.webp" width="953" height="1348" loading="lazy" alt="Página completa del iceberg emocional con preguntas y espacios para responder"></button>
+<div><span class="kicker">Una imagen. Una pregunta. Un primer paso.</span><h2>De “no sé qué siento”<br><span class="accent">a algo que puede explorar.</span></h2>
+<p>Así se utiliza una actividad del cuaderno:</p><div class="steps">
+<article class="step"><h3>Reconocer una idea</h3><p>El iceberg distingue lo que otras personas ven de lo que puede estar ocurriendo por dentro.</p></article>
+<article class="step"><h3>Responder con sus palabras</h3><p>Una emoción que no mostró. Una preocupación. Algo que necesitaba y no expresó.</p></article>
+<article class="step"><h3>Elegir qué compartir</h3><p>Puede guardar la hoja para sí o usar una parte para iniciar una conversación con alguien de confianza.</p></article>
+</div></div>
+</div></section>
+<!-- 04: objeción, de información a aplicación -->
+<section><div class="wrap narrow center"><span class="kicker">¿Por qué un cuaderno si ya hay tanta información?</span><h2>Leer una explicación es un comienzo.<br><span class="accent">Relacionarla con su vida es el siguiente paso.</span></h2><p>Las hojas combinan una idea breve con preguntas para observar una experiencia concreta.</p>
+<div class="compare"><div><span class="label">La idea general</span><blockquote>“Es importante reconocer tus emociones.”</blockquote><p>Un consejo útil, pero todavía queda la pregunta: ¿cómo empiezo?</p></div><div><span class="label">La actividad concreta</span><blockquote>“Una emoción que no mostré fue…”</blockquote><p>Una frase para completar, espacio para pensar y libertad para elegir qué compartir.</p></div></div>
+</div></section>
+<!-- 05: previas -->
+<section class="white" id="previas"><div class="wrap center"><span class="kicker">Mira el material por dentro</span><h2>Páginas que puede usar<br><span class="accent">en situaciones de su día a día.</span></h2><p class="intro">Estas son páginas del PDF de 46 páginas. Toca cualquiera para verla completa.</p>
+<div class="preview-grid">
+<figure><button class="zoom" data-caption="Entender la ansiedad · Página 5" aria-label="Ampliar Entender la ansiedad"><img src="./assets/pagina-05.webp" width="953" height="1348" loading="lazy" alt="Página 5: Entender la ansiedad"></button><figcaption>ENTENDER LA ANSIEDAD<small>Reconocer pensamientos, sensaciones y situaciones.</small></figcaption></figure>
+<figure><button class="zoom" data-caption="Mi iceberg emocional · Página 15" aria-label="Ampliar Mi iceberg emocional"><img src="./assets/pagina-15.webp" width="953" height="1348" loading="lazy" alt="Página 15: Mi iceberg emocional"></button><figcaption>EXPRESAR LO QUE SIENTE<small>Explorar lo que muestra y lo que guarda por dentro.</small></figcaption></figure>
+<figure><button class="zoom" data-caption="Mi caja de herramientas · Página 9" aria-label="Ampliar Mi caja de herramientas"><img src="./assets/pagina-09.webp" width="953" height="1348" loading="lazy" alt="Página 9: Mi caja de herramientas"></button><figcaption>RECONOCER SUS RECURSOS<small>Identificar actividades y apoyos personales.</small></figcaption></figure>
+<figure><button class="zoom" data-caption="Mi mapa del estrés · Página 20" aria-label="Ampliar Mi mapa del estrés"><img src="./assets/pagina-20.webp" width="953" height="1348" loading="lazy" alt="Página 20: Mi mapa del estrés"></button><figcaption>ORDENAR EL ESTRÉS<small>Separar lo que puede hacer y lo que necesita conversar.</small></figcaption></figure>
+<figure><button class="zoom" data-caption="Redes sociales y comparación · Página 27" aria-label="Ampliar Redes sociales y comparación"><img src="./assets/pagina-27.webp" width="953" height="1348" loading="lazy" alt="Página 27: Redes sociales y comparación"></button><figcaption>MIRAR MÁS ALLÁ DE LAS REDES<small>Observar la comparación y sus hábitos digitales.</small></figcaption></figure>
+<figure><button class="zoom" data-caption="Mi red de apoyo · Página 35" aria-label="Ampliar Mi red de apoyo"><img src="./assets/pagina-35.webp" width="953" height="1348" loading="lazy" alt="Página 35: Mi red de apoyo"></button><figcaption>SABER A QUIÉN ACUDIR<small>Poner nombre a las personas con quienes puede contar.</small></figcaption></figure>
+</div><div class="section-cta"><a class="btn checkout" data-placement="previews" href="https://pay.monetizze.com.br/KWW471616">QUIERO ESTAS ACTIVIDADES POR US$12 <span>→</span></a><span class="cta-note">Estas son 6 de las 46 páginas del cuaderno.</span></div>
+</div></section>
+<!-- 06: paquete principal -->
+<section class="soft" id="contenido"><div class="wrap split"><div class="bundle-art" aria-label="Selección de páginas del cuaderno"><img src="./assets/pagina-20.webp" loading="lazy" width="953" height="1348" alt="Actividad de estrés"><img src="./assets/pagina-35.webp" loading="lazy" width="953" height="1348" alt="Actividad de apoyo"><img src="./assets/pagina-01.webp" loading="lazy" width="953" height="1348" alt="Cuaderno Mi Espacio Emocional"></div>
+<div><span class="kicker">Todo en un mismo cuaderno</span><h2>Un recurso para volver a consultar<br><span class="accent">según lo que esté viviendo.</span></h2><ul class="checks">
+<li><strong>Ansiedad y emociones</strong><p>Situaciones, pensamientos, señales del cuerpo y necesidades.</p></li><li><strong>Escuela y expectativas</strong><p>Estrés, organización, perfeccionismo y decisiones cotidianas.</p></li><li><strong>Autoestima y vida digital</strong><p>Fortalezas, valores, imagen corporal y comparación en redes.</p></li><li><strong>Relaciones y próximos pasos</strong><p>Límites, amistades, familia, apoyo y planes para el futuro.</p></li></ul><p class="small">Puede empezar por el tema que le interesa hoy. <strong>No necesita completar las 46 páginas en orden.</strong></p></div>
+</div></section>
+<!-- 07: contextos de uso -->
+<section><div class="wrap center"><span class="kicker">A su manera, en su rutina</span><h2>Del PDF a una actividad<br><span class="accent">que puede tener entre sus manos.</span></h2><p class="intro">Abre el archivo en un dispositivo compatible o imprime las hojas que quiera completar. Para escribir sobre el PDF en pantalla, utiliza una aplicación de anotación.</p><div class="lifestyle">
+<figure><img src="./assets/impresora.webp" width="1254" height="1254" loading="lazy" alt="Ejemplo ilustrativo de hojas impresas en casa"><figcaption>Imprimir solo lo que necesita</figcaption></figure><figure><img src="./assets/tablet.webp" width="1254" height="1254" loading="lazy" alt="Ejemplo ilustrativo del cuaderno en una tablet"><figcaption>Consultar en pantalla</figcaption></figure><figure><img src="./assets/familia.webp" width="1254" height="1254" loading="lazy" alt="Ejemplo ilustrativo de una actividad sobre apoyo"><figcaption>Preparar una conversación</figcaption></figure>
+</div><p class="fine" style="margin-top:23px">Escenas ilustrativas de uso. Las páginas de la sección anterior muestran el diseño del PDF.</p></div></section>
+<!-- 08: destinatarios -->
+<section class="soft" id="para-quien"><div class="wrap"><div class="center"><span class="kicker">Para quienes quieren acompañar</span><h2>¿Para quién es este cuaderno?</h2></div><div class="audience"><article><h3>Madres, padres y cuidadores</h3><p>Que buscan una actividad concreta para acercarse a lo que vive un adolescente, respetando su ritmo y privacidad.</p></article><article><h3>Orientadores y educadores</h3><p>Que desean conocer un recurso de reflexión para adolescentes y valorar cómo encaja en su contexto educativo.</p></article><article><h3>Profesionales que acompañan adolescentes</h3><p>Que quieren revisar hojas visuales y decidir, según su criterio profesional, si complementan su trabajo.</p></article><article><h3>Adolescentes de 13 a 18 años</h3><p>Que prefieren empezar escribiendo, dibujando o pensando una respuesta antes de ponerla en voz alta.</p></article></div></div></section>
+<!-- 09: recursos incluidos -->
+<section class="white" id="recursos"><div class="wrap"><div class="center"><span class="kicker">Además de las actividades temáticas</span><h2>Cuatro recursos para<br><span class="accent">seguir usando el cuaderno.</span></h2><p class="intro">Ya están dentro de las 46 páginas. Incluidos en el mismo pago.</p></div><div class="extras">
+<article class="extra"><span class="number">RECURSO 01 · PÁGINA 42</span><h3>Mi registro de hoy</h3><p>Una hoja para observar qué ocurrió, cómo se sintió y qué recurso quiere probar. Puede imprimirla de nuevo.</p><span class="included">INCLUIDO</span></article>
+<article class="extra"><span class="number">RECURSO 02 · PÁGINA 43</span><h3>Mi revisión de la semana</h3><p>Preguntas para reconocer una experiencia, algo que ayudó y un siguiente paso posible.</p><span class="included">INCLUIDO</span></article>
+<article class="extra"><span class="number">RECURSO 03 · PÁGINA 44</span><h3>Recordatorios para tener cerca</h3><p>Frases para recortar, guardar o adaptar con sus propias palabras.</p><span class="included">INCLUIDO</span></article>
+<article class="extra"><span class="number">RECURSO 04 · PÁGINA 45</span><h3>Guía para quien acompaña</h3><p>Orientaciones para familias y educadores sobre escucha, privacidad y formas de ofrecer apoyo.</p><span class="included">INCLUIDO</span></article>
+</div><div class="ia-guide"><span class="kicker">Una herramienta más en su mundo digital</span><h3>IA con criterio: una práctica que puedes probar aquí</h3><p class="small">Usa un ejemplo inventado, sin datos personales, y prueba esta petición en una herramienta adecuada para su edad:</p><blockquote>“Ayúdame a dividir una tarea escolar en pasos de 15 minutos. Pregúntame cuánto tiempo tengo y qué parte me cuesta. No resuelvas la tarea por mí.”</blockquote><details><summary>Antes de usar la respuesta, revisen estas tres cosas</summary><p>¿Protegimos la privacidad? ¿La información puede comprobarse con fuentes originales o con un docente? ¿La respuesta ayuda a pensar o está decidiendo por nosotros? Revisen juntos la edad mínima y las condiciones de la herramienta.</p></details><p class="fine">Práctica disponible en esta página. El producto comprado es el PDF; no incluye un chatbot ni asesoramiento automatizado sobre salud.</p></div></div></section>
+<!-- 10: opiniones de referencia, con procedencia -->
+<section id="opiniones"><div class="wrap center"><span class="kicker">Comentarios del material de referencia</span><h2>Lo que valoraron en<br><span class="accent">el producto original de referencia.</span></h2><p class="intro small">Comentarios de Etsy proporcionados para esta página, traducidos al español. Corresponden a otro producto de referencia; no son reseñas de esta edición de Mi Espacio Emocional.</p><div class="reviews-grid">
+<figure class="review"><blockquote>“¡Una herramienta muy útil para terapeutas!”</blockquote><figcaption>Gina · 06/06/2026</figcaption><a href="https://www.etsy.com/people/ginashuster?ref=l_review" target="_blank" rel="noopener noreferrer">Perfil citado ↗</a></figure>
+<figure class="review"><blockquote>“Fácil de imprimir al comprar la versión descargable.”</blockquote><figcaption>Tiffany · 29/10/2025</figcaption><a href="https://www.etsy.com/people/9858k68fmsctuj1w?ref=l_review" target="_blank" rel="noopener noreferrer">Perfil citado ↗</a></figure>
+<figure class="review"><blockquote>“¡Buena calidad y muy buen precio!”</blockquote><figcaption>Christabelle · 27/10/2025</figcaption><a href="https://www.etsy.com/people/belle83113?ref=l_review" target="_blank" rel="noopener noreferrer">Perfil citado ↗</a></figure>
+<figure class="review"><blockquote>“¡Me encantó! Es genial.”</blockquote><figcaption>Ria · 07/11/2025</figcaption><a href="https://www.etsy.com/people/bidosirc9dhud37t?ref=l_review" target="_blank" rel="noopener noreferrer">Perfil citado ↗</a></figure>
+<figure class="review"><blockquote>“¡Perfecto para un orientador escolar!”</blockquote><figcaption>Comprador de Etsy · 08/10/2025</figcaption><a href="https://www.etsy.com/people/KellyDeal?ref=l_review" target="_blank" rel="noopener noreferrer">Perfil citado ↗</a></figure>
+</div><p class="fine" style="margin-top:20px">Los enlaces remiten a perfiles. La compra, el producto reseñado y la puntuación no han sido verificados.</p></div></section>
+<!-- 11: recapitulación -->
+<section class="soft"><div class="wrap center"><span class="kicker">Esto es lo que recibirás</span><h2>Una compra.<br><span class="accent">Todo el cuaderno.</span></h2><div class="recap"><div><span>Cuaderno en español · 46 páginas</span><b>PDF</b></div><div><span>Actividades de ansiedad, emociones, autoestima y relaciones</span><b>Incluidas</b></div><div><span>Registros diario y semanal reutilizables</span><b>Incluidos</b></div><div><span>Recordatorios y guía para acompañantes</span><b>Incluidos</b></div><div><span>Versiones A4 y carta, con el mismo contenido</span><b>2 tamaños</b></div><div><span>Pago único · Sin mensualidad</span><b>US$12</b></div></div></div></section>
+<!-- 12: oferta -->
+<section class="offer center" id="oferta"><div class="wrap"><span class="kicker">Empieza con una actividad</span><h2>Recibe el Cuaderno de Salud Mental<br>para Adolescentes.</h2><p class="intro">46 páginas en español. Un solo pago. Sin suscripción.</p><div class="offer-card"><span class="pill">EDICIÓN DIGITAL · PDF IMPRIMIBLE</span><img class="mini-cover" src="./assets/pagina-01.webp" loading="lazy" width="953" height="1348" alt="Portada del cuaderno digital"><h3>Mi Espacio Emocional</h3><ul class="checks"><li>Actividades sobre ansiedad, emociones, estrés y autoestima.</li><li>Amistades, familia, vida digital y próximos pasos.</li><li>Registros, recordatorios y guía para acompañantes.</li><li>46 páginas · Formatos A4 y carta.</li></ul><p class="old-price">De <s>US$295</s> por</p><div class="price"><small>US$</small>12</div><p class="saving">Ahorras US$283 · Pago único</p><a class="btn checkout" id="purchase" data-placement="offer" href="https://pay.monetizze.com.br/KWW471616">QUIERO MI CUADERNO AHORA <span>→</span></a><p class="fine" style="margin:20px 0 0">Compra procesada por Monetizze. El importe y las opciones en moneda local se muestran en el checkout. Producto digital; no se envía un libro físico.</p></div>
+<!-- 13: entrega -->
+<div class="delivery"><article><span class="num">1</span><h3>Abre el checkout</h3><p>Revisa el producto, el importe y los medios de pago disponibles en tu país.</p></article><article><span class="num">2</span><h3>Completa la compra</h3><p>Utiliza un correo al que tengas acceso y conserva la confirmación de Monetizze.</p></article><article><span class="num">3</span><h3>Accede al material</h3><p>Sigue las instrucciones de entrega de tu compra. Abre el PDF e imprime la primera actividad que quieras usar.</p></article></div></div></section>
+<!-- 14: confianza y condiciones -->
+<section class="white"><div class="wrap center"><span class="kicker">Decide con el material a la vista</span><h2>Sabes qué estás comprando<br><span class="accent">antes de dar el siguiente paso.</span></h2><div class="trust-grid"><article><div class="trust-icon">▤</div><h3>Páginas visibles</h3><p>Las seis vistas previas muestran hojas del PDF, con sus preguntas y espacios para responder.</p></article><article><div class="trust-icon">↗</div><h3>Checkout de Monetizze</h3><p>El pago se realiza en Monetizze. Aquí no se solicitan datos de tarjeta.</p></article><article><div class="trust-icon">✓</div><h3>Condiciones claras</h3><p>Consulta en el checkout las condiciones de compra, entrega y reembolso antes de pagar.</p></article></div></div></section>
+<!-- 15: preguntas -->
+<section id="preguntas"><div class="wrap narrow"><div class="center"><span class="kicker">Antes de empezar</span><h2>Preguntas frecuentes</h2></div>
+<details><summary>¿Qué voy a recibir?</summary><p>Un cuaderno digital de 46 páginas en español, en PDF, con versiones A4 y carta. Contiene portada, orientaciones, actividades, registros, recordatorios, guía para acompañantes y fuentes.</p></details>
+<details><summary>¿Es un libro físico o digital?</summary><p>Es digital. No hay envío de un libro físico. Puedes abrirlo en un dispositivo compatible con PDF o imprimir las páginas que quieras utilizar.</p></details>
+<details><summary>¿Para qué edades está pensado?</summary><p>Para adolescentes de 13 a 18 años. Quien acompaña puede revisar cada actividad y valorar si se adapta a la edad, las necesidades y el contexto de esa persona.</p></details>
+<details><summary>¿Se puede imprimir más de una vez?</summary><p>Puedes volver a imprimir las hojas para uso personal. Los registros diario y semanal están pensados para reutilizarse. La compra no incluye permiso de reventa ni de distribución pública.</p></details>
+<details><summary>¿Se puede completar en una tablet?</summary><p>Se puede visualizar en dispositivos compatibles. Para escribir directamente sobre el PDF necesitas una aplicación que permita anotaciones. No incluye una aplicación propia.</p></details>
+<details><summary>¿Hay que completar todo en orden o compartir las respuestas?</summary><p>No. Puede elegir una hoja, saltar preguntas y volver otro día. Conviene acordar cómo se usará el material y respetar la privacidad. Compartir una respuesta es una invitación.</p></details>
+<details><summary>¿Es terapia o un tratamiento para la ansiedad?</summary><p>Es un recurso educativo de reflexión y bienestar emocional. No diagnostica ni trata trastornos ni sustituye la atención de un profesional. Un profesional puede valorar si alguna hoja resulta adecuada como complemento de su trabajo.</p></details>
+<details><summary>¿Incluye una inteligencia artificial?</summary><p>El producto de pago es el cuaderno PDF. En esta página tienes una práctica de uso consciente de IA para tareas escolares. No se incluye un chatbot ni consultas automatizadas sobre salud.</p></details>
+<details><summary>¿Cómo pago y cómo recibo el material?</summary><p>El botón te lleva a Monetizze, donde se muestran el importe, los medios de pago y las condiciones de entrega. Tras la compra, revisa la confirmación y las instrucciones de acceso. Guarda el correo de confirmación por si necesitas consultar tu pedido.</p></details>
+<details><summary>¿El pago es único? ¿Cuál es la política de reembolso?</summary><p>Esta oferta es de pago único, sin mensualidad. Revisa y acepta las condiciones de compra y reembolso que Monetizze muestra antes de finalizar el pago.</p></details>
+</div></section>
+<!-- 16: última llamada -->
+<section class="last center"><div class="wrap narrow"><span class="kicker">Una página puede abrir una conversación</span><h2>No hace falta encontrar<br>todas las palabras hoy.</h2><p>Empieza con una pregunta, una hoja y el espacio para escuchar.</p><a class="btn checkout" data-placement="final" href="https://pay.monetizze.com.br/KWW471616">QUIERO EL CUADERNO POR US$12 <span>→</span></a><span class="cta-note">46 páginas en español · PDF imprimible · Pago único</span></div></section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <div class="brand">mi espacio emocional</div>
-    <p class="fine" style="margin-top:18px">
-      Edición digital en español · 46 páginas.
-      Imágenes ilustrativas. Sofía Martín es una identidad editorial virtual.
-    </p>
-    <p class="fine">
-      Material educativo. No sustituye evaluación ni tratamiento profesional.
-      Ante dificultades persistentes o que afecten la vida cotidiana,
-      busca acompañamiento de un profesional cualificado.
-    </p>
-  </div>
-</footer>
-
-<dialog id="notice">
-  <h3>El cuaderno está preparado.</h3>
-  <p>
-    El precio es de US$12.
-    La compra se habilitará cuando se conecte el checkout.
-  </p>
-  <button class="close" id="close-notice">Volver a la página</button>
-</dialog>
-
-<dialog id="lightbox">
-  <button class="close" id="close-lightbox">Cerrar ×</button>
-  <img id="large-image" alt="Vista ampliada de la actividad">
-</dialog>
-
+<footer class="center"><div class="wrap"><div class="brand">mi espacio emocional</div><p>Material educativo de reflexión. No sustituye evaluación ni tratamiento profesional. Ante dificultades persistentes o que afecten la vida cotidiana, busca acompañamiento cualificado.</p><p>Las escenas de uso son ilustrativas. Sofía Martín es una identidad editorial virtual, no una profesional de salud real. La guía breve sobre IA está disponible en esta página y no forma parte del PDF de 46 páginas.</p><p><a href="#preguntas">Compra y entrega</a> · <a href="#previas">Ver las páginas</a> · © Mi Espacio Emocional</p></div></footer>
+<aside class="sticky" aria-label="Acceso rápido a la compra"><div class="sticky-inner"><p>CUADERNO DIGITAL · PAGO ÚNICO<strong>US$12</strong></p><a class="btn checkout" data-placement="sticky" href="https://pay.monetizze.com.br/KWW471616">QUIERO MI CUADERNO <span>→</span></a></div></aside>
+<dialog id="lightbox" aria-label="Página ampliada del cuaderno"><button class="close" id="close-lightbox" type="button">Cerrar ×</button><img id="large-image" alt=""><p class="dialog-caption" id="image-caption"></p></dialog>
 <script>
-/* ===================================================
-   CONFIGURACIÓN
-   Pega tu enlace de pago entre las comillas.
-   Ejemplo:
-   const CHECKOUT_URL = "https://tu-checkout.com";
-   =================================================== */
-
-const CHECKOUT_URL = "https://pay.monetizze.com.br/KWW471616";
-
-const ASSET_BASE =
-  "./assets/";
-
-const gallery = [
-  ["regulacion", "Poner nombre a lo que siente",
-   "Una rueda de emociones y preguntas para explorar experiencias."],
-  ["manos", "Su caja de herramientas",
-   "Recursos para el cuerpo, los pensamientos y la conexión."],
-  ["redes", "Mirar más allá de las redes",
-   "Preguntas sobre comparación y cualidades personales."],
-  ["familia", "Reconocer su red de apoyo",
-   "Un mapa para identificar personas de confianza."],
-  ["tablet", "También en pantalla",
-   "El PDF puede visualizarse en dispositivos compatibles."],
-  ["impresora", "Del archivo a sus manos",
-   "Hojas para imprimir y completar a su ritmo."]
-];
-
-const topics = [
-  ["Entender la ansiedad",
-   "Observar situaciones, pensamientos, sensaciones y respuestas."],
-  ["Cambios de la adolescencia",
-   "Explorar el desarrollo, los cambios de ánimo y el contexto."],
-  ["Emociones y necesidades",
-   "Poner palabras a lo que siente y a lo que necesita."],
-  ["Estrés y presión escolar",
-   "Reflexionar sobre demandas, organización y expectativas."],
-  ["Perfeccionismo y errores",
-   "Definir criterios realistas y aprender sin insultarse."],
-  ["Fortalezas y autoestima",
-   "Reconocer valores y cualidades más allá de la apariencia."],
-  ["Cuerpo y redes sociales",
-   "Observar la comparación y revisar hábitos digitales."],
-  ["Amistades y límites",
-   "Explorar relaciones y preparar formas de expresar necesidades."],
-  ["Familia y apoyo",
-   "Preparar conversaciones e identificar a quién pedir ayuda."],
-  ["Resiliencia y futuro",
-   "Reconocer recursos, explorar intereses y elegir próximos pasos."]
-];
-
-const reviews = [
-  {
-    name:"Maria f.",
-    date:"06/06/2026",
-    text:"¡Una herramienta muy útil para terapeutas!",
-    url:"https://pay.monetizze.com.br/KWW471616"
-  },
-  {
-    name:"Julia",
-    date:"07/11/2025",
-    text:"¡Me encantó! Es genial.",
-    url:"https://pay.monetizze.com.br/KWW471616"
-  },
-  {
-    name:"Paloma",
-    date:"29/10/2025",
-    text:"Fácil de imprimir al comprar la versión descargable.",
-    url:"https://pay.monetizze.com.br/KWW471616"
-  },
-  {
-    name:"Luna",
-    date:"27/10/2025",
-    text:"¡Buena calidad y muy buen precio!",
-    url:"https://pay.monetizze.com.br/KWW471616"
-  },
-  {
-    name:"Alba",
-    date:"08/10/2025",
-    text:"¡Perfecto para un orientador escolar!",
-    url:"https://pay.monetizze.com.br/KWW471616"
-  }
-];
-
-document.getElementById("gallery").innerHTML = gallery.map(
-  ([asset,title,text]) => `
-    <figure>
-      <button class="zoom" aria-label="Ampliar: ${title}">
-        <img
-          src="${ASSET_BASE}${asset}.webp"
-          alt="${title}"
-          loading="lazy">
-      </button>
-      <figcaption>
-        <h3>${title}</h3>
-        <p>${text}</p>
-      </figcaption>
-    </figure>`
-).join("");
-
-document.getElementById("topics").innerHTML = topics.map(
-  ([title,text],index) => `
-    <article class="topic">
-      <b>${String(index+1).padStart(2,"0")}</b>
-      <div>
-        <h3>${title}</h3>
-        <p>${text}</p>
-      </div>
-    </article>`
-).join("");
-
-document.getElementById("reviews").innerHTML = reviews.map(
-  review => `
-    <article class="review">
-      <blockquote>“${review.text}”</blockquote>
-      <b>${review.name}</b>
-      <time>${review.date}</time>
-      <a href="${review.url}"
-         target="_blank"
-         rel="noopener noreferrer">Perfil citado de Etsy ↗</a>
-    </article>`
-).join("");
-
-document.querySelectorAll("[data-asset]").forEach(image => {
-  image.src = ASSET_BASE + image.dataset.asset + ".webp";
-});
-
-const notice = document.getElementById("notice");
-const purchase = document.getElementById("purchase");
-
-if (CHECKOUT_URL.trim()) {
-  purchase.textContent = "Quiero mi cuaderno por US$12 ↗";
-  document.getElementById("availability").textContent =
-    "Producto digital para uso personal. No incluye envío físico. " +
-    "Revisa las condiciones de pago y entrega en el checkout.";
-}
-
-// A single persisted window per browser; refreshing does not restart it.
-const OFFER_DURATION_MS = 8 * 60 * 1000;
-const OFFER_KEY = "mi-espacio-oferta-20261021-v1";
-let offerEndsAt;
-try {
-  const savedDeadline = Number(localStorage.getItem(OFFER_KEY));
-  offerEndsAt = Number.isFinite(savedDeadline) && savedDeadline > 0
-    ? savedDeadline : Date.now() + OFFER_DURATION_MS;
-  localStorage.setItem(OFFER_KEY, String(offerEndsAt));
-} catch {
-  offerEndsAt = Date.now(); // Do not display a resetting countdown if storage is unavailable.
-}
-function renderOffer() {
-  const remaining = Math.max(0, Math.ceil((offerEndsAt - Date.now()) / 1000));
-  document.getElementById("offer-clock").textContent =
-    String(Math.floor(remaining / 60)).padStart(2, "0") + ":" +
-    String(remaining % 60).padStart(2, "0");
-  const expired = remaining === 0;
-  purchase.setAttribute("aria-disabled", String(expired));
-  if (expired) {
-    purchase.removeAttribute("href");
-    purchase.textContent = "El acceso a esta oferta ha finalizado";
-    document.getElementById("timer-status").textContent =
-      "El plazo de esta oferta en esta página terminó. El contador no se reinicia.";
-  } else {
-    purchase.href = CHECKOUT_URL;
-  }
-  return !expired;
-}
-renderOffer();
-setInterval(renderOffer, 1000);
-window.addEventListener("storage", event => {
-  if (event.key === OFFER_KEY) {
-    const deadline = Number(event.newValue);
-    if (Number.isFinite(deadline) && deadline > 0) offerEndsAt = deadline;
-    renderOffer();
-  }
-});
-purchase.addEventListener("click", event => {
-  if (!renderOffer()) event.preventDefault();
-});
-
-document.getElementById("close-notice").addEventListener(
-  "click", () => notice.close()
-);
-
-const lightbox = document.getElementById("lightbox");
-const largeImage = document.getElementById("large-image");
-
-document.querySelectorAll(".zoom").forEach(button => {
-  button.addEventListener("click", () => {
-    const image = button.querySelector("img");
-    largeImage.src = image.src;
-    largeImage.alt = image.alt;
-    lightbox.showModal();
-  });
-});
-
-document.getElementById("close-lightbox").addEventListener(
-  "click", () => lightbox.close()
-);
-
-[notice,lightbox].forEach(dialog => {
-  dialog.addEventListener("click", event => {
-    if (event.target !== dialog) return;
-    const rect = dialog.getBoundingClientRect();
-    if (
-      event.clientX < rect.left ||
-      event.clientX > rect.right ||
-      event.clientY < rect.top ||
-      event.clientY > rect.bottom
-    ) dialog.close();
-  });
-});
+// Checkout links are ordinary anchors and remain available with or without JavaScript.
+const lightbox=document.getElementById('lightbox');
+const largeImage=document.getElementById('large-image');
+const caption=document.getElementById('image-caption');
+document.querySelectorAll('.zoom').forEach(button=>button.addEventListener('click',()=>{
+ const image=button.querySelector('img');largeImage.src=image.src;largeImage.alt=image.alt;
+ caption.textContent=button.dataset.caption||image.alt;lightbox.showModal();
+}));
+document.getElementById('close-lightbox').addEventListener('click',()=>lightbox.close());
+lightbox.addEventListener('click',event=>{if(event.target!==lightbox)return;const r=lightbox.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)lightbox.close();});
+// Optional first-party analytics hook. No external tracker or personal data is added.
+document.querySelectorAll('a.checkout').forEach(link=>link.addEventListener('click',()=>{
+ document.dispatchEvent(new CustomEvent('sales_checkout_click',{detail:{placement:link.dataset.placement}}));
+}));
 </script>
-
 </body>
 </html>
