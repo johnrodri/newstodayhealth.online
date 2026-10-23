@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>El Protocolo Parkinson - Método Natural de 2 Pasos</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,700;0,900;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --base-font-size: 18px;
+    }
+
+    html {
+      font-size: var(--base-font-size);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      line-height: 1.65;
+      color: #1e293b;
+      background-color: #f8fafc;
+    }
+
+    h1,
+    h2,
+    h3,
+    .serif-heading {
+      font-family: "Merriweather", serif;
+    }
+
+    .book-3d {
+      width: 260px;
+      height: 360px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateY(-18deg) rotateX(6deg);
+      transition: transform 0.4s ease;
+      box-shadow: -20px 25px 35px rgba(0, 0, 0, 0.45);
+      border-radius: 6px 12px 12px 6px;
+      background:
+        linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e3a8a 55%,
+          #0284c7 100%
+        );
+      border-left: 14px solid #091326;
+      flex-shrink: 0;
+    }
+
+    .book-3d:hover {
+      transform: rotateY(-8deg) rotateX(2deg) scale(1.02);
+    }
+
+    .cta-pulse {
+      animation: pulse-green 2s infinite;
+    }
+
+    @keyframes pulse-green {
+      0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8);
+      }
+
+      70% {
+        box-shadow: 0 0 0 20px rgba(16, 185, 129, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+      }
+    }
+
+    /* Contraste en el modo normal */
+
+    body:not(.high-contrast) header {
+      background-color: #0f172a;
+      color: #ffffff;
+    }
+
+    body:not(.high-contrast) #oferta {
+      background-color: #0f172a;
+    }
+
+    body:not(.high-contrast) .book-3d {
+      background-color: #0f172a;
+    }
+
+    body:not(.high-contrast) .card-box.bg-white,
+    body:not(.high-contrast) .card-box.bg-slate-50,
+    body:not(.high-contrast) .tab-content {
+      color: #1e293b;
+    }
+
+    body:not(.high-contrast) .text-emerald-600 {
+      color: #047857;
+    }
+
+    body:not(.high-contrast) .bg-emerald-600 {
+      background-color: #047857;
+    }
+
+    body:not(.high-contrast) .text-slate-400 {
+      color: #475569;
+    }
+
+    body:not(.high-contrast) footer.text-slate-400 {
+      color: #cbd5e1;
+    }
+
+    body:not(.high-contrast) header > div > p:first-child {
+      background-color: #1e3a8a;
+      color: #e0f2fe;
+    }
+
+    /* Modo de alto contraste */
+
+    body.high-contrast {
+      background: #000000 !important;
+      color: #ffffff !important;
+    }
+
+    body.high-contrast * {
+      background-color: transparent !important;
+      background-image: none !important;
+      color: #ffffff !important;
+      border-color: #fbbf24 !important;
+      text-shadow: none !important;
+    }
+
+    body.high-contrast section,
+    body.high-contrast header,
+    body.high-contrast footer,
+    body.high-contrast .card-box,
+    body.high-contrast .book-3d {
+      background-color: #0a0a0a !important;
+    }
+
+    body.high-contrast h1,
+    body.high-contrast h2,
+    body.high-contrast h3,
+    body.high-contrast h4,
+    body.high-contrast h1 span {
+      color: #fbbf24 !important;
+    }
+
+    body.high-contrast button,
+    body.high-contrast a[href^="https://pay.monetizze.com.br/"] {
+      background: #fbbf24 !important;
+      color: #111827 !important;
+      border: 2px solid #fbbf24 !important;
+    }
+
+    body.high-contrast button *,
+    body.high-contrast a[href^="https://pay.monetizze.com.br/"] * {
+      color: #111827 !important;
+    }
+
+    body.high-contrast button:hover,
+    body.high-contrast a[href^="https://pay.monetizze.com.br/"]:hover {
+      background: #fde68a !important;
+    }
+
+    body.high-contrast input[type="checkbox"] {
+      accent-color: #fbbf24;
+    }
+
+    body.high-contrast summary {
+      color: #fbbf24 !important;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    summary:focus-visible,
+    input:focus-visible {
+      outline: 3px solid #2563eb;
+      outline-offset: 4px;
+    }
+
+    body.high-contrast :focus-visible {
+      outline-color: #ffffff;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .cta-pulse,
+      .animate-ping {
+        animation: none !important;
+      }
+
+      .book-3d,
+      a,
+      button {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- BARRA DE ACCESIBILIDAD -->
+
+  <div class="sticky top-0 z-50 bg-slate-900 text-white border-b border-slate-700 px-4 py-2.5 shadow-md">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+
+      <div class="flex items-center gap-2 font-bold text-amber-400 tracking-wide">
+        <span class="inline-block w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
+        EL PROTOCOLO PARKINSON
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 text-sm">
+        <span class="text-slate-300 hidden sm:inline mr-1">
+          Lectura Fácil:
+        </span>
+
+        <button
+          type="button"
+          onclick="changeFontSize(-2)"
+          class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-1 rounded font-semibold transition"
+          aria-label="Disminuir tamaño del texto"
+        >
+          Texto A-
+        </button>
+
+        <button
+          type="button"
+          onclick="resetFontSize()"
+          class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-1 rounded font-semibold transition"
+        >
+          Texto Normal
+        </button>
+
+        <button
+          type="button"
+          onclick="changeFontSize(2)"
+          class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-1 rounded font-semibold transition"
+          aria-label="Aumentar tamaño del texto"
+        >
+          Texto A+
+        </button>
+
+        <button
+          type="button"
+          onclick="toggleContrast()"
+          aria-pressed="false"
+          class="bg-amber-500 hover:bg-amber-400 text-slate-950 px-3 py-1 rounded font-bold transition"
+        >
+          Alto Contraste
+        </button>
+
+        <a
+          href="https://pay.monetizze.com.br/KNZ462676"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-1 rounded transition hidden md:inline-block"
+        >
+          Obtener el Protocolo
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRESENTACIÓN PRINCIPAL -->
+
+  <header class="bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 text-white py-14 px-4 border-b-4 border-emerald-500">
+    <div class="max-w-5xl mx-auto text-center">
+
+      <p class="inline-block bg-blue-900/80 border border-blue-400/30 text-sky-300 font-semibold px-4 py-1.5 rounded-full text-sm md:text-base mb-6">
+        Para quienes recibieron un diagnóstico aterrador, pero se niegan a perder su independencia...
+      </p>
+
+      <h1 class="text-2xl sm:text-4xl md:text-5xl font-black leading-tight mb-6">
+        El Diagnóstico de Parkinson
+        <span class="text-amber-400 underline decoration-amber-400/50">
+          NO Es el Fin de Su Vida
+        </span>:
+        Descubra el Método Natural de 2 Pasos Para Frenar la Degeneración Cerebral,
+        Aumentar Su Dopamina y Recuperar el Control de Su Cuerpo
+      </h1>
+
+      <p class="text-lg md:text-xl text-slate-200 max-w-3xl mx-auto mb-10 font-normal">
+        Basado en estudios científicos, este protocolo simple de
+        <strong>12 hábitos diarios</strong>
+        ataca las verdaderas causas de la pérdida celular en el cerebro —
+        ayudando a revertir síntomas motores y no motores sin depender
+        exclusivamente de fármacos llenos de efectos secundarios.
+      </p>
+
+      <div class="flex flex-col md:flex-row items-center justify-center gap-10 my-10">
+
+        <!-- PORTADA DEL LIBRO -->
+
+        <div class="book-3d flex flex-col justify-between p-6 text-left select-none mx-auto md:mx-0">
+          <div>
+            <div class="text-xs uppercase tracking-widest text-sky-300 font-bold border-b border-sky-400/30 pb-2 mb-4">
+              Guía Práctica y Científica
+            </div>
+
+            <h2 class="text-2xl font-black text-white leading-snug tracking-tight mb-2">
+              EL PROTOCOLO PARKINSON
+            </h2>
+
+            <p class="text-xs text-sky-200 font-medium">
+              El Método Natural de 2 Pasos:
+              Desintoxicación Profunda y Estimulación de Dopamina
+            </p>
+          </div>
+
+          <div class="my-4 flex justify-center">
+            <div class="w-20 h-20 rounded-full bg-sky-400/20 border-2 border-sky-300 flex items-center justify-center">
+              <svg
+                class="w-10 h-10 text-amber-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div class="border-t border-white/20 pt-3 flex items-center justify-between text-xs text-slate-300">
+            <span>12 Hábitos Diarios</span>
+
+            <span class="bg-emerald-500 text-slate-950 font-bold px-2 py-0.5 rounded">
+              Edición Español
+            </span>
+          </div>
+        </div>
+
+        <!-- BENEFICIOS Y BOTÓN -->
+
+        <div class="text-left max-w-md space-y-4 bg-slate-800/70 p-6 rounded-2xl border border-slate-700 card-box">
+
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold text-xl">✔</span>
+            <p class="text-slate-100 text-base">
+              <strong>Paso 1 (Detox Cerebral):</strong>
+              Elimina metales pesados, pesticidas y activa el sistema glinfático
+              durante el sueño REM.
+            </p>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold text-xl">✔</span>
+            <p class="text-slate-100 text-base">
+              <strong>Paso 2 (Impulso de Dopamina):</strong>
+              Nutre el cerebro con precursores naturales
+              (Tirosina, Fenilalanina y Vitamina B6).
+            </p>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold text-xl">✔</span>
+            <p class="text-slate-100 text-base">
+              <strong>Incluye 8 Apéndices Prácticos:</strong>
+              13 recetas neuroprotectoras, trucos de cocina
+              y ejercicios suaves en casa.
+            </p>
+          </div>
+
+          <div class="pt-3">
+            <a
+              href="https://pay.monetizze.com.br/KNZ462676"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cta-pulse block w-full text-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xl py-4 px-6 rounded-xl shadow-lg transition transform hover:-translate-y-0.5"
+            >
+              ¡QUIERO CONOCER EL PROTOCOLO AHORA! →
+            </a>
+
+            <p class="text-xs text-center text-slate-300 mt-2">
+              Descarga Digital Inmediata • Garantía de 60 Días
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- IDENTIFICACIÓN -->
+
+  <section class="py-14 px-4 max-w-4xl mx-auto">
+    <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-200 card-box">
+
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+        ¿Le dijeron que "no hay nada que hacer" más que esperar
+        a que los síntomas empeoren?
+      </h2>
+
+      <p class="mb-4">
+        El día que recibe un diagnóstico de Parkinson, es normal pensar:
+        <em>"Este es el final de mi vida"</em>.
+        Los médicos suelen dar un pronóstico desalentador que deja poco espacio
+        para el optimismo, haciéndole temer que en poco tiempo perderá su
+        autonomía y dependerá de otros para vestirse, comer o caminar.
+      </p>
+
+      <p class="mb-6">
+        Pero hay una verdad científica que debe conocer hoy mismo:
+        un estudio publicado en <em>Archives of Neurology</em> confirmó que
+        <strong>el Parkinson en sí mismo no acorta la esperanza de vida</strong>.
+        Lo que afecta la calidad de vida son las complicaciones derivadas de los
+        síntomas no controlados. Eso significa que si usted logra frenar la
+        progresión y mantener los síntomas a raya, ¡puede disfrutar de una vida
+        plena, activa e independiente hasta una edad muy avanzada!
+      </p>
+
+      <!-- EVALUACIÓN INTERACTIVA -->
+
+      <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 my-8 card-box">
+        <h3 class="text-xl font-bold text-blue-950 mb-2">
+          🔍 Evaluación Interactiva:
+          ¿Qué síntomas están afectando su día a día?
+        </h3>
+
+        <p class="text-sm text-slate-600 mb-4">
+          Marque los síntomas que usted o su familiar experimentan actualmente
+          para ver cómo actúa <strong>El Protocolo Parkinson</strong>:
+        </p>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5"
+          id="symptom-list"
+        >
+          <label class="flex items-center gap-3 bg-white p-3 rounded-lg border border-slate-200 cursor-pointer hover:border-blue-500 card-box">
+            <input
+              type="checkbox"
+              class="symptom-check w-5 h-5 text-blue-600"
+              value="rigidez"
+            >
+            <span>
+              Músculos rígidos (a veces confundido con artritis)
+            </span>
+          </label>
+
+          <label class="flex items-center gap-3 bg-white p-3 rounded-lg border border-slate-200 cursor-pointer hover:border-blue-500 card-box">
+            <input
+              type="checkbox"
+              class="symptom-check w-5 h-5 text-blue-600"
+              value="temblor"
+            >
+            <span>
+              Temblores en manos, brazos, piernas o labios en reposo
+            </span>
+          </label>
+
+          <label class="flex items-center gap-3 bg-white p-3 rounded-lg border border-slate-200 cursor-pointer hover:border-blue-500 card-box">
+            <input
+              type="checkbox"
+              class="symptom-check w-5 h-5 text-blue-600"
+              value="equilibrio"
+            >
+            <span>
+              Falta de equilibrio o dificultad para bajar escaleras
+            </span>
+          </label>
+
+          <label class="flex items-center gap-3 bg-white p-3 rounded-lg border border-slate-200 cursor-pointer hover:border-blue-500 card-box">
+            <input
+              type="checkbox"
+              class="symptom-check w-5 h-5 text-blue-600"
+              value="lentitud"
+            >
+            <span>
+              Movimiento lento (vestirse o atarse los cordones cuesta más)
+            </span>
+          </label>
+
+          <label class="flex items-center gap-3 bg-white p-3 rounded-lg border border-slate-200 cursor-pointer hover:border-blue-500 card-box">
+            <input
+              type="checkbox"
+              class="symptom-check w-5 h-5 text-blue-600"
+              value="sueno"
+            >
+            <span>
+              Insomnio, sueño interrumpido o fatiga durante el día
+            </span>
+          </label>
+
+          <label class="flex items-center gap-3 bg-white p-3 rounded-lg border border-slate-200 cursor-pointer hover:border-blue-500 card-box">
+            <input
+              type="checkbox"
+              class="symptom-check w-5 h-5 text-blue-600"
+              value="animo"
+            >
+            <span>
+              Depresión, ansiedad, falta de motivación o problemas de memoria
+            </span>
+          </label>
+        </div>
+
+        <button
+          type="button"
+          onclick="evaluateSymptoms()"
+          class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2.5 px-6 rounded-lg transition"
+        >
+          Ver Respuesta Personalizada del Protocolo
+        </button>
+
+        <div
+          id="symptom-result"
+          aria-live="polite"
+          class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-300 rounded-lg text-slate-800 card-box"
+        ></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDICAMENTOS Y FACTORES -->
+
+  <section class="py-12 px-4 bg-slate-900 text-white">
+    <div class="max-w-5xl mx-auto">
+
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-amber-400 font-bold uppercase tracking-wider text-sm">
+          La Verdad Científica
+        </span>
+
+        <h2 class="text-2xl md:text-4xl font-bold mt-2 mb-4">
+          Por Qué los Medicamentos Tradicionales Pierden Eficacia
+          (Y Qué Está Matando Sus Neuronas)
+        </h2>
+
+        <p class="text-slate-300">
+          El Parkinson comienza en la <em>sustancia negra</em> del cerebro,
+          donde las células productoras de <strong>dopamina</strong>
+          empiezan a morir. A menudo, no se notan los síntomas hasta que
+          el 80% de estas células ya se han visto afectadas.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <div class="bg-slate-800 p-7 rounded-2xl border border-slate-700 card-box">
+          <h3 class="text-xl font-bold text-rose-400 mb-3">
+            ⚠️ El Límite de la Levodopa y Fármacos
+          </h3>
+
+          <p class="text-slate-300 mb-4">
+            Las soluciones farmacéuticas solo intentan controlar los síntomas
+            temporalmente, pero no detienen la causa raíz.
+            Los estudios demuestran que:
+          </p>
+
+          <ul class="space-y-2.5 text-slate-200 text-base">
+            <li>
+              • El
+              <strong>
+                80% de los pacientes tratados con Levodopa durante 10 años o más
+              </strong>
+              desarrollan discinesia (movimientos musculares involuntarios).
+            </li>
+
+            <li>
+              • Provocan una larga lista de efectos adversos:
+              alucinaciones, agitación, náuseas, mareos, confusión,
+              insomnio y fatiga extrema.
+            </li>
+
+            <li>
+              • <strong>Dato clave del libro:</strong>
+              El exceso de proteína animal bloquea la absorción de Levodopa
+              en el cerebro, reduciendo su efecto.
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-800 p-7 rounded-2xl border border-slate-700 card-box">
+          <h3 class="text-xl font-bold text-emerald-400 mb-3">
+            🔬 Los 8 Factores Que Dañan la Sustancia Negra
+          </h3>
+
+          <p class="text-slate-300 mb-4">
+            Los casos se han duplicado en los últimos 25 años.
+            Los neurólogos han identificado los 8 disparadores
+            que usted puede desactivar hoy:
+          </p>
+
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-200 text-sm">
+            <li class="bg-slate-900/60 p-2.5 rounded">
+              1. Toxinas ambientales y pesticidas (Glifosato)
+            </li>
+            <li class="bg-slate-900/60 p-2.5 rounded">
+              2. Inflamación crónica de la micróglia
+            </li>
+            <li class="bg-slate-900/60 p-2.5 rounded">
+              3. Disfunción mitocondrial (falta de energía celular)
+            </li>
+            <li class="bg-slate-900/60 p-2.5 rounded">
+              4. Azúcar, grasas trans y aditivos (MSG/Aspartamo)
+            </li>
+            <li class="bg-slate-900/60 p-2.5 rounded">
+              5. Sobrepeso (IMC mayor a 25 acumula toxinas)
+            </li>
+            <li class="bg-slate-900/60 p-2.5 rounded">
+              6. Estrés crónico y exceso de cortisol
+            </li>
+            <li class="bg-slate-900/60 p-2.5 rounded">
+              7. Depresión y agotamiento de dopamina
+            </li>
+            <li class="bg-slate-900/60 p-2.5 rounded">
+              8. Sedentarismo y pérdida de fuerza muscular
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOS DOS PILARES -->
+
+  <section class="py-16 px-4 max-w-5xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+
+      <span class="bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full text-sm">
+        EL MECANISMO DE 2 PASOS
+      </span>
+
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3 mb-4">
+        Cómo Funciona "El Protocolo Parkinson"
+        Para Proteger y Reactivar Su Cerebro
+      </h2>
+
+      <p class="text-slate-600">
+        La sustancia negra no es la única región cerebral que produce dopamina:
+        el área tegmental ventral y el hipotálamo también lo hacen.
+        Al limpiar la carga tóxica y darle al cerebro los nutrientes exactos,
+        usted puede recuperar el control.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+
+      <div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-blue-600 card-box">
+        <div class="text-blue-600 font-black text-sm uppercase mb-2">
+          PASO 1 DEL PROTOCOLO
+        </div>
+
+        <h3 class="text-2xl font-bold text-slate-900 mb-4">
+          Desintoxicación Cerebral y Corporal
+        </h3>
+
+        <ul class="space-y-3 text-slate-700">
+          <li>
+            <strong>• Activación del Hígado y Glutatión:</strong>
+            Uso de vegetales crucíferos y <em>allium</em> que aumentan
+            las enzimas CYP1 para eliminar toxinas de fármacos y pesticidas.
+          </li>
+
+          <li>
+            <strong>• El Escudo Mitocondrial (MnSOD):</strong>
+            Cómo aportar Zinc, Cobre y Manganeso para activar
+            la enzima antioxidante que protege las mitocondrias neuronales.
+          </li>
+
+          <li>
+            <strong>• Limpieza Glinfática Nocturna:</strong>
+            Durante el sueño REM profundo, las células cerebrales
+            se reducen un 60% para que el líquido cefalorraquídeo
+            limpie los desechos tóxicos.
+          </li>
+
+          <li>
+            <strong>• Estudio Clínico con Omega-3:</strong>
+            Pacientes que tomaron 1000mg de Omega-3 de origen limpio
+            y 400 UI de Vitamina E durante 12 semanas mejoraron
+            significativamente en la escala UPDRS de síntomas de Parkinson.
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-emerald-600 card-box">
+        <div class="text-emerald-600 font-black text-sm uppercase mb-2">
+          PASO 2 DEL PROTOCOLO
+        </div>
+
+        <h3 class="text-2xl font-bold text-slate-900 mb-4">
+          Multiplicación Natural de Dopamina
+        </h3>
+
+        <ul class="space-y-3 text-slate-700">
+          <li>
+            <strong>• La Tríada Precursora Natural:</strong>
+            Combinación exacta de alimentos ricos en
+            <em>Fenilalanina</em> y <em>Tirosina</em>
+            que su cuerpo transforma en L-dopa natural
+            con la ayuda de la <em>Vitamina B6</em>.
+          </li>
+
+          <li>
+            <strong>• 10 Superalimentos Dopaminérgicos:</strong>
+            Incluye café orgánico, té verde matcha, cúrcuma (curcumina),
+            resveratrol, probióticos específicos y <em>Ginkgo biloba</em>
+            (que aumentó la dopamina un 159% en estudios).
+          </li>
+
+          <li>
+            <strong>• Neuroplasticidad en Movimiento:</strong>
+            Ejercicios suaves como <em>Qigong</em>, Tai Chi
+            y entrenamiento de marcha con metrónomo (+10% de ritmo)
+            que mejoran el equilibrio y la rigidez en 10 semanas.
+          </li>
+
+          <li>
+            <strong>• El Poder de la Mente (+65% Dopamina):</strong>
+            Estudios del Instituto John F. Kennedy demostraron que
+            la relajación guiada (Yoga Nidra) eleva un 65%
+            la liberación de dopamina en el cuerpo estriado.
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- DEMOSTRACIÓN INTERACTIVA -->
+
+    <div class="bg-slate-100 p-6 md:p-8 rounded-2xl border border-slate-300 card-box">
+      <h3 class="text-xl md:text-2xl font-bold text-center text-slate-900 mb-3">
+        🍽️ Demostración Práctica: Un Día en "El Protocolo Parkinson"
+        + 3 Recetas Reales del Libro
+      </h3>
+
+      <p class="text-center text-slate-600 text-sm mb-6">
+        Haga clic en las pestañas para ver qué tan sencillo y delicioso
+        es cumplir con las porciones diarias de antioxidantes
+        y precursores de dopamina:
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <button
+          type="button"
+          onclick="showTab('menu')"
+          id="tab-btn-menu"
+          class="px-4 py-2 rounded-lg font-bold bg-blue-700 text-white transition"
+        >
+          Menú de Ejemplo Diario
+        </button>
+
+        <button
+          type="button"
+          onclick="showTab('receta1')"
+          id="tab-btn-receta1"
+          class="px-4 py-2 rounded-lg font-bold bg-white text-slate-800 border border-slate-300 transition"
+        >
+          Receta 1: Batido Cerebral
+        </button>
+
+        <button
+          type="button"
+          onclick="showTab('receta2')"
+          id="tab-btn-receta2"
+          class="px-4 py-2 rounded-lg font-bold bg-white text-slate-800 border border-slate-300 transition"
+        >
+          Receta 2: Hummus Rico en Tirosina
+        </button>
+
+        <button
+          type="button"
+          onclick="showTab('receta3')"
+          id="tab-btn-receta3"
+          class="px-4 py-2 rounded-lg font-bold bg-white text-slate-800 border border-slate-300 transition"
+        >
+          Receta 3: Chai Latte de Cúrcuma
+        </button>
+      </div>
+
+      <!-- MENÚ -->
+
+      <div
+        id="tab-menu"
+        class="tab-content bg-white p-6 rounded-xl border border-slate-200 card-box"
+      >
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <div class="p-4 border border-slate-200 rounded-lg">
+            <span class="text-xs font-bold uppercase text-blue-700">
+              Desayuno
+            </span>
+
+            <h4 class="font-bold text-lg">
+              Batido con plátano, semillas de cáñamo y frutos rojos
+            </h4>
+
+            <p class="text-sm text-slate-600 mt-1">
+              ✔ 2 porciones de antioxidantes +
+              1 porción de Fenilalanina (cáñamo) +
+              1 porción de Vitamina B6 (plátano).
+            </p>
+          </div>
+
+          <div class="p-4 border border-slate-200 rounded-lg">
+            <span class="text-xs font-bold uppercase text-emerald-700">
+              Almuerzo
+            </span>
+
+            <h4 class="font-bold text-lg">
+              Wrap de hummus con rúcula y aguacate
+            </h4>
+
+            <p class="text-sm text-slate-600 mt-1">
+              ✔ 2 porciones de antioxidantes +
+              1 porción de Vitamina B6 (aguacate) +
+              1 porción de Tirosina (garbanzos).
+            </p>
+          </div>
+
+          <div class="p-4 border border-slate-200 rounded-lg">
+            <span class="text-xs font-bold uppercase text-amber-700">
+              Cena
+            </span>
+
+            <h4 class="font-bold text-lg">
+              Estofado o sopa de vegetales variados con quinua
+            </h4>
+
+            <p class="text-sm text-slate-600 mt-1">
+              ✔ 2 a 3 porciones de antioxidantes +
+              1 porción de Fenilalanina y proteína completa (quinua).
+            </p>
+          </div>
+
+          <div class="p-4 border border-slate-200 rounded-lg">
+            <span class="text-xs font-bold uppercase text-purple-700">
+              Merienda
+            </span>
+
+            <h4 class="font-bold text-lg">
+              Pote de chía o yogur de coco con fruta
+              y semillas de calabaza
+            </h4>
+
+            <p class="text-sm text-slate-600 mt-1">
+              ✔ 1 porción de antioxidantes +
+              1 porción de Tirosina y Magnesio (semillas de calabaza).
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RECETA 1 -->
+
+      <div
+        id="tab-receta1"
+        class="tab-content hidden bg-white p-6 rounded-xl border border-slate-200 card-box"
+      >
+        <h4 class="text-xl font-bold text-slate-900 mb-2">
+          🍓 Batido de Frutos Rojos Estimulante del Cerebro (1 Porción)
+        </h4>
+
+        <p class="text-sm text-slate-600 mb-3">
+          <strong>Ingredientes:</strong>
+          1 taza de leche vegetal (almendra, avena o coco),
+          1 plátano maduro,
+          1 taza de frutos rojos congelados (arándanos, frambuesas o moras),
+          1 cucharada de semillas de chía.
+        </p>
+
+        <p class="text-sm text-slate-700">
+          <strong>Preparación:</strong>
+          Coloque todos los ingredientes en una licuadora
+          y procese hasta que quede cremoso.
+          <em>Toque extra:</em>
+          Añada un trocito de cúrcuma o jengibre fresco
+          para multiplicar los antioxidantes.
+        </p>
+      </div>
+
+      <!-- RECETA 2 -->
+
+      <div
+        id="tab-receta2"
+        class="tab-content hidden bg-white p-6 rounded-xl border border-slate-200 card-box"
+      >
+        <h4 class="text-xl font-bold text-slate-900 mb-2">
+          🥣 Hummus Nutritivo Rico en Precursores de Dopamina (4 Porciones)
+        </h4>
+
+        <p class="text-sm text-slate-600 mb-3">
+          <strong>Ingredientes:</strong>
+          1 lata de garbanzos cocidos escurridos,
+          2 cdas de tahini,
+          1 cda de semillas de cáñamo,
+          1/4 taza de aceite de oliva virgen extra,
+          1 diente de ajo pelado,
+          jugo de 1/2 limón,
+          pizca de sal rosa.
+        </p>
+
+        <p class="text-sm text-slate-700">
+          <strong>Preparación:</strong>
+          Procese todos los ingredientes con 1-2 cucharadas
+          de agua hasta lograr una textura cremosa.
+          Sirva con vegetales o galletas de avena.
+        </p>
+      </div>
+
+      <!-- RECETA 3 -->
+
+      <div
+        id="tab-receta3"
+        class="tab-content hidden bg-white p-6 rounded-xl border border-slate-200 card-box"
+      >
+        <h4 class="text-xl font-bold text-slate-900 mb-2">
+          ☕ Chai Latte Dorado de Cúrcuma y Coco (2 Porciones)
+        </h4>
+
+        <p class="text-sm text-slate-600 mb-3">
+          <strong>Ingredientes:</strong>
+          2 tazas de leche vegetal,
+          2 cdas de crema de coco,
+          1 cdta de cúrcuma en polvo (o fresca rallada),
+          1/2 cdta de canela,
+          1 anís estrellado,
+          2 clavos de olor,
+          1 vaina de cardamomo.
+        </p>
+
+        <p class="text-sm text-slate-700">
+          <strong>Preparación:</strong>
+          Caliente a fuego lento en una cacerola durante
+          5 a 10 minutos sin dejar que hierva.
+          Cuele en tazas y disfrute caliente
+          para proteger la dopamina cerebral.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HISTORIAS DEL LIBRO -->
+
+  <section class="py-14 px-4 bg-blue-950 text-white">
+    <div class="max-w-5xl mx-auto">
+
+      <h2 class="text-2xl md:text-4xl font-bold text-center mb-10">
+        Historias Reales de Personas Que Recuperaron
+        Su Vida Con Este Protocolo
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <div class="bg-slate-900/90 p-6 rounded-2xl border border-blue-800 card-box">
+          <div class="text-amber-400 font-bold mb-1">
+            ★ ★ ★ ★ ★ — Brenda, diagnosticada a los 73 años
+          </div>
+
+          <h3 class="text-lg font-bold text-white mb-2">
+            "Volvió a hacer senderismo en la montaña un año después"
+          </h3>
+
+          <p class="text-slate-300 text-sm">
+            Brenda perdía el equilibrio al caminar, le costaba bajar
+            escaleras y algunos días sus piernas estaban tan débiles
+            que colapsaba. Temía terminar en una silla de ruedas.
+            Junto a su esposo, aplicó la dieta del protocolo,
+            la rutina de movimiento diario, los suplementos
+            y el cambio de mentalidad. Un año después,
+            sus habilidades motoras mejoraron tanto
+            que volvió a hacer senderismo.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/90 p-6 rounded-2xl border border-blue-800 card-box">
+          <div class="text-amber-400 font-bold mb-1">
+            ★ ★ ★ ★ ★ — Margaret, de 70 a 75 años con total autonomía
+          </div>
+
+          <h3 class="text-lg font-bold text-white mb-2">
+            "Vive sola en su apartamento y hace sus propias compras"
+          </h3>
+
+          <p class="text-slate-300 text-sm">
+            Tras el diagnóstico, abotonarse el cárdigan,
+            escribir a mano o picar verduras se volvió difícil.
+            Al incorporar actividades generadoras de dopamina
+            como yoga suave, meditación, caminatas en grupo
+            y cocina saludable, sus síntomas mejoraron.
+            Hoy, a los 75 años, sigue viviendo de forma independiente.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/90 p-6 rounded-2xl border border-blue-800 card-box">
+          <div class="text-amber-400 font-bold mb-1">
+            ★ ★ ★ ★ ★ — Robert, 65 años
+          </div>
+
+          <h3 class="text-lg font-bold text-white mb-2">
+            "Sus temblores se detuvieron y hoy disfruta del piragüismo"
+          </h3>
+
+          <p class="text-slate-300 text-sm">
+            Diagnosticado apenas siete meses después de jubilarse
+            tras décadas de estrés laboral, Robert canalizó su energía
+            en el protocolo mental y físico del libro.
+            Dos años después, los temblores no han avanzado en absoluto
+            y lleva una vida social y deportiva muy activa.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/90 p-6 rounded-2xl border border-blue-800 card-box">
+          <div class="text-amber-400 font-bold mb-1">
+            ★ ★ ★ ★ ★ — Annie, diagnosticada a los 57 años
+          </div>
+
+          <h3 class="text-lg font-bold text-white mb-2">
+            "Cuatro años con síntomas totalmente estabilizados"
+          </h3>
+
+          <p class="text-slate-300 text-sm">
+            Afectada durante años por la ansiedad y la artritis
+            reumatoide, Annie aplicó las técnicas de meditación,
+            gratitud y nutrición antiinflamatoria del protocolo.
+            Cuatro años después de su diagnóstico,
+            sus síntomas permanecen estables y bajo control.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO INCLUIDO -->
+
+  <section class="py-14 px-4 max-w-5xl mx-auto">
+
+    <h2 class="text-2xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+      Todo Lo Que Recibirá Hoy Dentro de "El Protocolo Parkinson"
+    </h2>
+
+    <p class="text-center text-slate-600 max-w-2xl mx-auto mb-10">
+      Además del programa principal y la tabla de los
+      <strong>12 Hábitos Diarios</strong>,
+      usted recibe 8 Apéndices Prácticos listos
+      para consultar en cualquier momento:
+    </p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm card-box">
+        <span class="text-xs font-extrabold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded">
+          APÉNDICE 1
+        </span>
+
+        <h3 class="font-bold text-lg mt-3 mb-2">
+          13 Recetas para el Cerebro + Trucos de Cocina
+        </h3>
+
+        <p class="text-sm text-slate-600">
+          Incluye adaptaciones para cocinar sin esfuerzo
+          (cuchillos en T, bases con ventosa)
+          y 13 recetas deliciosas.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm card-box">
+        <span class="text-xs font-extrabold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded">
+          APÉNDICE 2
+        </span>
+
+        <h3 class="font-bold text-lg mt-3 mb-2">
+          Guía Detox Ambiental y Alimentaria
+        </h3>
+
+        <p class="text-sm text-slate-600">
+          Las 10 plantas de la NASA que purifican el aire interior
+          y la lista <em>Clean 15 &amp; Dirty Dozen</em> contra pesticidas.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm card-box">
+        <span class="text-xs font-extrabold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded">
+          APÉNDICE 3
+        </span>
+
+        <h3 class="font-bold text-lg mt-3 mb-2">
+          Mapa de Poderosos Antioxidantes
+        </h3>
+
+        <p class="text-sm text-slate-600">
+          Dónde hallar Quercetina, Sulforafano,
+          Coenzima Q10 y los minerales que activan la enzima MnSOD.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm card-box">
+        <span class="text-xs font-extrabold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded">
+          APÉNDICE 4
+        </span>
+
+        <h3 class="font-bold text-lg mt-3 mb-2">
+          Nutrientes Impulsores de Dopamina
+        </h3>
+
+        <p class="text-sm text-slate-600">
+          Tablas completas de alimentos ricos en Fenilalanina,
+          Tirosina, Vitamina B6, Resveratrol, Magnesio y Folato.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm card-box">
+        <span class="text-xs font-extrabold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded">
+          APÉNDICE 5
+        </span>
+
+        <h3 class="font-bold text-lg mt-3 mb-2">
+          Sustitutos del Azúcar y Carbohidratos
+        </h3>
+
+        <p class="text-sm text-slate-600">
+          Cómo identificar los 50 nombres ocultos del azúcar
+          en etiquetas y disfrutar postres que no inflaman el cerebro.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm card-box">
+        <span class="text-xs font-extrabold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded">
+          APÉNDICE 6
+        </span>
+
+        <h3 class="font-bold text-lg mt-3 mb-2">
+          Lista de las Grasas Más Saludables
+        </h3>
+
+        <p class="text-sm text-slate-600">
+          Qué aceites evitar (trans y refinados)
+          y cuáles nutren el 60% de estructura grasa de su cerebro.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm card-box">
+        <span class="text-xs font-extrabold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded">
+          APÉNDICE 7
+        </span>
+
+        <h3 class="font-bold text-lg mt-3 mb-2">
+          Ejercicios de Fuerza y Flexibilidad
+        </h3>
+
+        <p class="text-sm text-slate-600">
+          Rutina ilustrada paso a paso con apoyo
+          de silla o pared para fortalecer piernas,
+          espalda y equilibrio.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm card-box">
+        <span class="text-xs font-extrabold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded">
+          APÉNDICE 8
+        </span>
+
+        <h3 class="font-bold text-lg mt-3 mb-2">
+          7 Estrategias Extra con Base Científica
+        </h3>
+
+        <p class="text-sm text-slate-600">
+          Desde hidroterapia breve (+250% dopamina)
+          y masajes (+31% dopamina) hasta música,
+          ayuno suave y acupuntura.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OFERTA -->
+
+  <section
+    id="oferta"
+    class="py-16 px-4 bg-gradient-to-b from-slate-900 to-blue-950 text-white"
+  >
+    <div class="max-w-3xl mx-auto bg-white text-slate-900 rounded-3xl shadow-2xl overflow-hidden border-4 border-emerald-500 card-box">
+
+      <div class="bg-emerald-600 text-white text-center py-3 px-4 font-extrabold tracking-wide uppercase text-sm">
+        Oferta Especial de Acceso Inmediato • Edición Completa en Español
+      </div>
+
+      <div class="p-8 md:p-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-black mb-2">
+          EL PROTOCOLO PARKINSON
+        </h2>
+
+        <p class="text-slate-600 mb-6">
+          El Programa Completo de 12 Hábitos Diarios
+          + Los 8 Apéndices Prácticos
+        </p>
+
+        <div class="my-6">
+          <span class="text-slate-400 line-through text-xl">
+            Precio Regular: $97 USD
+          </span>
+
+          <div class="text-5xl md:text-6xl font-black text-emerald-600 my-2">
+            $37 USD
+          </div>
+
+          <span class="text-sm text-slate-500">
+            Pago único • Sin suscripciones ocultas •
+            Descarga digital instantánea (PDF)
+          </span>
+        </div>
+
+        <a
+          href="https://pay.monetizze.com.br/KNZ462676"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-pulse block w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xl py-5 px-8 rounded-2xl shadow-xl transition transform hover:-translate-y-0.5 mb-6 text-center"
+        >
+          SÍ, QUIERO DESCARGAR EL PROTOCOLO AHORA →
+        </a>
+
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-left flex flex-col sm:flex-row items-center gap-4 card-box">
+          <div class="text-4xl" aria-hidden="true">
+            🛡️
+          </div>
+
+          <div>
+            <h4 class="font-bold text-slate-900">
+              Garantía Incondicional de 60 Días
+            </h4>
+
+            <p class="text-sm text-slate-600">
+              Ponga a prueba los 12 hábitos diarios,
+              las recetas y los ejercicios suaves durante
+              60 días completos. Si no siente más energía,
+              mejor equilibrio y mayor bienestar,
+              le devolvemos el 100% de su dinero sin preguntas.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES -->
+
+  <section class="py-14 px-4 max-w-4xl mx-auto">
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">
+      Preguntas Frecuentes
+    </h2>
+
+    <div class="space-y-4">
+
+      <details
+        class="bg-white p-5 rounded-xl border border-slate-200 cursor-pointer card-box"
+        open
+      >
+        <summary class="font-bold text-lg">
+          1. ¿Debo dejar de tomar los medicamentos recetados por mi médico?
+        </summary>
+
+        <p class="mt-3 text-slate-600">
+          ¡De ninguna manera! El objetivo de
+          <strong>El Protocolo Parkinson</strong>
+          no es reemplazar a su médico, sino brindarle estrategias
+          naturales de nutrición, desintoxicación y movimiento que
+          puede aplicar junto con las soluciones médicas para
+          mejorar su calidad de vida y proteger sus neuronas
+          sin efectos secundarios.
+        </p>
+      </details>
+
+      <details class="bg-white p-5 rounded-xl border border-slate-200 cursor-pointer card-box">
+        <summary class="font-bold text-lg">
+          2. Tengo más de 70 años y poca fuerza,
+          ¿podré hacer los ejercicios y las recetas?
+        </summary>
+
+        <p class="mt-3 text-slate-600">
+          Sí. Todos los ejercicios del Apéndice 7 están diseñados
+          para realizarse en casa con el apoyo de una silla firme
+          o una pared. Además, el Apéndice 1 incluye trucos de cocina
+          específicos para personas con temblores o rigidez en las manos.
+        </p>
+      </details>
+
+      <details class="bg-white p-5 rounded-xl border border-slate-200 cursor-pointer card-box">
+        <summary class="font-bold text-lg">
+          3. ¿Cómo recibo el libro después de realizar el pago?
+        </summary>
+
+        <p class="mt-3 text-slate-600">
+          El acceso es inmediato. Tan pronto como se confirme su pedido,
+          podrá descargar la edición digital completa en formato PDF
+          para leerla en su computadora, tableta, teléfono celular
+          o imprimirla en casa con el tamaño de letra que prefiera.
+        </p>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+
+  <footer class="bg-slate-950 text-slate-400 py-10 px-4 text-center text-xs border-t border-slate-800">
+    <div class="max-w-4xl mx-auto space-y-3">
+
+      <p class="font-bold text-slate-200 text-sm">
+        EL PROTOCOLO PARKINSON © Todos los derechos reservados.
+      </p>
+
+      <p>
+        AVISO LEGAL MÉDICO:
+        Este libro tiene fines estrictamente educativos e informativos
+        y no constituye asesoramiento ni servicio médico.
+        Si necesita asistencia médica acerca de cualquier condición
+        de salud, consulte siempre a un profesional médico calificado
+        antes de realizar cambios en su dieta,
+        suplementación o rutina de ejercicios.
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- FUNCIONES INTERACTIVAS -->
+
+  <script>
+    let currentFontSize = 18;
+
+    function changeFontSize(delta) {
+      currentFontSize = Math.min(
+        26,
+        Math.max(15, currentFontSize + delta)
+      );
+
+      document.documentElement.style.setProperty(
+        "--base-font-size",
+        currentFontSize + "px"
+      );
+    }
+
+    function resetFontSize() {
+      currentFontSize = 18;
+
+      document.documentElement.style.setProperty(
+        "--base-font-size",
+        "18px"
+      );
+    }
+
+    function toggleContrast() {
+      const enabled = document.body.classList.toggle(
+        "high-contrast"
+      );
+
+      document
+        .querySelector('[onclick="toggleContrast()"]')
+        .setAttribute("aria-pressed", String(enabled));
+    }
+
+    function evaluateSymptoms() {
+      const checked = document.querySelectorAll(
+        ".symptom-check:checked"
+      );
+
+      const resultBox = document.getElementById(
+        "symptom-result"
+      );
+
+      resultBox.classList.remove("hidden");
+
+      if (checked.length === 0) {
+        resultBox.innerHTML = `
+          <strong>Seleccione al menos un síntoma arriba</strong>
+          para ver cómo aborda su caso El Protocolo Parkinson.
+        `;
+        return;
+      }
+
+      resultBox.innerHTML = `
+        <p class="font-bold text-emerald-900 mb-1">
+          ✔ Hemos identificado ${checked.length} área(s) clave
+          donde El Protocolo Parkinson actúa directamente:
+        </p>
+
+        <p class="text-sm">
+          En la <strong>Parte 3 y Parte 4 del libro</strong>,
+          usted recibirá el plan exacto de 12 hábitos diarios
+          para reducir la neuroinflamación de la micróglia,
+          activar la limpieza glinfática durante el sueño
+          y suministrar los aminoácidos precursores de dopamina
+          que ayudan a aliviar estos síntomas de raíz.
+        </p>
+      `;
+    }
+
+    function showTab(tabId) {
+      document
+        .querySelectorAll(".tab-content")
+        .forEach(function (element) {
+          element.classList.add("hidden");
+        });
+
+      document
+        .getElementById("tab-" + tabId)
+        .classList.remove("hidden");
+
+      ["menu", "receta1", "receta2", "receta3"]
+        .forEach(function (id) {
+          const button = document.getElementById(
+            "tab-btn-" + id
+          );
+
+          if (id === tabId) {
+            button.className =
+              "px-4 py-2 rounded-lg font-bold " +
+              "bg-blue-700 text-white transition";
+          } else {
+            button.className =
+              "px-4 py-2 rounded-lg font-bold " +
+              "bg-white text-slate-800 border " +
+              "border-slate-300 transition";
+          }
+        });
+    }
+  </script>
+
+</body>
+</html>
