@@ -1,0 +1,8 @@
+backend/wrangler.toml
+backend/.dev.vars
+backend/.wrangler/
+.env
+.env.*
+!.env.example
+node_modules/
+*.sqlite

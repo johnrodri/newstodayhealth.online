@@ -1,0 +1,16 @@
+name = "ninho-access"
+main = "worker.mjs"
+compatibility_date = "2026-10-28"
+workers_dev = false
+# Configure a route for newstodayhealth.online/ninho/api/* in your Cloudflare zone.
+routes = [{ pattern = "newstodayhealth.online/ninho/api/*", zone_name = "newstodayhealth.online" }]
+[vars]
+PUBLIC_ORIGIN = "https://newstodayhealth.online"
+PRODUCT_ID = "CONFIGURE_CHECKOUT_PRODUCT_ID"
+MAIL_FROM = "Ninho <CONFIGURE_VERIFIED_SENDER>"
+[[d1_databases]]
+binding = "DB"
+database_name = "ninho-access"
+database_id = "CONFIGURE_D1_DATABASE_ID"
+# Runtime secrets: WEBHOOK_SECRET, ACCESS_CODE_SECRET, RESEND_API_KEY.
+# Do not commit real secrets or the configured local Wrangler file.
