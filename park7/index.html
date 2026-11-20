@@ -1,1 +1,150 @@
-<vturb-smartplayer id="vid-6af925af346ed733d87f5bf4" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/9f0596ae-2df4-4d35-b169-78bb42ca8fab/players/6af925af346ed733d87f5bf4/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+<!-- CONTAINER DA MICRO-VSL COM SOBREPOSIÇÃO E FORMULÁRIO -->
+<style>
+  .vsl-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .video-container {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    background: #000;
+  }
+  /* Camada sobreposta estilo Astranumerica */
+  .dynamic-overlay {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    z-index: 20;
+    background: rgba(15, 23, 42, 0.90);
+    border-left: 4px solid #ef4444;
+    color: #ffffff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    pointer-events: none; /* Não bloqueia o clique de play no vídeo */
+    transition: opacity 0.8s ease;
+    backdrop-filter: blur(4px);
+  }
+  .dynamic-overlay .case-name {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #cbd5e1;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .dynamic-overlay .alert-score {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fca5a5;
+    margin-bottom: 2px;
+  }
+  .dynamic-overlay .priority-line {
+    font-size: 12px;
+    color: #f8fafc;
+  }
+  /* Formulário de Captura com Delay */
+  .capture-box {
+    display: none; /* Aparece no segundo configurado */
+    margin-top: 22px;
+    padding: 24px;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .capture-box input[type="email"] {
+    width: 100%;
+    max-width: 420px;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 1px solid #94a3b8;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+  }
+  .capture-box button {
+    width: 100%;
+    max-width: 420px;
+    padding: 16px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    background: #16a34a;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .capture-box button:hover {
+    background: #15803d;
+  }
+</style>
+
+<div class="vsl-wrapper">
+  <div class="video-container">
+    <!-- CAMADA SOBREPOSTA (Mude o texto fixo abaixo para Espanhol ou Italiano) -->
+    <div id="caseOverlay" class="dynamic-overlay">
+      <div class="case-name">CASO ANALIZADO: <span id="userNameDisplay">...</span></div>
+      <div class="alert-score">⚠️ ALERTA DE RUTINA: 9 DE 12 ACELERADORES ACTIVOS</div>
+      <div class="priority-line">Prioridad: Bloqueo de absorción + Limpieza nocturna</div>
+    </div>
+
+    <!-- COLE AQUI O CÓDIGO EMBED DO SEU PLAYER (VTurb / Panda / Vimeo) -->
+    <div style="aspect-ratio: 16/9; width: 100%;">
+      <!-- SEU EMBED DE VÍDEO AQUI -->
+    </div>
+  </div>
+
+  <!-- CAIXA DE E-MAIL QUE ABRE NO FINAL DA MICRO-VSL -->
+  <div id="emailCaptureBox" class="capture-box">
+    <form id="leadForm">
+      <input type="email" id="leadEmail" placeholder="Escribe tu mejor correo electrónico..." required />
+      <br />
+      <button type="submit">ABRIR EL PROTOCOLO COMPLETO AHORA ➔</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // 1. Puxa o nome da URL (?nome=, ?nombre= ou ?name=) ou do localStorage
+    const params = new URLSearchParams(window.location.search);
+    const rawName = params.get('nombre') || params.get('nome') || params.get('name') || localStorage.getItem('quiz_name') || 'Evaluación Actual';
+    localStorage.setItem('quiz_name', rawName);
+    document.getElementById('userNameDisplay').textContent = rawName.toUpperCase();
+
+    // 2. Esconde suavemente a sobreposição após 18 segundos para deixar o vídeo limpo
+    setTimeout(function() {
+      const overlay = document.getElementById('caseOverlay');
+      if (overlay) overlay.style.opacity = '0';
+    }, 18000);
+
+    // 3. Mostra a caixa de e-mail aos 85 segundos (ajuste conforme o tempo exato da sua locução)
+    const DELAY_SEGUNDOS = 85;
+    setTimeout(function() {
+      document.getElementById('emailCaptureBox').style.display = 'block';
+    }, DELAY_SEGUNDOS * 1000);
+
+    // 4. Envia o lead para seu Webhook (Make/Zapier/ActiveCampaign) e redireciona para a VSL de 49€
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('leadEmail').value;
+      const VSL_LONGA_URL = 'https://SEUSITE.COM/vsl-completa'; // <-- URL da sua VSL de 49€
+      const WEBHOOK_URL = ''; // <-- Opcional: URL do seu webhook de e-mail marketing
+
+      if (WEBHOOK_URL) {
+        fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: rawName, email: email, score: '9/12' }),
+          keepalive: true
+        });
+      }
+      window.location.href = VSL_LONGA_URL + '?nombre=' + encodeURIComponent(rawName) + '&email=' + encodeURIComponent(email);
+    });
+  })();
+</script>
