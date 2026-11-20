@@ -1,150 +1,457 @@
-<!-- CONTAINER DA MICRO-VSL COM SOBREPOSIÇÃO E FORMULÁRIO -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluación de Rutina Motora</title>
 <style>
-  .vsl-wrapper {
-    max-width: 720px;
-    margin: 0 auto;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: #f4f6f8;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1e293b;
+    line-height: 1.5;
+    padding: 16px;
   }
-  .video-container {
-    position: relative;
-    width: 100%;
-    border-radius: 12px;
+  .quiz-app {
+    max-width: 560px;
+    margin: 12px auto;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    background: #000;
+    border: 1px solid #e2e8f0;
   }
-  /* Camada sobreposta estilo Astranumerica */
-  .dynamic-overlay {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    right: 14px;
-    z-index: 20;
-    background: rgba(15, 23, 42, 0.90);
-    border-left: 4px solid #ef4444;
+  .quiz-header {
+    background: #0f172a;
     color: #ffffff;
-    padding: 12px 16px;
-    border-radius: 8px;
-    pointer-events: none; /* Não bloqueia o clique de play no vídeo */
-    transition: opacity 0.8s ease;
-    backdrop-filter: blur(4px);
-  }
-  .dynamic-overlay .case-name {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: #cbd5e1;
-    margin-bottom: 4px;
-    font-weight: 600;
-  }
-  .dynamic-overlay .alert-score {
-    font-size: 16px;
-    font-weight: 800;
-    color: #fca5a5;
-    margin-bottom: 2px;
-  }
-  .dynamic-overlay .priority-line {
-    font-size: 12px;
-    color: #f8fafc;
-  }
-  /* Formulário de Captura com Delay */
-  .capture-box {
-    display: none; /* Aparece no segundo configurado */
-    margin-top: 22px;
-    padding: 24px;
-    background: #f8fafc;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
+    padding: 14px 20px;
     text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
   }
-  .capture-box input[type="email"] {
+  .progress-wrap {
+    background: #e2e8f0;
+    height: 8px;
     width: 100%;
-    max-width: 420px;
-    padding: 14px 16px;
+  }
+  .progress-bar {
+    background: #15803d;
+    height: 100%;
+    width: 14%;
+    transition: width 0.35s ease;
+  }
+  .quiz-body {
+    padding: 26px 22px 30px;
+  }
+  .step-counter {
+    font-size: 13px;
+    font-weight: 700;
+    color: #15803d;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .question-title {
+    font-size: 21px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 20px;
+    line-height: 1.35;
+  }
+  .options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .option-btn {
+    width: 100%;
+    text-align: left;
+    background: #f8fafc;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 16px 18px;
     font-size: 16px;
-    border: 1px solid #94a3b8;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    box-sizing: border-box;
+    font-weight: 600;
+    color: #1e293b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
-  .capture-box button {
+  .option-btn:hover, .option-btn:active {
+    border-color: #15803d;
+    background: #f0fdf4;
+    color: #14532d;
+  }
+  .option-arrow {
+    font-size: 18px;
+    color: #64748b;
+    margin-left: 10px;
+  }
+  .name-input {
     width: 100%;
-    max-width: 420px;
     padding: 16px;
     font-size: 17px;
-    font-weight: 700;
-    color: #fff;
-    background: #16a34a;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    border: 2px solid #94a3b8;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    outline: none;
   }
-  .capture-box button:hover {
+  .name-input:focus {
+    border-color: #15803d;
+  }
+  .primary-btn {
+    width: 100%;
+    padding: 18px 20px;
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
     background: #15803d;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 6px 18px rgba(21, 128, 61, 0.28);
+    transition: transform 0.15s ease, background 0.2s ease;
+  }
+  .primary-btn:hover {
+    background: #166534;
+    transform: translateY(-1px);
+  }
+  /* Tela de Carregamento */
+  .loading-box {
+    text-align: center;
+    padding: 24px 10px;
+  }
+  .spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #e2e8f0;
+    border-top-color: #15803d;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin: 0 auto 20px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+  }
+  .loading-sub {
+    font-size: 14px;
+    color: #64748b;
+  }
+  /* Tela de Resultado Final + Botão VSL */
+  .result-badge {
+    display: inline-block;
+    background: #fef9c3;
+    color: #854d0e;
+    border: 1px solid #fde047;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .result-headline {
+    font-size: 23px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  .score-card {
+    background: #0f172a;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 18px;
+  }
+  .score-number {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fde047;
+    margin-bottom: 6px;
+  }
+  .score-detail {
+    font-size: 14px;
+    color: #e2e8f0;
+  }
+  .findings-list {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 22px;
+    font-size: 15px;
+    color: #334155;
+  }
+  .findings-list li {
+    list-style: none;
+    margin-bottom: 10px;
+    padding-left: 24px;
+    position: relative;
+  }
+  .findings-list li:last-child { margin-bottom: 0; }
+  .findings-list li::before {
+    content: "•";
+    color: #15803d;
+    font-weight: 900;
+    font-size: 22px;
+    position: absolute;
+    left: 4px;
+    top: -4px;
+  }
+  .vsl-note {
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 12px;
+  }
+  .quiz-footer {
+    text-align: center;
+    font-size: 11px;
+    color: #94a3b8;
+    max-width: 560px;
+    margin: 14px auto 0;
+    padding: 0 10px;
   }
 </style>
+</head>
+<body>
 
-<div class="vsl-wrapper">
-  <div class="video-container">
-    <!-- CAMADA SOBREPOSTA (Mude o texto fixo abaixo para Espanhol ou Italiano) -->
-    <div id="caseOverlay" class="dynamic-overlay">
-      <div class="case-name">CASO ANALIZADO: <span id="userNameDisplay">...</span></div>
-      <div class="alert-score">⚠️ ALERTA DE RUTINA: 9 DE 12 ACELERADORES ACTIVOS</div>
-      <div class="priority-line">Prioridad: Bloqueo de absorción + Limpieza nocturna</div>
-    </div>
-
-    <!-- COLE AQUI O CÓDIGO EMBED DO SEU PLAYER (VTurb / Panda / Vimeo) -->
-    <div style="aspect-ratio: 16/9; width: 100%;">
-      <!-- SEU EMBED DE VÍDEO AQUI -->
-    </div>
+<div class="quiz-app">
+  <div id="quizHeader" class="quiz-header"></div>
+  <div id="progressWrap" class="progress-wrap">
+    <div id="progressBar" class="progress-bar"></div>
   </div>
-
-  <!-- CAIXA DE E-MAIL QUE ABRE NO FINAL DA MICRO-VSL -->
-  <div id="emailCaptureBox" class="capture-box">
-    <form id="leadForm">
-      <input type="email" id="leadEmail" placeholder="Escribe tu mejor correo electrónico..." required />
-      <br />
-      <button type="submit">ABRIR EL PROTOCOLO COMPLETO AHORA ➔</button>
-    </form>
-  </div>
+  <div id="quizContainer" class="quiz-body"></div>
 </div>
 
+<div id="quizFooter" class="quiz-footer"></div>
+
 <script>
-  (function() {
-    // 1. Puxa o nome da URL (?nome=, ?nombre= ou ?name=) ou do localStorage
-    const params = new URLSearchParams(window.location.search);
-    const rawName = params.get('nombre') || params.get('nome') || params.get('name') || localStorage.getItem('quiz_name') || 'Evaluación Actual';
-    localStorage.setItem('quiz_name', rawName);
-    document.getElementById('userNameDisplay').textContent = rawName.toUpperCase();
+  // =========================================================================
+  // CONFIGURAÇÃO RÁPIDA (EDITE APENAS ESTAS 2 LINHAS!)
+  // =========================================================================
+  const IDIOMA = "ES"; // Use "ES" para Espanhol (LatAm) ou "IT" para Italiano (Itália)
+  const URL_DA_SUA_VSL = "https://SEUSITE.COM/vsl"; // Coloque aqui o link da sua VSL validada de 49€
+  // =========================================================================
 
-    // 2. Esconde suavemente a sobreposição após 18 segundos para deixar o vídeo limpo
-    setTimeout(function() {
-      const overlay = document.getElementById('caseOverlay');
-      if (overlay) overlay.style.opacity = '0';
-    }, 18000);
+  const TEXTOS = {
+    ES: {
+      header: "Evaluación de los 12 Aceleradores Silenciosos",
+      stepLabel: "Pregunta",
+      ofLabel: "de",
+      namePlaceholder: "Escribe solo el primer nombre...",
+      calcBtn: "CALCULAR MI RESULTADO AHORA ➔",
+      loadingSteps: [
+        "Analizando el historial de rutina...",
+        "Cruzando factores de almuerzo y descanso nocturno...",
+        "¡Evaluación completada! Preparando resumen..."
+      ],
+      loadingSub: "Por favor espera unos segundos, no cierres esta página.",
+      badge: "Análisis Completado",
+      resultTitle: (nome) => `Caso de ${nome}: Detectamos un patrón claro de desgaste acelerado`,
+      scoreLine: "Puntaje: 9 de 12 aceleradores activos en la rutina",
+      scoreSub: "Prioridad identificada: Conflicto de absorción en la comida + Limpieza nocturna incompleta",
+      findings: [
+        "<strong>Bloqueo en el plato:</strong> Ciertas proteínas animales cerca del horario de la rutina matinal impiden que el cerebro absorba lo que necesita.",
+        "<strong>Falla de limpieza nocturna:</strong> El sueño cortado frena el sistema glinfático que limpia las toxinas cerebrales de madrugada.",
+        "<strong>Buena noticia:</strong> Estos aceleradores diarios se pueden apagar en casa paso a paso para proteger la firmeza y la autonomía."
+      ],
+      vslBtn: "VER LA PRESENTACIÓN COMPLETA AHORA ➔",
+      vslNote: "Haz clic en el botón verde para abrir el video explicativo gratuito.",
+      footer: "Aviso informativo: Esta evaluación educativa analiza hábitos de estilo de vida y no sustituye el acompañamiento médico profesional.",
+      questions: [
+        {
+          q: "¿Para quién estás haciendo esta evaluación?",
+          opts: ["Para mí", "Para mi esposo/a", "Para mi padre/madre o familiar"]
+        },
+        {
+          q: "¿Hace cuánto tiempo notaste las primeras señales (temblor en reposo, rigidez o pasos más cortos)?",
+          opts: ["Menos de 1 año", "Entre 1 y 3 años", "Más de 3 años"]
+        },
+        {
+          q: "¿Cómo suele ser el plato principal del almuerzo?",
+          opts: ["Incluye carnes, pollo, quesos o embutidos", "A veces proteína animal, a veces verduras", "Casi siempre legumbres, granos y vegetales"]
+        },
+        {
+          q: "¿Cómo son las noches de sueño últimamente?",
+          opts: ["Sueño cortado, insomnio o hablar dormido", "Con TV o celular encendidos antes de dormir", "Sueño profundo de 8 horas seguidas"]
+        },
+        {
+          q: "En el día a día, ¿cuánto tiempo pasa sentado/a y cuánta agua toma?",
+          opts: ["Más de 5 horas sentado/a y poca agua", "Camina un poco, pero cuesta mantener el ritmo", "Muy activo/a y toma 8 vasos de agua al día"]
+        },
+        {
+          q: "¿Con qué frecuencia aparece frustración, tensión o desánimo al notar el cuerpo más lento?",
+          opts: ["Casi todos los días", "Algunas veces por semana", "Rara vez"]
+        },
+        {
+          q: "Escribe el Primer Nombre (tuyo o de tu familiar) para ver cuántos de los 12 aceleradores están activos:",
+          isNameStep: true
+        }
+      ]
+    },
+    IT: {
+      header: "Calcolatore dei 12 Acceleratori Silenziosi",
+      stepLabel: "Domanda",
+      ofLabel: "di",
+      namePlaceholder: "Inserisci solo il nome di battesimo...",
+      calcBtn: "CALCOLA IL RISULTATO ORA ➔",
+      loadingSteps: [
+        "Analisi delle abitudini quotidiane in corso...",
+        "Verifica dei fattori alimentari e del riposo notturno...",
+        "Valutazione completata! Preparazione del riepilogo..."
+      ],
+      loadingSub: "Attendi qualche istante, non chiudere questa pagina.",
+      badge: "Analisi Completata",
+      resultTitle: (nome) => `Caso di ${nome}: Rilevato uno schema di affaticamento accelerato`,
+      scoreLine: "Punteggio: 9 su 12 acceleratori attivi nella routine",
+      scoreSub: "Priorità rilevata: Ostacolo d'assorbimento a tavola + Pulizia notturna incompleta",
+      findings: [
+        "<strong>Ostacolo nel piatto:</strong> L'eccesso di proteine animali in certi orari ostacola l'assorbimento cerebrale dei nutrienti e della routine mattutina.",
+        "<strong>Blocco della pulizia notturna:</strong> I risvegli notturni frenano il sistema glinfatico che ripulisce il cervello dalle tossine nel sonno profondo.",
+        "<strong>La buona notizia:</strong> Tutti i 12 acceleratori possono essere spenti a casa con semplici abitudini quotidiane per proteggere equilibrio e autonomia."
+      ],
+      vslBtn: "GUARDA LA PRESENTAZIONE COMPLETA ORA ➔",
+      vslNote: "Clicca sul pulsante verde qui sopra per aprire subito il video esplicativo.",
+      footer: "Nota informativa: Questo test ha scopo puramente educativo sullo stile di vita e non sostituisce il parere del medico curante.",
+      questions: [
+        {
+          q: "Per chi stai effettuando questa valutazione?",
+          opts: ["Per me", "Per mio marito / mia moglie", "Per mio padre / mia madre o un familiare"]
+        },
+        {
+          q: "Da quanto tempo hai notato i primi segnali (tremore a riposo, rigidità o passi più corti)?",
+          opts: ["Meno di 1 anno", "Tra 1 e 3 anni", "Più di 3 anni"]
+        },
+        {
+          q: "Cosa comprende di solito il pasto principale a pranzo?",
+          opts: ["Carne, formaggi, salumi o proteine animali", "A volte proteine animali, a volte verdure", "Quasi sempre verdure, legumi e cereali integrali"]
+        },
+        {
+          q: "Come sono le notti di sonno ultimamente?",
+          opts: ["Sonno spezzato, risvegli o parlare nel sonno", "TV o telefono accesi prima di dormire", "8 ore di sonno profondo e continuo"]
+        },
+        {
+          q: "Durante la giornata, quanto tempo trascorre seduto/a e quanta acqua beve?",
+          opts: ["Più di 5 ore seduto/a e poca acqua", "Cammina un po', ma con fatica", "Molto attivo/a e beve 8-10 bicchieri d'acqua"]
+        },
+        {
+          q: "Con quale frequenza compaiono stress, frustrazione o calo d'umore notando movimenti più lenti?",
+          opts: ["Quasi ogni giorno", "Qualche volta a settimana", "Raramente"]
+        },
+        {
+          q: "Inserisci solo il Nome (tuo o del tuo familiare) per scoprire quanti dei 12 acceleratori sono attivi:",
+          isNameStep: true
+        }
+      ]
+    }
+  };
 
-    // 3. Mostra a caixa de e-mail aos 85 segundos (ajuste conforme o tempo exato da sua locução)
-    const DELAY_SEGUNDOS = 85;
-    setTimeout(function() {
-      document.getElementById('emailCaptureBox').style.display = 'block';
-    }, DELAY_SEGUNDOS * 1000);
+  const t = TEXTOS[IDIOMA];
+  let currentStep = 0;
+  let userName = "";
 
-    // 4. Envia o lead para seu Webhook (Make/Zapier/ActiveCampaign) e redireciona para a VSL de 49€
-    document.getElementById('leadForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = document.getElementById('leadEmail').value;
-      const VSL_LONGA_URL = 'https://SEUSITE.COM/vsl-completa'; // <-- URL da sua VSL de 49€
-      const WEBHOOK_URL = ''; // <-- Opcional: URL do seu webhook de e-mail marketing
+  document.getElementById("quizHeader").textContent = t.header;
+  document.getElementById("quizFooter").textContent = t.footer;
 
-      if (WEBHOOK_URL) {
-        fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: rawName, email: email, score: '9/12' }),
-          keepalive: true
-        });
-      }
-      window.location.href = VSL_LONGA_URL + '?nombre=' + encodeURIComponent(rawName) + '&email=' + encodeURIComponent(email);
-    });
-  })();
+  function renderStep() {
+    const container = document.getElementById("quizContainer");
+    const total = t.questions.length;
+    const item = t.questions[currentStep];
+    const pct = Math.round(((currentStep + 1) / total) * 100);
+    document.getElementById("progressBar").style.width = pct + "%";
+
+    if (item.isNameStep) {
+      container.innerHTML = `
+        <div class="step-counter">${t.stepLabel} ${currentStep + 1} ${t.ofLabel} ${total}</div>
+        <div class="question-title">${item.q}</div>
+        <form id="nameForm">
+          <input type="text" id="nameInput" class="name-input" placeholder="${t.namePlaceholder}" required />
+          <button type="submit" class="primary-btn">${t.calcBtn}</button>
+        </form>
+      `;
+      document.getElementById("nameInput").focus();
+      document.getElementById("nameForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const val = document.getElementById("nameInput").value.trim();
+        userName = val || (IDIOMA === "IT" ? "Il tuo profilo" : "Tu perfil");
+        startLoading();
+      });
+    } else {
+      let optsHtml = item.opts.map((opt) => `
+        <button type="button" class="option-btn" onclick="nextStep()">
+          <span>${opt}</span>
+          <span class="option-arrow">➔</span>
+        </button>
+      `).join("");
+
+      container.innerHTML = `
+        <div class="step-counter">${t.stepLabel} ${currentStep + 1} ${t.ofLabel} ${total}</div>
+        <div class="question-title">${item.q}</div>
+        <div class="options-list">${optsHtml}</div>
+      `;
+    }
+  }
+
+  window.nextStep = function() {
+    currentStep++;
+    renderStep();
+  };
+
+  function startLoading() {
+    document.getElementById("progressWrap").style.display = "none";
+    const container = document.getElementById("quizContainer");
+    container.innerHTML = `
+      <div class="loading-box">
+        <div class="spinner"></div>
+        <div id="loadMsg" class="loading-text">${t.loadingSteps[0]}</div>
+        <div class="loading-sub">${t.loadingSub}</div>
+      </div>
+    `;
+
+    setTimeout(() => { document.getElementById("loadMsg").textContent = t.loadingSteps[1]; }, 1300);
+    setTimeout(() => { document.getElementById("loadMsg").textContent = t.loadingSteps[2]; }, 2600);
+    setTimeout(() => { renderResult(); }, 3800);
+  }
+
+  function renderResult() {
+    // Repassa parâmetros de rastreio do Facebook Ads (fbclid, utm_source, etc.) + o nome para a VSL!
+    const currentParams = new URLSearchParams(window.location.search);
+    currentParams.set("nome", userName);
+    const sep = URL_DA_SUA_VSL.includes("?") ? "&" : "?";
+    const finalVslUrl = URL_DA_SUA_VSL + sep + currentParams.toString();
+
+    // Dispara evento de Lead no Pixel do Facebook (se estiver instalado na página)
+    if (typeof fbq === "function") {
+      fbq("track", "Lead");
+    }
+
+    const findingsHtml = t.findings.map(f => `<li>${f}</li>`).join("");
+    document.getElementById("quizContainer").innerHTML = `
+      <div class="result-badge">✓ ${t.badge}</div>
+      <div class="result-headline">${t.resultTitle(userName)}</div>
+      <div class="score-card">
+        <div class="score-number">${t.scoreLine}</div>
+        <div class="score-detail">${t.scoreSub}</div>
+      </div>
+      <ul class="findings-list">${findingsHtml}</ul>
+      <a href="${finalVslUrl}" class="primary-btn">${t.vslBtn}</a>
+      <div class="vsl-note">${t.vslNote}</div>
+    `;
+  }
+
+  renderStep();
 </script>
+</body>
+</html>
