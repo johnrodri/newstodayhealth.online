@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Protocole Parkinson — Guide Pratique d’Hygiène de Vie & Routine Quotidienne</title>
+  <meta name="description" content="Guide numérique éducatif complet : 12 micro-habitudes quotidiennes, routine du soir, nutrition ciblée et mouvements doux à domicile.">
+  <style>
+    :root {
+      --navy: #0f172a;
+      --navy-soft: #1e293b;
+      --green: #15803d;
+      --green-dark: #166534;
+      --green-light: #f0fdf4;
+      --gold: #ca8a04;
+      --gold-bg: #fefce8;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --text: #334155;
+      --muted: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Bar */
+    .topbar {
+      background-color: var(--navy);
+      color: #f8fafc;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* Header / Brand */
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 20px;
+    }
+
+    .header-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--navy);
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+    }
+
+    .header-support {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Container */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 52px 0 44px;
+      text-align: center;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green-dark);
+      border: 1px solid #bbf7d0;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(26px, 4vw, 38px);
+      line-height: 1.25;
+      font-weight: 800;
+      color: var(--navy);
+      max-width: 820px;
+      margin: 0 auto 18px;
+    }
+
+    .hero p.lead {
+      font-size: 18px;
+      color: var(--text);
+      max-width: 720px;
+      margin: 0 auto 28px;
+    }
+
+    /* Product Mockup Card inside Hero */
+    .hero-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 840px;
+      margin: 0 auto;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 32px;
+      align-items: center;
+      text-align: left;
+    }
+
+    @media (max-width: 740px) {
+      .hero-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 24px 18px;
+      }
+    }
+
+    .book-mockup {
+      background: linear-gradient(145deg, var(--navy) 0%, #163a2a 100%);
+      color: #ffffff;
+      border-radius: 10px 16px 16px 10px;
+      padding: 28px 22px;
+      box-shadow: -8px 12px 24px rgba(15, 23, 42, 0.22);
+      border-left: 8px solid var(--green);
+      position: relative;
+      max-width: 240px;
+      margin: 0 auto;
+    }
+
+    .book-mockup .book-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fde047;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .book-mockup h3 {
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .book-mockup p {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    .hero-checklist {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .hero-checklist li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 10px;
+      font-size: 15.5px;
+      color: var(--navy-soft);
+      text-align: left;
+    }
+
+    .hero-checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--green);
+      font-weight: 900;
+      font-size: 17px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      width: 100%;
+      background: var(--green);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      padding: 18px 24px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(21, 128, 61, 0.25);
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Generic Sections */
+    section.block {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section.block.white {
+      background: var(--card);
+    }
+
+    .section-title {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* Pillars Grid */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .pillar-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+    }
+
+    .pillar-num {
+      display: inline-block;
+      background: var(--navy);
+      color: #fde047;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .pillar-card h3 {
+      font-size: 19px;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .pillar-card p {
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    /* Modules List */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .module-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--green);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .module-item h4 {
+      font-size: 17px;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .module-item p {
+      font-size: 14.5px;
+      color: var(--text);
+    }
+
+    /* Testimonials */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+    }
+
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .stars {
+      color: #eab308;
+      font-size: 18px;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+
+    .review-card h4 {
+      font-size: 16px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .review-card p {
+      font-size: 14.5px;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .review-author {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy-soft);
+    }
+
+    .verified {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    /* Pricing & Guarantee Box */
+    .offer-card {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 2px solid var(--green);
+      border-radius: 18px;
+      padding: 36px 30px;
+      text-align: center;
+      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+    }
+
+    .offer-badge {
+      display: inline-block;
+      background: var(--navy);
+      color: #fde047;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .price-display {
+      font-size: 46px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.1;
+      margin: 12px 0 6px;
+    }
+
+    .price-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .guarantee-banner {
+      margin-top: 26px;
+      background: var(--gold-bg);
+      border: 1px solid #fde047;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: left;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    @media (max-width: 560px) {
+      .guarantee-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .shield-badge {
+      background: var(--navy);
+      color: #fde047;
+      font-weight: 900;
+      font-size: 14px;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.15;
+      flex-shrink: 0;
+    }
+
+    .guarantee-banner h4 {
+      font-size: 16px;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .guarantee-banner p {
+      font-size: 13.5px;
+      color: var(--text);
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    details.faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      padding: 16px 20px;
+    }
+
+    details.faq-item summary {
+      font-weight: 700;
+      color: var(--navy);
+      cursor: pointer;
+      font-size: 16px;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    details.faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.faq-item summary::after {
+      content: "+";
+      font-size: 20px;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    details.faq-item[open] summary::after {
+      content: "−";
+    }
+
+    details.faq-item p {
+      margin-top: 12px;
+      font-size: 14.5px;
+      color: var(--text);
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+
+    /* Footer & Legal Compliance */
+    footer {
+      background: var(--navy);
+      color: #cbd5e1;
+      padding: 44px 20px;
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+
+    .footer-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .footer-links button {
+      background: none;
+      border: none;
+      color: #ffffff;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .disclaimer-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 18px;
+      text-align: left;
+      color: #94a3b8;
+    }
+
+    /* Modal for Legal Pages */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.72);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      color: var(--text);
+      max-width: 680px;
+      width: 100%;
+      max-height: 82vh;
+      overflow-y: auto;
+      border-radius: 14px;
+      padding: 28px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: #f1f5f9;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .modal-content h3 {
+      color: var(--navy);
+      margin-bottom: 14px;
+      font-size: 20px;
+    }
+
+    .modal-content p {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    Édition Numérique Complète • Accès Immédiat après Commande • Garantie Satisfait ou Remboursé 60 Jours
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <a href="#commande" class="brand">
+        <svg class="brand-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M28 12C18.6 12 11 19.6 11 29C11 36.8 16.2 43.4 23.4 45.4C24.8 45.8 26 47 26 48.5V52H32V32" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M19 26C22 26 24 23.5 24 20.5M17 34C21.5 34 25 31 25 27" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+          <path d="M32 50C32 35 41 22 53 18C53 33 45 46 32 50Z" fill="#15803d"/>
+          <path d="M32 50C37 41 43 32 50 24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-name">Le Protocole Parkinson</span>
+      </a>
+      <div class="header-support">
+        Support Client : <span id="headerSupportEmail">support@votredomaine.com</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Guide Pratique d’Hygiène de Vie & Bien-Être Quotidien</div>
+      <h1>12 Micro-Habitudes Quotidiennes pour Soutenir le Sommeil Réparateur, l’Équilibre et la Vitalité Naturelle</h1>
+      <p class="lead">
+        Un programme éducatif clair, structuré étape par étape, conçu pour vous aider à adopter chez vous une routine du soir apaisante, une alimentation ciblée et des mouvements doux en complément de votre suivi habituel.
+      </p>
+
+      <div class="hero-box">
+        <div class="book-mockup">
+          <div class="book-tag">Édition Française</div>
+          <h3>Le Protocole Parkinson</h3>
+          <p>Guide pratique des 12 habitudes quotidiennes, recettes ciblées & routine du soir.</p>
+        </div>
+
+        <div>
+          <ul class="hero-checklist">
+            <li><strong>La Routine du Soir de 3 Minutes :</strong> habitudes d’hygiène du sommeil pour favoriser un repos nocturne profond.</li>
+            <li><strong>Nutrition & Horaires des Repas :</strong> listes d’aliments riches en nutriments essentiels et organisation simple des repas.</li>
+            <li><strong>Mouvements Doux à Domicile :</strong> exercices pratiques d’équilibre, de souplesse et de coordination sur chaise ou au mur.</li>
+            <li><strong>Tableau Imprimable des 12 Habitudes :</strong> fiche récapitulative claire à afficher sur votre réfrigérateur.</li>
+          </ul>
+          <a href="#commande" class="cta-btn">ACCÉDER AU GUIDE COMPLET MAINTENANT →</a>
+          <div class="trust-row">
+            <span>🔒 Paiement 100 % Sécurisé</span>
+            <span>📩 Livraison Numérique Immédiate</span>
+            <span>🛡️ Garantie 60 Jours</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="block">
+    <div class="container">
+      <h2 class="section-title">Une Approche Éducative Structurée en 3 Piliers</h2>
+      <p class="section-sub">
+        Conçu dans un langage accessible, sans jargon complexe, pour être facilement lu et appliqué à tout âge par vous-même ou avec un proche.
+      </p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <span class="pillar-num">Pilier 1</span>
+          <h3>Hygiène du Sommeil & Routine Nocturne</h3>
+          <p>Découvrez comment aménager vos soirées grâce à un rituel apaisant de 3 minutes visant à limiter les réveils nocturnes et favoriser un repos récupérateur.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-num">Pilier 2</span>
+          <h3>Alimentation Bien-Être & Nutriments Clés</h3>
+          <p>Apprenez à organiser vos repas quotidiens avec des ingrédients simples de supermarché (légumes crucifères, antioxydants, sources naturelles de tyrosine et vitamine B6).</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-num">Pilier 3</span>
+          <h3>Mobilité Douce & Autonomie au Quotidien</h3>
+          <p>Intégrez de courtes séances sécurisées de 3 à 10 minutes à la maison pour entretenir la posture, la marche, la souplesse articulaire et la sérénité.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU RECEIVE -->
+  <section class="block white">
+    <div class="container">
+      <h2 class="section-title">Ce Que Vous Recevez Immédiatement Après Votre Commande</h2>
+      <p class="section-sub">
+        L’ensemble du dossier est livré au format numérique (PDF lisible sur ordinateur, tablette, téléphone et imprimable à domicile).
+      </p>
+
+      <div class="modules-grid">
+        <div class="module-item">
+          <h4>1. Le Guide Principal « Le Protocole Parkinson »</h4>
+          <p>Le manuel complet étape par étape détaillant la mise en place progressive des 12 micro-habitudes dans votre journée.</p>
+        </div>
+        <div class="module-item">
+          <h4>2. Le Guide de la Routine du Soir (3 Minutes)</h4>
+          <p>Les étapes précises avant le coucher pour créer un environnement calme et propice au sommeil profond.</p>
+        </div>
+        <div class="module-item">
+          <h4>3. Carnets de Recettes & Listes de Courses</h4>
+          <p>13 recettes simples, savoureuses et équilibrées ainsi que le guide pratique d’organisation des repas au fil de la journée.</p>
+        </div>
+        <div class="module-item">
+          <h4>4. Fiches d’Exercices Doux d’Équilibre</h4>
+          <p>Mouvements illustrés et progressifs réalisables chez soi, sans équipement coûteux, pour soutenir la coordination.</p>
+        </div>
+        <div class="module-item">
+          <h4>5. Guide Maison Saine & Réduction des Polluants</h4>
+          <p>Astuces concrètes pour identifier et remplacer facilement certains additifs alimentaires et produits ménagers irritants.</p>
+        </div>
+        <div class="module-item">
+          <h4>6. Le Tableau de Suivi Imprimable des 12 Habitudes</h4>
+          <p>Une feuille pratique prête à imprimer pour suivre vos progrès jour après jour en toute simplicité.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="block">
+    <div class="container">
+      <h2 class="section-title">L’Avis de Nos Lecteurs</h2>
+      <p class="section-sub">Retours d’expérience de lecteurs et de familles ayant intégré ces habitudes de vie au quotidien.</p>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <h4>« Des nuits plus calmes et une routine très simple »</h4>
+          <p>« Ce guide m’a permis d’ajuster plusieurs habitudes toutes simples aux repas et avant de dormir. La routine du soir de 3 minutes est très agréable à suivre et je me sens beaucoup plus reposé le matin. »</p>
+          <div class="review-author">Bernard L., 71 ans — <span class="verified">✓ Achat Vérifié</span></div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <h4>« Clair, rassurant et facile à suivre pour mon père »</h4>
+          <p>« Je l’ai commandé pour mon père de 75 ans. Tout est expliqué pas à pas avec bienveillance. Nous avons imprimé le tableau des 12 habitudes sur le réfrigérateur, cela l’aide beaucoup à garder un bon rythme quotidien. »</p>
+          <div class="review-author">Nadine V., 52 ans — <span class="verified">✓ Achat Vérifié</span></div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <h4>« Reçu en deux minutes, très agréable à lire »</h4>
+          <p>« Je n’ai pas l’habitude d’acheter sur internet, mais tout s’est fait très simplement. J’ai reçu le dossier complet aussitôt dans ma boîte de réception et les recettes sont délicieuses. »</p>
+          <div class="review-author">Chantal M., 68 ans — <span class="verified">✓ Achat Vérifié</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER / CHECKOUT CTA -->
+  <section id="commande" class="block white">
+    <div class="container">
+      <div class="offer-card">
+        <div class="offer-badge">Accès Complet Immédiat</div>
+        <h2 class="section-title" style="margin-bottom:6px;">Commandez Le Protocole Parkinson</h2>
+        <p style="color:var(--muted);font-size:15px;">Édition numérique complète (PDF téléchargeable & imprimable) + Annexes pratiques incluses</p>
+
+        <div class="price-display" id="priceDisplay">49 €</div>
+        <div class="price-sub">Paiement unique — Aucun abonnement ni frais cachés</div>
+
+        <a href="https://VOTRE-LIEN-CHECKOUT.COM" id="mainCheckoutBtn" class="cta-btn">
+          TÉLÉCHARGER LE GUIDE COMPLET MAINTENANT →
+        </a>
+
+        <div class="trust-row" style="margin-top:16px;">
+          <span>🔒 Transaction Chiffrée SSL</span>
+          <span>📄 Format PDF Universel</span>
+          <span>🖨️ Prêt à Imprimer</span>
+        </div>
+
+        <div class="guarantee-banner">
+          <div class="shield-badge">60<br>JOURS</div>
+          <div>
+            <h4>Garantie Intégrale de 60 Jours — 100 % Remboursé</h4>
+            <p>Prenez jusqu’à 60 jours complets pour lire et appliquer ce guide tranquillement chez vous. Si vous n’êtes pas pleinement satisfait(e) pour quelque raison que ce soit, envoyez un simple message à notre support et nous vous remboursons l’intégralité de votre achat, sans aucune question.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block">
+    <div class="container">
+      <h2 class="section-title">Questions Fréquentes</h2>
+      <p class="section-sub">Tout ce que vous devez savoir avant d’accéder à votre exemplaire.</p>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Comment vais-je recevoir Le Protocole Parkinson ?</summary>
+          <p>Il s’agit d’un ouvrage 100 % numérique au format PDF. Dès la validation de votre paiement sécurisé, vous recevez automatiquement un lien d’accès dans votre boîte de réception en quelques minutes. Vous pouvez le lire sur ordinateur, tablette ou téléphone, et l’imprimer chez vous.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Ce programme remplace-t-il mon traitement ou mon suivi médical ?</summary>
+          <p>Non, absolument pas. Ce guide propose uniquement des conseils éducatifs d’hygiène de vie (sommeil, alimentation équilibrée, hydratation et activité physique douce). Il ne remplace jamais l’avis d’un médecin ou d’un neurologue. Ne modifiez jamais un traitement médical sans consulter votre professionnel de santé.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Y a-t-il des frais mensuels ou un abonnement ?</summary>
+          <p>Aucun abonnement. Il s’agit d’un paiement unique qui vous donne un accès illimité au guide complet ainsi qu’à toutes ses fiches pratiques et annexes.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Comment fonctionne la garantie de remboursement de 60 jours ?</summary>
+          <p>Vous disposez de 60 jours calendaires à compter de la date d’achat pour consulter le guide. Si celui-ci ne répond pas à vos attentes, il vous suffit d’écrire à notre service client ou d’utiliser le lien de remboursement de la plateforme de paiement pour obtenir un remboursement intégral à 100 %.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLIANCE FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <button type="button" onclick="openModal('cgv')">Conditions Générales & Mentions Légales</button>
+        <button type="button" onclick="openModal('rgpd')">Politique de Confidentialité (RGPD)</button>
+        <button type="button" onclick="openModal('contact')">Contact & Remboursement</button>
+      </div>
+
+      <div class="disclaimer-box">
+        <strong>Avertissement Médical Important :</strong> Les informations contenues sur cette page et dans l’ouvrage numérique « Le Protocole Parkinson » sont fournies à titre exclusivement éducatif et informatif concernant l’hygiène de vie générale et le bien-être. Elles ne constituent en aucun cas un avis médical, un diagnostic, ni un traitement curatif ou préventif d’une quelconque pathologie. Les résultats liés aux habitudes de vie varient d’une personne à l’autre. Consultez systématiquement votre médecin traitant ou votre spécialiste avant d’entreprendre tout changement alimentaire, physique ou lié à votre routine quotidienne, et ne cessez jamais un traitement prescrit sans avis médical.<br><br>
+        <strong>Avis Publicitaire :</strong> Ce site ne fait pas partie du site web de Facebook™ ni de Meta Platforms, Inc., ni de Google LLC. En outre, ce site n’est en aucun cas approuvé ou sponsorisé par Meta ou Google. Les témoignages présentés illustrent des expériences individuelles relatives au confort quotidien et ne constituent pas une promesse de résultat médical.
+      </div>
+
+      <p>© <span id="yearSpan">2026</span> Le Protocole Parkinson — Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- LEGAL MODALS -->
+  <div id="legalModal" class="modal-backdrop" onclick="if(event.target===this)closeModal()">
+    <div class="modal-content">
+      <button type="button" class="modal-close" onclick="closeModal()">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // CONFIGURATION RAPIDE (MODIFIEZ UNIQUEMENT CES 3 LIGNES AVANT DE PUBLIER)
+    // =========================================================================
+    const CONFIG_PAGE = {
+      checkoutUrl: "https://VOTRE-LIEN-CHECKOUT.COM", // Votre lien de paiement Hotmart / Cartpanda / ClickBank / Stripe
+      prixAffiche: "49 €",                            // Prix affiché sur la page (ex: "49 €" ou "47 €")
+      supportEmail: "support@votredomaine.com"        // Votre adresse email de support client
+    };
+    // =========================================================================
+
+    document.getElementById("yearSpan").textContent = new Date().getFullYear();
+    document.getElementById("priceDisplay").textContent = CONFIG_PAGE.prixAffiche;
+    document.getElementById("headerSupportEmail").textContent = CONFIG_PAGE.supportEmail;
+
+    // Propagation automatique des paramètres UTM / fbclid vers le lien de checkout
+    (function() {
+      const params = window.location.search;
+      const btn = document.getElementById("mainCheckoutBtn");
+      if (btn && CONFIG_PAGE.checkoutUrl) {
+        if (params) {
+          const sep = CONFIG_PAGE.checkoutUrl.includes("?") ? "&" : "?";
+          btn.href = CONFIG_PAGE.checkoutUrl + sep + params.substring(1);
+        } else {
+          btn.href = CONFIG_PAGE.checkoutUrl;
+        }
+      }
+    })();
+
+    const LEGAL_TEXTS = {
+      cgv: `
+        <h3>Conditions Générales de Vente & Mentions Légales</h3>
+        <p><strong>Objet :</strong> Les présentes conditions régissent la vente du guide numérique téléchargeable « Le Protocole Parkinson » (format PDF).</p>
+        <p><strong>Livraison :</strong> L’accès au produit numérique est envoyé automatiquement par voie électronique immédiatement après confirmation du paiement.</p>
+        <p><strong>Prix :</strong> Le tarif est indiqué de manière transparente avant validation sur la page de paiement sécurisée, sous forme d’achat unique sans renouvellement automatique.</p>
+        <p><strong>Garantie commerciale de 60 jours :</strong> Outre les droits légaux applicables, tout acheteur bénéficie d’une garantie commerciale intégrale de 60 jours permettant d’obtenir le remboursement complet sur simple demande adressée au support client.</p>
+        <p><strong>Propriété intellectuelle :</strong> L’ensemble des textes, guides et supports est réservé à un usage strictement personnel et privé.</p>
+      `,
+      rgpd: `
+        <h3>Politique de Confidentialité & Protection des Données (RGPD)</h3>
+        <p>Nous accordons la plus grande importance à la confidentialité de vos informations personnelles conformément au Règlement Général sur la Protection des Données (RGPD).</p>
+        <p><strong>Données collectées :</strong> Lors de votre commande sur notre plateforme de paiement partenaire sécurisée, seules les données strictement nécessaires à la facturation et à l’envoi de votre guide numérique (nom, adresse électronique, informations de transaction chiffrées) sont traitées.</p>
+        <p><strong>Sécurité :</strong> Les coordonnées bancaires sont chiffrées via protocole SSL directement par le prestataire de paiement certifié PCI-DSS ; nous n’avons jamais accès à votre numéro de carte complet.</p>
+        <p><strong>Vos droits :</strong> Vous disposez à tout moment d’un droit d’accès, de rectification et de suppression de vos données en écrivant à : ${CONFIG_PAGE.supportEmail}.</p>
+      `,
+      contact: `
+        <h3>Contact, Assistance & Remboursement</h3>
+        <p>Notre équipe d’assistance francophone vous accompagne pour toute question concernant le téléchargement de votre guide ou pour exercer votre garantie de 60 jours.</p>
+        <p><strong>Adresse de contact :</strong> ${CONFIG_PAGE.supportEmail}</p>
+        <p><strong>Délai de réponse :</strong> Sous 24 à 48 heures ouvrées.</p>
+        <p>Pour accélérer le traitement de votre demande, merci d’indiquer l’adresse électronique utilisée lors de votre commande ou votre numéro de reçu.</p>
+      `
+    };
+
+    function openModal(key) {
+      document.getElementById("modalBody").innerHTML = LEGAL_TEXTS[key] || "";
+      document.getElementById("legalModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("legalModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
